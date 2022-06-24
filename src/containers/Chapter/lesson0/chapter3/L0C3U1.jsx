@@ -1,7 +1,7 @@
 import React from "react";
 
-function ChNav(props) {
+function L0C3U1(props) {
   return <div></div>;
 }
 
-export default ChNav;
+export default L0C3U1;

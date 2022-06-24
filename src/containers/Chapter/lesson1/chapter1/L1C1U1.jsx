@@ -1,7 +1,7 @@
 import React from "react";
 
-function UnitNav(props) {
+function L1C1U1(props) {
   return <div></div>;
 }
 
-export default UnitNav;
+export default L1C1U1;

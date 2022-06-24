@@ -3,12 +3,12 @@ import tw from "tailwind-styled-components";
 
 const Header = tw.h1`mx-auto text-center mt-24 mb-20`;
 
-function Profile() {
+function NotFound(props) {
   return (
     <div>
-      <Header>ProfilePage</Header>
+      <Header>Not Found</Header>
     </div>
   );
 }
 
-export default Profile;
+export default NotFound;
