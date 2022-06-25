@@ -1,6 +1,6 @@
 import React from "react";
 
-function Version(props) {
+function Version() {
   return (
     <>
       <div class="inline-block relative md:mr-2 mr-1 mt-0.5">

@@ -4,7 +4,7 @@ import tw from "tailwind-styled-components";
 import Icon1 from "../../../assets/images/icon1.svg";
 import Icon2 from "../../../assets/images/icon2.svg";
 import Icon3 from "../../../assets/images/icon3.svg";
-import Button from "../../../components/Common/Button";
+import Button from "../../../components/Common/Icon/Button";
 
 const Section = tw.section`relative`;
 const Backgrounds = tw.div`pb-16 bg-cover bg-fixed`;
