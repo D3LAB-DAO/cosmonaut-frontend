@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
 import Button from "../../../components/Common/Icon/Button";
-import { lessonEngInfo } from "../../../states/LessonInfo/lessonInfoAtoms";
+import { lessonEngInfo } from "../../../states/Information/lessonInfoAtoms";
 
 const Container = tw.div`w-full mb-14 lg:mb-0 lg:col-span-1 col-span-2 lg:order-2 order-1`;
 const Title = tw.h2`text-2xl md:text-4xl text-center lg:text-left mt-2 text-orange-400 lg:mb-8 mb-6 font-heading`;

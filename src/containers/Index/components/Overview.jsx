@@ -9,7 +9,7 @@ import {
   lessonEngInfo,
   lessonGoal,
   lessonResult,
-} from "../../../states/LessonInfo/lessonInfoAtoms";
+} from "../../../states/Information/lessonInfoAtoms";
 import { useParams } from "react-router-dom";
 
 const Container = tw.div`w-full lg:col-span-1 col-span-2 lg:mx-0 mx-auto lg:order-1 order-2`;

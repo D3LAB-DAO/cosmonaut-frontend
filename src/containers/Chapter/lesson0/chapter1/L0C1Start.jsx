@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
-import { chapterInfo } from "../../../../states/Lesson0/chapterInfoAtoms";
-import { lessonEngInfo } from "../../../../states/LessonInfo/lessonInfoAtoms";
+import { chapterInfos } from "../../../../states/Information/chapterInfoAtoms";
+
+import { lessonEngInfo } from "../../../../states/Information/lessonInfoAtoms";
 
 const Container = tw.div`fixed h-full bottom-0 w-full z-50 bg-black bg-opacity-80 justify-center items flex`;
 const Progress = tw.div`mb-2 mx-auto md:w-96 w-72`;
@@ -18,14 +19,13 @@ function L0C1Start() {
   const navigate = useNavigate();
   const { lessonID } = useParams();
   const engInfo = useRecoilValue(lessonEngInfo);
-  const chInfo = useRecoilValue(chapterInfo);
+  const chInfo = useRecoilValue(chapterInfos);
 
   function handleStart(e) {
     e.preventDefault();
     navigate(`/lesson/${lessonID}/chapter/${key}/unit/1`);
   }
   const [key, setKey] = useState("");
-  console.log(key);
 
   return (
     <Container>
