@@ -66,7 +66,7 @@ function Overview() {
                 </h4>
               </div>
 
-              <ul class=" col-span-2 list-disc xl:text-base md:text-sm text-xs font-normal text-indigo-900 md:ml-3 ml-5 md:mt-0 mt-3">
+              <ul class="col-span-2 list-disc xl:text-base md:text-sm text-xs font-normal text-indigo-900 md:ml-3 ml-5 md:mt-0 mt-3">
                 {goal[lessonID]?.map(e => (
                   <li>{e?.goal}</li>
                 ))}

@@ -4,6 +4,7 @@ import NotFound from "../../error/NotFound";
 import DescSchema from "../../schema/DescShema";
 import DetailSchema from "../../schema/DetailSchema";
 import EditorSchema from "../../schema/EditorSchema";
+import L0C4Finish from "../Chapter/lesson0/chapter4/L0C4Finish";
 
 function UnitPage() {
   const { lessonID, chID, uID } = useParams();
@@ -19,6 +20,8 @@ function UnitPage() {
     (lessonID === "0" && chID === "4" && (uID === "1" || "2" || "3"))
   ) {
     return <DescSchema />;
+  } else if (lessonID === "0" && chID === "4" && uID === "4") {
+    return <L0C4Finish />;
   } else {
     return <NotFound />;
   }

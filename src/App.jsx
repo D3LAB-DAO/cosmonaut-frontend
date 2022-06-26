@@ -6,6 +6,7 @@ import MainPage from "./containers/Main/MainPage";
 import Profile from "./containers/Profile/Profile";
 import UnitPage from "./containers/Unit/UnitPage";
 import SignUp from "./containers/SignUp/SignUp";
+import L0C4Finish from "./containers/Chapter/lesson0/chapter4/L0C4Finish";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           path="/lesson/:lessonID/chapter/:chID/unit/:uID"
           element={<UnitPage />}
         />
+        <Route path="/test" element={<L0C4Finish />} />
         <Route path={"*"} element={<NotFound />} />
       </Routes>
     </div>

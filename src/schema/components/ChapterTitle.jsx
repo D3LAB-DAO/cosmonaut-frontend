@@ -7,7 +7,6 @@ const Container = tw.div`mb-4 md:mb-4 lg:mb-8`;
 
 function ChapterTitle({ chInfo, unitInfo }) {
   const { chID, uID } = useParams();
-  console.log(unitInfo);
 
   return (
     <Container>
