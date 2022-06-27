@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/cosmonaut-frontend" element={<MainPage />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signUp" element={<SignUp />} />
         <Route path="/lesson/:lessonID" element={<IndexPage />} />
         <Route
           path="/lesson/:lessonID/chapter/:chID"

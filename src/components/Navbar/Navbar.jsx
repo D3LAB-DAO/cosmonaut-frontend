@@ -20,9 +20,9 @@ function Navbar() {
           <Version />
 
           {/* 클릭 시, MyPage로 이동 */}
-          <Link to="/profile">
+          <Link to="/signUp">
             <button class="block w-7 h-7 rounded-full border-2 border-indigo-900 shadow-sm">
-              <img src={Account8} alt="" width="auto" />
+              <img src={LogoV4} alt="" width="auto" />
             </button>
           </Link>
         </div>

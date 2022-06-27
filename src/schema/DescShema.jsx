@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
 import BackToOverview from "./components/BackToOverview";
 import ChapterTitle from "./components/ChapterTitle";
-import ContentSchema from "./components/ContentSchema";
+import ContentSchema from "./components/DescContents";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import { chapterInfos } from "../states/Information/chapterInfoAtoms";
