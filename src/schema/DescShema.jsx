@@ -10,6 +10,7 @@ import Navbar from "../components/Navbar/Navbar";
 import { chapterInfos } from "../states/Information/chapterInfoAtoms";
 import { unitInfos } from "../states/Information/unitInfoAtoms";
 import BgV4 from "../assets/images/bg-v4.svg";
+import Navigator from "../components/Navigator/Navigator";
 
 const Background = tw.div`pt-14 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
@@ -28,6 +29,7 @@ function DescSchema() {
         <ContentSchema unitInfo={unitData[chID - 1]} />
       </Background>
       <Footer />
+      <Navigator />
     </>
   );
 }
