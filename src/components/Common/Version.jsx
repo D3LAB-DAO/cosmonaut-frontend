@@ -4,7 +4,7 @@ function Version() {
   return (
     <>
       <div class="inline-block relative md:mr-2 mr-1 mt-0.5">
-        <select class="appearance-none block bg-white bg-opacity-0 text-white text-xs font-semibold duration-200 px-2 py-0.5 pr-8 leading-6">
+        <select class="appearance-none block bg-white bg-opacity-0 text-white text-xs font-semibold px-2 py-0.5 pr-8 leading-6 ease-in-out duration-300  transform hover:scale-110">
           <option>ENG</option>
           <option>KOR</option>
         </select>
