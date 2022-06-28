@@ -49,24 +49,28 @@ export const lessonEngInfo = atom({
   default: [
     {
       id: 0,
+      num: "0",
       title: "Get Ready for Terraforming",
       desc: "Get ready for terraforming.",
       subDesc: "Let's build a development environment and do some tests.",
     },
     {
       id: 1,
+      num: "1",
       title: "Welcome to Spaceship Factory",
       desc: "Welcome to the spaceship factory!",
       subDesc: "Let's build a spacecraft called ESFERA to explore.",
     },
     {
       id: 2,
+      num: "2",
       title: "Fuel Up and Load the Freight",
       desc: "All crew members aboard the spacecraft ESFERA, please inject fuel and board the cargo.",
       subDesc: "Let's secure fuel and cargo, and supply it to the spacecraft.",
     },
     {
       id: 3,
+      num: "3",
       title: "Prepare to Launch",
       desc: "ESFERA ready to launch. 5, 4, 3, …",
       subDesc:
@@ -74,6 +78,7 @@ export const lessonEngInfo = atom({
     },
     {
       id: 4,
+      num: "4",
       title: "ESFERA Takeoff",
       desc: "Enter the asteroid belt. All crew members, please be prepared for a sudden collision.",
       subDesc:
@@ -81,6 +86,7 @@ export const lessonEngInfo = atom({
     },
     {
       id: 5,
+      num: "5",
       title: "Let's Play a Game!",
       desc: "Let's make the game that we made up to Chapter 4 more like a game!",
       subDesc: "Let's connect the front end to the contract.",
@@ -94,63 +100,78 @@ export const lessonGoal = atom({
     // Lesson0
     [
       {
+        id: 0,
         goal: "Establishing a development environment",
       },
       {
+        id: 1,
         goal: "Compile Example Contracts",
       },
     ],
     // Lesson1
     [
       {
+        id: 2,
         goal: "NFT (CW721) Code Analysis",
       },
       {
+        id: 3,
         goal: "Rust Grammar Peek",
       },
       {
+        id: 4,
         goal: "CW721 Spacecraft NFT Code",
       },
       {
+        id: 5,
         goal: "Instantiate",
       },
     ],
     // Lesson2
     [
       {
+        id: 6,
         goal: "Build CW20 FTs.",
       },
       {
+        id: 7,
         goal: "Hierarchically connecting NFT and FTs’ contracts.",
       },
       {
+        id: 8,
         goal: "Use NFT metadata field.",
       },
     ],
     // Lesson3
     [
       {
+        id: 9,
         goal: "Run unit tests.",
       },
       {
+        id: 10,
         goal: "Do optimization.",
       },
     ],
     // Lesson4
     [
       {
+        id: 11,
         goal: "Create a simple random number generator.",
       },
       {
+        id: 12,
         goal: "Learn how to create a perfect random number on blockchain.",
       },
       {
+        id: 13,
         goal: "Connect the random number generator and NFT to make a game.",
       },
     ],
     // Lesson5
     [
       {
+        id: 14,
         goal: "Use CosmJS and Kepler.",
       },
     ],
@@ -163,46 +184,55 @@ export const lessonResult = atom({
     // Lesson0
     [
       {
+        id: 0,
         result:
           "Codes: Set development environment, example code (w/ compilation result)",
       },
       {
+        id: 1,
         result: "Asset: Astronaut + Background Planet Background",
       },
     ],
     // Lesson1
     [
       {
+        id: 2,
         result: "Codes: NFT (CW721) code",
       },
       {
+        id: 3,
         result: "Asset: Spacecraft Factory Image + NFT Spacecraft",
       },
     ],
     // Lesson2
     [
       {
+        id: 4,
         result: "Spaceship loaded with fuels and freights.",
       },
     ],
     // Lesson3
     [
       {
+        id: 5,
         result: "Upgraded (optimized) spaceship.",
       },
     ],
     // Lesson4
     [
       {
+        id: 6,
         result: "A wrecked spaceship that was damaged by asteroid,",
       },
       {
+        id: 7,
         result: "or a spaceship that avoided the asteroid quite well.",
       },
     ],
     // Lesson5
     [
       {
+        id: 8,
         result: "Connect Keplr Wallet.",
       },
     ],

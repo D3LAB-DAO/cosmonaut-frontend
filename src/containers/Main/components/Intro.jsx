@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import Icon1 from "../../../assets/images/icon1.svg";
 import Icon2 from "../../../assets/images/icon2.svg";
 import Icon3 from "../../../assets/images/icon3.svg";
-import Button from "../../../components/Common/Icon/Button";
 
 const Section = tw.section`relative`;
 const Backgrounds = tw.div`md:pb-16 pb-8 bg-cover bg-fixed`;
@@ -12,104 +11,6 @@ const Background = tw.div`bg-scroll bg-contain bg-center bg-no-repeat bg-opacity
 const Wrap = tw.div`flex flex-wrap justify-center px-10`;
 
 function Intro() {
-  // useEffect(() => {
-  //   const leftCallback = function (entries) {
-  //     entries.forEach(entry => {
-  //       if (entry.isIntersection) {
-  //         entry.target.classList.add("animate-fadeInLtoR");
-  //       } else {
-  //         entry.target.classList.remove("animate-fadeInLtoR");
-  //       }
-  //     });
-  //   };
-  //   const leftObserver = new IntersectionObserver(leftCallback);
-
-  //   const left = document.querySelectorAll("#left");
-  //   left.forEach(function (target) {
-  //     leftObserver.observe(target);
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   const rightCallback = function (entries) {
-  //     entries.forEach(entry => {
-  //       if (entry.isIntersection) {
-  //         entry.target.classList.add("animate-fadeInRtoL");
-  //       } else {
-  //         entry.target.classList.remove("animate-fadeInRtoL");
-  //       }
-  //     });
-  //   };
-  //   const rightObserver = new IntersectionObserver(rightCallback);
-  //   const right = document.querySelectorAll("#right");
-  //   right.forEach(function (target) {
-  //     rightObserver.observe(target);
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   const downCallback = function (entries) {
-  //     entries.forEach(entry => {
-  //       if (entry.isIntersection) {
-  //         entry.target.classList.add("animate-fadeInDtoU");
-  //       } else {
-  //         entry.target.classList.remove("animate-fadeInDtoU");
-  //       }
-  //     });
-  //   };
-  //   const downObserver = new IntersectionObserver(downCallback);
-  //   const down = document.querySelectorAll("#down");
-  //   down.forEach(function (target) {
-  //     downObserver.observe(target);
-  //   });
-  // }, []);
-
-  const leftCallback = function (entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersection) {
-        entry.target.classList.add("animate-fadeInLtoR");
-      } else {
-        entry.target.classList.remove("animate-fadeInLtoR");
-      }
-    });
-  };
-  const leftObserver = new IntersectionObserver(leftCallback);
-
-  const left = document.querySelectorAll("#left");
-  left.forEach(function (target) {
-    leftObserver.observe(target);
-  });
-
-  const rightCallback = function (entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersection) {
-        entry.target.classList.add("animate-fadeInRtoL");
-      } else {
-        entry.target.classList.remove("animate-fadeInRtoL");
-      }
-    });
-  };
-  const rightObserver = new IntersectionObserver(rightCallback);
-  const right = document.querySelectorAll("#right");
-  right.forEach(function (target) {
-    rightObserver.observe(target);
-  });
-
-  const downCallback = function (entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersection) {
-        entry.target.classList.add("animate-fadeInDtoU");
-      } else {
-        entry.target.classList.remove("animate-fadeInDtoU");
-      }
-    });
-  };
-  const downObserver = new IntersectionObserver(downCallback);
-  const down = document.querySelectorAll("#down");
-  down.forEach(function (target) {
-    downObserver.observe(target);
-  });
-
   return (
     <Section>
       <Backgrounds
@@ -135,14 +36,16 @@ function Intro() {
               <br /> Learners can expect to achieve the following:
             </p>
             <div class="flex flex-wrap justify-center md:mb-10 mb-6">
-              <Link to="/lesson/0">
-                <Button />
+              <Link to="/lesson/99">
+                <button class="animate-fadeInUtoD inline-block md:w-auto mb-2 md:mb-0 md:mr-4 text-center text-lg border-3 shadow rounded-full bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:to-blue-500 hover:text-white w-2/3 md:px-12 px-6 py-2 lg:py-4 md:py-3">
+                  START LESSON
+                </button>
               </Link>
             </div>
           </div>
         </Background>
         <Wrap>
-          <div id="left" class="max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-fadeInLtoR max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
@@ -158,7 +61,7 @@ function Intro() {
             </div>
           </div>
 
-          <div id="down" class="max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-fadeInDtoU max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
@@ -175,7 +78,7 @@ function Intro() {
             </div>
           </div>
 
-          <div id="right" class="max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-fadeInRtoL max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
