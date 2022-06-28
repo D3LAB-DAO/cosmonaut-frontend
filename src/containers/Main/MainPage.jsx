@@ -7,7 +7,7 @@ import Learn from "./components/Learn";
 import Made from "./components/Made";
 import Special from "./components/Special";
 
-function MainPage(props) {
+function MainPage() {
   return (
     <>
       <Navbar />

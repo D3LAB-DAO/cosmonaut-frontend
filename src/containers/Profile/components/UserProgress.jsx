@@ -9,7 +9,7 @@ const Container = tw.div`flex flex-wrap -mb-12`;
 const Progress = tw.div`mx-auto w-full mb-6`;
 const Bar = tw.div`flex bg-green-500 rounded-full justify-end items-center pr-0.5 py-0.5`;
 
-function UserProgress(props) {
+function UserProgress() {
   const testUserInfo = useRecoilValue(testUserInfos);
 
   return (

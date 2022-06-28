@@ -11,6 +11,7 @@ import { unitInfos } from "../states/Information/unitInfoAtoms";
 import BgV4 from "../assets/images/bg-v4.svg";
 import ChapterDesc from "./components/ChapterDesc";
 import DetailContents from "./components/DetailContents";
+import Navigator from "../components/Navigator/Navigator";
 
 const Background = tw.div`pt-14 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
@@ -30,6 +31,7 @@ function DetailSchema() {
       </Background>
       <DetailContents />
       <Footer />
+      <Navigator />
     </>
   );
 }

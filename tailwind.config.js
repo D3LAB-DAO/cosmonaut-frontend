@@ -184,6 +184,10 @@ module.exports = {
         "0%": { opacity: "0", transform: "translateX(70px)" },
         "100%": { opacity: "1", transform: "translateX(0)" },
       },
+      fadeInDtoU: {
+        "0%": { opacity: "0", transform: "translateY(-70px)" },
+        "100%": { opacity: "1", transform: "translateY(0)" },
+      },
       goUpFirst: {
         "0%": {
           transform: "translateY(0)",
@@ -220,6 +224,7 @@ module.exports = {
     animation: {
       fadeInLtoR: "fadeInLtoR 0.7s ease-out",
       fadeInRtoL: "fadeInRtoL 0.7s ease-out",
+      fadeInDtoU: "fadeInDtoU 0.7s ease-out",
       goUpFirst: "goUpFirst 0.9s linear forwards",
       goUpSecond: "goUpSecond 0.9s linear forwards",
       goUpThird: "goUpThird 0.9s linear forwards",

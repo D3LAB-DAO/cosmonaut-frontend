@@ -43,7 +43,7 @@ function L1C1U3() {
         <div class="container px-4 mx-auto">
           <div class="text-center">
             <h1 class="font-extrabold font-heading text-yellow-100 md:text-2xl text-lg">
-              2-1. Queries(query.rs)
+              3-1. Queries(query.rs)
             </h1>
           </div>
         </div>
