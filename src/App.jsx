@@ -24,7 +24,7 @@ function App() {
           path="/lesson/:lessonID/chapter/:chID/unit/:uID"
           element={<UnitPage />}
         />
-        <Route path="/test" element={<L0C4Finish />} />
+        <Route path="/lesson/0/finish" element={<L0C4Finish />} />
         <Route path={"*"} element={<NotFound />} />
       </Routes>
     </div>

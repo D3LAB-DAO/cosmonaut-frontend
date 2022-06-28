@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import Arrowleft from "../../assets/images/arrow-left.svg";
 import Arrowright from "../../assets/images/arrow-right.svg";
+
 import HandleSideMenu from "./Components/HandleSideMenu";
 
 const Container = tw.div`fixed transition ease-out duration-100 opacity-0 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50`;
@@ -16,7 +17,6 @@ function Navigator() {
   const handleRight = () => {
     console.log("handle Right");
 
-    navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${nextUnit}`);
     if (lessonID === "0" && chID === "1" && uID === "3") {
       return navigate(`/lesson/0/chapter/2`);
     } else if (lessonID === "0" && chID === "2" && uID === "1") {
@@ -24,9 +24,11 @@ function Navigator() {
     } else if (lessonID === "0" && chID === "3" && uID === "2") {
       return navigate(`/lesson/0/chapter/4`);
     } else if (lessonID === "0" && chID === "4" && uID === "3") {
-      return navigate(`/lesson/1/chapter/1`);
+      return navigate(`/lesson/0/finish`);
     } else if (lessonID === "1" && chID === "1" && uID === "3") {
       return navigate(`/lesson/1/chapter/2`);
+    } else {
+      navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${nextUnit}`);
     }
   };
 
