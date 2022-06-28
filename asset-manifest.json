@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cosmonaut-frontend/static/css/main.3556b856.css",
-    "main.js": "/cosmonaut-frontend/static/js/main.7521597b.js",
+    "main.css": "/cosmonaut-frontend/static/css/main.513b6241.css",
+    "main.js": "/cosmonaut-frontend/static/js/main.0c595e26.js",
     "static/media/d3lab-bg7.svg": "/cosmonaut-frontend/static/media/d3lab-bg7.2876b4e01db033a8a2be0c85fcba9b9b.svg",
     "static/media/25-spacehole-2x.jpg": "/cosmonaut-frontend/static/media/25-spacehole-2x.db80d5e6e271559d1a2a.jpg",
     "static/media/chapter-screen.png": "/cosmonaut-frontend/static/media/chapter-screen.2bbec45714091c98604c.png",
@@ -19,6 +19,7 @@
     "static/media/twinkle2.gif": "/cosmonaut-frontend/static/media/twinkle2.b490f382e7b72cfb4517.gif",
     "static/media/icon1.svg": "/cosmonaut-frontend/static/media/icon1.3fff93e9d979454737c3eb0239c89a14.svg",
     "static/media/blackboard.svg": "/cosmonaut-frontend/static/media/blackboard.6322bef15ece84b011e4.svg",
+    "static/media/logo-v4-line-shadow.svg": "/cosmonaut-frontend/static/media/logo-v4-line-shadow.ce55a11af54abdfb562a4907a13ff160.svg",
     "static/media/logo-v4.svg": "/cosmonaut-frontend/static/media/logo-v4.a60a07a159c0edba6076f68145533e0b.svg",
     "static/media/goal.svg": "/cosmonaut-frontend/static/media/goal.16ccd6627f99e82db12c279b88e7c8f9.svg",
     "static/media/result.svg": "/cosmonaut-frontend/static/media/result.bdff8e746965dc7fafc2737c6faeb11d.svg",
@@ -29,11 +30,11 @@
     "static/media/google.svg": "/cosmonaut-frontend/static/media/google.330a2dc7f18d7502647dc5d6f93812ec.svg",
     "static/media/account8.svg": "/cosmonaut-frontend/static/media/account8.3d253a5a7113809f8c1b2885ea2c5ea5.svg",
     "index.html": "/cosmonaut-frontend/index.html",
-    "main.3556b856.css.map": "/cosmonaut-frontend/static/css/main.3556b856.css.map",
-    "main.7521597b.js.map": "/cosmonaut-frontend/static/js/main.7521597b.js.map"
+    "main.513b6241.css.map": "/cosmonaut-frontend/static/css/main.513b6241.css.map",
+    "main.0c595e26.js.map": "/cosmonaut-frontend/static/js/main.0c595e26.js.map"
   },
   "entrypoints": [
-    "static/css/main.3556b856.css",
-    "static/js/main.7521597b.js"
+    "static/css/main.513b6241.css",
+    "static/js/main.0c595e26.js"
   ]
 }
