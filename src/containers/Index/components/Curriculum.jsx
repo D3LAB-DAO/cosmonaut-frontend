@@ -23,7 +23,7 @@ function Curriculum() {
             const lessonUrl = `/lesson/${e?.id}`;
             return (
               <Link key={e?.id} to={lessonUrl}>
-                <button class="animate-fadeInDtoU mb-5 flex w-full md:px-6 px-3 md:py-3 py-1 bg-white md:shadow shadow-sm border-2 border-indigo-900 items-center justify-between ease-in-out duration-300 transform hover:scale-105 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none focus:ring focus:ring-green-500 active:bg-yellow-500 rounded-md">
+                <button class="animate-fadeInRtoL mb-5 flex w-full md:px-6 px-3 md:py-3 py-1 bg-white md:shadow shadow-sm border-2 border-indigo-900 items-center justify-between ease-in-out duration-300 transform hover:scale-105 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none focus:ring focus:ring-green-500 active:bg-yellow-500 rounded-md">
                   <span class="md:text-lg text-sm font-heading text-indigo-900">
                     Lesson {e?.num}.
                   </span>
@@ -37,7 +37,7 @@ function Curriculum() {
         </LessonList>
         <Link to={startLesson}>
           <ButtonWrap>
-            <button class="animate-fadeInRtoL inline-block md:w-auto mb-2 md:mb-0 md:mr-4 text-center text-lg border-3 shadow rounded-full bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:to-blue-500 hover:text-white w-2/3 md:px-12 px-6 py-2 lg:py-4 md:py-3">
+            <button class="animate-moveDtoU inline-block md:w-auto mb-2 md:mb-0 md:mr-4 text-center text-lg border-3 shadow rounded-full bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:to-blue-500 hover:text-white w-2/3 md:px-12 px-6 py-2 lg:py-4 md:py-3">
               START LESSON
             </button>
           </ButtonWrap>

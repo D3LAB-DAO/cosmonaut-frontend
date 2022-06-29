@@ -192,6 +192,16 @@ module.exports = {
         "0%": { opacity: "0", transform: "translateY(-70px)" },
         "100%": { opacity: "1", transform: "translateY(0)" },
       },
+      moveUtoD: {
+        "0%": { transform: "translateY(-15px)" },
+        "50%": { transform: "translateY(15px)" },
+        "100%": { transform: "translateY(-15px)" },
+      },
+      moveDtoU: {
+        "0%": { transform: "translateY(15px)" },
+        "50%": { transform: "translateY(-15px)" },
+        "100%": { transform: "translateY(15px)" },
+      },
       goUpFirst: {
         "0%": {
           transform: "translateY(0)",
@@ -230,6 +240,8 @@ module.exports = {
       fadeInRtoL: "fadeInRtoL 1.1s ease-out",
       fadeInDtoU: "fadeInDtoU 1.1s ease-out",
       fadeInUtoD: "fadeInUtoD 1.1s ease-out",
+      moveUtoD: "moveUtoD 2.5s infinite",
+      moveDtoU: "moveDtoU 2.5s infinite",
       goUpFirst: "goUpFirst 0.9s linear forwards",
       goUpSecond: "goUpSecond 0.9s linear forwards",
       goUpThird: "goUpThird 0.9s linear forwards",

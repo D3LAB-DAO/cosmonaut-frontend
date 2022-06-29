@@ -37,7 +37,7 @@ function Intro() {
             </p>
             <div class="flex flex-wrap justify-center md:mb-10 mb-6">
               <Link to="/lesson/99">
-                <button class="animate-fadeInUtoD inline-block md:w-auto mb-2 md:mb-0 md:mr-4 text-center text-lg border-3 shadow rounded-full bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:to-blue-500 hover:text-white w-2/3 md:px-12 px-6 py-2 lg:py-4 md:py-3">
+                <button class="animate-moveUtoD inline-block md:w-auto mb-2 md:mb-0 md:mr-4 text-center text-lg border-3 shadow rounded-full bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:to-blue-500 hover:text-white w-2/3 md:px-12 px-6 py-2 lg:py-4 md:py-3">
                   START LESSON
                 </button>
               </Link>
@@ -45,7 +45,7 @@ function Intro() {
           </div>
         </Background>
         <Wrap>
-          <div class="animate-fadeInLtoR max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-moveUtoD max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
@@ -61,7 +61,7 @@ function Intro() {
             </div>
           </div>
 
-          <div class="animate-fadeInDtoU max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-moveDtoU max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
@@ -78,7 +78,7 @@ function Intro() {
             </div>
           </div>
 
-          <div class="animate-fadeInRtoL max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-moveUtoD max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
