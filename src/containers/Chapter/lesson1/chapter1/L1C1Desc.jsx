@@ -1,6 +1,6 @@
 import React from "react";
 
-function Ch1Desc() {
+function L1C1Desc() {
   return (
     <div>
       <h1 class="w-full lg:text-lg text-sm text-white font-normal place-content-center">
@@ -18,4 +18,4 @@ function Ch1Desc() {
   );
 }
 
-export default Ch1Desc;
+export default L1C1Desc;

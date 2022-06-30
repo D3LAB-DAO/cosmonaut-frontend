@@ -11,7 +11,6 @@ const Logo = tw.a`text-lg font-bold ease-in-out duration-300 transform hover:sca
 
 function Navbar() {
   window.addEventListener("scroll", e => {
-    console.log(window.scrollY);
     if (window.scrollY > 1) {
       const navbar = document.querySelectorAll("#navbar");
       navbar[0].classList.add("opacity-0");

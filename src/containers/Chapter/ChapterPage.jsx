@@ -6,6 +6,7 @@ import L0C2Start from "../Chapter/lesson0/chapter2/L0C2Start";
 import L0C3Start from "../Chapter/lesson0/chapter3/L0C3Start";
 import L0C4Start from "../Chapter/lesson0/chapter4/L0C4Start";
 import L1C1Start from "../Chapter/lesson1/chapter1/L1C1Start";
+import L1C2Start from "./lesson1/chapter2/L1C2Start";
 
 function ChapterPage() {
   const { lessonID, chID } = useParams();
@@ -20,6 +21,8 @@ function ChapterPage() {
     return <L0C4Start />;
   } else if (lessonID === "1" && chID === "1") {
     return <L1C1Start />;
+  } else if (lessonID === "1" && chID === "2") {
+    return <L1C2Start />;
   } else {
     return <NotFound />;
   }

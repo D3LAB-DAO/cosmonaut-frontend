@@ -12,6 +12,7 @@ import BgV4 from "../assets/images/bg-v4.svg";
 import ChapterDesc from "./components/ChapterDesc";
 import DetailContents from "./components/DetailContents";
 import Navigator from "../components/Navigator/Navigator";
+import UnitDesc from "./components/UnitDesc";
 
 const Background = tw.div`pt-14 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
@@ -28,6 +29,7 @@ function DetailSchema() {
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
         <ChapterDesc />
+        <UnitDesc unitInfo={unitData[chID - 1]} />
       </Background>
       <DetailContents />
       <Footer />

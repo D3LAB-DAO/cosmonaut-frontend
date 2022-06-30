@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import L1C1U1 from "../../containers/Chapter/lesson1/chapter1/L1C1U1/L1C1U1";
-import L1C1U2 from "../../containers/Chapter/lesson1/chapter1/L1C1U2";
-import L1C1U3 from "../../containers/Chapter/lesson1/chapter1/L1C1U3";
+import L1C1U2 from "../../containers/Chapter/lesson1/chapter1/L1C1U2/L1C1U2";
+import L1C1U3 from "../../containers/Chapter/lesson1/chapter1/L1C1U3/L1C1U3";
 
 function DetailContents() {
   const { lessonID, chID, uID } = useParams();

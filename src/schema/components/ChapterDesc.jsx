@@ -1,15 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
 import Bulb from "../../components/Common/Icon/Bulb";
 import CornerNail from "../../components/Common/Icon/CornerNail";
-import Ch1AboutCode from "../../containers/Chapter/lesson1/chapter1/Ch1AboutCode";
-import ChExplain from "../../containers/Chapter/lesson1/chapter1/Ch1AboutCode";
-import Ch1Desc from "../../containers/Chapter/lesson1/chapter1/Ch1Desc";
-import Ch2AboutCode from "../../containers/Chapter/lesson1/chapter2/Ch2AboutCode";
-import Ch2Desc from "../../containers/Chapter/lesson1/chapter2/Ch2Desc";
-import { chapterDescs } from "../../states/Information/chapterInfoAtoms";
+import L1C1AboutCode from "../../containers/Chapter/lesson1/chapter1/L1C1AboutCode";
+import L1C1Desc from "../../containers/Chapter/lesson1/chapter1/L1C1Desc";
+import L1C2AboutCode from "../../containers/Chapter/lesson1/chapter2/L1C2AboutCode";
+import L1C2Desc from "../../containers/Chapter/lesson1/chapter2/L1C2Desc";
 
 const Container = tw.div`container mx-auto md:px-10 px-4 md:mb-20 mb-16`;
 const Explanation = tw.div`block md:px-8 px-4 md:pb-8 md:pt-4 pb-3 pt-3`;
@@ -20,18 +17,18 @@ function ChapterDesc() {
 
   const ChDesc = () => {
     if (lessonID === "1" && chID === "1") {
-      return <Ch1Desc />;
+      return <L1C1Desc />;
     }
     if (lessonID === "1" && chID === "2") {
-      return <Ch2Desc />;
+      return <L1C2Desc />;
     }
   };
   const AboutCode = () => {
     if (lessonID === "1" && chID === "1") {
-      return <Ch1AboutCode />;
+      return <L1C1AboutCode />;
     }
     if (lessonID === "1" && chID === "2") {
-      return <Ch2AboutCode />;
+      return <L1C2AboutCode />;
     }
   };
   return (
