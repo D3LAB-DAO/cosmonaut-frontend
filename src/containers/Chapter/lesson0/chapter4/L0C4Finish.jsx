@@ -99,7 +99,7 @@ function L0C4Finish() {
           <h4 class="font-extrabold text-center text-sm">
             Let's move on to next Lesson?
           </h4>
-          <Link to="/lesson/0/chapter/2">
+          <Link to="/lesson/1/chapter/2">
             <Button>Ready for Next Lesson?</Button>
           </Link>
         </div>
