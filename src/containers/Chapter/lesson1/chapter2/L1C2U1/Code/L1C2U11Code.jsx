@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import { useMutation, useQueryClient } from "react-query";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import base64 from "base-64";
 import Editor from "@monaco-editor/react";
@@ -28,7 +28,7 @@ pub struct Cw721ReceiveMsg {
 }
 \`\`\``;
 
-const problem1 = `
+const problem1File1 = `
 pub fn _transfer_nft(
   &self,
   deps: DepsMut,
@@ -52,6 +52,14 @@ pub fn _transfer_nft(
   Ok(token)
 }
 `;
+const problem1File2 = `
+// Question 1: set owner
+// Do yourself!
+
+// Question 2: remove existing approvals
+// Do yourself!
+`;
+
 const problem2 = `
 fn send_nft(
   &self,
@@ -80,33 +88,83 @@ fn send_nft(
 }
 `;
 function L1C2U11Code() {
+  const { lessonID, chID, uID } = useParams();
   const [code, setCode] = useState();
   const queryClient = useQueryClient();
-  const codeEdit = useMutation(
-    code => axios.post("https://cosmonaut.free.beeceptor.com", code),
+
+  const handleEditor = value => {
+    setCode(value);
+  };
+  console.log(code);
+  const { mutate, isLoading } = useMutation(
+    code => axios.post("https://cosmonaut2.free.beeceptor.com", code),
     {
       onSuccess: data => {
         console.log(data);
         const msg = "success";
         alert(msg);
       },
-      onError: () => {
-        alert("There was an Error");
-      },
       onSettled: () => {
         queryClient.invalidateQueries("create");
       },
     }
   );
-  // let enc = base64.encode(code);
+  let enc1 = base64.encode(code1);
 
   const onCodeEdit = () => {
-    codeEdit.mutate(code);
-    setCode(""); // state reset
+    mutate({
+      lessonID,
+      chID,
+      uID,
+      id: 1,
+      files: { file1: enc1 },
+    });
   };
-  const handleEditor = value => {
-    setCode(value);
+
+  const [currentTab, setCurrentTab] = useState("1");
+  const [value, setValue] = useState("");
+  const tabs = [
+    {
+      id: 1,
+      value: `pub fn _transfer_nft(
+      &self,
+      deps: DepsMut,
+      env: &Env,
+      info: &MessageInfo,
+      recipient: &str,
+      token_id: &str,
+    ) -> Result<TokenInfo<T>, ContractError> {
+      let mut token = self.tokens.load(deps.storage, token_id)?;
+    
+      // ensure we have permissions
+      self.check_can_send(deps.as_ref(), env, info, &token)?;
+    
+      // Question 1: set owner
+      // Do yourself!
+    
+      // Question 2: remove existing approvals
+      // Do yourself!
+    
+      self.tokens.save(deps.storage, token_id, &token)?;
+      Ok(token)
+    }`,
+    },
+    {
+      id: 2,
+      value: `test 2`,
+    },
+    {
+      id: 3,
+      value: `test 3`,
+    },
+  ];
+
+  const handleTabClick = e => {
+    setCurrentTab(e.target.id);
+    setValue(tabs[currentTab - 1]?.value);
   };
+  console.log(value);
+
   return (
     <>
       {/* Problem 1 */}
@@ -114,7 +172,7 @@ function L1C2U11Code() {
         <div class="bg-indigo-900 rounded-2xl overflow-y-auto snap-y px-6 md:p-10 h-720px py-6">
           <h2 class="text-xl font-extrabold mb-6">
             Problem 1.
-            <br /> _tranfer_nft의 흐름은 다음과 같습니다.
+            <br /> _transfer_nft의 흐름은 다음과 같습니다.
           </h2>
           <p class="text-xl snap-center font-medium mb-1">
             1. 토큰 정보를 가져온다.
@@ -147,31 +205,40 @@ function L1C2U11Code() {
           <div class="container bg-indigo-900 rounded-xl w-full h-full overflow-y-auto">
             <EditorCodeHeader>
               <div class="grid md:grid-cols-4 grid-cols-3 text-center xl:max-w-max">
-                <Link to="file1">
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-blue-500 rounded-t-md focus:ring focus:ring-white">
+                <button onClick={handleTabClick}>
+                  <p
+                    id="1"
+                    class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-blue-500 rounded-t-md focus:ring focus:ring-white"
+                  >
                     File1
                   </p>
-                </Link>
-                <Link to="file2">
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
+                </button>
+                <button onClick={handleTabClick}>
+                  <p
+                    id="2"
+                    class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white"
+                  >
                     File2
                   </p>
-                </Link>
-                <Link to="file3">
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
+                </button>
+                <button onClick={handleTabClick}>
+                  <p
+                    id="3"
+                    class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white"
+                  >
                     File3
                   </p>
-                </Link>
+                </button>
               </div>
             </EditorCodeHeader>
-            {codeEdit.isLoading ? (
+            {isLoading ? (
               <AnswerCheck />
             ) : (
               <>
                 <Editor
                   height="60vh"
                   defaultLanguage="rust"
-                  defaultValue={problem1}
+                  defaultValue={problem1File1}
                   theme="vs-dark"
                   onChange={handleEditor}
                 />
@@ -280,7 +347,7 @@ function L1C2U11Code() {
                 </Link>
               </div>
             </EditorCodeHeader>
-            {codeEdit.isLoading ? (
+            {isLoading ? (
               <AnswerCheck />
             ) : (
               <>
