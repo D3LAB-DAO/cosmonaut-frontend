@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import tw from "tailwind-styled-components";
 import { useMutation, useQueryClient } from "react-query";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import base64 from "base-64";
 import Editor from "@monaco-editor/react";
 import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
 import MDEditor from "@uiw/react-md-editor";
+import { codeEx1, L1C2U11Pb1Files } from "./L1C2U11Files";
 
 const EditorDesc = tw.div`w-full lg:w-2/5 md:mx-0 mx-4`;
 const EditorCode = tw.div`w-full lg:w-3/5 md:mx-0`;
@@ -16,154 +17,57 @@ const ResultHeader = tw.div`border-b-3 border-blue-500 mx-2 px-2 mb-2 mt-4`;
 const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
-const code1 = `
-\`\`\`rust
-/// Cw721ReceiveMsg should be de/serialized under Receive() variant in a ExecuteMsg
-#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
-#[serde(rename_all = "snake_case")]
-pub struct Cw721ReceiveMsg {
-    pub sender: String,
-    pub token_id: String,
-    pub msg: Binary,
-}
-\`\`\``;
-
-const problem1File1 = `
-pub fn _transfer_nft(
-  &self,
-  deps: DepsMut,
-  env: &Env,
-  info: &MessageInfo,
-  recipient: &str,
-  token_id: &str,
-) -> Result<TokenInfo<T>, ContractError> {
-  let mut token = self.tokens.load(deps.storage, token_id)?;
-
-  // ensure we have permissions
-  self.check_can_send(deps.as_ref(), env, info, &token)?;
-
-  // Question 1: set owner
-  // Do yourself!
-
-  // Question 2: remove existing approvals
-  // Do yourself!
-
-  self.tokens.save(deps.storage, token_id, &token)?;
-  Ok(token)
-}
-`;
-const problem1File2 = `
-// Question 1: set owner
-// Do yourself!
-
-// Question 2: remove existing approvals
-// Do yourself!
-`;
-
-const problem2 = `
-fn send_nft(
-  &self,
-  deps: DepsMut,
-  env: Env,
-  info: MessageInfo,
-  contract: String,
-  token_id: String,
-  msg: Binary,
-) -> Result<Response<C>, ContractError> {
-  // Transfer token
-  self._transfer_nft(deps, &env, &info, &contract, &token_id)?;
-
-  // Question: Cw721ReceiveMsg
-  let send = Cw721ReceiveMsg {
-      // Do yourself!
-  };
-
-  // Send message
-  Ok(Response::new()
-      .add_message(send.into_cosmos_msg(contract.clone())?)
-      .add_attribute("action", "send_nft")
-      .add_attribute("sender", info.sender)
-      .add_attribute("recipient", contract)
-      .add_attribute("token_id", token_id))
-}
-`;
 function L1C2U11Code() {
   const { lessonID, chID, uID } = useParams();
-  const [code, setCode] = useState();
-  const queryClient = useQueryClient();
+  const editorRef = useRef(null);
+  const [fileName, setFileName] = useState("files1");
+  const [code, setCode] = useState(() =>
+    JSON.parse(window.localStorage.getItem("id"))
+  );
+  const file = L1C2U11Pb1Files[fileName];
+  console.log(file);
+
+  useEffect(() => {
+    editorRef.current?.focus();
+    window.localStorage.setItem(file.name, code);
+  }, [code]);
 
   const handleEditor = value => {
     setCode(value);
   };
-  console.log(code);
+
+  const queryClient = useQueryClient();
+
   const { mutate, isLoading } = useMutation(
     code => axios.post("https://cosmonaut2.free.beeceptor.com", code),
     {
       onSuccess: data => {
-        console.log(data);
         const msg = "success";
         alert(msg);
+        console.log(data);
+      },
+      onError: data => {
+        console.log(data);
       },
       onSettled: () => {
         queryClient.invalidateQueries("create");
       },
     }
   );
-  let enc1 = base64.encode(code1);
-
   const onCodeEdit = () => {
     mutate({
       lessonID,
       chID,
       uID,
       id: 1,
-      files: { file1: enc1 },
+      files: { file1: enc1, files2: enc2, files3: enc3 },
     });
   };
-
-  const [currentTab, setCurrentTab] = useState("1");
-  const [value, setValue] = useState("");
-  const tabs = [
-    {
-      id: 1,
-      value: `pub fn _transfer_nft(
-      &self,
-      deps: DepsMut,
-      env: &Env,
-      info: &MessageInfo,
-      recipient: &str,
-      token_id: &str,
-    ) -> Result<TokenInfo<T>, ContractError> {
-      let mut token = self.tokens.load(deps.storage, token_id)?;
-    
-      // ensure we have permissions
-      self.check_can_send(deps.as_ref(), env, info, &token)?;
-    
-      // Question 1: set owner
-      // Do yourself!
-    
-      // Question 2: remove existing approvals
-      // Do yourself!
-    
-      self.tokens.save(deps.storage, token_id, &token)?;
-      Ok(token)
-    }`,
-    },
-    {
-      id: 2,
-      value: `test 2`,
-    },
-    {
-      id: 3,
-      value: `test 3`,
-    },
-  ];
-
-  const handleTabClick = e => {
-    setCurrentTab(e.target.id);
-    setValue(tabs[currentTab - 1]?.value);
-  };
-  console.log(value);
+  const myStorage = window.localStorage;
+  console.log(myStorage.files1);
+  let enc1 = base64.encode(myStorage.files1);
+  let enc2 = base64.encode(myStorage.files2);
+  let enc3 = base64.encode(myStorage.files3);
 
   return (
     <>
@@ -205,28 +109,28 @@ function L1C2U11Code() {
           <div class="container bg-indigo-900 rounded-xl w-full h-full overflow-y-auto">
             <EditorCodeHeader>
               <div class="grid md:grid-cols-4 grid-cols-3 text-center xl:max-w-max">
-                <button onClick={handleTabClick}>
-                  <p
-                    id="1"
-                    class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-blue-500 rounded-t-md focus:ring focus:ring-white"
-                  >
-                    File1
+                <button
+                  disabled={fileName === "files1"}
+                  onClick={() => setFileName("files1")}
+                >
+                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-blue-500 rounded-t-md focus:ring focus:ring-white">
+                    Files1
                   </p>
                 </button>
-                <button onClick={handleTabClick}>
-                  <p
-                    id="2"
-                    class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white"
-                  >
-                    File2
+                <button
+                  disabled={fileName === "files2"}
+                  onClick={() => setFileName("files2")}
+                >
+                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
+                    Files2
                   </p>
                 </button>
-                <button onClick={handleTabClick}>
-                  <p
-                    id="3"
-                    class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white"
-                  >
-                    File3
+                <button
+                  disabled={fileName === "files3"}
+                  onClick={() => setFileName("files3")}
+                >
+                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
+                    Files3
                   </p>
                 </button>
               </div>
@@ -237,11 +141,14 @@ function L1C2U11Code() {
               <>
                 <Editor
                   height="60vh"
-                  defaultLanguage="rust"
-                  defaultValue={problem1File1}
                   theme="vs-dark"
+                  path={file.name}
+                  defaultLanguage={file.language}
+                  defaultValue={file.value}
+                  onMount={editor => (editorRef.current = editor)}
                   onChange={handleEditor}
                 />
+
                 <Results>
                   <ResultHeader>
                     <div class="grid grid-cols-2 items-center justify-between mb-2">
@@ -308,7 +215,6 @@ function L1C2U11Code() {
           </div>
         </div>
       </EditorCode>
-
       {/* Problem 2 */}
       <EditorDesc>
         <div class="bg-indigo-900 rounded-2xl overflow-y-auto snap-y px-6 md:p-10 h-720px py-6">
@@ -320,7 +226,7 @@ function L1C2U11Code() {
           </h2>
           <MDEditor.Markdown
             style={{ padding: 0 }}
-            source={code1}
+            source={codeEx1}
             linkTarget="_blank"
           />
         </div>
@@ -330,21 +236,30 @@ function L1C2U11Code() {
           <div class="container bg-indigo-900 rounded-xl w-full h-full overflow-y-auto">
             <EditorCodeHeader>
               <div class="grid md:grid-cols-4 grid-cols-3 text-center xl:max-w-max">
-                <Link to="file1">
+                <button
+                  disabled={fileName === "files1"}
+                  onClick={() => setFileName("files1")}
+                >
                   <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-blue-500 rounded-t-md focus:ring focus:ring-white">
-                    File1
+                    Files1
                   </p>
-                </Link>
-                <Link to="file2">
+                </button>
+                <button
+                  disabled={fileName === "files2"}
+                  onClick={() => setFileName("files2")}
+                >
                   <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
-                    File2
+                    Files2
                   </p>
-                </Link>
-                <Link to="file3">
+                </button>
+                <button
+                  disabled={fileName === "files3"}
+                  onClick={() => setFileName("files3")}
+                >
                   <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
-                    File3
+                    Files3
                   </p>
-                </Link>
+                </button>
               </div>
             </EditorCodeHeader>
             {isLoading ? (
@@ -353,9 +268,11 @@ function L1C2U11Code() {
               <>
                 <Editor
                   height="60vh"
-                  defaultLanguage="rust"
-                  defaultValue={problem2}
                   theme="vs-dark"
+                  path={file.name}
+                  defaultLanguage={file.language}
+                  defaultValue={file.value}
+                  onMount={editor => (editorRef.current = editor)}
                   onChange={handleEditor}
                 />
                 <Results>
