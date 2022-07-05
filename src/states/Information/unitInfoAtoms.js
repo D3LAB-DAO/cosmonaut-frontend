@@ -10,31 +10,29 @@ export const unitInfos = atom({
         {
           id: 1,
           title: "Go",
-          subTitle: "Go Installer",
+          subTitle: "Install Go",
         },
         {
           id: 2,
           title: "Rust/Rustup",
-          subTitle: "Rust Installer",
+          subTitle: "Install Rust/Rustup",
         },
-        { id: 3, title: "Cargo", subTitle: "Cargo: Package Manager" },
       ],
       // chapter2
-      [{ id: 1, title: "wasm/wasmd", subTitle: "Wasmd Installer" }],
+      [{ id: 1, title: "wasm/wasmd", subTitle: "Install wasm/wasmd" }],
       // chapter3
       [
         { id: 1, title: "Setup Go CLI", subTitle: "Setup Go CLI" },
-        { id: 2, title: "CosmJS", subTitle: "@cosmjs/cli" },
+        { id: 2, title: "CosmJS", subTitle: "CosmJS" },
       ],
       // chapter4
       [
         {
           id: 1,
-          title: "Compiling Example Contract",
-          subTitle: "wasm binary excutable",
+          title: "Compile",
+          subTitle: "Compile",
         },
-        { id: 2, title: "Instantiate", subTitle: "Instantiate wasm contract" },
-        { id: 3, title: "Execute / Query", subTitle: "Change state" },
+        { id: 2, title: "Instantiate", subTitle: "Instantiate" },
       ],
     ],
     // lesson1

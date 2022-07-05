@@ -8,6 +8,7 @@ const ContentId = tw.div`flex justify-center items-center lg:mr-6 md:mr-4 mr-0 r
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
 const ContentDesc = tw.div`mb-3`;
 const ContentSpan = tw.span`font-normal lg:text-base text-sm mb-4 block`;
+const ContentHead = tw.span`font-bold text-lg mb-2 block`;
 
 const code1 = `
 \`\`\`rust
@@ -20,6 +21,7 @@ pub struct Cw721ReceiveMsg {
     pub msg: Binary,
 }
 \`\`\``;
+
 function L1C1U13() {
   return (
     <>
@@ -61,6 +63,7 @@ function L1C1U13() {
                 일치하는지 확인하고 보장한 후 처리해야 합니다. 임의의 주소를
                 모두 허용해서는 안 됩니다.
               </ContentSpan>
+              <ContentHead>Cw721ReceiveMsg</ContentHead>
               <MDEditor.Markdown
                 style={{ padding: 0 }}
                 source={code1}

@@ -19,7 +19,7 @@ export const chapterInfos = atom({
       },
       {
         id: 4,
-        title: "Interaction with Contract",
+        title: "Interaction w/ Contract",
       },
     ],
     // lesson1
@@ -34,11 +34,11 @@ export const chapterInfos = atom({
       },
       {
         id: 3,
-        title: "Building CW721 Contract",
+        title: "BUIDL NFT",
       },
       {
         id: 4,
-        title: "CW2981 Royalties (Advanced)",
+        title: "Unit Test (WIP)",
       },
     ],
   ],

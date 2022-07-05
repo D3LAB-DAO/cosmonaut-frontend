@@ -212,12 +212,9 @@ function L1C1U11() {
               />
               <ContentSpan>
                 env.sender가 보유한 모든 토큰에 대한 전송(transfer나 send)
-                권한을 operator에게 부여합니다.
-              </ContentSpan>
-              <ContentSpan>
-                이는 소유권자 주소와 operator가 동등한 권한을 가지는 것에
-                해당하며, 그렇기 때문에 이후에 받을 모든 토큰에 대해서도
-                적용됩니다.
+                권한을 operator에게 부여합니다. 이는 소유권자 주소와 operator가
+                동등한 권한을 가지는 것에 해당하며, 그렇기 때문에 이후에 받을
+                모든 토큰에 대해서도 적용됩니다.
               </ContentSpan>
             </ContentDesc>
           </div>

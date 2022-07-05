@@ -12,31 +12,11 @@ const Editors = tw.div`container mx-auto lg:px-0 px-4`;
 
 const code1 = `
 \`\`\`rust
-ExecuteMsg::Approve {
-    spender,
-    token_id,
-    expires,
-} => self.approve(deps, env, info, spender, token_id, expires),
-\`\`\``;
-const code2 = `
-\`\`\`rust
-fn approve(
-    &self,
-    deps: DepsMut,
-    env: Env,
-    info: MessageInfo,
-    spender: String,
-    token_id: String,
-    expires: Option<Expiration>,
-) -> Result<Response<C>, ContractError> {
-    self._update_approvals(deps, &env, &info, &spender, &token_id, true, expires)?;
-
-    Ok(Response::new()
-        .add_attribute("action", "approve")
-        .add_attribute("sender", info.sender)
-        .add_attribute("spender", spender)
-        .add_attribute("token_id", token_id))
-}
+ExecuteMsg::SendNft {
+  contract,
+  token_id,
+  msg,
+} => self.send_nft(deps, env, info, contract, token_id, msg),
 \`\`\``;
 
 function L1C2U12() {
@@ -53,7 +33,7 @@ function L1C2U12() {
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
                   <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    Approve
+                    SendNft
                   </h1>
                 </div>
               </div>
@@ -64,35 +44,10 @@ function L1C2U12() {
                 source={code1}
                 linkTarget="_blank"
               />
-
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code2}
-                linkTarget="_blank"
-              />
               <ContentSpan>
-                Approve는 핵심 기능을 담당하는 함수 _update_approvals를 add를
-                true로 하여 호출합니다.
-              </ContentSpan>
-              <ContentSpan>
-                _update_approvals에서는 add가 false인 경우에는 삭제를, true인
-                경우에는 우선 삭제 후 만기를 expires로 설정하여 등록합니다. 즉,
-                approval들의 컬렉션에서 spender 삭제한 다음, 만일 add가 true라면
-                재등록하는 것으로 업데이트를 구현했습니다. 보다 자세하게는
-                다음과 같습니다.
-              </ContentSpan>
-              <ContentSpan>
-                <ul class="list-disc text-lg font-normal ml-4 mt-3">
-                  <li>
-                    우선 check_can_approve를 통해 권한이 있는지를 확인합니다.
-                  </li>
-                  <li>approvals에서 spender가 존재하면 삭제합니다.</li>
-                  <li>
-                    만일 add가 true라면 spender와 expires로부터 Approval을
-                    만들어 approvals에 추가합니다. 만기가 유효하지 않다면 에러를
-                    반환합니다.
-                  </li>
-                </ul>
+                SendNft의 핵심도 마찬가지로 _tranfer_nft이지만, 함수
+                _tranfer_nft의 처리 이후 Receiver에서 살펴본 Cw721ReceiveMsg
+                메시지를 컨트랙트에 전송하는 작업이 추가되어 있습니다.
               </ContentSpan>
             </ContentDesc>
           </div>

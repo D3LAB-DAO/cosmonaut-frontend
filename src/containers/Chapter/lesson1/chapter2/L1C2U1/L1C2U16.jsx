@@ -1,7 +1,7 @@
 import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
-import L1C2U15Code from "./Code/L1C2U15Code";
+import L1C2U16Code from "./Code/L1C2U16Code";
 
 const Contents = tw.section`bg-black`;
 const ContentId = tw.div`flex justify-center items-center lg:mr-6 md:mr-4 mr-0 rounded-full bg-gradient-to-r from-yellow-500 to-orange-400 border-3 border-indigo-900 lg:w-14 lg:h-14 h-12 w-12 md:shadow-md shadow-sm`;
@@ -12,26 +12,24 @@ const Editors = tw.div`container mx-auto lg:px-0 px-4`;
 
 const code1 = `
 \`\`\`rust
-ExecuteMsg::ApproveAll { operator, expires } => {
-  self.approve_all(deps, env, info, operator, expires)
-}
+ExecuteMsg::RevokeAll { operator } => self.revoke_all(deps, env, info, operator),
 \`\`\``;
 
-function L1C2U15() {
+function L1C2U16() {
   return (
     <>
       {/* Contents Part */}
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
           <ContentId>
-            <span class="text-center font-heading text-2xl text-black">5</span>
+            <span class="text-center font-heading text-2xl text-black">6</span>
           </ContentId>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
                   <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    ApproveAll
+                    RevokeAll
                   </h1>
                 </div>
               </div>
@@ -43,10 +41,9 @@ function L1C2U15() {
                 linkTarget="_blank"
               />
               <ContentSpan>
-                ApproveAll은 핵심 기능을 담당하는 함수 approve_all을 호출합니다.
-                approve_all에서는 우선 만기 expires가 유효한지를 확인합니다.
-                이후 (권한 부여자 sender에 대한, 권한 수여자 operator 정보) 쌍을
-                키로, 만기를 값으로 하여 operators에 등록합니다.
+                RevokeAll은 핵심 기능을 담당하는 함수 revoke_all을 호출합니다.
+                revoke_all에서는 operators로부터 (sender, operator) 쌍을
+                제거합니다.
               </ContentSpan>
             </ContentDesc>
           </div>
@@ -57,7 +54,7 @@ function L1C2U15() {
       <Editors>
         <div class="container w-full">
           <div class="flex flex-wrap bg-indigo-900 rounded-2xl">
-            <L1C2U15Code />
+            <L1C2U16Code />
           </div>
         </div>
       </Editors>
@@ -65,4 +62,4 @@ function L1C2U15() {
   );
 }
 
-export default L1C2U15;
+export default L1C2U16;

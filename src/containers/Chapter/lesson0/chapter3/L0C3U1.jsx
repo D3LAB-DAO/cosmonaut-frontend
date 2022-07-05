@@ -4,20 +4,21 @@ import MDEditor from "@uiw/react-md-editor";
 function L0C3U1() {
   const code1 = `
 \`\`\`bash
-source <(curl -sSL https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env)
+$ source <(curl -sSL https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env)
 
 # add wallets for testing
-wasmd keys add wallet
-wasmd keys add wallet2
+$ wasmd keys add wallet
+$ wasmd keys add wallet2
 \`\`\``;
   const code2 = `
 \`\`\`bash
-JSON=$(jq -n --arg addr $(wasmd keys show -a wallet) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
-JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
+$ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
+$ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
 \`\`\``;
 
   return (
     <>
+      <p class="font-bold text-xl mb-2">!!Chapter3 설명 부분!!</p>
       <p class="font-normal lg:text-base text-sm mb-4">
         컨트랙트를 구동하기 위한 환경도 필요하겠죠. 작성한 컨트랙트를 배포하고
         테스트하고자 로컬 네트워크를 형성해도 되지만, 이미 존재하는 네트워크를
@@ -44,6 +45,8 @@ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","addre
         이 네트워크와 소통하기 위해 wasmd를 사용할 수도 있고, Node REPL을 사용할
         수도 있습니다.
       </p>
+      <p class="font-bold text-xl mb-8">!!Chapter3 설명 부분!!</p>
+
       <MDEditor.Markdown
         style={{ padding: 0 }}
         source={code1}
@@ -65,17 +68,16 @@ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","addre
           <li>PEBBLE (upebble) : 수수료를 지불하기 위해 사용됨</li>
         </ul>
       </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        수수료를 원하니 우리는 upebble을 요청하면 되겠죠. denom에 upebble이라
-        적혀있음을 주목하면서 다음 명령을 수행합니다.
-      </p>
+
       <MDEditor.Markdown
         style={{ padding: 0 }}
         source={code2}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        이 명령은 faucet으로부터 약간의 토큰을 요청합니다.
+        수수료를 원하니 우리는 upebble을 요청하면 되겠죠. denom에 upebble이라
+        적혀있음을 주목하면서 다음 명령을 수행합니다. 이 명령은 faucet으로부터
+        약간의 토큰을 요청합니다.
       </p>
     </>
   );

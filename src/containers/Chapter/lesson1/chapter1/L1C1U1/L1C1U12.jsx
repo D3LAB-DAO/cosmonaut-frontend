@@ -12,11 +12,12 @@ const ContentSpan = tw.span`font-normal lg:text-base text-sm mb-4 block`;
 const code1 = `
 \`\`\`rust
 OwnerOf {
-    token_id: String,
-    /// unset or false will filter out expired approvals, you must set to true to see them
-    include_expired: Option<bool>,
+  token_id: String,
+  /// unset or false will filter out expired approvals, you must set to true to see them
+  include_expired: Option<bool>,
 },
 \`\`\``;
+
 const code2 = `
 \`\`\`rust
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
@@ -31,9 +32,9 @@ pub struct OwnerOfResponse {
 const code3 = `
 \`\`\`rust
 Approval {
-    token_id: String,
-    spender: String,
-    include_expired: Option<bool>,
+  token_id: String,
+  spender: String,
+  include_expired: Option<bool>,
 },
 \`\`\``;
 const code4 = `
@@ -55,10 +56,11 @@ pub struct ApprovalResponse {
 const code5 = `
 \`\`\`rust
 Approvals {
-    token_id: String,
-    include_expired: Option<bool>,
+  token_id: String,
+  include_expired: Option<bool>,
 },
 \`\`\``;
+
 const code6 = `
 \`\`\`rust
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
@@ -70,13 +72,14 @@ pub struct ApprovalsResponse {
 const code7 = `
 \`\`\`rust
 AllOperators {
-    owner: String,
-    /// unset or false will filter out expired items, you must set to true to see them
-    include_expired: Option<bool>,
-    start_after: Option<String>,
-    limit: Option<u32>,
+  owner: String,
+  /// unset or false will filter out expired items, you must set to true to see them
+  include_expired: Option<bool>,
+  start_after: Option<String>,
+  limit: Option<u32>,
 },
 \`\`\``;
+
 const code8 = `
 \`\`\`rust
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
@@ -262,14 +265,18 @@ function L1C1U12() {
                 싶다면 해당 값을 true로 설정해야 합니다.
               </ContentSpan>
               <ContentSpan>
-                만일 limit를 설정하지 않으면 기본값 DEFAULT_LIMIT으로
-                설정됩니다. 또한 최대 제한인 MAX_LIMIT을 넘을 수 없으며, 만일
-                그보다 큰 경우 MAX_LIMIT로 조정됩니다.
+                만일 start_after를 설정하지 않으면 해당 질의는 operators에 대해
+                사전순으로 처음 결과부터 반환할 것입니다. 반대로 start_after가
+                설정되어 있다면, 해당 주소에서부터 limit개 만큼의 operators를
+                반환합니다.
               </ContentSpan>
               <ContentSpan>
-                DEFAULT_LIMIT와 MAX_LIMIT는 컨트랙트가 임의 설정할 수 있는,
-                CW721 Spec을 해치지 않는, 변경할 수 있는 값입니다. 기본값이자
-                추천하는 값은 MAX_LIMIT 30 그리고 DEFAULT_LIMIT 10입니다.
+                만일 limit를 설정하지 않으면 기본값 DEFAULT_LIMIT으로
+                설정됩니다. 또한 최대 제한인 MAX_LIMIT을 넘을 수 없으며, 만일
+                그보다 큰 경우 MAX_LIMIT로 조정됩니다. DEFAULT_LIMIT와
+                MAX_LIMIT는 컨트랙트가 임의 설정할 수 있는, CW721 Spec을 해치지
+                않는, 변경할 수 있는 값입니다. 기본값이자 추천하는 값은
+                MAX_LIMIT 30 그리고 DEFAULT_LIMIT 10입니다.
               </ContentSpan>
             </ContentDesc>
           </div>

@@ -16,18 +16,18 @@ $ export PATH=$PATH:/usr/local/go/bin
 
   return (
     <>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        Go 인스톨러를 통해 쉽게 설치하실 수 있으며, 혹은 아래 설치 명령어를 통해
-        설치하실 수 있습니다.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        <a href="https://go.dev/doc/install">https://go.dev/doc/install</a>
-      </p>
       <MDEditor.Markdown
         style={{ padding: 0 }}
         source={code1}
         linkTarget="_blank"
       />
+      <p class="font-normal lg:text-base text-sm mb-4">
+        <a href="https://go.dev/doc/install">https://go.dev/doc/install</a>
+      </p>
+      <p class="font-normal lg:text-base text-sm mb-4">
+        Go 인스톨러를 통해 쉽게 설치하실 수 있으며, 혹은 아래 설치 명령어를 통해
+        설치하실 수 있습니다.
+      </p>
       <p class="font-normal lg:text-base text-sm mb-4">
         현재 시점을 기준으로, Go v1.17+ 이상 버전을 설치하시길 추천드립니다.
       </p>

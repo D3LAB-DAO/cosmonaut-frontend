@@ -6,7 +6,6 @@ import axios from "axios";
 import base64 from "base-64";
 import Editor from "@monaco-editor/react";
 import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
-import MDEditor from "@uiw/react-md-editor";
 
 const EditorDesc = tw.div`w-full lg:w-2/5 md:mx-0 mx-4`;
 const EditorCode = tw.div`w-full lg:w-3/5 md:mx-0`;
@@ -16,28 +15,30 @@ const ResultHeader = tw.div`border-b-3 border-blue-500 mx-2 px-2 mb-2 mt-4`;
 const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
-const code1 = `
-\`\`\`rust
-pub fn remove(&self, store: &mut dyn Storage, k: K) {
-\`\`\``;
-
 const problem1 = `
-fn revoke_all(
-    &self,
-    deps: DepsMut,
-    _env: Env,
-    info: MessageInfo,
-    operator: String,
+fn approve_all(
+  &self,
+  deps: DepsMut,
+  env: Env,
+  info: MessageInfo,
+  operator: String,
+  expires: Option<Expiration>,
 ) -> Result<Response<C>, ContractError> {
-    let operator_addr = deps.api.addr_validate(&operator)?;
+  // reject expired data as invalid
+  let expires = expires.unwrap_or_default();
+  if expires.is_expired(&env.block) {
+      return Err(ContractError::Expired {});
+  }
 
-            // Question 1: del the operator
-            // Do yourself!
+  let operator_addr = deps.api.addr_validate(&operator)?;
 
-    Ok(Response::new()
-        .add_attribute("action", "revoke_all")
-        .add_attribute("sender", info.sender)
-        .add_attribute("operator", operator))
+  // Question 1: set the operator
+  // Do yourself!
+
+  Ok(Response::new()
+      .add_attribute("action", "approve_all")
+      .add_attribute("sender", info.sender)
+      .add_attribute("operator", operator))
 }
 `;
 
@@ -74,18 +75,21 @@ function L1C2U15Code() {
       {/* Problem 1 */}
       <EditorDesc>
         <div class="bg-indigo-900 rounded-2xl overflow-y-auto snap-y px-6 md:p-10 h-720px py-6">
-          <h2 class="text-xl font-extrabold mb-6">
-            Problem 1.
-            <br /> Map인 operators에서 정보를 제거해봅시다.
-          </h2>
+          <h2 class="text-xl font-extrabold mb-6">Problem</h2>
           <p class="text-xl snap-center font-medium mb-1">
-            아까 save()를 통해 등록했다면, remove()를 통해 제거할 수 있습니다.
+            Map인 operators에 정보를 추가해보세요.
           </p>
-          <MDEditor.Markdown
-            style={{ padding: 0 }}
-            source={code1}
-            linkTarget="_blank"
-          />
+          <p class="text-xl snap-center font-medium mb-1">
+            구현 로직에 따르자면 (권한 부여자, 권한 수여자) 조합이 키가, 만기
+            정보가 값이 됩니다.
+          </p>
+          <p class="text-xl snap-center font-medium mb-1">
+            본 컨택스트에서는 송신자가 operator에게 권한을 부여하고 있습니다.
+            따라서 (sender, operator)와 같은 식이 되겠네요.
+          </p>
+          <p class="text-xl snap-center font-medium mb-1">
+            자세한 내용은 다음 힌트를 참고합시다.
+          </p>
         </div>
       </EditorDesc>
       <EditorCode>

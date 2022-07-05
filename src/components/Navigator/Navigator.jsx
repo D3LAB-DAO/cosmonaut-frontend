@@ -17,13 +17,13 @@ function Navigator() {
   const handleRight = () => {
     console.log("handle Right");
 
-    if (lessonID === "0" && chID === "1" && uID === "3") {
+    if (lessonID === "0" && chID === "1" && uID === "2") {
       return navigate(`/lesson/0/chapter/2`);
     } else if (lessonID === "0" && chID === "2" && uID === "1") {
       return navigate(`/lesson/0/chapter/3`);
     } else if (lessonID === "0" && chID === "3" && uID === "2") {
       return navigate(`/lesson/0/chapter/4`);
-    } else if (lessonID === "0" && chID === "4" && uID === "3") {
+    } else if (lessonID === "0" && chID === "4" && uID === "2") {
       return navigate(`/lesson/0/finish`);
     } else if (lessonID === "1" && chID === "1" && uID === "3") {
       return navigate(`/lesson/1/chapter/2`);

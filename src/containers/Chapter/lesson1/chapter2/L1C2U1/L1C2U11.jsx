@@ -8,32 +8,33 @@ const ContentId = tw.div`flex justify-center items-center lg:mr-6 md:mr-4 mr-0 r
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
 const ContentDesc = tw.div`mb-3`;
 const ContentSpan = tw.span`font-normal lg:text-base text-sm mb-4 block`;
+const ContentList = tw.span`font-normal lg:text-base text-sm mb-2 block`;
 const Editors = tw.div`container mx-auto lg:px-0 px-4`;
 
 const code1 = `
 \`\`\`rust
 ExecuteMsg::TransferNft {
-    recipient,
-    token_id,
+  recipient,
+  token_id,
 } => self.transfer_nft(deps, env, info, recipient, token_id),
 \`\`\``;
 const code2 = `
 \`\`\`rust
 fn transfer_nft(
-    &self,
-    deps: DepsMut,
-    env: Env,
-    info: MessageInfo,
-    recipient: String,
-    token_id: String,
+  &self,
+  deps: DepsMut,
+  env: Env,
+  info: MessageInfo,
+  recipient: String,
+  token_id: String,
 ) -> Result<Response<C>, ContractError> {
-    self._transfer_nft(deps, &env, &info, &recipient, &token_id)?;
+  self._transfer_nft(deps, &env, &info, &recipient, &token_id)?;
 
-    Ok(Response::new()
-        .add_attribute("action", "transfer_nft")
-        .add_attribute("sender", info.sender)
-        .add_attribute("recipient", recipient)
-        .add_attribute("token_id", token_id))
+  Ok(Response::new()
+      .add_attribute("action", "transfer_nft")
+      .add_attribute("sender", info.sender)
+      .add_attribute("recipient", recipient)
+      .add_attribute("token_id", token_id))
 }
 \`\`\``;
 
@@ -77,6 +78,17 @@ function L1C2U11() {
                 적법한 송신인일 경우, 이후 토큰의 소유자를 recipient로 바꾸고,
                 기존 존재하던 권한들을 모두 제거합니다.
               </ContentSpan>
+              <ContentSpan>_tranfer_nft의 흐름은 다음과 같습니다.</ContentSpan>
+              <ContentList>1. 토큰 정보를 가져온다.</ContentList>
+              <ContentList>
+                2. 송신인이 적법한 권한을 가지고 있는지 확인한다.
+              </ContentList>
+              <ContentList>3. 수신인의 주소가 올바른지 검증한다.</ContentList>
+              <ContentList>4. 토큰의 소유자를 수신인으로 변경한다.</ContentList>
+              <ContentList>
+                5. 기존 존재했던 권한들을 모두 제거한다.
+              </ContentList>
+              <ContentList>6. 변경된 토큰 정보를 저장한다.</ContentList>
             </ContentDesc>
           </div>
         </div>

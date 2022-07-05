@@ -6,6 +6,7 @@ import axios from "axios";
 import base64 from "base-64";
 import Editor from "@monaco-editor/react";
 import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
+import MDEditor from "@uiw/react-md-editor";
 
 const EditorDesc = tw.div`w-full lg:w-2/5 md:mx-0 mx-4`;
 const EditorCode = tw.div`w-full lg:w-3/5 md:mx-0`;
@@ -15,52 +16,32 @@ const ResultHeader = tw.div`border-b-3 border-blue-500 mx-2 px-2 mb-2 mt-4`;
 const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
+const code1 = `
+\`\`\`rust
+pub fn remove(&self, store: &mut dyn Storage, k: K)
+\`\`\``;
+
 const problem1 = `
-#[allow(clippy::too_many_arguments)]
-pub fn _update_approvals(
+fn revoke_all(
     &self,
     deps: DepsMut,
-    env: &Env,
-    info: &MessageInfo,
-    spender: &str,
-    token_id: &str,
-    // if add == false, remove. if add == true, remove then set with this expiration
-    add: bool,
-    expires: Option<Expiration>,
-) -> Result<TokenInfo<T>, ContractError> {
-    let mut token = self.tokens.load(deps.storage, token_id)?;
-    // ensure we have permissions
-    self.check_can_approve(deps.as_ref(), env, info, &token)?;
+    _env: Env,
+    info: MessageInfo,
+    operator: String,
+) -> Result<Response<C>, ContractError> {
+    let operator_addr = deps.api.addr_validate(&operator)?;
 
-    // update the approval list (remove any for the same spender before adding)
-    // Question 1: validate spender_addr
-    // Do yourself!
-    // Question 2: iter 'token.approvals' to remove spender
-    // Do yourself!
+            // Question 1: del the operator
+            // Do yourself!
 
-    // only difference between approve and revoke
-    if add {
-        // reject expired data as invalid
-        let expires = expires.unwrap_or_default();
-        if expires.is_expired(&env.block) {
-            return Err(ContractError::Expired {});
-        }
-        let approval = Approval {
-            spender: spender_addr,
-            expires,
-        };
-
-        // Question 3: add 'approval' into 'token.approvals'
-        // Do yourself!
-    }
-
-    self.tokens.save(deps.storage, token_id, &token)?;
-
-    Ok(token)
+    Ok(Response::new()
+        .add_attribute("action", "revoke_all")
+        .add_attribute("sender", info.sender)
+        .add_attribute("operator", operator))
 }
 `;
 
-function L1C2U13Code() {
+function L1C2U16Code() {
   const [code, setCode] = useState();
   const queryClient = useQueryClient();
   const codeEdit = useMutation(
@@ -95,31 +76,16 @@ function L1C2U13Code() {
         <div class="bg-indigo-900 rounded-2xl overflow-y-auto snap-y px-6 md:p-10 h-720px py-6">
           <h2 class="text-xl font-extrabold mb-6">Problem</h2>
           <p class="text-xl snap-center font-medium mb-1">
-            1. 토큰 정보를 가져온다.
+            Map인 operators에서 정보를 제거해봅시다.
           </p>
           <p class="text-xl snap-center font-medium mb-1">
-            2. 송신자가 권한이 있는지를 확인한다.
+            아까 save()를 통해 등록했다면, remove()를 통해 제거할 수 있습니다.
           </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            3. 지불자(spender)의 주소가 올바른지 검증한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            4. 토큰에 저장된 권한들을 반복을 통해 확인해, 이미 spender가
-            존재한다면 삭제한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            5. 만기가 유효한지 확인한다. 유효하다면 지불자와 만기 정보로 권한을
-            만든다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            6. 이 권한을 토큰의 권한들에 추가한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            7. 변경된 토큰 정보를 저장한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            여기서 3번, 4번, 그리고 6번 과정에 해당하는 코드를 직접 채워봅시다.
-          </p>
+          <MDEditor.Markdown
+            style={{ padding: 0 }}
+            source={code1}
+            linkTarget="_blank"
+          />
         </div>
       </EditorDesc>
       <EditorCode>
@@ -225,4 +191,4 @@ function L1C2U13Code() {
   );
 }
 
-export default L1C2U13Code;
+export default L1C2U16Code;

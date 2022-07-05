@@ -16,51 +16,29 @@ const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
 const problem1 = `
-#[allow(clippy::too_many_arguments)]
-pub fn _update_approvals(
+fn burn(
     &self,
     deps: DepsMut,
-    env: &Env,
-    info: &MessageInfo,
-    spender: &str,
-    token_id: &str,
-    // if add == false, remove. if add == true, remove then set with this expiration
-    add: bool,
-    expires: Option<Expiration>,
-) -> Result<TokenInfo<T>, ContractError> {
-    let mut token = self.tokens.load(deps.storage, token_id)?;
-    // ensure we have permissions
-    self.check_can_approve(deps.as_ref(), env, info, &token)?;
+    env: Env,
+    info: MessageInfo,
+    token_id: String,
+) -> Result<Response<C>, ContractError> {
+    let token = self.tokens.load(deps.storage, &token_id)?;
+    self.check_can_send(deps.as_ref(), &env, &info, &token)?;
 
-    // update the approval list (remove any for the same spender before adding)
-    // Question 1: validate spender_addr
-    // Do yourself!
-    // Question 2: iter 'token.approvals' to remove spender
-    // Do yourself!
+            // Question 1: remove token from self.tokens
+            // Do yourself!
+            // Question 2: decrement token count
+            // Do yourself!
 
-    // only difference between approve and revoke
-    if add {
-        // reject expired data as invalid
-        let expires = expires.unwrap_or_default();
-        if expires.is_expired(&env.block) {
-            return Err(ContractError::Expired {});
-        }
-        let approval = Approval {
-            spender: spender_addr,
-            expires,
-        };
-
-        // Question 3: add 'approval' into 'token.approvals'
-        // Do yourself!
-    }
-
-    self.tokens.save(deps.storage, token_id, &token)?;
-
-    Ok(token)
+    Ok(Response::new()
+        .add_attribute("action", "burn")
+        .add_attribute("sender", info.sender)
+        .add_attribute("token_id", token_id))
 }
 `;
 
-function L1C2U13Code() {
+function L1C2U18Code() {
   const [code, setCode] = useState();
   const queryClient = useQueryClient();
   const codeEdit = useMutation(
@@ -95,30 +73,8 @@ function L1C2U13Code() {
         <div class="bg-indigo-900 rounded-2xl overflow-y-auto snap-y px-6 md:p-10 h-720px py-6">
           <h2 class="text-xl font-extrabold mb-6">Problem</h2>
           <p class="text-xl snap-center font-medium mb-1">
-            1. 토큰 정보를 가져온다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            2. 송신자가 권한이 있는지를 확인한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            3. 지불자(spender)의 주소가 올바른지 검증한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            4. 토큰에 저장된 권한들을 반복을 통해 확인해, 이미 spender가
-            존재한다면 삭제한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            5. 만기가 유효한지 확인한다. 유효하다면 지불자와 만기 정보로 권한을
-            만든다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            6. 이 권한을 토큰의 권한들에 추가한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            7. 변경된 토큰 정보를 저장한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            여기서 3번, 4번, 그리고 6번 과정에 해당하는 코드를 직접 채워봅시다.
+            사용자가 요청한 토큰을 제거하는 부분을 직접 작성해봅시다. 그리고
+            token_count도 감소시켜봅시다.
           </p>
         </div>
       </EditorDesc>
@@ -225,4 +181,4 @@ function L1C2U13Code() {
   );
 }
 
-export default L1C2U13Code;
+export default L1C2U18Code;

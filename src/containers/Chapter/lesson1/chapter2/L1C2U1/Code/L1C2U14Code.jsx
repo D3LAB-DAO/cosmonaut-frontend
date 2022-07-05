@@ -16,29 +16,22 @@ const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
 const problem1 = `
-fn approve_all(
-    &self,
-    deps: DepsMut,
-    env: Env,
-    info: MessageInfo,
-    operator: String,
-    expires: Option<Expiration>,
+fn revoke(
+  &self,
+  deps: DepsMut,
+  env: Env,
+  info: MessageInfo,
+  spender: String,
+  token_id: String,
 ) -> Result<Response<C>, ContractError> {
-    // reject expired data as invalid
-    let expires = expires.unwrap_or_default();
-    if expires.is_expired(&env.block) {
-        return Err(ContractError::Expired {});
-    }
+  // Question 1: call _update_approvals
+  // Do yourself!
 
-    let operator_addr = deps.api.addr_validate(&operator)?;
-
-    // Question 1: set the operator
-            // Do yourself!
-
-    Ok(Response::new()
-        .add_attribute("action", "approve_all")
-        .add_attribute("sender", info.sender)
-        .add_attribute("operator", operator))
+  Ok(Response::new()
+      .add_attribute("action", "revoke")
+      .add_attribute("sender", info.sender)
+      .add_attribute("spender", spender)
+      .add_attribute("token_id", token_id))
 }
 `;
 
@@ -75,20 +68,9 @@ function L1C2U14Code() {
       {/* Problem 1 */}
       <EditorDesc>
         <div class="bg-indigo-900 rounded-2xl overflow-y-auto snap-y px-6 md:p-10 h-720px py-6">
-          <h2 class="text-xl font-extrabold mb-6">
-            Problem 1.
-            <br /> Map인 operators에 정보를 추가해보세요.
-          </h2>
+          <h2 class="text-xl font-extrabold mb-6">Problem</h2>
           <p class="text-xl snap-center font-medium mb-1">
-            구현 로직에 따르자면 (권한 부여자, 권한 수여자) 조합이 키가, 만기
-            정보가 값이 됩니다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            본 컨택스트에서는 송신자가 operator에게 권한을 부여하고 있습니다.
-            따라서 (sender, operator)와 같은 식이 되겠네요.
-          </p>
-          <p class="text-xl snap-center font-medium mt-4">
-            자세한 내용은 다음 힌트를 참고합시다.
+            Revoke의 _update_approvals 호출을 구현해봅시다.
           </p>
         </div>
       </EditorDesc>
