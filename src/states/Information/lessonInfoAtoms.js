@@ -53,6 +53,7 @@ export const lessonEngInfo = atom({
       title: "Get Ready for Terraforming",
       desc: "Get ready for terraforming.",
       subDesc: "Let's build a development environment and do some tests.",
+      imgUrl: "",
     },
     {
       id: 1,

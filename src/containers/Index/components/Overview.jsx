@@ -7,6 +7,7 @@ import Result from "../../../assets/images/result.svg";
 import Icon1 from "../../../assets/images/icon1.svg";
 import Icon2 from "../../../assets/images/icon2.svg";
 import Icon3 from "../../../assets/images/icon3.svg";
+import NFT from "../../../assets/images/grayscale-cosmonaut-nft.png";
 
 import { useRecoilValue } from "recoil";
 import {
@@ -19,7 +20,7 @@ import { useParams } from "react-router-dom";
 const Container = tw.div`w-full lg:col-span-1 col-span-2 lg:mx-0 mx-auto lg:order-1 order-2`;
 const Title = tw.h1`text-xs md:text-lg font-semibold text-center text-yellow-500 mb-1`;
 const SubTitle = tw.div`mt-3 mb-4`;
-const Desc = tw.div`block grid place-content-center h-40 md:my-6 my-4 md:mx-4 px-3 py-2 text-center border-dashed border-2 border-indigo-900 rounded-xl mx-4`;
+const Desc = tw.div`grid grid-cols-3 items-center block grid place-content-center px-4 md:my-6 my-4 md:mx-4 py-4 text-center bg-indigo-900 rounded-xl mx-4`;
 const SubDesc = tw.div`flex items-start md:my-6 md:mx-8 mx-4 text-gray-500 my-4`;
 const Wrapper = tw.div`bg-yellow-100 md:grid md:grid-cols-3 xl:gap-4 gap-2 md:mt-3 mt-2 md:items-start items-center xl:px-6 rounded-xl px-3 py-3 py-4 mx-4`;
 const Background = tw.div`bg-indigo-900 justify-center rounded-2xl border-indigo-900 border-4 flex h-index px-12 items-center bg-center bg-no-repeat`;
@@ -93,9 +94,18 @@ function Overview() {
               <ProgressBar />
 
               <Desc>
-                <h2 class="md:text-lg text-sm font-mono text-gray-500">
-                  {engInfo[lessonID]?.desc}
-                </h2>
+                <div class="col-span-1">
+                  <img
+                    class="block h-40 object-cover rounded-md"
+                    src={NFT}
+                    alt="cosmonaut-nft"
+                  />
+                </div>
+                <div class="flex ml-4 h-full col-span-2 border-t-2 border-b-2 border-dashed border-white items-center justify-center">
+                  <h2 class="md:text-lg text-sm font-mono text-gray-50">
+                    {engInfo[lessonID]?.desc}
+                  </h2>
+                </div>
               </Desc>
 
               <SubDesc>
