@@ -17,14 +17,12 @@ const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
 function L1C2U11Code() {
-  const { lessonID, chID, uID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("files1");
   const [code, setCode] = useState(() =>
     JSON.parse(window.localStorage.getItem("id"))
   );
   const file = L1C2U11PbFiles[fileName];
-  console.log(file);
 
   useEffect(() => {
     editorRef.current?.focus();
@@ -37,36 +35,31 @@ function L1C2U11Code() {
 
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading } = useMutation(
-    code => axios.post("https://cosmonaut2.free.beeceptor.com", code),
-    {
+  const { mutate, isLoading, isSuccess, isError, error } = useMutation(code =>
+    axios.post("http://localhost:3334/rust/fmt", {
+      code,
+      retry: 1,
       onSuccess: data => {
-        const msg = "success";
-        alert(msg);
+        alert("success!!");
         console.log(data);
       },
-      onError: data => {
-        console.log(data);
+      onError: () => {
+        console.log("Error");
       },
       onSettled: () => {
         queryClient.invalidateQueries("create");
+        console.log("Settled");
       },
-    }
+    })
   );
   const onCodeEdit = () => {
     mutate({
-      lessonID,
-      chID,
-      uID,
-      id: 1,
-      files: { file1: enc1, files2: enc2, files3: enc3 },
+      files: { file1: enc1, files2: enc2 },
     });
   };
   const myStorage = window.localStorage;
-  console.log(myStorage.files1);
   let enc1 = base64.encode(myStorage.files1);
   let enc2 = base64.encode(myStorage.files2);
-  let enc3 = base64.encode(myStorage.files3);
 
   return (
     <>
@@ -117,6 +110,8 @@ function L1C2U11Code() {
               <AnswerCheck />
             ) : (
               <>
+                {isError && <p>error: {error.message}</p>}
+                {isSuccess && <p>Success!</p>}
                 <Editor
                   height="60vh"
                   theme="vs-dark"
