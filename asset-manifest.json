@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cosmonaut-frontend/static/css/main.69413694.css",
-    "main.js": "/cosmonaut-frontend/static/js/main.5d079a81.js",
+    "main.js": "/cosmonaut-frontend/static/js/main.d5b38f6d.js",
     "static/media/grayscale-cosmonaut-nft.png": "/cosmonaut-frontend/static/media/grayscale-cosmonaut-nft.0e1f59c6aa20691dded8.png",
     "static/media/d3lab-bg7.svg": "/cosmonaut-frontend/static/media/d3lab-bg7.2876b4e01db033a8a2be0c85fcba9b9b.svg",
     "static/media/25-spacehole-2x.jpg": "/cosmonaut-frontend/static/media/25-spacehole-2x.db80d5e6e271559d1a2a.jpg",
@@ -32,10 +32,10 @@
     "static/media/account8.svg": "/cosmonaut-frontend/static/media/account8.3d253a5a7113809f8c1b2885ea2c5ea5.svg",
     "index.html": "/cosmonaut-frontend/index.html",
     "main.69413694.css.map": "/cosmonaut-frontend/static/css/main.69413694.css.map",
-    "main.5d079a81.js.map": "/cosmonaut-frontend/static/js/main.5d079a81.js.map"
+    "main.d5b38f6d.js.map": "/cosmonaut-frontend/static/js/main.d5b38f6d.js.map"
   },
   "entrypoints": [
     "static/css/main.69413694.css",
-    "static/js/main.5d079a81.js"
+    "static/js/main.d5b38f6d.js"
   ]
 }
