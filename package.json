@@ -51,5 +51,5 @@
     "tailwind-styled-components": "^2.1.8",
     "tailwindcss": "^3.1.4"
   },
-  "homepage": "http://d3lab.github.io/cosmonaut-frontend"
+  "homepage": "http://d3lab.github.io/cosmonaut-frontend/"
 }
