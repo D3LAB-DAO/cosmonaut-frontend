@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/cosmonaut-frontend/static/css/main.69413694.css",
-    "main.js": "/cosmonaut-frontend/static/js/main.3b88a23e.js",
+    "main.css": "/cosmonaut-frontend/static/css/main.702d0d2e.css",
+    "main.js": "/cosmonaut-frontend/static/js/main.5367bf4c.js",
     "static/media/grayscale-cosmonaut-nft.png": "/cosmonaut-frontend/static/media/grayscale-cosmonaut-nft.0e1f59c6aa20691dded8.png",
     "static/media/d3lab-bg7.svg": "/cosmonaut-frontend/static/media/d3lab-bg7.2876b4e01db033a8a2be0c85fcba9b9b.svg",
+    "static/media/icon2.gif": "/cosmonaut-frontend/static/media/icon2.4521f0dc46a869f4330a.gif",
+    "static/media/icon3.gif": "/cosmonaut-frontend/static/media/icon3.15d5699d6785418dfd89.gif",
+    "static/media/icon1.gif": "/cosmonaut-frontend/static/media/icon1.a50ad30287354521b0ef.gif",
     "static/media/25-spacehole-2x.jpg": "/cosmonaut-frontend/static/media/25-spacehole-2x.db80d5e6e271559d1a2a.jpg",
     "static/media/chapter-screen.png": "/cosmonaut-frontend/static/media/chapter-screen.2bbec45714091c98604c.png",
     "static/media/esfera-nft.jpg": "/cosmonaut-frontend/static/media/esfera-nft.03cc83e83afc3e182472.jpg",
-    "static/media/cosmonaut-nft.jpg": "/cosmonaut-frontend/static/media/cosmonaut-nft.7a04944a151491bf5624.jpg",
     "static/media/space4Artboard-22.png": "/cosmonaut-frontend/static/media/space4Artboard-22.7f144d8c0d5a1014484e.png",
     "static/media/bg-v4.svg": "/cosmonaut-frontend/static/media/bg-v4.24a1d4a7d60aa44a661036ef276b7532.svg",
     "static/media/spaceship-translucent.png": "/cosmonaut-frontend/static/media/spaceship-translucent.b02c2c95c2f342b6dcf7.png",
+    "static/media/0-80.jpg": "/cosmonaut-frontend/static/media/0-80.d0c88db3cf70e43de862.jpg",
     "static/media/space3Artboard-19.png": "/cosmonaut-frontend/static/media/space3Artboard-19.c63cd879802db32fac74.png",
     "static/media/space2Artboard-19.png": "/cosmonaut-frontend/static/media/space2Artboard-19.68723ce30361544bfe72.png",
     "static/media/spacetrip.gif": "/cosmonaut-frontend/static/media/spacetrip.220413fcc36fd4eae151.gif",
@@ -31,11 +34,11 @@
     "static/media/github-logo-black.svg": "/cosmonaut-frontend/static/media/github-logo-black.eddcd7ec4b58d89bb96666009539b5fc.svg",
     "static/media/google.svg": "/cosmonaut-frontend/static/media/google.330a2dc7f18d7502647dc5d6f93812ec.svg",
     "static/media/account8.svg": "/cosmonaut-frontend/static/media/account8.3d253a5a7113809f8c1b2885ea2c5ea5.svg",
-    "main.69413694.css.map": "/cosmonaut-frontend/static/css/main.69413694.css.map",
-    "main.3b88a23e.js.map": "/cosmonaut-frontend/static/js/main.3b88a23e.js.map"
+    "main.702d0d2e.css.map": "/cosmonaut-frontend/static/css/main.702d0d2e.css.map",
+    "main.5367bf4c.js.map": "/cosmonaut-frontend/static/js/main.5367bf4c.js.map"
   },
   "entrypoints": [
-    "static/css/main.69413694.css",
-    "static/js/main.3b88a23e.js"
+    "static/css/main.702d0d2e.css",
+    "static/js/main.5367bf4c.js"
   ]
 }
