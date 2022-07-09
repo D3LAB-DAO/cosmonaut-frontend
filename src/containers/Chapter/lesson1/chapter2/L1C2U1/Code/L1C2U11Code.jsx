@@ -7,6 +7,7 @@ import base64 from "base-64";
 import Editor from "@monaco-editor/react";
 import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
 import { L1C2U11PbFiles } from "./L1C2U11Files";
+import { Base64 } from "js-base64";
 import { axiosApi } from "../../../../../../libs/api/post";
 
 const EditorDesc = tw.div`w-full lg:w-2/5 md:mx-0 mx-4`;
@@ -25,16 +26,12 @@ function L1C2U11Code() {
   );
   const [res, setRes] = useState("");
   const file = L1C2U11PbFiles[fileName];
-  const [answer, setAnswer] = useState(false);
+  const [answer, setAnswer] = useState(true);
 
   useEffect(() => {
     editorRef.current?.focus();
-    window.localStorage.setItem(file.name, base64.encode(code));
+    window.localStorage?.setItem(file?.name, base64?.encode(code));
   }, [code]);
-
-  useEffect(() => {
-    setAnswer(true);
-  }, [res]);
 
   const handleEditor = value => {
     setCode(value);
@@ -50,16 +47,17 @@ function L1C2U11Code() {
       file2: file2Code,
     },
   };
-  const { mutate, isLoading } = useMutation({
+  console.log(setFile);
+
+  const { mutate, isLoading, isSuccess } = useMutation({
     mutationFn: () => axios.post("http://localhost:3334/rust/fmt", setFile),
-    onSuccess: data => {
+    onSuccess: async data => {
       console.log("isSuccess");
-      // mutation이 성공하면 response를 받을 수 있다.
-      console.log(data.data.result);
-      const result = data.data.result;
-      setRes(result);
+      // mutation이 성공하면 response를 받을 수 있다.'
+      setRes(data.data.result);
+      console.log(res);
     },
-    onError: error => {
+    onError: async error => {
       console.log("isError");
       // mutation이 에러가 나면 error를 받을 수 있다.
       console.log(error);
@@ -68,19 +66,22 @@ function L1C2U11Code() {
       console.log("isSettled");
     },
   });
-  console.log();
+
+  const handleAnswer = () => {
+    setAnswer(!answer);
+    mutate();
+  };
+
   const ResponseFiles = {
     files1: {
       name: "files1",
       key: "files1",
-      // value: base64.decode(res.file1),
-      value: "file1 test",
+      value: isSuccess ? atob(decodeURIComponent(res.file1)) : "Not Encode",
     },
     files2: {
       name: "files2",
       key: "files2",
-      // value: base64.decode(res.file2),
-      value: "file2 test",
+      value: isSuccess ? atob(decodeURIComponent(res.file2)) : "Not Encode",
     },
   };
   const resFiles = ResponseFiles[fileName];
@@ -141,8 +142,7 @@ function L1C2U11Code() {
                     theme="vs-dark"
                     path={file.name}
                     defaultLanguage={file.language}
-                    // defaultValue={answer ? file.value : resFiles.value}
-                    defaultValue={answer ? file.value : resFiles.value}
+                    defaultValue={isSuccess ? resFiles.value : file.value}
                     onMount={editor => (editorRef.current = editor)}
                     onChange={handleEditor}
                   />
@@ -154,9 +154,7 @@ function L1C2U11Code() {
                           Result
                         </h2>
                         <button
-                          onClick={() => {
-                            mutate();
-                          }}
+                          onClick={handleAnswer}
                           class="block justify-self-end bg-white hover:bg-blue-50 font-heading text-blue-500 rounded-full border-3 border-blue-500 py-1 text-sm text-center w-48"
                         >
                           check your answer

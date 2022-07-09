@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename="/cosmonaut-frontend">
         <RecoilRoot>
           <App />
         </RecoilRoot>

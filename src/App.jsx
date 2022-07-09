@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/cosmonaut-frontend" element={<MainPage />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/lesson/:lessonID" element={<IndexPage />} />
