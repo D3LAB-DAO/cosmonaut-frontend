@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
-import L0FinishNft from "../../../../assets/images/cosmonaut-nft.jpg";
+import L0FinishNft from "../../../../assets/images/0-80.jpg";
 
 const Container = tw.div`fixed h-screen bottom-0 w-full z-50 flex items-center bg-gray-900 bg-opacity-80`;
 const ProgressBar = tw.div`grid grid-cols-6 justify-between my-2 gap-1`;

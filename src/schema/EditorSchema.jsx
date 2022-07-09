@@ -14,6 +14,7 @@ import ChapterTitle from "./components/ChapterTitle";
 import EditorContents from "./components/EditorContents";
 import UnitDesc from "./components/UnitDesc";
 import BgV4 from "../assets/images/bg-v4.svg";
+import StartModal from "../components/StartModal/StartModal";
 
 const Background = tw.div`pt-14 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
@@ -25,21 +26,17 @@ function EditorSchema() {
 
   return (
     <>
-      <>
-        <Navbar />
-        <Background style={{ backgroundImage: `url(${BgV4})` }}>
-          <BackToOverview />
-          <ChapterTitle
-            chInfo={chInfo[lessonID]}
-            unitInfo={unitData[chID - 1]}
-          />
-          <ChapterDesc />
-          <UnitDesc unitInfo={unitData[chID - 1]} />
-        </Background>
-        <EditorContents />
-        <Footer />
-        <Navigator />
-      </>
+      <Navbar />
+      <StartModal />
+      <Background style={{ backgroundImage: `url(${BgV4})` }}>
+        <BackToOverview />
+        <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
+        <ChapterDesc />
+        <UnitDesc unitInfo={unitData[chID - 1]} />
+      </Background>
+      <EditorContents />
+      <Footer />
+      <Navigator />
     </>
   );
 }

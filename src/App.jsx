@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./error/NotFound";
-import ChapterPage from "./containers/Chapter/ChapterPage";
 import IndexPage from "./containers/Index/IndexPage";
 import MainPage from "./containers/Main/MainPage";
 import Profile from "./containers/Profile/Profile";
@@ -16,10 +15,6 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/lesson/:lessonID" element={<IndexPage />} />
-        <Route
-          path="/lesson/:lessonID/chapter/:chID"
-          element={<ChapterPage />}
-        />
         <Route
           path="/lesson/:lessonID/chapter/:chID/unit/:uID"
           element={<UnitPage />}

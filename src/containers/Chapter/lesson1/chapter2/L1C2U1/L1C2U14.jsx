@@ -1,7 +1,6 @@
 import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
-import L1C2U13Code from "./Code/L1C2U13Code";
 import L1C2U14Code from "./Code/L1C2U14Code";
 
 const Contents = tw.section`bg-black`;

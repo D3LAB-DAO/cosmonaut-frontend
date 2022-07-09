@@ -13,6 +13,7 @@ import ChapterDesc from "./components/ChapterDesc";
 import DetailContents from "./components/DetailContents";
 import Navigator from "../components/Navigator/Navigator";
 import UnitDesc from "./components/UnitDesc";
+import StartModal from "../components/StartModal/StartModal";
 
 const Background = tw.div`pt-14 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
@@ -25,6 +26,7 @@ function DetailSchema() {
   return (
     <>
       <Navbar />
+      <StartModal />
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />

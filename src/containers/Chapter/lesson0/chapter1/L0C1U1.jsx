@@ -15,7 +15,7 @@ $ export PATH=$PATH:/usr/local/go/bin
 \`\`\``;
 
   return (
-    <>
+    <React.Fragment>
       <MDEditor.Markdown
         style={{ padding: 0 }}
         source={code1}
@@ -31,7 +31,7 @@ $ export PATH=$PATH:/usr/local/go/bin
       <p class="font-normal lg:text-base text-sm mb-4">
         현재 시점을 기준으로, Go v1.17+ 이상 버전을 설치하시길 추천드립니다.
       </p>
-    </>
+    </React.Fragment>
   );
 }
 

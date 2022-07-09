@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
-import Icon1 from "../../../assets/images/icon1.svg";
-import Icon2 from "../../../assets/images/icon2.svg";
-import Icon3 from "../../../assets/images/icon3.svg";
+import Icon1 from "../../../assets/images/icon1.gif";
+import Icon2 from "../../../assets/images/icon2.gif";
+import Icon3 from "../../../assets/images/icon3.gif";
 
 const Section = tw.section`relative`;
 const Backgrounds = tw.div`md:pb-16 pb-8 bg-cover bg-fixed`;
