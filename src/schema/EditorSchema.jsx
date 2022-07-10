@@ -15,6 +15,7 @@ import EditorContents from "./components/EditorContents";
 import UnitDesc from "./components/UnitDesc";
 import BgV4 from "../assets/images/bg-v4.svg";
 import StartModal from "../components/StartModal/StartModal";
+import SmallNavigator from "../components/Navigator/SmallNavigator";
 
 const Background = tw.div`pt-14 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
@@ -36,7 +37,7 @@ function EditorSchema() {
       </Background>
       <EditorContents />
       <Footer />
-      <Navigator />
+      <SmallNavigator />
     </>
   );
 }

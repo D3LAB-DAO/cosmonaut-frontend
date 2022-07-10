@@ -31,7 +31,7 @@ function DetailSchema() {
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
         <ChapterDesc />
-        <UnitDesc unitInfo={unitData[chID - 1]} />
+        <UnitDesc chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
       </Background>
       <DetailContents />
       <Footer />

@@ -50,7 +50,7 @@ export const lessonEngInfo = atom({
     {
       id: 0,
       num: "0",
-      title: "Get Ready for Terraforming",
+      title: "Become a Pioneer",
       desc: "Get ready for terraforming.",
       subDesc: "Let's build a development environment and do some tests.",
       imgUrl: "",
@@ -58,21 +58,21 @@ export const lessonEngInfo = atom({
     {
       id: 1,
       num: "1",
-      title: "Welcome to Spaceship Factory",
+      title: "Build a Ship",
       desc: "Welcome to the spaceship factory!",
       subDesc: "Let's build a spacecraft called ESFERA to explore.",
     },
     {
       id: 2,
       num: "2",
-      title: "Fuel Up and Load the Freight",
+      title: "Get Fule and Freight",
       desc: "All crew members aboard the spacecraft ESFERA, please inject fuel and board the cargo.",
       subDesc: "Let's secure fuel and cargo, and supply it to the spacecraft.",
     },
     {
       id: 3,
       num: "3",
-      title: "Prepare to Launch",
+      title: "Load into the Ship",
       desc: "ESFERA ready to launch. 5, 4, 3, …",
       subDesc:
         "Before launching the spacecraft, let's test it to see if there is any problem. Also, let's proceed with optimization to achieve optimal performance.",
@@ -80,17 +80,10 @@ export const lessonEngInfo = atom({
     {
       id: 4,
       num: "4",
-      title: "ESFERA Takeoff",
+      title: "Evade Asteroids",
       desc: "Enter the asteroid belt. All crew members, please be prepared for a sudden collision.",
       subDesc:
         "Let's take random numbers from a random number generator and create a game to avoid asteroids.",
-    },
-    {
-      id: 5,
-      num: "5",
-      title: "Let's Play a Game!",
-      desc: "Let's make the game that we made up to Chapter 4 more like a game!",
-      subDesc: "Let's connect the front end to the contract.",
     },
   ],
 });
@@ -167,13 +160,6 @@ export const lessonGoal = atom({
       {
         id: 13,
         goal: "Connect the random number generator and NFT to make a game.",
-      },
-    ],
-    // Lesson5
-    [
-      {
-        id: 14,
-        goal: "Use CosmJS and Kepler.",
       },
     ],
   ],

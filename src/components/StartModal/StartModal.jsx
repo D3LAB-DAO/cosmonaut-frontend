@@ -14,7 +14,7 @@ const ChTitle = tw.h3`h-1/2 w-full px-1 xl:pt-4 md:pt-3 pt-2 xl:text-sm text-cen
 
 function StartModal() {
   const { lessonID } = useParams();
-  const { uID } = useParams();
+  const { chID, uID } = useParams();
 
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);
@@ -26,7 +26,7 @@ function StartModal() {
 
   return (
     <>
-      {uID === "1" ? (
+      {(chID === "1" || "2" || "3") && uID === "1" ? (
         <div
           id="modal"
           class="fixed h-full bottom-0 w-full z-50 bg-black bg-opacity-80  flex"

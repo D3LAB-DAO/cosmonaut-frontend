@@ -207,7 +207,7 @@ module.exports = {
           transform: "translateY(0)",
         },
         "100%": {
-          transform: "translateY(-50px)",
+          transform: "translateY(-60px)",
         },
       },
       goUpSecond: {
@@ -242,10 +242,10 @@ module.exports = {
       fadeInUtoD: "fadeInUtoD 1.1s ease-out",
       moveUtoD: "moveUtoD 2.5s infinite",
       moveDtoU: "moveDtoU 2.5s infinite",
-      goUpFirst: "goUpFirst 0.9s linear forwards",
-      goUpSecond: "goUpSecond 0.9s linear forwards",
-      goUpThird: "goUpThird 0.9s linear forwards",
-      goUpFourth: "goUpFourth 0.9s linear forwards",
+      goUpFirst: "goUpFirst 1.3s linear forwards",
+      goUpSecond: "goUpSecond 1.1s linear forwards",
+      goUpThird: "goUpThird 1.1s linear forwards",
+      goUpFourth: "goUpFourth 1.1s linear forwards",
     },
     backgroundColor: theme => ({
       ...theme("colors"),

@@ -45,7 +45,7 @@ function Intro() {
           </div>
         </Background>
         <Wrap>
-          <div class="animate-moveUtoD max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-goUpFirst max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
@@ -61,7 +61,7 @@ function Intro() {
             </div>
           </div>
 
-          <div class="animate-moveDtoU max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-goUpFirst max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
@@ -78,7 +78,7 @@ function Intro() {
             </div>
           </div>
 
-          <div class="animate-moveUtoD max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-goUpFirst max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"

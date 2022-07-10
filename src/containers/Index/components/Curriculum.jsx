@@ -11,7 +11,7 @@ const ButtonWrap = tw.div`flex flex-wrap mt-10 lg:justify-end justify-center`;
 
 function Curriculum() {
   const { lessonID } = useParams();
-  const startLesson = `/lesson/${lessonID}/chapter/1`;
+  const startLesson = `/lesson/${lessonID}/chapter/1/unit/1`;
   const engInfo = useRecoilValue(lessonEngInfo);
 
   return (
@@ -20,7 +20,7 @@ function Curriculum() {
         <Title>Curriculum</Title>
         <LessonList>
           {engInfo?.map(e => {
-            const lessonUrl = `/lesson/${e?.id}/chapter/1/unit/1`;
+            const lessonUrl = `/lesson/${e?.id}`;
             return (
               <Link key={e?.id} to={lessonUrl}>
                 <button class="animate-fadeInRtoL mb-5 flex w-full md:px-6 px-3 md:py-3 py-1 bg-white md:shadow shadow-sm border-2 border-indigo-900 items-center justify-between ease-in-out duration-300 transform hover:scale-105 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none focus:ring focus:ring-green-500 active:bg-yellow-500 rounded-md">

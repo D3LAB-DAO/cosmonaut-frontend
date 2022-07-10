@@ -5,8 +5,8 @@ import tw from "tailwind-styled-components";
 
 const Container = tw.div`mb-4 md:mb-4 lg:mb-8`;
 
-function ChapterTitle({ chInfo, unitInfo }) {
-  const { chID, uID } = useParams();
+function ChapterTitle({ chInfo }) {
+  const { chID } = useParams();
 
   return (
     <Container>
@@ -15,7 +15,7 @@ function ChapterTitle({ chInfo, unitInfo }) {
           Chapter {chInfo[chID - 1]?.id}
         </h2>
         <h3 class="text-xl  md:text-left text-center md:text-2xl text-yellow-200 font-heading">
-          - {unitInfo[uID - 1]?.id}. {unitInfo[uID - 1]?.title}
+          - {chInfo[chID - 1]?.title}
         </h3>
       </div>
     </Container>

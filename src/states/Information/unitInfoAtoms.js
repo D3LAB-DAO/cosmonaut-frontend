@@ -9,17 +9,17 @@ export const unitInfos = atom({
       [
         {
           id: 1,
-          title: "Go",
+          title: "Install Go",
           subTitle: "Install Go",
         },
         {
           id: 2,
-          title: "Rust/Rustup",
+          title: "Install Rust/Rustup",
           subTitle: "Install Rust/Rustup",
         },
       ],
       // chapter2
-      [{ id: 1, title: "wasm/wasmd", subTitle: "Install wasm/wasmd" }],
+      [{ id: 1, title: "wasm/wasmd", subTitle: "wasm/wasmd" }],
       // chapter3
       [
         { id: 1, title: "Setup Go CLI", subTitle: "Setup Go CLI" },
@@ -41,28 +41,86 @@ export const unitInfos = atom({
       [
         {
           id: 1,
-          title: "Base",
-          subTitle: "Messages, Queries, Receiver",
+          title: "Messages (msg.rs)",
+          subTitle: [
+            "TransferNFT",
+            "SendNFT",
+            "Approve",
+            "Revoke",
+            "ApproveAll",
+            "RevokeAll",
+          ],
         },
         {
           id: 2,
-          title: "Metadata",
-          subTitle: "ContractInfo, NftInfo, AllNftInfo",
+          title: "Queries (query.rs)",
+          subTitle: [
+            "OwnerOf",
+            "Approve",
+            "Approvals",
+            "AllOperators",
+            "NumTokens",
+          ],
         },
-        { id: 3, title: "Enumerable", subTitle: "Tokens, AllTokens" },
+        {
+          id: 3,
+          title: "Receiver (receiver.rs)",
+          subTitle: ["Cw721ReceiveMsg"],
+        },
       ],
       // chapter2
       [
         {
           id: 1,
-          title: "Execution",
-          subTitle:
-            "TransferNft, SendNft, Approve, Revoke, ApproveAll, RevokeAll",
+          title: "Queries (query.rs)",
+          subTitle: ["ContractInfo", "NFTInfo", "AllNFTInfo"],
+        },
+      ],
+      // chapter3
+      [
+        {
+          id: 1,
+          title: "Queries (query.rs)",
+          subTitle: ["Tokens", "AllTokens"],
+        },
+      ],
+      // chapter4
+      [
+        {
+          id: 1,
+          title: "Execute (execute.rs)",
+          subTitle: [
+            "TransferNFT",
+            "SendNft",
+            "Approve",
+            "Revoke",
+            "ApproveAll",
+            "RevokeAll",
+            "Mint",
+            "Burn",
+          ],
         },
         {
           id: 2,
-          title: "Running",
-          subTitle: "[tbu]",
+          title: "QueryMsg (query.rs)",
+          subTitle: [
+            "OwnerOf",
+            "Approval",
+            "Approvals",
+            "AllOperators",
+            "NumTokens",
+            "ContractInfo",
+            "NftInfo",
+            "AllNftInfo",
+            "Tokens",
+            "AllTokens",
+            "Minter",
+          ],
+        },
+        {
+          id: 3,
+          title: "InstantiateMsg (execute.rs)",
+          subTitle: ["InstantiateMsg", "instantiate"],
         },
       ],
     ],
