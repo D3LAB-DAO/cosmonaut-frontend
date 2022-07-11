@@ -5,9 +5,9 @@ import MainPage from "./containers/Main/MainPage";
 import Profile from "./containers/Profile/Profile";
 import UnitPage from "./containers/Unit/UnitPage";
 import SignUp from "./containers/SignUp/SignUp";
-import L0C4Finish from "./containers/Chapter/lesson0/chapter4/L0C4Finish";
 import ScrollToTop from "./components/Common/ScrollToTop";
 import SmallPage from "./containers/Small/SmallPage";
+import FinishModal from "./components/FinishModal/FinishModal";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
             path="/lesson/:lessonID/chapter/:chID/unit/:uID/small/:sID"
             element={<SmallPage />}
           />
-          <Route path="/lesson/0/finish" element={<L0C4Finish />} />
+          <Route path="/lesson/:lessonID/finish" element={<FinishModal />} />
           <Route path={"*"} element={<NotFound />} />
         </Routes>
       </ScrollToTop>

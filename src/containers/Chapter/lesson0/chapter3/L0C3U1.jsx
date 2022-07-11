@@ -20,13 +20,9 @@ $ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","add
     <>
       <p class="font-bold text-xl mb-2">!!Chapter3 설명 부분!!</p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        컨트랙트를 구동하기 위한 환경도 필요하겠죠. 작성한 컨트랙트를 배포하고
-        테스트하고자 로컬 네트워크를 형성해도 되지만, 이미 존재하는 네트워크를
-        사용할 수도 있습니다.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        현재 Cliffnet 테스트넷이 구동되고 있습니다. 잘 동작하고 있는지 다음
-        URL로부터 알아볼 수 있습니다.
+        You also need an environment in which the contract run. You can build a
+        local network to deploy and test the contracts you’ve created, but you
+        can also use a network that already exists publically.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
         <a href="https://rpc.cliffnet.cosmwasm.com/status">
@@ -34,7 +30,8 @@ $ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","add
         </a>
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        혹은 다음 블록 익스플로러로부터 상세 정보를 확인할 수도 있습니다.
+        Currently, The Cliffnet testnet is running actively. You can find out
+        whether it's working well or not from the following URL.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
         <a href="https://block-explorer.cliffnet.cosmwasm.com/">
@@ -42,42 +39,44 @@ $ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","add
         </a>
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        이 네트워크와 소통하기 위해 wasmd를 사용할 수도 있고, Node REPL을 사용할
-        수도 있습니다.
+        You can use wasmd or Node REPL to communicate with this network.
       </p>
       <p class="font-bold text-xl mb-8">!!Chapter3 설명 부분!!</p>
-
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code1}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        성공적으로 테스트를 위한 지갑 등록이 진행되었다면, wasmd에서 그 정보를
-        출력해 줄 것입니다. 비록 테스트넷이지만, 비밀번호 분실을 대비하여
-        mnemonic들을 안전한 곳에 별도 보관하세요. 귀찮음을 피하려면.
+        If the wallet registration for the test was successfully done, wasmd
+        will print out the information. Although it is a testnet, keep the
+        mnemonic separately in a safe place in case of losing your password to
+        prevent any small problems.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        블록체인상에서의 활동은 모두 수수료가 들기 때문에, 상호작용을 위해
-        약간의 토큰이 필요할 것입니다. 여기 테스트넷에는 두 개의 네이티브 토큰이
-        존재합니다.
+        As you know, all activities on the blockchain cost a fee. So you'll need
+        some tokens for interaction.
+      </p>
+      <p class="font-normal lg:text-base text-sm mb-4">
+        There are two native tokens in here.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
         <ul class="col-span-2 list-disc text-base font-normal md:ml-3 ml-5 md:mt-0 mt-3">
-          <li>ROCK (urock) : 검증인이 되기 위해 사용됨</li>
-          <li>PEBBLE (upebble) : 수수료를 지불하기 위해 사용됨</li>
+          <li>ROCK (urock) : Used to be a validator.</li>
+          <li>PEBBLE (upebble) : Used to pay fees.</li>
         </ul>
       </p>
-
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code2}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        수수료를 원하니 우리는 upebble을 요청하면 되겠죠. denom에 upebble이라
-        적혀있음을 주목하면서 다음 명령을 수행합니다. 이 명령은 faucet으로부터
-        약간의 토큰을 요청합니다.
+        We want a fee to publish transaction, so we need to ask for an upebble.
+      </p>
+      <p class="font-normal lg:text-base text-sm mb-4">
+        The following command requests some tokens from the faucet. Note that
+        denom is upebble.
       </p>
     </>
   );

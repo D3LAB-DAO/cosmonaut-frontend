@@ -5,7 +5,8 @@ import axios from "axios";
 import base64 from "base-64";
 import Editor from "@monaco-editor/react";
 import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
-import { L1C2U1S1PbFiles } from "./L1C4U1S1Files";
+import { L1C4U1S1PbFiles } from "./L1C4U1S1Files";
+import { usePostApi } from "../../../../../../libs/api/post";
 
 const EditorDesc = tw.div`w-full lg:w-2/5 md:mx-0 mx-4`;
 const EditorCode = tw.div`w-full lg:w-3/5 md:mx-0`;
@@ -16,73 +17,164 @@ const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
 function L1C4U1S1Code() {
+  // const file1Code = myStorage.files1;
+  // const file2Code = myStorage.files2;
+
+  // const setFile = {
+  //   files: {
+  //     file1: myStorage.files1,
+  //     file2: myStorage.files2,
+  //   },
+  // };
+  // console.log(setFile);
+
+  // const { mutate, isLoading, isSuccess } = useMutation({
+  //   mutationFn: () => axios.post("http://localhost:3334/rust/fmt", setFile),
+  //   onSuccess: async data => {
+  //     console.log("isSuccess");
+  //     // mutation이 성공하면 response를 받을 수 있다.'
+  //     setRes(data.data.result);
+  //     console.log(res);
+  //   },
+  //   onError: async error => {
+  //     console.log("isError");
+  //     // mutation이 에러가 나면 error를 받을 수 있다.
+  //     console.log(error);
+  //   },
+  //   onSettled: () => {
+  //     console.log("isSettled");
+  //   },
+  // });
+
+  // const handleAnswer = () => {
+  //   setAnswer(!answer);
+  //   mutate();
+  // };
+
+  // const ResponseFiles = {
+  //   files1: {
+  //     name: "files1",
+  //     key: "files1",
+  //     value: isSuccess ? atob(decodeURIComponent(res.file1)) : "Not Encode",
+  //   },
+  //   files2: {
+  //     name: "files2",
+  //     key: "files2",
+  //     value: isSuccess ? atob(decodeURIComponent(res.file2)) : "Not Encode",
+  //   },
+  // };
+  // const resFiles = ResponseFiles[fileName];
+  // console.log(resFiles);
+
+  // const [{ data, isLoading, isError }, doFetch] = usePostApi();
+  // setForm(
+  //   JSON.stringify({
+  //     files: {
+  //       file1: myStorage.files1,
+  //       file2: myStorage.files2,
+  //     },
+  //   })
+  // );
+  // localStorage.clear();
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsError(false);
+  //     setIsLoading(true);
+
+  //     try {
+  //       const result = await axios.post("http://localhost:3334/rust/fmt", form);
+  //       console.log(result);
+  //       setData(result);
+  //     } catch (error) {
+  //       setIsError(true);
+  //     }
+
+  //     setIsLoading(false);
+  //   };
+
+  //   fetchData();
+  // }, [form]);
+  // console.log(form);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("files1");
-  const [code, setCode] = useState(() =>
-    JSON.parse(window.localStorage.getItem("id"))
-  );
-  const [res, setRes] = useState("");
-  const file = L1C2U1S1PbFiles[fileName];
-  const [answer, setAnswer] = useState(true);
+  const [fileName, setFileName] = useState("file1");
+  const [code, setCode] = useState();
+  const [value, setValue] = useState();
+  const [key, setKey] = useState("");
+  const file = L1C4U1S1PbFiles[fileName];
 
   useEffect(() => {
     editorRef.current?.focus();
-    window.localStorage?.setItem(file?.name, base64?.encode(code));
-  }, [code]);
+    setFileName(fileName);
+  }, [fileName]);
+  console.log(file.name);
 
   const handleEditor = value => {
     setCode(value);
+    window.localStorage?.setItem(file.name, base64?.encode(code));
   };
-
   const myStorage = window.localStorage;
-  const file1Code = myStorage.files1;
-  const file2Code = myStorage.files2;
+  const submitData = async e => {
+    e.preventDefault();
+    const option = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        files: {
+          file1: myStorage.file1,
+          file2: myStorage.file2,
+        },
+      }),
+    };
+    setIsError(false);
+    setIsLoading(true);
 
-  const setFile = {
-    files: {
-      file1: file1Code,
-      file2: file2Code,
-    },
-  };
-  console.log(setFile);
+    try {
+      let res = await fetch("http://localhost:3334/rust/fmt", option);
+      res = await res.json();
+      console.log("Success!!!");
+      console.log(res.result);
+      window.localStorage?.setItem(
+        "file1",
+        atob(decodeURIComponent(res.result.file1))
+      );
+      window.localStorage?.setItem(
+        "file2",
+        atob(decodeURIComponent(res.result.file2))
+      );
 
-  const { mutate, isLoading, isSuccess } = useMutation({
-    mutationFn: () => axios.post("http://localhost:3334/rust/fmt", setFile),
-    onSuccess: async data => {
-      console.log("isSuccess");
-      // mutation이 성공하면 response를 받을 수 있다.'
-      setRes(data.data.result);
-      console.log(res);
-    },
-    onError: async error => {
-      console.log("isError");
-      // mutation이 에러가 나면 error를 받을 수 있다.
+      console.log(myStorage);
+      setIsSuccess(true);
+    } catch (error) {
       console.log(error);
-    },
-    onSettled: () => {
-      console.log("isSettled");
-    },
-  });
+      setIsError(true);
+    }
 
-  const handleAnswer = () => {
-    setAnswer(!answer);
-    mutate();
+    setIsLoading(false);
   };
-
-  const ResponseFiles = {
-    files1: {
-      name: "files1",
-      key: "files1",
-      value: isSuccess ? atob(decodeURIComponent(res.file1)) : "Not Encode",
+  const ResFiles = {
+    file1: {
+      name: "file1",
+      language: "rust",
+      value: window.localStorage.getItem("file1"),
     },
-    files2: {
-      name: "files2",
-      key: "files2",
-      value: isSuccess ? atob(decodeURIComponent(res.file2)) : "Not Encode",
+    file2: {
+      name: "file2",
+      language: "rust",
+      value: window.localStorage.getItem("file2"),
     },
   };
-  const resFiles = ResponseFiles[fileName];
+  const resFiles = ResFiles[fileName];
   console.log(resFiles);
+  useEffect(() => {
+    setValue(resFiles.value);
+  }, [fileName]);
 
   return (
     <>
@@ -104,32 +196,33 @@ function L1C4U1S1Code() {
             <EditorCodeHeader>
               <div class="grid md:grid-cols-4 grid-cols-3 text-center xl:max-w-max">
                 <button
-                  disabled={fileName === "files1"}
-                  onClick={() => setFileName("files1")}
+                  disabled={fileName === "file1"}
+                  onClick={async e => {
+                    e.preventDefault();
+                    setFileName("file1");
+                    setValue(...value);
+                  }}
                 >
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-blue-500 rounded-t-md focus:ring focus:ring-white">
+                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto hover:bg-blue-500 bg-orange-400 rounded-t-md focus:ring focus:ring-white">
                     Files1
                   </p>
                 </button>
                 <button
-                  disabled={fileName === "files2"}
-                  onClick={() => setFileName("files2")}
+                  disabled={fileName === "file2"}
+                  onClick={async e => {
+                    e.preventDefault();
+                    setFileName("file2");
+                    setValue(...value);
+                  }}
                 >
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
+                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto hover:bg-blue-500 bg-orange-400 rounded-t-md focus:ring focus:ring-white">
                     Files2
-                  </p>
-                </button>
-                <button
-                  disabled={fileName === "files3"}
-                  onClick={() => setFileName("files3")}
-                >
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
-                    Files3
                   </p>
                 </button>
               </div>
             </EditorCodeHeader>
             <>
+              {isError && <div>Something went wrong ...</div>}
               {isLoading ? (
                 <AnswerCheck />
               ) : (
@@ -139,7 +232,8 @@ function L1C4U1S1Code() {
                     theme="vs-dark"
                     path={file.name}
                     defaultLanguage={file.language}
-                    defaultValue={isSuccess ? resFiles.value : file.value}
+                    defaultValue={file.value}
+                    value={isSuccess ? value : null}
                     onMount={editor => (editorRef.current = editor)}
                     onChange={handleEditor}
                   />
@@ -151,7 +245,7 @@ function L1C4U1S1Code() {
                           Result
                         </h2>
                         <button
-                          onClick={handleAnswer}
+                          onClick={submitData}
                           class="block justify-self-end bg-white hover:bg-blue-50 font-heading text-blue-500 rounded-full border-3 border-blue-500 py-1 text-sm text-center w-48"
                         >
                           check your answer

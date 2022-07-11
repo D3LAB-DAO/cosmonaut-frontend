@@ -238,7 +238,7 @@ module.exports = {
     animation: {
       fadeInLtoR: "fadeInLtoR 1.1s ease-out",
       fadeInRtoL: "fadeInRtoL 1.1s ease-out",
-      fadeInDtoU: "fadeInDtoU 1.1s ease-out",
+      fadeInDtoU: "fadeInDtoU 1.5s ease-out",
       fadeInUtoD: "fadeInUtoD 1.1s ease-out",
       moveUtoD: "moveUtoD 2.5s infinite",
       moveDtoU: "moveDtoU 2.5s infinite",
@@ -266,6 +266,7 @@ module.exports = {
       auto: "auto",
       cover: "cover",
       contain: "contain",
+      80: "80%, 80%",
     },
     borderColor: theme => ({
       ...theme("colors"),

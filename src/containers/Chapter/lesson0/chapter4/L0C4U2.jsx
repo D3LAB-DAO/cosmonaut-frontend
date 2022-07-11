@@ -83,35 +83,35 @@ $ wasmd tx wasm execute $CONTRACT "$TRANSFER" \
   return (
     <>
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code1}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        만들어낸 wasm binary executable은 블록체인에 업로드할 수 있습니다.
+        You can upload the created wasm binary executable to the blockchain.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        바이트코드는 CODE_ID를 통해 다운로드할 수 있고, 이를 보유하고 있는
-        바이트코드와 diff를 통해 비교해 검증할 수 있습니다.
+        Bytecode can be downloaded through CODE_ID, and verified by comparing it
+        with its own bytecode. Do diff.
       </p>
 
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code2}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        이제 wasm 컨트랙트를 인스턴스화 할 수 있습니다.
+        Now, you can instantiate the wasm contract.
       </p>
 
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code3}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        인스턴스화가 끝난 후, 이제 메서드를 호출해 이 인스턴스의 state 변경을
-        요청하거나(execute) 데이터를 가져올 수(query) 있습니다.
+        You can call the method to request a state change for this instance
+        (execute) or just get the data (query), after the instantiation.
       </p>
     </>
   );

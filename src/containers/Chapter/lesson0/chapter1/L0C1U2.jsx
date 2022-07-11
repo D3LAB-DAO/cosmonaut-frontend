@@ -48,7 +48,7 @@ $ cargo --version
   return (
     <>
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code1}
         linkTarget="_blank"
       />
@@ -56,11 +56,11 @@ $ cargo --version
         <a href="https://rustup.rs">https://rustup.rs</a>
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        rustup은 Rust를 설치하는 가장 쉬운 방법 중 하나입니다.
+        <b>rustup</b> is one of the easiest ways to install Rust.
       </p>
 
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code2}
         linkTarget="_blank"
       />
@@ -70,61 +70,63 @@ $ cargo --version
         </a>
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        이외에 패키지매니저 또는 스탠드얼론 인스톨러를 이용하거나 소스코드로부터
-        바로 빌드할 수도 있지만, 특별한 경우가 아니라면 rustup을 사용하는 편이
-        훨씬 쉽고 빠릅니다.
+        You can use the Package Manager, the Standalone installer, or build
+        directly from the source code. But it's much easier and faster to use
+        <b>rustup</b>.
       </p>
 
-      <p class="font-bold text-xl mb-2">Rust 설치 확인하기</p>
+      <p class="font-bold text-xl mb-2">Check Rust Installation</p>
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code3}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        설치가 잘 되었는지 확인하기 위해, 간단한 “Hello, world!” 예제를 만들어
-        볼 것입니다.
+        To make sure that Rust is installed well, we'll make a simple "Hello,
+        world!" example.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        파이썬 파일이 py 확장자로 끝나는 것처럼, 러스트 파일은 rs 확장자로
-        끝납니다.
+        Just as a Python file ends with a py extension, the Rust file ends with
+        an rs extension.
       </p>
 
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code4}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        main.rs 파일에 다음과 같이 작성하세요.
+        Fill in the file main.rs as follows.
       </p>
 
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code5}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        끝입니다! 이제 파일을 저장하고, 다음 명령을 수행하세요.
+        That's it! Now save the file, and try the following command.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        이 명령은 우리의 main.rs 파일을 컴파일하고 실행합니다. 터미널에 출력된
-        “Hello, world!”를 좀 보세요!
+        This command compiles and executes the main.rs file.
+      </p>
+      <p class="font-normal lg:text-base text-sm mb-4">
+        Look at the "Hello, world!" printout on the terminal!
       </p>
 
       <p class="font-bold text-xl mb-2">Cargo</p>
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code6}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        카고는 러스트의 패키지 매니저입니다. 필요로하는 라이브러리를
-        다운로드하고 빌드하는 등의 활동을 카고를 통해서 편하게 수행할 수
-        있습니다.
+        <b>Cargo</b> is the package manager of Rust. You can easily download and
+        build the library through the cargo.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        일반적인 러스트 설치를 따랐다면 Cargo도 설치되어 있을 것입니다.
+        If you followed a typical Rust installation, <b>Cargo</b> would also be
+        installed.
       </p>
     </>
   );

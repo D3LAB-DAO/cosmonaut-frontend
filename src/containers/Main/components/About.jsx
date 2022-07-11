@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import Whiteline from "../../../assets/images/vertical-whiteline.gif";
 
-const Section = tw.section`py-26 bg-orange-400 h-96`;
+const Section = tw.section`py-20 bg-orange-400 h-97`;
 
 function About() {
   return (
@@ -17,6 +17,12 @@ function About() {
           <p class="lg:text-xl md:text-lg text-sm md:px-4 px-2 font-bold leading-relaxed mb-12 text-gray-50">
             Cosmonaut is a free coding school that teaches you how to create and
             deploy contracts on Cosmos ecosystem.
+            <br />
+            <br />
+            Learn Cosmwasm's secure multi-chain contract. Cosmonaut is made to
+            be easy to follow, even for unfamiliar one with Cosmos, Cosmwasm,
+            and Rust. <b>Don't worry and just follow us!</b> Let's deep dive
+            into the world of Cosmos with our pretty and kind explanations.
           </p>
         </div>
         <img

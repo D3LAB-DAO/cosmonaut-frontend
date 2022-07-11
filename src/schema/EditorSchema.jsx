@@ -5,7 +5,6 @@ import tw from "tailwind-styled-components";
 
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
-import Navigator from "../components/Navigator/Navigator";
 import { chapterInfos } from "../states/Information/chapterInfoAtoms";
 import { unitInfos } from "../states/Information/unitInfoAtoms";
 import BackToOverview from "./components/BackToOverview";

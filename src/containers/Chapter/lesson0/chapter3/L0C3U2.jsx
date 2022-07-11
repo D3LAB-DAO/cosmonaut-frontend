@@ -20,18 +20,17 @@ client.getAccount()
   return (
     <>
       <MDEditor.Markdown
-        style={{ padding: 0 }}
+        style={{ padding: 4 }}
         source={code1}
         linkTarget="_blank"
       />
       <p class="font-normal lg:text-base text-sm mb-4">
-        타입스크립트 라이브러리인 CosmJS를 사용하면 쿼리와 트랜잭션 등록을
-        처리할 수 있습니다. @cosmjs/cli도 존재하는데, 이는 Node 콘솔과도 같다고
-        생각하면 됩니다. 만일 여기에 익숙하다면 CLI보다 더 편하게 사용할 수
-        있겠죠.
+        CosmJS, a type script library, allows you to process queries and
+        transaction registrations. There is also @cosmjs/cli which is similar
+        with a Node console.
       </p>
       <p class="font-normal lg:text-base text-sm mb-4">
-        REPL 환경을 이용해 위 Go CLI에서 했던 일과 같은 일을 한번 해봅시다.
+        Let's use the REPL environment to do the same thing as the Go CLI above.
       </p>
     </>
   );

@@ -6,7 +6,7 @@ import Arrowright from "../../assets/images/arrow-right.svg";
 
 import HandleSideMenu from "./Components/HandleSideMenu";
 
-const Container = tw.div`fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50`;
+const Container = tw.div`z-auto fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50`;
 
 function SmallNavigator() {
   const { lessonID, chID, uID, sID } = useParams();

@@ -1,19 +1,49 @@
 import axios from "axios";
-import { defaultInstance } from "../utils";
+import { useEffect, useState } from "react";
 
-export const getPost = async formData => {
-  try {
-    const { data } = await defaultInstance.get("");
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+export const usePostApi = () => {
+  const [data, setData] = useState({});
+  const [form, setForm] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsError(false);
+      setIsLoading(true);
+
+      try {
+        const result = await axios.post("http://localhost:3334/rust/fmt", form);
+
+        setData(result);
+      } catch (error) {
+        setIsError(true);
+      }
+
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, [form]);
+
+  return [{ data, isLoading, isError }, setForm];
 };
 
-export const axiosApi = axios.create({
-  baseURL: "http://localhost:3334",
-  timeout: 3000,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+// import { defaultInstance } from "../utils";
+
+// export const getPost = async formData => {
+//   try {
+//     const { data } = await defaultInstance.get("");
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// export const axiosApi = axios.create({
+//   baseURL: "http://localhost:3334",
+//   timeout: 3000,
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });

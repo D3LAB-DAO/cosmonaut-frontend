@@ -11,20 +11,22 @@ pub struct Cw721ReceiveMsg {
 \`\`\``;
 
 const pbFiles1 = `
-// File1 Testing !!!
+// File111 Testing !!!
+fn() {println!("Hello");}
 `;
 const pbFiles2 = `
-// File2 Testing !!!
+// File222 Testing !!!
+fn() {println!("Hello");}
 `;
 
-export const L1C2U1S1PbFiles = {
-  files1: {
-    name: "files1",
+export const L1C4U1S1PbFiles = {
+  file1: {
+    name: "file1",
     language: "rust",
     value: pbFiles1,
   },
-  files2: {
-    name: "files2",
+  file2: {
+    name: "file2",
     language: "rust",
     value: pbFiles2,
   },

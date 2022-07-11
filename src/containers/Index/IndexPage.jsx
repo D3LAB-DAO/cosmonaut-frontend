@@ -13,6 +13,7 @@ function IndexPage() {
       <Navbar />
       <Container
         style={{
+          height: "1100px",
           backgroundImage: `url(${require("../../assets/images/25-spacehole-2x.jpg")})`,
         }}
       >

@@ -45,7 +45,7 @@ function Intro() {
           </div>
         </Background>
         <Wrap>
-          <div class="animate-goUpFirst max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-fadeInDtoU max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
@@ -55,13 +55,17 @@ function Intro() {
               <h4 class="lg:text-2xl text-md text-white font-heading md:mb-4 mb-2">
                 Contract
               </h4>
-              <p class="px-4 text-white lg:text-base leading-tight text-xs">
+              <ul class="list-disc text-md font-medium ml-5 mt-3 text-left">
+                <li>Learn how to create a Cosmwasm contract.</li>
+                <li>Meet CW20 and CW721. Then, use them.</li>
+              </ul>
+              {/* <p class="px-4 text-white lg:text-base leading-tight text-xs">
                 Learn how to create a Cosmwasm contract. Meet CW20 and CW721.
-              </p>
+              </p> */}
             </div>
           </div>
 
-          <div class="animate-goUpFirst max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-fadeInDtoU max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
@@ -72,13 +76,12 @@ function Intro() {
                 Rust Language
               </h4>
               <p class="px-4 text-white lg:text-base leading-tight text-xs">
-                Get familiar with Rust. Let's do some unit testing and
-                optimization, too.
+                Get familiar with Rust.
               </p>
             </div>
           </div>
 
-          <div class="animate-goUpFirst max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
+          <div class="animate-fadeInDtoU max-w-xs md:w-1/3 lg:px-4 mb-6 px-12 md:px-2">
             <div class="h-full md:py-6 lg:px-4 px-2 bg-gray-700 bg-opacity-50 border-2 border-dashed border-gray-100 text-center py-6 rounded-lg md:rounded-xl lg:rounded-2xl">
               <img
                 class="block h-10 mx-auto md:mb-4 mb-2 lg:h-20 md:h-16"
