@@ -1,10 +1,10 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import UnitName from "../../../../../components/Common/UnitName";
-import BlueID from "../../../../../components/Contents/BlueID";
 import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
 import BasicP from "../../../../../components/Contents/BasicP";
+import OrangeID from "../../../../../components/Contents/OrangeID";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -40,10 +40,10 @@ AllTokens {
 function L1C3U1() {
   return (
     <>
-      <UnitName color={"rgba(78, 151, 183, 1)"} />
+      <UnitName />
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <BlueID>1</BlueID>
+          <OrangeID>1</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
@@ -84,7 +84,7 @@ function L1C3U1() {
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <BlueID>2</BlueID>
+          <OrangeID>2</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">

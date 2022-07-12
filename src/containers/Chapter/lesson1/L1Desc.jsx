@@ -1,9 +1,9 @@
 import React from "react";
 import ChapterDesc from "../../../components/Contents/ChapterDesc";
 
-function L1C13Desc() {
+function L1Desc() {
   return (
-    <div>
+    <>
       <ChapterDesc>
         CW721은 코즘와즘에 기반을 둔 대체불가능토큰의 표준입니다. 그 이름과
         디자인은 이더리움의 ERC721 표준을 준수하고 있으면서도, 이더리움과 다른
@@ -17,8 +17,8 @@ function L1C13Desc() {
         <br />
         <br />
       </ChapterDesc>
-    </div>
+    </>
   );
 }
 
-export default L1C13Desc;
+export default L1Desc;

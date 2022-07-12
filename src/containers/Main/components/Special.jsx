@@ -7,7 +7,6 @@ function Special() {
   useEffect(() => {
     const firstCallback = function (entries) {
       entries.forEach(entry => {
-        console.log(entry);
         if (entry.isIntersecting) {
           entry.target.classList.add("lg:animate-goUpFirst");
         } else {
@@ -23,7 +22,6 @@ function Special() {
 
     const secondCallback = function (entries) {
       entries.forEach(entry => {
-        console.log(entry);
         if (entry.isIntersecting) {
           entry.target.classList.add("lg:animate-goUpSecond");
         } else {
@@ -39,7 +37,6 @@ function Special() {
 
     const thirdCallback = function (entries) {
       entries.forEach(entry => {
-        console.log(entry);
         if (entry.isIntersecting) {
           entry.target.classList.add("lg:animate-goUpThird");
         } else {
@@ -55,7 +52,6 @@ function Special() {
 
     const fourthCallback = function (entries) {
       entries.forEach(entry => {
-        console.log(entry);
         if (entry.isIntersecting) {
           entry.target.classList.add("lg:animate-goUpFourth");
         } else {
@@ -90,7 +86,9 @@ function Special() {
               class=" flex items-center justify-center p-6 border-3 border-indigo-900 rounded-2xl shadow-md text-center bg-orange-400 lg:h-96 md:h-56 h-48"
             >
               <div>
-                <h3 class="font-extrabold mb-3 text-3xl">Bottom-UP</h3>
+                <h3 class="font-heading font-extrabold mb-3 text-3xl">
+                  Bottom-UP
+                </h3>
                 <h4 class="font-extrabold text-md">
                   Step-by-step lectures in bottom-up configuration, insinuating
                   into the “pioneer” story.
@@ -104,7 +102,9 @@ function Special() {
               class="flex items-center p-6 border-3 border-indigo-900 rounded-2xl shadow-md text-center justify-center bg-yellow-600 lg:h-96 md:h-56 h-48"
             >
               <div>
-                <h3 class="font-extrabold mb-3 text-3xl">2 Division</h3>
+                <h3 class="font-heading font-extrabold mb-3 text-3xl">
+                  2 Division
+                </h3>
                 <h4 class="font-extrabold text-md">
                   Two-side split screen for concurrent learning and practice.
                 </h4>
@@ -117,7 +117,7 @@ function Special() {
               class="flex items-center justify-center p-6 border-3 border-indigo-900 rounded-2xl shadow-md text-center bg-green-500 lg:h-96 md:h-56 h-48"
             >
               <div>
-                <h3 class="font-extrabold mb-3 text-3xl">Game</h3>
+                <h3 class="font-heading font-extrabold mb-3 text-3xl">Game</h3>
                 <h4 class="font-extrabold text-md">
                   Create a real game: coding with Rust, writing and deploying
                   contracts, and connecting to the frontend.
@@ -131,7 +131,7 @@ function Special() {
               class="flex items-center justify-center p-6 border-3 border-indigo-900 rounded-2xl shadow-md text-center bg-blue-500 lg:h-96 md:h-56 h-48"
             >
               <div>
-                <h3 class="font-extrabold mb-3 text-3xl">Level</h3>
+                <h3 class="font-heading font-extrabold mb-3 text-3xl">Level</h3>
                 <h4 class="font-extrabold text-md">
                   Experience unit testing and optimization at the product level.
                 </h4>

@@ -1,10 +1,10 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import UnitName from "../../../../../components/Common/UnitName";
-import OrangeID from "../../../../../components/Contents/OrangeID";
 import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
 import BasicP from "../../../../../components/Contents/BasicP";
+import GreenID from "../../../../../components/Contents/GreenID";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -104,10 +104,10 @@ pub struct NumTokensResponse {
 function L1C1U2() {
   return (
     <>
-      <UnitName />
+      <UnitName color={"rgba(76, 133, 87, 1)"} />
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <OrangeID>1</OrangeID>
+          <GreenID>1</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
@@ -136,7 +136,7 @@ function L1C1U2() {
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <OrangeID>2</OrangeID>
+          <GreenID>2</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
@@ -163,7 +163,7 @@ function L1C1U2() {
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <OrangeID>3</OrangeID>
+          <GreenID>3</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
@@ -189,7 +189,7 @@ function L1C1U2() {
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <OrangeID>4</OrangeID>
+          <GreenID>4</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
@@ -229,7 +229,7 @@ function L1C1U2() {
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <OrangeID>5</OrangeID>
+          <GreenID>5</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">

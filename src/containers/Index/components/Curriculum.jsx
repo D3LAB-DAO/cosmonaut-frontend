@@ -11,7 +11,7 @@ const ButtonWrap = tw.div`flex flex-wrap mt-10 lg:justify-end justify-center`;
 
 function Curriculum() {
   const { lessonID } = useParams();
-  const startLesson = `/lesson/${lessonID}/chapter/1/unit/1`;
+  const startLesson = `/lesson/${lessonID}/chapter/1/unit/0`;
   const engInfo = useRecoilValue(lessonEngInfo);
 
   return (

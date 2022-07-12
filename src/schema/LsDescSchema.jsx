@@ -9,16 +9,16 @@ import Navbar from "../components/Navbar/Navbar";
 import { chapterInfos } from "../states/Information/chapterInfoAtoms";
 import { unitInfos } from "../states/Information/unitInfoAtoms";
 import BgV4 from "../assets/images/bg-v4.svg";
-import ChapterDesc from "./components/ChapterDesc";
-import DetailContents from "./components/DetailContents";
+import LsDesc from "./components/LSDesc";
 import Navigator from "../components/Navigator/Navigator";
-import UnitDesc from "./components/UnitDesc";
 import StartModal from "../components/StartModal/StartModal";
+import SmallNavigator from "../components/Navigator/SmallNavigator";
+import L1C4Desc from "../containers/Chapter/lesson1/L1C4Desc";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
-function DetailSchema() {
-  const { lessonID, chID } = useParams();
+function LsDescSchema() {
+  const { lessonID, chID, uID, sID } = useParams();
   const chInfo = useRecoilValue(chapterInfos);
   const unitInfo = useRecoilValue(unitInfos);
   const unitData = unitInfo[lessonID];
@@ -30,14 +30,13 @@ function DetailSchema() {
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
-        <ChapterDesc />
-        {/* <UnitDesc chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} /> */}
+        <LsDesc />
+        {chID === "4" && uID === "1" && sID === "0" ? <L1C4Desc /> : null}
       </Background>
-      <DetailContents />
       <Footer />
-      <Navigator />
+      {chID === "4" ? <SmallNavigator /> : <Navigator />}
     </>
   );
 }
 
-export default DetailSchema;
+export default LsDescSchema;

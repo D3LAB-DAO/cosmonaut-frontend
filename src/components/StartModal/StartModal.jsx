@@ -24,7 +24,7 @@ function StartModal() {
 
   return (
     <>
-      {(chID === "1" || "2" || "3") && uID === "1" ? (
+      {(lessonID === "0" && uID === "1") || uID === "0" ? (
         <div
           id="modal"
           class="fixed h-full bottom-0 w-full z-50 bg-black bg-opacity-80 flex"

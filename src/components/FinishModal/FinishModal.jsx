@@ -16,7 +16,7 @@ function FinishModal() {
   const nextL = Number(lessonID) + 1;
 
   const nextLesson = () => {
-    navigate(`/lesson/${nextL}/chapter/1/unit/1`);
+    navigate(`/lesson/${nextL}/chapter/1/unit/0`);
   };
   return (
     <>

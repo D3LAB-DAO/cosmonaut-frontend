@@ -2,9 +2,9 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import UnitName from "../../../../../components/Common/UnitName";
 import BasicP from "../../../../../components/Contents/BasicP";
+import BlueID from "../../../../../components/Contents/BlueID";
 import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
-import OrangeID from "../../../../../components/Contents/OrangeID";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`flex mb-4 lg:mb-8`;
@@ -25,7 +25,7 @@ pub struct Cw721ReceiveMsg {
 function L1C1U3() {
   return (
     <>
-      <UnitName />
+      <UnitName color={"rgba(78, 151, 183, 1)"} />
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
           <div class="lg:w-1/2 w-full md:w-2/3">
@@ -44,7 +44,7 @@ function L1C1U3() {
                 모두 허용해서는 안 됩니다.
               </BasicP>
               <ContentTitle>
-                <OrangeID>!</OrangeID>
+                <BlueID>!</BlueID>
                 <div class="flex sm:flex-nowrap">
                   <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
                     <Header>Cw721ReceiveMsg</Header>

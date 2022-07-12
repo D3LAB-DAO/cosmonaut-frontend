@@ -30,7 +30,7 @@ function Intro() {
             <h1 class="font-heading mt-4 mb-6 text-4xl md:text-6xl">
               COSMONAUT
             </h1>
-            <p class="lg:text-lg md:text-md mb-10 leading-relaxed mx-4 md:mx-12 lg:mx-32 text-xs">
+            <p class="lg:text-lg md:text-md mb-10 leading-relaxed mx-4 md:mx-12 lg:mx-32">
               Cosmonaut is a coding school where you can experience creating
               Cosmwasm contracts and DApps while making NFT games yourself.
               <br /> Learners can expect to achieve the following:
@@ -59,9 +59,6 @@ function Intro() {
                 <li>Learn how to create a Cosmwasm contract.</li>
                 <li>Meet CW20 and CW721. Then, use them.</li>
               </ul>
-              {/* <p class="px-4 text-white lg:text-base leading-tight text-xs">
-                Learn how to create a Cosmwasm contract. Meet CW20 and CW721.
-              </p> */}
             </div>
           </div>
 
@@ -75,7 +72,7 @@ function Intro() {
               <h4 class="lg:text-2xl text-md text-white font-heading md:mb-4 mb-2">
                 Rust Language
               </h4>
-              <p class="px-4 text-white lg:text-base leading-tight text-xs">
+              <p class="px-4 text-white lg:text-base leading-tight">
                 Get familiar with Rust.
               </p>
             </div>
@@ -91,7 +88,7 @@ function Intro() {
               <h4 class="lg:text-2xl text-md text-white font-heading md:mb-4 mb-2">
                 DApp
               </h4>
-              <p class="px-4 text-white lg:text-base leading-tight text-xs">
+              <p class="px-4 text-white lg:text-base leading-tight">
                 Create a DApp by connecting frontend to your contracts through
                 CosmJS.
               </p>

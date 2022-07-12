@@ -16,8 +16,9 @@ function SmallNavigator() {
 
   const handleRight = () => {
     console.log("handle Right");
-
-    if (lessonID === "1" && chID === "4" && uID === "1" && sID === "8") {
+    if (lessonID === "1" && chID === "4" && uID === "1" && sID === "0") {
+      return navigate(`/lesson/1/chapter/4/unit/1/small/1`);
+    } else if (lessonID === "1" && chID === "4" && uID === "1" && sID === "8") {
       return navigate(`/lesson/1/chapter/4/unit/2/small/1`);
     } else {
       navigate(
@@ -32,7 +33,7 @@ function SmallNavigator() {
     navigate(
       `/lesson/${lessonID}/chapter/${chID}/unit/${uID}/small/${prevSmall}`
     );
-    if (sID === "1") {
+    if (sID === "0") {
       return navigate(
         `/lesson/${lessonID}/chapter/${chID}/unit/${uID}/small/${sID}`
       );

@@ -1,10 +1,10 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import UnitName from "../../../../../components/Common/UnitName";
-import GreenID from "../../../../../components/Contents/GreenID";
 import BasicP from "../../../../../components/Contents/BasicP";
 import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
+import OrangeID from "../../../../../components/Contents/OrangeID";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -62,10 +62,10 @@ pub struct AllNftInfoResponse<T> {
 function L1C2U1() {
   return (
     <>
-      <UnitName color={"rgba(76, 133, 87, 1)"} />
+      <UnitName />
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-6">
-          <GreenID>1</GreenID>
+          <OrangeID>1</OrangeID>
 
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
@@ -87,7 +87,7 @@ function L1C2U1() {
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <GreenID>2</GreenID>
+          <OrangeID>2</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
@@ -112,7 +112,7 @@ function L1C2U1() {
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <GreenID>3</GreenID>
+          <OrangeID>3</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">

@@ -30,7 +30,7 @@ function Navigator() {
     } else if (lessonID === "1" && chID === "2" && uID === "1") {
       return navigate(`/lesson/1/chapter/3/unit/1`);
     } else if (lessonID === "1" && chID === "3" && uID === "1") {
-      return navigate(`/lesson/1/chapter/4/unit/1/small/1`);
+      return navigate(`/lesson/1/chapter/4/unit/1/small/0`);
     } else {
       navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${nextUnit}`);
     }
@@ -40,7 +40,9 @@ function Navigator() {
     console.log("handle Left");
 
     navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${prevUnit}`);
-    if (uID === "1") {
+    if (chID === "1" && uID === "0") {
+      return navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${uID}`);
+    } else if (uID === "1") {
       return navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${uID}`);
     }
   };

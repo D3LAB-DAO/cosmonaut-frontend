@@ -15,6 +15,7 @@ import Markdown from "../../../../../../components/Contents/Markdown";
 import Correct from "../../../../../../components/Contents/Correct";
 import Wrong from "../../../../../../components/Contents/Wrong";
 import HideAnswer from "../../../../../../components/Contents/HideAnswer";
+import { useParams } from "react-router-dom";
 
 const EditorDesc = tw.div`w-full lg:w-2/5 md:mx-0 mx-4`;
 const EditorCode = tw.div`w-full lg:w-3/5 md:mx-0`;
@@ -26,6 +27,7 @@ const ResultResponse = tw.div``;
 
 function L1C4U1S1Code() {
   const editorRef = useRef(null);
+  const { lessonID, chID } = useParams();
   const [fileName, setFileName] = useState("file1");
   const [code, setCode] = useState();
   const [value, setValue] = useState();
@@ -63,6 +65,8 @@ Tokens {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      lesson: lessonID,
+      chapter: chID,
       files: {
         file1: myStorage.file1,
         file2: myStorage.file2,
@@ -77,7 +81,7 @@ Tokens {
     setIsLoading(true);
 
     try {
-      let res = await fetch("http://localhost:3334/rust/fmt", option);
+      let res = await fetch("http://127.0.0.1:3334/cosm/build", option);
       res = await res.json();
       console.log("Success!!!");
       console.log(res.result);
