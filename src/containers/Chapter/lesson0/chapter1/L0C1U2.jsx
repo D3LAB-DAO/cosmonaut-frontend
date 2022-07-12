@@ -1,5 +1,9 @@
 import React from "react";
-import MDEditor from "@uiw/react-md-editor";
+import Markdown from "../../../../components/Contents/Markdown";
+import CodeBlock from "../../../../components/Contents/CodeBlock";
+import BasicP from "../../../../components/Contents/BasicP";
+import BasicA from "../../../../components/Contents/BasicA";
+import Header from "../../../../components/Contents/Header";
 
 function L0C1U2() {
   const code1 = `
@@ -47,87 +51,58 @@ $ cargo --version
 
   return (
     <>
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code1}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code1} />
+      <BasicA>
         <a href="https://rustup.rs">https://rustup.rs</a>
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        <b>rustup</b> is one of the easiest ways to install Rust.
-      </p>
+      </BasicA>
+      <BasicP>
+        <CodeBlock>rustup</CodeBlock> is one of the easiest ways to install
+        Rust.
+      </BasicP>
 
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code2}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code2} />
+      <BasicA>
         <a href="https://forge.rust-lang.org/infra/other-installation-methods.html">
           https://forge.rust-lang.org/infra/other-installation-methods.html
         </a>
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
+      </BasicA>
+      <BasicP>
         You can use the Package Manager, the Standalone installer, or build
         directly from the source code. But it's much easier and faster to use
-        <b>rustup</b>.
-      </p>
+        <CodeBlock>rustup</CodeBlock>.
+      </BasicP>
 
-      <p class="font-bold text-xl mb-2">Check Rust Installation</p>
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code3}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Header>Check Rust Installation</Header>
+      <Markdown code={code3} />
+      <BasicP>
         To make sure that Rust is installed well, we'll make a simple "Hello,
         world!" example.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
+      </BasicP>
+      <BasicP>
         Just as a Python file ends with a py extension, the Rust file ends with
         an rs extension.
-      </p>
+      </BasicP>
 
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code4}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
-        Fill in the file main.rs as follows.
-      </p>
+      <Markdown code={code4} />
+      <BasicP>Fill in the file main.rs as follows.</BasicP>
 
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code5}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code5} />
+      <BasicP>
         That's it! Now save the file, and try the following command.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        This command compiles and executes the main.rs file.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        Look at the "Hello, world!" printout on the terminal!
-      </p>
+      </BasicP>
+      <BasicP>This command compiles and executes the main.rs file.</BasicP>
+      <BasicP>Look at the "Hello, world!" printout on the terminal!</BasicP>
 
-      <p class="font-bold text-xl mb-2">Cargo</p>
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code6}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
-        <b>Cargo</b> is the package manager of Rust. You can easily download and
-        build the library through the cargo.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        If you followed a typical Rust installation, <b>Cargo</b> would also be
-        installed.
-      </p>
+      <Header>Cargo</Header>
+      <Markdown code={code6} />
+      <BasicP>
+        <CodeBlock>Cargo</CodeBlock> is the package manager of Rust. You can
+        easily download and build the library through the cargo.
+      </BasicP>
+      <BasicP>
+        If you followed a typical Rust installation,{" "}
+        <CodeBlock>Cargo</CodeBlock> would also be installed.
+      </BasicP>
     </>
   );
 }

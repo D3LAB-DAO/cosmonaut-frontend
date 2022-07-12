@@ -13,7 +13,7 @@ import BgV4 from "../assets/images/bg-v4.svg";
 import Navigator from "../components/Navigator/Navigator";
 import StartModal from "../components/StartModal/StartModal";
 
-const Background = tw.div`pt-14 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
+const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
 function DescSchema() {
   const { lessonID, chID } = useParams();

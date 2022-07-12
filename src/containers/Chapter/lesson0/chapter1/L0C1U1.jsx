@@ -1,5 +1,7 @@
 import React from "react";
-import MDEditor from "@uiw/react-md-editor";
+import BasicP from "../../../../components/Contents/BasicP";
+import BasicA from "../../../../components/Contents/BasicA";
+import Markdown from "../../../../components/Contents/Markdown";
 
 function L0C1U1() {
   const code1 = `
@@ -16,21 +18,15 @@ $ export PATH=$PATH:/usr/local/go/bin
 
   return (
     <React.Fragment>
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code1}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code1} />
+      <BasicA>
         <a href="https://go.dev/doc/install">https://go.dev/doc/install</a>
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
+      </BasicA>
+      <BasicP>
         You can install Go easily with the Go installer, or you can install it
         with the following installation command.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        It is recommended to install Go v1.17+ or higher.
-      </p>
+      </BasicP>
+      <BasicP>It is recommended to install Go v1.17+ or higher.</BasicP>
     </React.Fragment>
   );
 }

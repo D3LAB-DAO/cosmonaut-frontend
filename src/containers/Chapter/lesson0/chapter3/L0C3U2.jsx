@@ -1,5 +1,6 @@
 import React from "react";
-import MDEditor from "@uiw/react-md-editor";
+import Markdown from "../../../../components/Contents/Markdown";
+import BasicP from "../../../../components/Contents/BasicP";
 
 function L0C3U2() {
   const code1 = `
@@ -19,19 +20,15 @@ client.getAccount()
 
   return (
     <>
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code1}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code1} />
+      <BasicP>
         CosmJS, a type script library, allows you to process queries and
         transaction registrations. There is also @cosmjs/cli which is similar
         with a Node console.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
+      </BasicP>
+      <BasicP>
         Let's use the REPL environment to do the same thing as the Go CLI above.
-      </p>
+      </BasicP>
     </>
   );
 }

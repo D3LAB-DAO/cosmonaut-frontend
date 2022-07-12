@@ -1,5 +1,6 @@
 import React from "react";
-import MDEditor from "@uiw/react-md-editor";
+import BasicP from "../../../../components/Contents/BasicP";
+import Markdown from "../../../../components/Contents/Markdown";
 
 function L0C4U2() {
   const code1 = `
@@ -82,37 +83,23 @@ $ wasmd tx wasm execute $CONTRACT "$TRANSFER" \
 
   return (
     <>
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code1}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code1} />
+      <BasicP>
         You can upload the created wasm binary executable to the blockchain.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
+      </BasicP>
+      <BasicP>
         Bytecode can be downloaded through CODE_ID, and verified by comparing it
         with its own bytecode. Do diff.
-      </p>
+      </BasicP>
 
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code2}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
-        Now, you can instantiate the wasm contract.
-      </p>
+      <Markdown code={code2} />
+      <BasicP>Now, you can instantiate the wasm contract.</BasicP>
 
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code3}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code3} />
+      <BasicP>
         You can call the method to request a state change for this instance
         (execute) or just get the data (query), after the instantiation.
-      </p>
+      </BasicP>
     </>
   );
 }

@@ -1,10 +1,9 @@
 import React from "react";
+import tw from "tailwind-styled-components";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import tw from "tailwind-styled-components";
 import { chapterInfos } from "../../states/Information/chapterInfoAtoms";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
-import ProgressBar from "../Common/ProgressBar";
 
 const Navigate = tw.div`flex flex-wrap mt-8 mx-auto justify-center xl:gap-1 gap-2 rounded-3xl`;
 const Button = tw.button`bg-white xl:h-44 md:h-36 h-32 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/6 rounded-xl border-2 border-indigo-900 ease-in-out duration-300 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none hover:z-10 focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500`;
@@ -28,7 +27,7 @@ function StartModal() {
       {(chID === "1" || "2" || "3") && uID === "1" ? (
         <div
           id="modal"
-          class="fixed h-full bottom-0 w-full z-50 bg-black bg-opacity-80  flex"
+          class="fixed h-full bottom-0 w-full z-50 bg-black bg-opacity-80 flex"
         >
           <div class="container flex my-auto px-4 mx-auto justify-center py-4">
             <div class="container md:mt-0 mt-8 mx-auto justify-center items-center">
@@ -38,7 +37,6 @@ function StartModal() {
               <h4 class="md:text-2xl text-lg font-heading md:mb-4 mb-2 text-center">
                 {engInfo[lessonID]?.title}
               </h4>
-              <ProgressBar />
               <Navigate>
                 {chInfo[lessonID]?.map(e => {
                   return (

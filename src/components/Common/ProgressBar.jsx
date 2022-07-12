@@ -18,14 +18,14 @@ function ProgressBar() {
       </div>
       <div class="grid grid-cols-6 md:gap-6 gap-4 justify-between my-2">
         <span class="flex justify-start md:text-sm text-xs font-mono text-gray-700">
-          <img class="w-6 h-6" src={flask} alt="flask" />
+          <img class="w-4 h-4" src={flask} alt="flask" />
         </span>
-        <span class="md:text-sm text-xs font-medium text-gray-50">Chp.1</span>
-        <span class="md:text-sm text-xs font-medium text-gray-50">Chp.2</span>
-        <span class="md:text-sm text-xs font-medium text-gray-50">Chp.3</span>
-        <span class="md:text-sm text-xs font-medium text-gray-50">Chp.4</span>
+        <span class="md:text-sm text-xs font-medium text-gray-700">Chp.1</span>
+        <span class="md:text-sm text-xs font-medium text-gray-700">Chp.2</span>
+        <span class="md:text-sm text-xs font-medium text-gray-700">Chp.3</span>
+        <span class="md:text-sm text-xs font-medium text-gray-700">Chp.4</span>
         <span class="flex md:text-sm text-xs justify-end font-mono text-gray-700">
-          <img class="w-6 h-6" src={check} alt="check" />
+          <img class="w-4 h-4" src={check} alt="check" />
         </span>
       </div>
     </Container>

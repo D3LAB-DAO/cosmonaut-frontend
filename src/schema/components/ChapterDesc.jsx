@@ -21,7 +21,7 @@ function ChapterDesc() {
   console.log(lessonID, chID);
 
   const ChDesc = () => {
-    if (lessonID === "1" && (chID === "1" || "2" || "3")) {
+    if (lessonID === "1" && chID === "1" && uID === "1") {
       return <L1C13Desc />;
     } else if (
       lessonID === "1" &&

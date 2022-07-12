@@ -1,11 +1,18 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const usePostApi = () => {
-  const [data, setData] = useState({});
-  const [form, setForm] = useState({});
+export const usePostApi = ({ body }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [control, setControl] = useState(false);
+  const [res, setRes] = useState({});
+  const opt = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body,
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,10 +20,14 @@ export const usePostApi = () => {
       setIsLoading(true);
 
       try {
-        const result = await axios.post("http://localhost:3334/rust/fmt", form);
+        let res = await fetch("http://localhost:3334/rust/fmt", opt);
+        res = await res.json();
+        console.log("Success!!!");
+        setRes(res.result);
 
-        setData(result);
+        setIsSuccess(true);
       } catch (error) {
+        console.log(error);
         setIsError(true);
       }
 
@@ -24,26 +35,8 @@ export const usePostApi = () => {
     };
 
     fetchData();
-  }, [form]);
+  }, [control]);
+  console.log(control);
 
-  return [{ data, isLoading, isError }, setForm];
+  return [{ res, isLoading, isSuccess, isError }, setControl];
 };
-
-// import { defaultInstance } from "../utils";
-
-// export const getPost = async formData => {
-//   try {
-//     const { data } = await defaultInstance.get("");
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const axiosApi = axios.create({
-//   baseURL: "http://localhost:3334",
-//   timeout: 3000,
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// });

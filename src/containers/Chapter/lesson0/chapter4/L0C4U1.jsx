@@ -1,5 +1,8 @@
 import React from "react";
-import MDEditor from "@uiw/react-md-editor";
+import Markdown from "../../../../components/Contents/Markdown";
+import BasicP from "../../../../components/Contents/BasicP";
+import BasicA from "../../../../components/Contents/BasicA";
+import CodeBlock from "../../../../components/Contents/CodeBlock";
 
 function L0C4U1() {
   const code1 = `
@@ -25,53 +28,42 @@ $ RUSTFLAGS='-C link-arg=-s' cargo wasm
 
   return (
     <>
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code1}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code1} />
+      <BasicP>
         Let's compile an example contract and create a wasm binary excutable. It
-        is based on{" "}
-        <a href="https://github.com/InterWasm/cw-contracts">cw-contracts</a>,
-        which has many examples.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        We will use a famous one, <b>nameservice.</b>
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        First, get the code from the github.
-      </p>
+        is based on
+        <a
+          class="mx-1 underline font-bold lg:text-base text-sm mb-4"
+          href="https://github.com/InterWasm/cw-contracts"
+        >
+          cw-contracts
+        </a>
+        , which has many examples.
+      </BasicP>
+      <BasicP>
+        We will use a famous one, <CodeBlock>nameservice.</CodeBlock>
+      </BasicP>
+      <BasicP>First, get the code from the github.</BasicP>
 
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code2}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code2} />
+      <BasicA>
         <a href="https://rust-lang.github.io/rustup/concepts/toolchains.html">
           https://rust-lang.github.io/rustup/concepts/toolchains.html
         </a>
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
+      </BasicA>
+      <BasicP>
         rustup allows you to compile with more explicitly specified toolchain.
         The toolchain contains a number of lists and components. By specifying
         it, a project can be compiled with a specific channel (stable, nightly,
         beta) and settings.
-      </p>
-      <p class="font-normal lg:text-base text-sm mb-4">
-        We will use the stable toolchain at this example.
-      </p>
+      </BasicP>
+      <BasicP>We will use the stable toolchain at this example.</BasicP>
 
-      <MDEditor.Markdown
-        style={{ padding: 4 }}
-        source={code3}
-        linkTarget="_blank"
-      />
-      <p class="font-normal lg:text-base text-sm mb-4">
+      <Markdown code={code3} />
+      <BasicP>
         If you want to eliminate unnecessary code from compiling, type the
         following command.
-      </p>
+      </BasicP>
     </>
   );
 }

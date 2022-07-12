@@ -1,14 +1,14 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import MDEditor from "@uiw/react-md-editor";
 import UnitName from "../../../../../components/Common/UnitName";
+import GreenID from "../../../../../components/Contents/GreenID";
+import BasicP from "../../../../../components/Contents/BasicP";
+import Header from "../../../../../components/Contents/Header";
+import Markdown from "../../../../../components/Contents/Markdown";
 
-const OrangeHeader = tw.div`bg-orange-400 py-2 lg:py-6 md:py-3`;
 const Contents = tw.section`bg-black`;
-const ContentId = tw.div`flex justify-center items-center lg:mr-6 md:mr-4 mr-0 rounded-full bg-gradient-to-r from-yellow-500 to-orange-400 border-3 border-indigo-900 lg:w-14 lg:h-14 h-12 w-12 md:shadow-md shadow-sm`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
 const ContentDesc = tw.div`mb-3`;
-const ContentSpan = tw.span`font-normal lg:text-base text-sm mb-4 block`;
 
 const code1 = `
 \`\`\`rust
@@ -62,114 +62,79 @@ pub struct AllNftInfoResponse<T> {
 function L1C2U1() {
   return (
     <>
-      <UnitName />
+      <UnitName color={"rgba(76, 133, 87, 1)"} />
       <Contents>
-        <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">1</span>
-          </ContentId>
+        <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-6">
+          <GreenID>1</GreenID>
+
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    ContractInfo
-                  </h1>
+                  <Header>ContractInfo</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 4 }}
-                source={code1}
-                linkTarget="_blank"
-              />
-              <MDEditor.Markdown
-                style={{ padding: 4 }}
-                source={code2}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
+              <Markdown code={code1} />
+              <Markdown code={code2} />
+              <BasicP>
                 name이나 symbol같은 컨트랙트 레벨의 메타데이터를 반환합니다.
                 반환 타입은 ContractInfoResponse입니다.
-              </ContentSpan>
+              </BasicP>
             </ContentDesc>
           </div>
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">2</span>
-          </ContentId>
+          <GreenID>2</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    NftInfo
-                  </h1>
+                  <Header>NftInfo</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 4 }}
-                source={code3}
-                linkTarget="_blank"
-              />
-              <MDEditor.Markdown
-                style={{ padding: 4 }}
-                source={code4}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
+              <Markdown code={code3} />
+              <Markdown code={code4} />
+              <BasicP>
                 하나의 토큰 token_id에 대한 메타데이터를 반환합니다. 반환 타입은
                 NftInfoResponse입니다. token_uri는 ERC721 Metadata JSON Schema
                 <a href="https://eips.ethereum.org/EIPS/eip-721">
                   (https://eips.ethereum.org/EIPS/eip-721)
                 </a>
                 를 따르는 JSON 파일을 참조하고 있어야 합니다.
-              </ContentSpan>
+              </BasicP>
             </ContentDesc>
           </div>
         </div>
 
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">3</span>
-          </ContentId>
+          <GreenID>3</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    AllNftInfo
-                  </h1>
+                  <Header>AllNftInfo</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 4 }}
-                source={code5}
-                linkTarget="_blank"
-              />
-              <MDEditor.Markdown
-                style={{ padding: 4 }}
-                source={code6}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
+              <Markdown code={code5} />
+              <Markdown code={code6} />
+              <BasicP>
                 NftInfo와 OwnerOf를 하나의 질의만으로 반환합니다. 최적화를 위해
                 사용될 수 있습니다. 반환 타입은 AllNftInfoResponse이며, 이는
                 NftInfo와 OwnerOf 질의 각각의 반환 타입에 해당하는
                 OwnerOfResponse와 NftInfoResponse를 포함합니다.
-              </ContentSpan>
-              <ContentSpan>
+              </BasicP>
+              <BasicP>
                 include_expired를 설정하지 않거나 false로 설정할 경우 만기된
                 권한들을 무시합니다. 반대로, 만일 만기된 권한들도 확인하고
                 싶다면 해당 값을 true로 설정해야 합니다.
-              </ContentSpan>
+              </BasicP>
             </ContentDesc>
           </div>
         </div>

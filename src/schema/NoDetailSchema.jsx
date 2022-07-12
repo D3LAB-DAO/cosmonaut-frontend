@@ -9,7 +9,6 @@ import Navbar from "../components/Navbar/Navbar";
 import { chapterInfos } from "../states/Information/chapterInfoAtoms";
 import { unitInfos } from "../states/Information/unitInfoAtoms";
 import BgV4 from "../assets/images/bg-v4.svg";
-import ChapterDesc from "./components/ChapterDesc";
 import DetailContents from "./components/DetailContents";
 import Navigator from "../components/Navigator/Navigator";
 import UnitDesc from "./components/UnitDesc";
@@ -17,7 +16,7 @@ import StartModal from "../components/StartModal/StartModal";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
-function DetailSchema() {
+function NoDetailSchema() {
   const { lessonID, chID } = useParams();
   const chInfo = useRecoilValue(chapterInfos);
   const unitInfo = useRecoilValue(unitInfos);
@@ -30,8 +29,6 @@ function DetailSchema() {
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
-        <ChapterDesc />
-        {/* <UnitDesc chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} /> */}
       </Background>
       <DetailContents />
       <Footer />
@@ -40,4 +37,4 @@ function DetailSchema() {
   );
 }
 
-export default DetailSchema;
+export default NoDetailSchema;

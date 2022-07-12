@@ -1,14 +1,15 @@
-import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import Header from "../../../../../../components/Contents/Header";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
+import Markdown from "../../../../../../components/Contents/Markdown";
+import OrangeID from "../../../../../../components/Contents/OrangeID";
 import L1C4U1S1Code from "./L1C4U1S1Code";
 
 const Contents = tw.section`bg-black`;
-const ContentId = tw.div`flex justify-center items-center lg:mr-6 md:mr-4 mr-0 rounded-full bg-gradient-to-r from-yellow-500 to-orange-400 border-3 border-indigo-900 lg:w-14 lg:h-14 h-12 w-12 md:shadow-md shadow-sm`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
 const ContentDesc = tw.div`mb-3`;
-const ContentSpan = tw.span`font-normal lg:text-base text-sm mb-4 block`;
-const ContentList = tw.span`font-normal lg:text-base text-sm mb-2 block`;
 const Editors = tw.div`container mx-auto lg:px-0 px-4`;
 
 const code1 = `
@@ -44,51 +45,36 @@ function L1C4U11() {
       {/* Contents Part */}
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-gray-200  py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">1</span>
-          </ContentId>
+          <OrangeID>1</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    TransferNFT
-                  </h1>
+                  <Header>TransferNFT</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 4 }}
-                source={code1}
-                linkTarget="_blank"
-              />
-
-              <MDEditor.Markdown
-                style={{ padding: 4 }}
-                source={code2}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
+              <Markdown code={code1} />
+              <Markdown code={code2} />
+              <BasicP>
                 TransferNft는 핵심 기능을 담당하는 함수 _tranfer_nft를
                 호출합니다. _tranfer_nft에서는 check_can_send를 통해 송신인
                 info.sender가 토큰을 전송할 권한이 있는지를 확인합니다.
-              </ContentSpan>
-              <ContentSpan>
+              </BasicP>
+              <BasicP>
                 적법한 송신인일 경우, 이후 토큰의 소유자를 recipient로 바꾸고,
                 기존 존재하던 권한들을 모두 제거합니다.
-              </ContentSpan>
-              <ContentSpan>_tranfer_nft의 흐름은 다음과 같습니다.</ContentSpan>
-              <ContentList>1. 토큰 정보를 가져온다.</ContentList>
-              <ContentList>
+              </BasicP>
+              <BasicP>_tranfer_nft의 흐름은 다음과 같습니다.</BasicP>
+              <ListStyle>1. 토큰 정보를 가져온다.</ListStyle>
+              <ListStyle>
                 2. 송신인이 적법한 권한을 가지고 있는지 확인한다.
-              </ContentList>
-              <ContentList>3. 수신인의 주소가 올바른지 검증한다.</ContentList>
-              <ContentList>4. 토큰의 소유자를 수신인으로 변경한다.</ContentList>
-              <ContentList>
-                5. 기존 존재했던 권한들을 모두 제거한다.
-              </ContentList>
-              <ContentList>6. 변경된 토큰 정보를 저장한다.</ContentList>
+              </ListStyle>
+              <ListStyle>3. 수신인의 주소가 올바른지 검증한다.</ListStyle>
+              <ListStyle>4. 토큰의 소유자를 수신인으로 변경한다.</ListStyle>
+              <ListStyle>5. 기존 존재했던 권한들을 모두 제거한다.</ListStyle>
+              <ListStyle>6. 변경된 토큰 정보를 저장한다.</ListStyle>
             </ContentDesc>
           </div>
         </div>
