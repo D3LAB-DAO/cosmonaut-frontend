@@ -14,8 +14,8 @@ import L0C4U2 from "../../containers/Chapter/lesson0/chapter4/L0C4U2";
 
 const Container = tw.div`mx-auto flex flex-wrap justify-center px-8 md:px-4 bg-gray-700 bg-opacity-75 rounded-xl md:py-8 mb-10 py-6`;
 const Contents = tw.div`lg:w-1/2 w-full md:w-2/3`;
-const ContentTitle = tw.div`mb-4 md:mb-4 lg:mb-8`;
-const ContentDesc = tw.div`mb-3`;
+const ContentTitle = tw.div`mb-2 md:mb-4 lg:mb-3`;
+const ContentDesc = tw.div`mb-1`;
 
 function ContentSchema({ unitInfo }) {
   const { lessonID, chID, uID } = useParams();
@@ -53,7 +53,7 @@ function ContentSchema({ unitInfo }) {
         <Contents>
           <ContentTitle>
             <div class="flex sm:flex-nowrap">
-              <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
+              <div class="w-full lg:w-auto lg:pt-3 pt-2">
                 <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
                   {unitInfo[uID - 1]?.subTitle}
                 </h1>

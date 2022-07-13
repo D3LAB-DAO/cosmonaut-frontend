@@ -25,7 +25,7 @@ function ChapterTitle({ chInfo }) {
             Lesson{lessonID}
           </h2>
           <h3 class="text-xl  md:text-left text-center md:text-2xl text-yellow-200 font-heading">
-            Chp{chInfo[chID - 1]?.id}. {chInfo[chID - 1]?.title}
+            Chp{chID}. {chInfo[chID - 1]?.title}
           </h3>
         </div>
       )}

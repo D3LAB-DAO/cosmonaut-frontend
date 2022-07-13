@@ -35,6 +35,7 @@ function L1C4U1S1Code() {
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [hide, setHide] = useState(true);
+  const [tabClick, setTabClick] = useState(false);
 
   // Code Example
   const file = L1C4U1S1PbFiles[fileName];

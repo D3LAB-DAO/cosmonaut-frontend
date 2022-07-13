@@ -5,8 +5,8 @@ import { useRecoilValue } from "recoil";
 import { chapterInfos } from "../../states/Information/chapterInfoAtoms";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
 
-const Navigate = tw.div`flex flex-wrap mt-8 mx-auto justify-center xl:gap-1 gap-2 rounded-3xl`;
-const Button = tw.button`bg-white xl:h-44 md:h-36 h-32 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/6 rounded-xl border-2 border-indigo-900 ease-in-out duration-300 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none hover:z-10 focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500`;
+const Navigate = tw.div`flex flex-wrap mt-5 mx-auto justify-center gap-1 rounded-3xl`;
+const Button = tw.button`bg-white  hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none hover:z-10 focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500 xl:h-44 md:h-36 h-32 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/6 rounded-xl border-2 border-indigo-900 ease-in-out duration-300 `;
 const ChNumber = tw.h2`h-1/2 w-full px-1 xl:pb-4 md:pb-3 pb-3 block md:text-base xl:text-lg text-xs font-heading text-indigo-900`;
 const ChTitle = tw.h3`h-1/2 w-full px-1 xl:pt-4 md:pt-3 pt-2 xl:text-sm text-center text-xs font-mono text-indigo-900`;
 
@@ -38,10 +38,17 @@ function StartModal() {
                 {engInfo[lessonID]?.title}
               </h4>
               <Navigate>
-                {chInfo[lessonID]?.map(e => {
+                {chInfo[lessonID]?.map((e, index) => {
+                  // const button = document.querySelectorAll("#btn");
+                  // const selectedBtn = button[chID - 1];
+
                   return (
                     <Button>
-                      <div class="block w-full h-full md:p-6 p-4 items-center divide-y-2 divide-indigo-900 justify-center">
+                      <div
+                        id="btn"
+                        key={index}
+                        class="block w-full h-full md:p-6 p-4 items-center divide-y-2 divide-indigo-900 justify-center"
+                      >
                         <ChNumber>Chapter {e.id}</ChNumber>
                         <ChTitle>{e.title}</ChTitle>
                       </div>
@@ -52,7 +59,7 @@ function StartModal() {
 
               <button
                 onClick={closeModal}
-                class="animate-bounce block mt-12 mb-72 mx-auto md:mb-4 text-center text-lg border-3 transition duration-200 rounded-full py-2 px-8 bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:border-white hover:to-blue-500 hover:text-white"
+                class="animate-moveUtoD block mt-12 mb-72 mx-auto md:mb-4 text-center text-lg border-3 transition duration-200 rounded-full py-2 px-8 bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:border-white hover:to-blue-500 hover:text-white"
               >
                 Get Started
               </button>

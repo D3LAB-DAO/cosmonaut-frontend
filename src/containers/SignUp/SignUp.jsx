@@ -6,6 +6,7 @@ import LogoV4 from "../../assets/images/logo-v4.svg";
 import GithubLogo from "../../assets/images/github-logo-black.svg";
 import GoogleLogo from "../../assets/images/google.svg";
 import Footer from "../../components/Footer/Footer";
+import GoogleLogin from "../../libs/api/GoogleLogin";
 
 const Container = tw.div`py-24 bg-space-3 relative pt-32`;
 const SignUpLogo = tw.a`flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200`;
@@ -34,14 +35,7 @@ function SignUp() {
                 />
                 <span>Sign in with Github</span>
               </SignUpLogo>
-              <SignUpLogo href="/">
-                <img
-                  class="block rounded-full bg-white py-1.5 px-1.5 w-8 h-8 mr-3"
-                  src={GoogleLogo}
-                  alt=""
-                />
-                <span>Sign in with Google</span>
-              </SignUpLogo>
+              <GoogleLogin />
               <p class="text-center text-orange-400 font-extrabold">
                 Already have accounts?
               </p>
