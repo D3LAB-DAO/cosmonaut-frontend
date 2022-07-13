@@ -1,6 +1,11 @@
 import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Header from "../../../../../../components/Contents/Header";
+import Markdown from "../../../../../../components/Contents/Markdown";
+import OrangeID from "../../../../../../components/Contents/OrangeID";
 import L1C4U1S6Code from "./L1C4U1S6Code";
 
 const Contents = tw.section`bg-black`;
@@ -21,30 +26,24 @@ function L1C4U1S6() {
       {/* Contents Part */}
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">6</span>
-          </ContentId>
+          <OrangeID>6</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    RevokeAll
-                  </h1>
+                  <Header>RevokeAll</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code1}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
-                RevokeAll은 핵심 기능을 담당하는 함수 revoke_all을 호출합니다.
-                revoke_all에서는 operators로부터 (sender, operator) 쌍을
-                제거합니다.
-              </ContentSpan>
+              <Markdown code={code1} />
+              <BasicP>
+                <CodeBlock>RevokeAll</CodeBlock> calls the function{" "}
+                <CodeBlock>revoke_all</CodeBlock>.{" "}
+                <CodeBlock>revoke_all</CodeBlock> removes the pair (
+                <CodeBlock>sender</CodeBlock>, <CodeBlock>operator</CodeBlock>)
+                from the operators.
+              </BasicP>
             </ContentDesc>
           </div>
         </div>

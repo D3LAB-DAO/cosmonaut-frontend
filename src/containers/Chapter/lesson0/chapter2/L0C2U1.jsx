@@ -21,8 +21,12 @@ $ wasmd version
     <>
       <Markdown code={code1} />
       <BasicA>
-        <a href="https://docs.cosmwasm.com/docs/0.14/getting-started/installation/">
-          https://docs.cosmwasm.com/docs/0.14/getting-started/installation/
+        <a
+          target="_blank"
+          href="https://docs.cosmwasm.com/docs/0.14/getting-started/installation/"
+          rel="noreferrer"
+        >
+          Installation | CosmWasm Document
         </a>
       </BasicA>
       <BasicP>

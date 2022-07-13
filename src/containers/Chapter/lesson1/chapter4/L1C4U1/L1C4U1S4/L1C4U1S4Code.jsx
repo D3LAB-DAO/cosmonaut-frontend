@@ -26,7 +26,7 @@ const ResultHeader = tw.div`border-b-3 border-blue-500 mx-2 px-2 mb-2 mt-4`;
 const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
-function L1C4U1S5Code() {
+function L1C4U1S4Code() {
   const editorRef = useRef(null);
   const { lessonID, chID } = useParams();
   const [fileName, setFileName] = useState("file1");
@@ -230,4 +230,4 @@ function L1C4U1S5Code() {
   );
 }
 
-export default L1C4U1S5Code;
+export default L1C4U1S4Code;

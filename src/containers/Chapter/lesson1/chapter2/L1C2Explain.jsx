@@ -5,7 +5,8 @@ function L1C2Explain() {
   return (
     <>
       <BasicP>
-        컨트랙트 그리고 각 NFT와 관련된 메타데이터를 다루는 확장입니다.
+        It is an extension that covers the metadata associated with contact and
+        each NFT.
       </BasicP>
     </>
   );

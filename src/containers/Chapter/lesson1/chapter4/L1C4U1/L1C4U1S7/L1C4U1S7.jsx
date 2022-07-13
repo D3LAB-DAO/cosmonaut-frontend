@@ -1,6 +1,12 @@
 import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Header from "../../../../../../components/Contents/Header";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
+import Markdown from "../../../../../../components/Contents/Markdown";
+import OrangeID from "../../../../../../components/Contents/OrangeID";
 import L1C4U1S7Code from "./L1C4U1S7Code";
 
 const Contents = tw.section`bg-black`;
@@ -39,65 +45,66 @@ function L1C4U1S7() {
       {/* Contents Part */}
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">7</span>
-          </ContentId>
+          <OrangeID>7</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    Mint
-                  </h1>
+                  <Header>Mint</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code1}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
-                CW721 스펙에 명시된 항목은 아니지만, 추가적으로 구현된
-                항목입니다.
-              </ContentSpan>
-              <ContentSpan>
-                mint는 info.sender가 적법한 민팅 권한을 가진 사람인지를
-                확인하고, 만일 그렇다면 토큰을 생성하게 됩니다.
-              </ContentSpan>
-              <ContentSpan>
-                토큰은 state.rs에 정의된 다음 TokenInfo 형태로 저장됩니다.
-              </ContentSpan>
+              <Markdown code={code1} />
+              <BasicP>
+                It is not specified in the CW721 Spec, but is additionally
+                implemented for convenience.
+              </BasicP>
+              <BasicP>
+                <CodeBlock>mint</CodeBlock> verifies that{" "}
+                <CodeBlock>info.sender</CodeBlock> is an address with a valid
+                minting permission. And if so, generates a new token.
+              </BasicP>
+              <BasicP>
+                Tokens are stored in the <CodeBlock>TokenInfo</CodeBlock>{" "}
+                defined on <CodeBlock>state.rs</CodeBlock>.
+              </BasicP>
 
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code2}
-                linkTarget="_blank"
-              />
-              <ContentList>owner: 새로 민팅된 NFT의 소유자 주소.</ContentList>
-              <ContentList>
-                approvals: 해당 토큰의 권한과 관련된 정보.
-              </ContentList>
-              <ContentList>
-                token_uri: 해당 NFT에 대한 자원식별자. ERC721 Metadata JSON
-                Schema를 따르는 파일을 참조하고 있어야 합니다.
-              </ContentList>
-              <ContentList>
-                extension: cw721-base 이외에 확장하고 싶은 메타데이터들을 추가할
-                수 있습니다.
-              </ContentList>
-              <ContentSpan>
-                토큰 식별자인 token_id로 self.tokens를 업데이트하고,
-                token_count를 1 증가시키는 함수인 increment_tokens를 호출합니다.
-                token_count는 state.rs에 다음과 같이 u64로 (cw_storage_plus의
-                Item을 통해) 정의되어 있습니다.
-              </ContentSpan>
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code3}
-                linkTarget="_blank"
-              />
+              <Markdown code={code2} />
+              <ListStyle>
+                <li>
+                  <CodeBlock>owner</CodeBlock>: 새로 민팅된 NFT의 소유자 주소.
+                </li>
+              </ListStyle>
+              <ListStyle>
+                <li>
+                  <CodeBlock>approvals</CodeBlock>: 해당 토큰의 권한과 관련된
+                  정보.
+                </li>
+              </ListStyle>
+              <ListStyle>
+                <li>
+                  <CodeBlock>token_uri</CodeBlock>: 해당 NFT에 대한 자원식별자.
+                  ERC721 Metadata JSON Schema를 따르는 파일을 참조하고 있어야
+                  합니다.
+                </li>
+              </ListStyle>
+              <ListStyle>
+                <li>
+                  <CodeBlock>extension</CodeBlock>: cw721-base 이외에 확장하고
+                  싶은 메타데이터들을 추가할 수 있습니다.
+                </li>
+              </ListStyle>
+              <BasicP>
+                Update <CodeBlock>self.token</CodeBlock> with token identifier{" "}
+                <CodeBlock>token_id</CodeBlock> and call
+                <CodeBlock>increment_token</CodeBlock> which is a function that
+                increases <CodeBlock>token_count</CodeBlock>
+                by 1. <CodeBlock>token_count</CodeBlock> is defined in{" "}
+                <CodeBlock>state.rs</CodeBlock> as u64 via the Item in
+                cw_storage_plus.
+              </BasicP>
+              <Markdown code={code3} />
             </ContentDesc>
           </div>
         </div>

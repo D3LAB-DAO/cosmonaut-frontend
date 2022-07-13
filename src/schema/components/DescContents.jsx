@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import Check from "../../components/Common/Icon/Check";
+import Header from "../../components/Contents/Header";
 
 import L0C1U1 from "../../containers/Chapter/lesson0/chapter1/L0C1U1";
 import L0C1U2 from "../../containers/Chapter/lesson0/chapter1/L0C1U2";
@@ -45,6 +46,9 @@ function ContentSchema({ unitInfo }) {
     if (lessonID === "0" && chID === "4" && uID === "2") {
       return <L0C4U2 />;
     }
+    if (lessonID === "0" && chID === "4" && uID === "3") {
+      return <L0C4U2 />;
+    }
   };
   return (
     <>
@@ -54,9 +58,7 @@ function ContentSchema({ unitInfo }) {
           <ContentTitle>
             <div class="flex sm:flex-nowrap">
               <div class="w-full lg:w-auto lg:pt-3 pt-2">
-                <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                  {unitInfo[uID - 1]?.subTitle}
-                </h1>
+                <Header>{unitInfo[uID - 1]?.subTitle}</Header>
               </div>
             </div>
           </ContentTitle>

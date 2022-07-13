@@ -20,7 +20,9 @@ $ export PATH=$PATH:/usr/local/go/bin
     <React.Fragment>
       <Markdown code={code1} />
       <BasicA>
-        <a href="https://go.dev/doc/install">https://go.dev/doc/install</a>
+        <a target="_blank" href="https://go.dev/doc/install" rel="noreferrer">
+          Download and install - The Go Programming Language
+        </a>
       </BasicA>
       <BasicP>
         You can install Go easily with the Go installer, or you can install it

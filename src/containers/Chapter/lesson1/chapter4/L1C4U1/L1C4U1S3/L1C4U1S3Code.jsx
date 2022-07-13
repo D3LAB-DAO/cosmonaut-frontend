@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import tw from "tailwind-styled-components";
-import { useMutation, useQueryClient } from "react-query";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import base64 from "base-64";
 import Editor from "@monaco-editor/react";
 import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
+import { L1C4U1S1PbFiles } from "./L1C4U1S1Files";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import Problem from "../../../../../../components/Contents/Problem";
+import MultiTab from "../../../../../../components/Contents/MultiTab";
+import CheckAnswer from "../../../../../../components/Contents/CheckAnswer";
+import Check from "../../../../../../components/Contents/Check";
+import SubmitAgain from "../../../../../../components/Contents/SubmitAgain";
+import Result from "../../../../../../components/Contents/Result";
+import Markdown from "../../../../../../components/Contents/Markdown";
+import Correct from "../../../../../../components/Contents/Correct";
+import Wrong from "../../../../../../components/Contents/Wrong";
+import HideAnswer from "../../../../../../components/Contents/HideAnswer";
+import { useParams } from "react-router-dom";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 
 const EditorDesc = tw.div`w-full lg:w-2/5 md:mx-0 mx-4`;
 const EditorCode = tw.div`w-full lg:w-3/5 md:mx-0`;
@@ -14,111 +26,104 @@ const ResultHeader = tw.div`border-b-3 border-blue-500 mx-2 px-2 mb-2 mt-4`;
 const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
 
-const problem1 = `
-#[allow(clippy::too_many_arguments)]
-pub fn _update_approvals(
-    &self,
-    deps: DepsMut,
-    env: &Env,
-    info: &MessageInfo,
-    spender: &str,
-    token_id: &str,
-    // if add == false, remove. if add == true, remove then set with this expiration
-    add: bool,
-    expires: Option<Expiration>,
-) -> Result<TokenInfo<T>, ContractError> {
-    let mut token = self.tokens.load(deps.storage, token_id)?;
-    // ensure we have permissions
-    self.check_can_approve(deps.as_ref(), env, info, &token)?;
-
-    // update the approval list (remove any for the same spender before adding)
-    // Question 1: validate spender_addr
-    // Do yourself!
-    // Question 2: iter 'token.approvals' to remove spender
-    // Do yourself!
-
-    // only difference between approve and revoke
-    if add {
-        // reject expired data as invalid
-        let expires = expires.unwrap_or_default();
-        if expires.is_expired(&env.block) {
-            return Err(ContractError::Expired {});
-        }
-        let approval = Approval {
-            spender: spender_addr,
-            expires,
-        };
-
-        // Question 3: add 'approval' into 'token.approvals'
-        // Do yourself!
-    }
-
-    self.tokens.save(deps.storage, token_id, &token)?;
-
-    Ok(token)
-}
-`;
-
 function L1C4U1S3Code() {
+  const editorRef = useRef(null);
+  const { lessonID, chID } = useParams();
+  const [fileName, setFileName] = useState("file1");
   const [code, setCode] = useState();
-  const queryClient = useQueryClient();
-  const codeEdit = useMutation(
-    code => axios.post("https://cosmonaut.free.beeceptor.com", code),
-    {
-      onSuccess: data => {
-        console.log(data);
-        const msg = "success";
-        alert(msg);
-      },
-      onError: () => {
-        alert("There was an Error");
-      },
-      onSettled: () => {
-        queryClient.invalidateQueries("create");
-      },
-    }
-  );
-  // let enc = base64.encode(code);
+  const [value, setValue] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [hide, setHide] = useState(true);
 
-  const onCodeEdit = () => {
-    codeEdit.mutate(code);
-    setCode(""); // state reset
-  };
+  // Code Example
+  const file = L1C4U1S1PbFiles[fileName];
+
+  useEffect(() => {
+    editorRef.current?.focus();
+    setFileName(fileName);
+  }, [fileName]);
+
   const handleEditor = value => {
     setCode(value);
+    window.localStorage?.setItem(file.name, base64?.encode(code));
   };
+
+  const myStorage = window.localStorage;
+  const option = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      lesson: lessonID,
+      chapter: chID,
+      files: {
+        file1: myStorage.file1,
+        file2: myStorage.file2,
+      },
+    }),
+  };
+
+  const submitData = async e => {
+    e.preventDefault();
+
+    setIsError(false);
+    setIsLoading(true);
+
+    try {
+      let res = await fetch("http://127.0.0.1:3334/cosm/build", option);
+      res = await res.json();
+      console.log("Success!!!");
+      console.log(res.result);
+      window.localStorage?.setItem(
+        "file1",
+        atob(decodeURIComponent(res.result.file1))
+      );
+      window.localStorage?.setItem(
+        "file2",
+        atob(decodeURIComponent(res.result.file2))
+      );
+
+      console.log(myStorage);
+      setIsSuccess(true);
+    } catch (error) {
+      console.log(error);
+      setIsError(true);
+    }
+
+    setIsLoading(false);
+  };
+
+  const ResFiles = {
+    file1: {
+      name: "file1",
+      language: "rust",
+      value: window.localStorage.getItem("file1"),
+    },
+    file2: {
+      name: "file2",
+      language: "rust",
+      value: window.localStorage.getItem("file2"),
+    },
+  };
+
+  const resFiles = ResFiles[fileName];
+  useEffect(() => {
+    setValue(resFiles.value);
+  }, [fileName]);
+
   return (
     <>
-      {/* Problem 1 */}
       <EditorDesc>
         <div class="bg-indigo-900 rounded-2xl overflow-y-auto snap-y px-6 md:p-10 h-720px py-6">
-          <h2 class="text-xl font-extrabold mb-6">Problem</h2>
-          <p class="text-xl snap-center font-medium mb-1">
-            1. 토큰 정보를 가져온다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            2. 송신자가 권한이 있는지를 확인한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            3. 지불자(spender)의 주소가 올바른지 검증한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            4. 토큰에 저장된 권한들을 반복을 통해 확인해, 이미 spender가
-            존재한다면 삭제한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            5. 만기가 유효한지 확인한다. 유효하다면 지불자와 만기 정보로 권한을
-            만든다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            6. 이 권한을 토큰의 권한들에 추가한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            7. 변경된 토큰 정보를 저장한다.
-          </p>
-          <p class="text-xl snap-center font-medium mb-1">
-            여기서 3번, 4번, 그리고 6번 과정에 해당하는 코드를 직접 채워봅시다.
-          </p>
+          <Problem>Problem</Problem>
+          <BasicP>
+            Let's fill in the code that corresponds to the process from three to
+            five.
+          </BasicP>
+          <BasicP>Don't worry. They are not complicated.</BasicP>
         </div>
       </EditorDesc>
       <EditorCode>
@@ -126,97 +131,98 @@ function L1C4U1S3Code() {
           <div class="container bg-indigo-900 rounded-xl w-full h-full overflow-y-auto">
             <EditorCodeHeader>
               <div class="grid md:grid-cols-4 grid-cols-3 text-center xl:max-w-max">
-                <Link to="file1">
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-blue-500 rounded-t-md focus:ring focus:ring-white">
-                    File1
-                  </p>
-                </Link>
-                <Link to="file2">
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
-                    File2
-                  </p>
-                </Link>
-                <Link to="file3">
-                  <p class="mr-1 py-3 px-2 md:px-4 md:mb-0 mb-1 overflow-auto bg-orange-400 rounded-t-md focus:ring focus:ring-white">
-                    File3
-                  </p>
-                </Link>
+                <button
+                  disabled={fileName === "file1"}
+                  onClick={async e => {
+                    e.preventDefault();
+                    setFileName("file1");
+                    setValue(...value);
+                  }}
+                >
+                  <MultiTab>Files1</MultiTab>
+                </button>
+                <button
+                  disabled={fileName === "file2"}
+                  onClick={async e => {
+                    e.preventDefault();
+                    setFileName("file2");
+                    setValue(...value);
+                  }}
+                >
+                  <MultiTab>Files2</MultiTab>
+                </button>
               </div>
             </EditorCodeHeader>
-            {codeEdit.isLoading ? (
-              <AnswerCheck />
-            ) : (
-              <>
-                <Editor
-                  height="60vh"
-                  defaultLanguage="rust"
-                  defaultValue={problem1}
-                  theme="vs-dark"
-                  onChange={handleEditor}
-                />
-                <Results>
-                  <ResultHeader>
-                    <div class="grid grid-cols-2 items-center justify-between mb-2">
-                      <h2 class="text-xl text-blue-500 md:text-3xl font-heading">
-                        Result
-                      </h2>
-                      <button
-                        onClick={onCodeEdit}
-                        class="block justify-self-end bg-white hover:bg-blue-50 font-heading text-blue-500 rounded-full border-3 border-blue-500 py-1 text-sm text-center w-48"
-                      >
-                        check your answer
-                      </button>
-                      {/* Check 표시 */}
-                      <a
-                        class="hidden justify-self-end bg-white hover:bg-blue-50 font-heading text-blue-500 rounded-full border-3 border-blue-500 py-1 text-sm text-center w-48"
-                        href="/"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 mx-auto"
-                          fill="none"
-                          viewbox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                          ></path>
-                        </svg>
-                      </a>
-                      {/* Submit Again */}
-                      <a
-                        class="hidden justify-self-end bg-white hover:bg-red-100 font-heading text-red-500 rounded-full border-3 border-red-500 py-1 text-sm text-center w-48"
-                        href="/"
-                      >
-                        submit again
-                      </a>
-                    </div>
-                  </ResultHeader>
-                  <ResultCode>
-                    <textarea
-                      class="w-full h-24 py-2 px-5 text-md bg-black text-white"
-                      name="field-name"
-                      rows="7"
-                      placeholder="Code here..."
-                    />
-                  </ResultCode>
-                  <ResultResponse>
-                    <p class="w-full px-6 flex mt-1 justify-end text-right font-heading text-green-500 underline text-sm md:text-xl">
-                      Correct! Jump to Next Chapter
-                    </p>
-                    <p class="w-full px-6 flex mt-1 justify-end text-right font-heading text-red-500 underline text-sm md:text-xl">
-                      Wrong! Wanna see the Answer?
-                    </p>
-                    <p class="w-full px-6 flex mt-1 justify-end text-right font-heading text-yellow-500 underline text-sm md:text-xl">
-                      Hide the Answer
-                    </p>
-                  </ResultResponse>
-                </Results>
-              </>
-            )}
+            <>
+              {isLoading ? (
+                <AnswerCheck />
+              ) : (
+                <>
+                  <Editor
+                    height="60vh"
+                    theme="vs-dark"
+                    path={file.name}
+                    defaultLanguage={file.language}
+                    defaultValue={file.value}
+                    value={isSuccess ? value : null}
+                    onMount={editor => (editorRef.current = editor)}
+                    onChange={handleEditor}
+                  />
+
+                  <Results>
+                    <ResultHeader>
+                      <div class="grid grid-cols-2 items-center justify-between mb-2">
+                        <Result>Result</Result>
+                        {isSuccess ? (
+                          <Check />
+                        ) : isError ? (
+                          <SubmitAgain>submit again</SubmitAgain>
+                        ) : (
+                          <CheckAnswer>
+                            <button onClick={submitData}>
+                              check your answer
+                            </button>
+                          </CheckAnswer>
+                        )}
+                      </div>
+                    </ResultHeader>
+                    <ResultCode>
+                      {hide ? null : (
+                        <>
+                          <ListStyle>
+                            <li>Owner is recorded in token.owner.</li>
+                            <li>Approvals are recorded in token.approvals.</li>
+                            <li>
+                              Uses addr_validate to verify the recipient address
+                              is correct. You can use
+                              deps.api.addr_validate(...) at this context of
+                              contract.
+                            </li>
+                          </ListStyle>
+                          <Markdown
+                            code={
+                              "fn addr_validate(&self, human: &str) -> StdResult<Addr>"
+                            }
+                          />
+                        </>
+                      )}
+                    </ResultCode>
+                    <ResultResponse>
+                      {isSuccess ? (
+                        <Correct>Correct! Jump to Next Chapter</Correct>
+                      ) : isError ? (
+                        <Wrong>Wrong! Wanna see the Answer?</Wrong>
+                      ) : null}
+                      <HideAnswer>
+                        <button onClick={async () => setHide(!hide)}>
+                          {hide ? "Show the Hints" : "Hide the Hints"}
+                        </button>
+                      </HideAnswer>
+                    </ResultResponse>
+                  </Results>
+                </>
+              )}
+            </>
           </div>
         </div>
       </EditorCode>

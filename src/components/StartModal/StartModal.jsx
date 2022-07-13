@@ -11,8 +11,7 @@ const ChNumber = tw.h2`h-1/2 w-full px-1 xl:pb-4 md:pb-3 pb-3 block md:text-base
 const ChTitle = tw.h3`h-1/2 w-full px-1 xl:pt-4 md:pt-3 pt-2 xl:text-sm text-center text-xs font-mono text-indigo-900`;
 
 function StartModal() {
-  const { lessonID } = useParams();
-  const { chID, uID } = useParams();
+  const { lessonID, uID } = useParams();
 
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);

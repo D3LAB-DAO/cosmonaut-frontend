@@ -1,6 +1,7 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
 import Header from "../../../../../../components/Contents/Header";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
@@ -58,23 +59,33 @@ function L1C4U11() {
               <Markdown code={code1} />
               <Markdown code={code2} />
               <BasicP>
-                TransferNft는 핵심 기능을 담당하는 함수 _tranfer_nft를
-                호출합니다. _tranfer_nft에서는 check_can_send를 통해 송신인
-                info.sender가 토큰을 전송할 권한이 있는지를 확인합니다.
+                <CodeBlock>TransferNft</CodeBlock> calls the function{" "}
+                <CodeBlock>_transfer_nft</CodeBlock> in which actual logic is
+                implemented.
               </BasicP>
               <BasicP>
-                적법한 송신인일 경우, 이후 토큰의 소유자를 recipient로 바꾸고,
-                기존 존재하던 권한들을 모두 제거합니다.
+                <CodeBlock>_transfer_nft</CodeBlock> verifies that sender{" "}
+                <CodeBlock>info</CodeBlock>.sender has valid approval to send
+                tokens via <CodeBlock>check_can_send</CodeBlock>. If he is a
+                legitimate sender, then change the owner of the token to
+                <CodeBlock>recipient</CodeBlock> and remove all existing
+                approvals.
               </BasicP>
-              <BasicP>_tranfer_nft의 흐름은 다음과 같습니다.</BasicP>
-              <ListStyle>1. 토큰 정보를 가져온다.</ListStyle>
+              <BasicP>
+                The flow of <CodeBlock>_transfer_nft</CodeBlock> is as follows:
+              </BasicP>
+              <ListStyle>1. Get token information.</ListStyle>
               <ListStyle>
-                2. 송신인이 적법한 권한을 가지고 있는지 확인한다.
+                2. Ensure that the sender has legitimate authority.
               </ListStyle>
-              <ListStyle>3. 수신인의 주소가 올바른지 검증한다.</ListStyle>
-              <ListStyle>4. 토큰의 소유자를 수신인으로 변경한다.</ListStyle>
-              <ListStyle>5. 기존 존재했던 권한들을 모두 제거한다.</ListStyle>
-              <ListStyle>6. 변경된 토큰 정보를 저장한다.</ListStyle>
+              <ListStyle>
+                3. Verify that the recipient's address is correct.
+              </ListStyle>
+              <ListStyle>
+                4. Change the owner of the token to the recipient.
+              </ListStyle>
+              <ListStyle>5. Remove all existing approvals.</ListStyle>
+              <ListStyle>6. Save the token information changed.</ListStyle>
             </ContentDesc>
           </div>
         </div>

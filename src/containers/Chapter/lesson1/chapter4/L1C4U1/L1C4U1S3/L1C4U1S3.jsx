@@ -1,6 +1,12 @@
 import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Header from "../../../../../../components/Contents/Header";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
+import Markdown from "../../../../../../components/Contents/Markdown";
+import OrangeID from "../../../../../../components/Contents/OrangeID";
 import L1C4U1S3Code from "./L1C4U1S3Code";
 
 const Contents = tw.section`bg-black`;
@@ -46,55 +52,52 @@ function L1C4U1S3() {
       {/* Contents Part */}
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">3</span>
-          </ContentId>
+          <OrangeID>3</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    Approve
-                  </h1>
+                  <Header>Approve</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code1}
-                linkTarget="_blank"
-              />
-
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code2}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
-                Approve는 핵심 기능을 담당하는 함수 _update_approvals를 add를
-                true로 하여 호출합니다.
-              </ContentSpan>
-              <ContentSpan>
-                _update_approvals에서는 add가 false인 경우에는 삭제를, true인
-                경우에는 우선 삭제 후 만기를 expires로 설정하여 등록합니다. 즉,
-                approval들의 컬렉션에서 spender 삭제한 다음, 만일 add가 true라면
-                재등록하는 것으로 업데이트를 구현했습니다. 보다 자세하게는
-                다음과 같습니다.
-              </ContentSpan>
-              <ContentSpan>
-                <ul class="list-disc text-lg font-normal ml-4 mt-3">
+              <Markdown code={code1} />
+              <Markdown code={code2} />
+              <BasicP>
+                <CodeBlock>Approve</CodeBlock> calls the function{" "}
+                <CodeBlock>_update_approval</CodeBlock> with add as true.
+              </BasicP>
+              <BasicP>
+                In <CodeBlock></CodeBlock>_update_approval, it deletes an
+                approval if <CodeBlock>add</CodeBlock> is false. Otherwise, it
+                also deletes an approval if <CodeBlock>add</CodeBlock> is true
+                but registers a new approval with <CodeBlock>expires</CodeBlock>
+                . In other words, it updates approvals by deleting{" "}
+                <CodeBlock>spender</CodeBlock> from the collection and then
+                re-registers with <CodeBlock>expire</CodeBlock> if{" "}
+                <CodeBlock>add</CodeBlock> is true. More specifically:
+              </BasicP>
+              <BasicP>
+                <ListStyle>
                   <li>
-                    우선 check_can_approve를 통해 권한이 있는지를 확인합니다.
+                    First, check whether you have a valid approval through
+                    <CodeBlock>check_can_approve</CodeBlock>.
                   </li>
-                  <li>approvals에서 spender가 존재하면 삭제합니다.</li>
                   <li>
-                    만일 add가 true라면 spender와 expires로부터 Approval을
-                    만들어 approvals에 추가합니다. 만기가 유효하지 않다면 에러를
-                    반환합니다.
+                    Delete <CodeBlock>spender</CodeBlock> in{" "}
+                    <CodeBlock>approvals</CodeBlock> if it exists.
                   </li>
-                </ul>
-              </ContentSpan>
+                  <li>
+                    Create <CodeBlock>Approval</CodeBlock> with{" "}
+                    <CodeBlock>spender</CodeBlock> and{" "}
+                    <CodeBlock>expires</CodeBlock> if add is true. Then,{" "}
+                    <CodeBlock>add</CodeBlock> it to{" "}
+                    <CodeBlock>approvals</CodeBlock>. Returns an error if
+                    expiration is invalid.
+                  </li>
+                </ListStyle>
+              </BasicP>
             </ContentDesc>
           </div>
         </div>

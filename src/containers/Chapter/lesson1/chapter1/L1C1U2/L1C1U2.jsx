@@ -5,6 +5,7 @@ import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
 import BasicP from "../../../../../components/Contents/BasicP";
 import GreenID from "../../../../../components/Contents/GreenID";
+import CodeBlock from "../../../../../components/Contents/CodeBlock";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -121,15 +122,18 @@ function L1C1U2() {
 
               <Markdown code={code2} />
               <BasicP>
-                주어진 token_id에 대한 소유권자를 반환합니다. 또한, 이 토큰에
-                대해 권한을 가지고 있는 주소들도 반환합니다. 만일 없는 토큰에
-                대해 질의했다면 에러를 반환합니다. 반환 타입은
-                OwnerOfResponse입니다.
+                Returns the owner of the given <CodeBlock>token_id</CodeBlock>.
+                It also returns addresses that have approval on this token.
+                Returns an error if queried about a token that does not exist.
               </BasicP>
               <BasicP>
-                include_expired를 설정하지 않거나 false로 설정할 경우 만기된
-                권한들을 무시합니다. 반대로, 만일 만기된 권한들도 확인하고
-                싶다면 해당 값을 true로 설정해야 합니다.
+                Return type is <CodeBlock>OwnerOfResponse</CodeBlock>.
+              </BasicP>
+              <BasicP>
+                If <CodeBlock>include_expired</CodeBlock> is not set or set to
+                false, the expired approvals are ignored. On the other hand, if
+                you want to see expired approvals, you have to set the value to
+                true.
               </BasicP>
             </ContentDesc>
           </div>
@@ -149,14 +153,18 @@ function L1C1U2() {
               <Markdown code={code3} />
               <Markdown code={code4} />
               <BasicP>
-                토큰 token_id의 spender에 대한 권한 정보를 반환합니다. 반환
-                타입은 ApprovalResponse입니다. 만일 권한 정보를 찾을 수 없다면
-                에러를 반환합니다.
+                Returns approval for <CodeBlock>spender</CodeBlock> of{" "}
+                <CodeBlock>token_id</CodeBlock> token. Returns an error if
+                approval information is not found.
               </BasicP>
               <BasicP>
-                include_expired를 설정하지 않거나 false로 설정할 경우 만기된
-                권한들을 무시합니다. 반대로, 만일 만기된 권한들도 확인하고
-                싶다면 해당 값을 true로 설정해야 합니다.
+                Return type is <CodeBlock>ApprovalResponse</CodeBlock>.
+              </BasicP>
+              <BasicP>
+                If <CodeBlock>include_expired</CodeBlock> is not set or set to
+                false, the expired approvals are ignored. On the other hand, if
+                you want to see expired approvals, you have to set the value to
+                true.
               </BasicP>
             </ContentDesc>
           </div>
@@ -176,13 +184,16 @@ function L1C1U2() {
               <Markdown code={code5} />
               <Markdown code={code6} />
               <BasicP>
-                토큰 token_id에 접근이 허가된, 권한이 있는 모든 사용자들을
-                반환합니다. 반환 타입은 ApprovalsResponse입니다.
+                Returns all authorized users who have access to token{" "}
+                <CodeBlock>token_id</CodeBlock>.
               </BasicP>
               <BasicP>
-                include_expired를 설정하지 않거나 false로 설정할 경우 만기된
-                권한들을 무시합니다. 반대로, 만일 만기된 권한들도 확인하고
-                싶다면 해당 값을 true로 설정해야 합니다.
+                Return type is <CodeBlock>ApprovalsResponse</CodeBlock>.
+              </BasicP>
+              <BasicP>
+                If 'include_expired' is not set or set to false, the expired
+                approvals are ignored. On the other hand, if you want to see
+                expired approvals, you have to set the value to true.
               </BasicP>
             </ContentDesc>
           </div>
@@ -202,27 +213,23 @@ function L1C1U2() {
               <Markdown code={code7} />
               <Markdown code={code8} />
               <BasicP>
-                owner가 권한을 준 모든 operator를 반환합니다. 반환 타입은
-                OperatorsResponse입니다.
+                Returns all <CodeBlock>operators</CodeBlock> authorized by{" "}
+                <CodeBlock>owner</CodeBlock>. Return type is
+                <CodeBlock>OperatorsResponse</CodeBlock>.
               </BasicP>
               <BasicP>
-                include_expired를 설정하지 않거나 false로 설정할 경우 만기된
-                권한들을 무시합니다. 반대로, 만일 만기된 권한들도 확인하고
-                싶다면 해당 값을 true로 설정해야 합니다.
+                If <CodeBlock>include_expired</CodeBlock> is not set or set to
+                false, the expired approvals are ignored. On the other hand, if
+                you want to see expired approvals, you have to set the value to
+                true.
               </BasicP>
               <BasicP>
-                만일 start_after를 설정하지 않으면 해당 질의는 operators에 대해
-                사전순으로 처음 결과부터 반환할 것입니다. 반대로 start_after가
-                설정되어 있다면, 해당 주소에서부터 limit개 만큼의 operators를
-                반환합니다.
-              </BasicP>
-              <BasicP>
-                만일 limit를 설정하지 않으면 기본값 DEFAULT_LIMIT으로
-                설정됩니다. 또한 최대 제한인 MAX_LIMIT을 넘을 수 없으며, 만일
-                그보다 큰 경우 MAX_LIMIT로 조정됩니다. DEFAULT_LIMIT와
-                MAX_LIMIT는 컨트랙트가 임의 설정할 수 있는, CW721 Spec을 해치지
-                않는, 변경할 수 있는 값입니다. 기본값이자 추천하는 값은
-                MAX_LIMIT 30 그리고 DEFAULT_LIMIT 10입니다.
+                If <CodeBlock>start_after</CodeBlock> is not set, the query will
+                be returned from the beginning in a dictionary order for{" "}
+                <CodeBlock>operators</CodeBlock>. If{" "}
+                <CodeBlock>start_after</CodeBlock> is set, returns{" "}
+                <CodeBlock>operators</CodeBlock> as many as{" "}
+                <CodeBlock>limit</CodeBlock> from that address.
               </BasicP>
             </ContentDesc>
           </div>
@@ -242,8 +249,8 @@ function L1C1U2() {
               <Markdown code={code9} />
               <Markdown code={code10} />
               <BasicP>
-                발행된 모든 토큰의 개수를 반환합니다. 반환 타입은
-                NumTokensResponse입니다.
+                Returns the number of all issued tokens. Return type is
+                <CodeBlock> NumTokensResponse</CodeBlock>.
               </BasicP>
             </ContentDesc>
           </div>

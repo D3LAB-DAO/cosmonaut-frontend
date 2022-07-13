@@ -3,7 +3,7 @@ import React from "react";
 function CodeBlock(props) {
   return (
     <>
-      <code class="text-orange-500 font-bold lg:text-base text-lg mb-4 mx-1">
+      <code class="inline-block w-fit leading-snug bg-indigo-100 bg-opacity-20 font-bold px-1 rounded-sm text-orange-400">
         {props.children}
       </code>
     </>

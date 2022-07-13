@@ -6,12 +6,14 @@ import LogoV4 from "../../assets/images/logo-v4.svg";
 import GithubLogo from "../../assets/images/github-logo-black.svg";
 import GoogleLogo from "../../assets/images/google.svg";
 import Footer from "../../components/Footer/Footer";
-import GoogleLogin from "../../libs/api/GoogleLogin";
 
 const Container = tw.div`py-24 bg-space-3 relative pt-32`;
-const SignUpLogo = tw.a`flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200`;
-
 function SignUp() {
+  // const googleBtn = document.querySelectorAll("#google");
+  // const btn = googleBtn.addEventListener("click", async e => {
+  //   e.preventDefault();
+  // });
+
   return (
     <>
       <Navbar />
@@ -27,15 +29,32 @@ function SignUp() {
               </p>
             </div>
             <div>
-              <SignUpLogo href="/">
+              <a
+                target="_blank"
+                href="http://127.0.0.1:3334/auth/login/federated/github"
+                class="flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200"
+                rel="noreferrer"
+              >
                 <img
                   class="block rounded-full bg-white py-1.5 px-1.5 w-8 h-8 mr-3"
                   src={GithubLogo}
                   alt=""
                 />
                 <span>Sign in with Github</span>
-              </SignUpLogo>
-              <GoogleLogin />
+              </a>
+              <a
+                target="_blank"
+                href="http://127.0.0.1:3334/auth/login/federated/google"
+                class="flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200"
+                rel="noreferrer"
+              >
+                <img
+                  class="block rounded-full bg-white py-1.5 px-1.5 w-8 h-8 mr-3"
+                  src={GoogleLogo}
+                  alt=""
+                />
+                <span>Sign in with Google</span>
+              </a>
               <p class="text-center text-orange-400 font-extrabold">
                 Already have accounts?
               </p>

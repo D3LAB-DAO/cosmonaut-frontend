@@ -27,8 +27,12 @@ $ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","add
         can also use a network that already exists publically.
       </BasicP>
       <BasicA>
-        <a href="https://rpc.cliffnet.cosmwasm.com/status">
-          https://rpc.cliffnet.cosmwasm.com/status
+        <a
+          target="_blank"
+          href="https://rpc.cliffnet.cosmwasm.com/status"
+          rel="noreferrer"
+        >
+          rpc.cliffnet.cosmwasm.com
         </a>
       </BasicA>
       <BasicP>
@@ -36,8 +40,12 @@ $ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","add
         whether it's working well or not from the following URL.
       </BasicP>
       <BasicA>
-        <a href="https://block-explorer.cliffnet.cosmwasm.com/">
-          https://block-explorer.cliffnet.cosmwasm.com/
+        <a
+          target="_blank"
+          href="https://block-explorer.cliffnet.cosmwasm.com/"
+          rel="noreferrer"
+        >
+          block-explorer.cliffnet.cosmwasm
         </a>
       </BasicA>
       <BasicP>

@@ -53,7 +53,9 @@ $ cargo --version
     <>
       <Markdown code={code1} />
       <BasicA>
-        <a href="https://rustup.rs">https://rustup.rs</a>
+        <a target="_blank" href="https://rustup.rs" rel="noreferrer">
+          rustup.rs
+        </a>
       </BasicA>
       <BasicP>
         <CodeBlock>rustup</CodeBlock> is one of the easiest ways to install
@@ -62,8 +64,12 @@ $ cargo --version
 
       <Markdown code={code2} />
       <BasicA>
-        <a href="https://forge.rust-lang.org/infra/other-installation-methods.html">
-          https://forge.rust-lang.org/infra/other-installation-methods.html
+        <a
+          target="_blank"
+          href="https://forge.rust-lang.org/infra/other-installation-methods.html"
+          rel="noreferrer"
+        >
+          Rust Forge - Other Rust Installation Methods
         </a>
       </BasicA>
       <BasicP>

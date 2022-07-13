@@ -13,7 +13,7 @@ import LsDesc from "./components/LSDesc";
 import Navigator from "../components/Navigator/Navigator";
 import StartModal from "../components/StartModal/StartModal";
 import SmallNavigator from "../components/Navigator/SmallNavigator";
-import L1C4Desc from "../containers/Chapter/lesson1/L1C4Desc";
+import L1C4PlusDesc from "../containers/Chapter/lesson1/L1C4PlusDesc";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
@@ -31,7 +31,7 @@ function LsDescSchema() {
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
         <LsDesc />
-        {chID === "4" && uID === "1" && sID === "0" ? <L1C4Desc /> : null}
+        {chID === "4" && uID === "1" && sID === "0" ? <L1C4PlusDesc /> : null}
       </Background>
       <Footer />
       {chID === "4" ? <SmallNavigator /> : <Navigator />}

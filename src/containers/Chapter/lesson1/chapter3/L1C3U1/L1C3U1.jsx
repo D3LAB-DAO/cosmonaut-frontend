@@ -5,6 +5,7 @@ import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
 import BasicP from "../../../../../components/Contents/BasicP";
 import OrangeID from "../../../../../components/Contents/OrangeID";
+import CodeBlock from "../../../../../components/Contents/CodeBlock";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -56,28 +57,36 @@ function L1C3U1() {
               <Markdown code={code1} />
               <Markdown code={code2} />
               <BasicP>
-                주어진 소유자 owner의 모든 토큰을 나열합니다. 반환 타입은
-                TokensResponse입니다. 토큰들은 사전순으로 나열되어 있습니다.
+                Lists all tokens of the given <CodeBlock>owner</CodeBlock>.
+                Return type is
+                <CodeBlock>TokensResponse</CodeBlock>. The tokens are listed in
+                alphabetical order.
               </BasicP>
               <BasicP>
-                만일 start_after를 설정하지 않으면 해당 질의는 토큰들에 대해
-                사전순으로 처음 결과부터 반환할 것입니다. 반대로 start_after가
-                설정되어 있다면, 해당 주소에서부터 limit개 만큼의 토큰들을
-                반환합니다.
+                If <CodeBlock>start_after</CodeBlock> is not set, the query will
+                return the results from the beginning in a dictionary order for
+                the tokens. If
+                <CodeBlock>start_after</CodeBlock> is set, returns as many as{" "}
+                <CodeBlock>limit</CodeBlock> tokens from that address.
               </BasicP>
               <BasicP>
-                만일 limit를 설정하지 않으면 기본값 DEFAULT_LIMIT으로
-                설정됩니다. 또한 최대 제한인 MAX_LIMIT을 넘을 수 없으며, 만일
-                그보다 큰 경우 MAX_LIMIT로 조정됩니다. DEFAULT_LIMIT와
-                MAX_LIMIT는 컨트랙트가 임의 설정할 수 있는, CW721 Spec을 해치지
-                않는, 변경할 수 있는 값입니다. 기본값이자 추천하는 값은
-                MAX_LIMIT 30 그리고 DEFAULT_LIMIT 10입니다.
+                If <CodeBlock>limit</CodeBlock> is not set, the default value is{" "}
+                <CodeBlock>DEFAULT_LIMIT</CodeBlock>. In addition, it cannot
+                exceed the maximum limit of <CodeBlock>MAX_LIMIT</CodeBlock>,
+                and if it is greater than that, it will be adjusted to{" "}
+                <CodeBlock>MAX_LIMIT</CodeBlock>.
+                <CodeBlock>DEFAULT_LIMIT</CodeBlock> and{" "}
+                <CodeBlock>MAX_LIMIT</CodeBlock> are values that can be
+                arbitrarily set by the contract without harming the CW721 Spec.
+                The default and recommended values are 30 for{" "}
+                <CodeBlock>MAX_LIMIT</CodeBlock> and 10 for
+                <CodeBlock>DEFAULT_LIMIT</CodeBlock>.
               </BasicP>
               <BasicP>
-                만일 질의할 토큰 개수가 limit보다 많다면, 이번 질의의 마지막
-                값을 다음 질의의 start_after로 설정해 연속적으로 질의하면
-                됩니다. 이를 통해 직관적인 페이지네이션(pagination)을 수행할 수
-                있습니다.
+                If the number of tokens to query is greater than{" "}
+                <CodeBlock>limit</CodeBlock>, you can continuously set{" "}
+                <CodeBlock>start_after</CodeBlock> of the next query to the last
+                value of this current one. It makes pagination intuitive.
               </BasicP>
             </ContentDesc>
           </div>
@@ -96,8 +105,11 @@ function L1C3U1() {
             <ContentDesc>
               <Markdown code={code3} />
               <BasicP>
-                페이지네이션을 통해 컨트랙트가 관리하는 모든 token_id를
-                반환합니다. 반환 타입은 TokensResponse입니다.
+                Returns all <CodeBlock>token_id</CodeBlock> managed by the
+                contract through pagination.
+              </BasicP>
+              <BasicP>
+                Return type is <CodeBlock>TokensResponse</CodeBlock>.
               </BasicP>
             </ContentDesc>
           </div>

@@ -1,7 +1,12 @@
 import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
-import L1C4U1S4Code from "./L1C4U1U4Code";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Header from "../../../../../../components/Contents/Header";
+import Markdown from "../../../../../../components/Contents/Markdown";
+import OrangeID from "../../../../../../components/Contents/OrangeID";
+import L1C4U1S4Code from "./L1C4U1S4Code";
 
 const Contents = tw.section`bg-black`;
 const ContentId = tw.div`flex justify-center items-center lg:mr-6 md:mr-4 mr-0 rounded-full bg-gradient-to-r from-yellow-500 to-orange-400 border-3 border-indigo-900 lg:w-14 lg:h-14 h-12 w-12 md:shadow-md shadow-sm`;
@@ -23,30 +28,25 @@ function L1C4U1S4() {
       {/* Contents Part */}
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">4</span>
-          </ContentId>
+          <OrangeID>4</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    Revoke
-                  </h1>
+                  <Header>Revoke</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code1}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
-                위 _update_approvals의 동작을 이해했다면 Revoke도 쉽게 구현할 수
-                있습니다. _update_approvals를 add를 false로 하여 호출하면
-                됩니다.
-              </ContentSpan>
+              <Markdown code={code1} />
+              <BasicP>
+                If you understand the flow of the above{" "}
+                <CodeBlock>_update_approvals</CodeBlock>, you may easily
+                implement
+                <CodeBlock>Revoke</CodeBlock>. Call
+                <CodeBlock>_update_approvals</CodeBlock> with
+                <CodeBlock>add</CodeBlock> as false.
+              </BasicP>
             </ContentDesc>
           </div>
         </div>

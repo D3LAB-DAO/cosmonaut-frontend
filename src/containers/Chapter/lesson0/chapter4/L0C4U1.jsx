@@ -32,23 +32,30 @@ $ RUSTFLAGS='-C link-arg=-s' cargo wasm
       <BasicP>
         Let's compile an example contract and create a wasm binary excutable. It
         is based on
-        <a
-          class="mx-1 underline font-bold lg:text-base text-sm mb-4"
-          href="https://github.com/InterWasm/cw-contracts"
-        >
-          cw-contracts
-        </a>
+        <BasicA>
+          <a
+            target="_blank"
+            href="https://github.com/InterWasm/cw-contracts"
+            rel="noreferrer"
+          >
+            cw-contracts
+          </a>
+        </BasicA>
         , which has many examples.
       </BasicP>
       <BasicP>
-        We will use a famous one, <CodeBlock>nameservice.</CodeBlock>
+        We will use a famous one, <CodeBlock>nameservice</CodeBlock>.
       </BasicP>
       <BasicP>First, get the code from the github.</BasicP>
 
       <Markdown code={code2} />
       <BasicA>
-        <a href="https://rust-lang.github.io/rustup/concepts/toolchains.html">
-          https://rust-lang.github.io/rustup/concepts/toolchains.html
+        <a
+          target="_blank"
+          href="https://rust-lang.github.io/rustup/concepts/toolchains.html"
+          rel="noreferrer"
+        >
+          rust-lang.github.io/rustup/concepts/toolchains.html
         </a>
       </BasicA>
       <BasicP>

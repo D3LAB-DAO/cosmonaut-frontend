@@ -16,6 +16,7 @@ import Correct from "../../../../../../components/Contents/Correct";
 import Wrong from "../../../../../../components/Contents/Wrong";
 import HideAnswer from "../../../../../../components/Contents/HideAnswer";
 import { useParams } from "react-router-dom";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 
 const EditorDesc = tw.div`w-full lg:w-2/5 md:mx-0 mx-4`;
 const EditorCode = tw.div`w-full lg:w-3/5 md:mx-0`;
@@ -35,19 +36,9 @@ function L1C4U1S1Code() {
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [hide, setHide] = useState(true);
-  const [tabClick, setTabClick] = useState(false);
 
   // Code Example
   const file = L1C4U1S1PbFiles[fileName];
-
-  const code1 = `
-\`\`\`rust
-Tokens {
-  owner: String,
-  start_after: Option<String>,
-  limit: Option<u32>,
-},
-\`\`\``;
 
   useEffect(() => {
     editorRef.current?.focus();
@@ -82,7 +73,7 @@ Tokens {
     setIsLoading(true);
 
     try {
-      let res = await fetch("http://127.0.0.1:3334/cosm/build", option);
+      let res = await fetch("http://127.0.0.1:3334/rust/fmt", option);
       res = await res.json();
       console.log("Success!!!");
       console.log(res.result);
@@ -129,9 +120,10 @@ Tokens {
         <div class="bg-indigo-900 rounded-2xl overflow-y-auto snap-y px-6 md:p-10 h-720px py-6">
           <Problem>Problem</Problem>
           <BasicP>
-            여기서 3번에서 5번까지의 과정에 해당하는 코드를 직접 채워봅시다.
+            Let's fill in the code that corresponds to the process from three to
+            five.
           </BasicP>
-          <BasicP>걱정하지 마세요. 간단한 코드들입니다.</BasicP>
+          <BasicP>Don't worry. They are not complicated.</BasicP>
         </div>
       </EditorDesc>
       <EditorCode>
@@ -172,7 +164,7 @@ Tokens {
                     path={file.name}
                     defaultLanguage={file.language}
                     defaultValue={file.value}
-                    value={value}
+                    value={isSuccess ? value : null}
                     onMount={editor => (editorRef.current = editor)}
                     onChange={handleEditor}
                   />
@@ -195,7 +187,25 @@ Tokens {
                       </div>
                     </ResultHeader>
                     <ResultCode>
-                      {hide ? null : <Markdown code={code1} />}
+                      {hide ? null : (
+                        <>
+                          <ListStyle>
+                            <li>Owner is recorded in token.owner.</li>
+                            <li>Approvals are recorded in token.approvals.</li>
+                            <li>
+                              Uses addr_validate to verify the recipient address
+                              is correct. You can use
+                              deps.api.addr_validate(...) at this context of
+                              contract.
+                            </li>
+                          </ListStyle>
+                          <Markdown
+                            code={
+                              "fn addr_validate(&self, human: &str) -> StdResult<Addr>"
+                            }
+                          />
+                        </>
+                      )}
                     </ResultCode>
                     <ResultResponse>
                       {isSuccess ? (
@@ -205,7 +215,7 @@ Tokens {
                       ) : null}
                       <HideAnswer>
                         <button onClick={async () => setHide(!hide)}>
-                          {hide ? "Show the Answer" : "Hide the Answer"}
+                          {hide ? "Show the Hints" : "Hide the Hints"}
                         </button>
                       </HideAnswer>
                     </ResultResponse>

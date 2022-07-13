@@ -2,6 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import UnitName from "../../../../../components/Common/UnitName";
 import BasicP from "../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../components/Contents/CodeBlock";
 import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
 import OrangeID from "../../../../../components/Contents/OrangeID";
@@ -79,8 +80,12 @@ function L1C2U1() {
               <Markdown code={code1} />
               <Markdown code={code2} />
               <BasicP>
-                name이나 symbol같은 컨트랙트 레벨의 메타데이터를 반환합니다.
-                반환 타입은 ContractInfoResponse입니다.
+                Returns the metadata at the contract level such as{" "}
+                <CodeBlock>name</CodeBlock> or
+                <CodeBlock>symbol</CodeBlock>.
+              </BasicP>
+              <BasicP>
+                Return type is <CodeBlock>ContractInfoResponse</CodeBlock>.
               </BasicP>
             </ContentDesc>
           </div>
@@ -100,12 +105,17 @@ function L1C2U1() {
               <Markdown code={code3} />
               <Markdown code={code4} />
               <BasicP>
-                하나의 토큰 token_id에 대한 메타데이터를 반환합니다. 반환 타입은
-                NftInfoResponse입니다. token_uri는 ERC721 Metadata JSON Schema
-                <a href="https://eips.ethereum.org/EIPS/eip-721">
+                Returns metadata for one <CodeBlock>token_id</CodeBlock> token.
+              </BasicP>
+              <BasicP>
+                Return type is <CodeBlock>NftInfoResponse</CodeBlock>.
+              </BasicP>
+              <BasicP>
+                <CodeBlock>token_uri</CodeBlock> should be referencing the JSON
+                file following the [ERC721 Metadata JSON Schema]
+                <a class="block" href="https://eips.ethereum.org/EIPS/eip-721">
                   (https://eips.ethereum.org/EIPS/eip-721)
                 </a>
-                를 따르는 JSON 파일을 참조하고 있어야 합니다.
               </BasicP>
             </ContentDesc>
           </div>
@@ -125,15 +135,23 @@ function L1C2U1() {
               <Markdown code={code5} />
               <Markdown code={code6} />
               <BasicP>
-                NftInfo와 OwnerOf를 하나의 질의만으로 반환합니다. 최적화를 위해
-                사용될 수 있습니다. 반환 타입은 AllNftInfoResponse이며, 이는
-                NftInfo와 OwnerOf 질의 각각의 반환 타입에 해당하는
-                OwnerOfResponse와 NftInfoResponse를 포함합니다.
+                Returns <CodeBlock>NftInfo</CodeBlock> and{" "}
+                <CodeBlock>OwnerOf</CodeBlock> in only one query. It can be used
+                for optimization.
               </BasicP>
               <BasicP>
-                include_expired를 설정하지 않거나 false로 설정할 경우 만기된
-                권한들을 무시합니다. 반대로, 만일 만기된 권한들도 확인하고
-                싶다면 해당 값을 true로 설정해야 합니다.
+                Return type is <CodeBlock>AllNftInfoResponse</CodeBlock>, which
+                includes
+                <CodeBlock>OwnerOfResponse</CodeBlock> and{" "}
+                <CodeBlock>NftInfoResponse</CodeBlock> for each return type of
+                <CodeBlock>NftInfo</CodeBlock> and{" "}
+                <CodeBlock>OwnerOf</CodeBlock> query.
+              </BasicP>
+              <BasicP>
+                If <CodeBlock>include_expired</CodeBlock> is not set or set to
+                false, the expired approvals are ignored. On the other hand, if
+                you want to see expired approvals, you have to set the value to
+                true.
               </BasicP>
             </ContentDesc>
           </div>

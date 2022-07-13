@@ -1,6 +1,11 @@
 import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Header from "../../../../../../components/Contents/Header";
+import Markdown from "../../../../../../components/Contents/Markdown";
+import OrangeID from "../../../../../../components/Contents/OrangeID";
 import L1C4U1S5Code from "./L1C4U1S5Code";
 
 const Contents = tw.section`bg-black`;
@@ -23,31 +28,27 @@ function L1C4U1S5() {
       {/* Contents Part */}
       <Contents>
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <ContentId>
-            <span class="text-center font-heading text-2xl text-black">5</span>
-          </ContentId>
+          <OrangeID>5</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <h1 class="text-center md:text-left xl:text-2xl font-extrabold text-xl">
-                    ApproveAll
-                  </h1>
+                  <Header>ApproveAll</Header>
                 </div>
               </div>
             </ContentTitle>
             <ContentDesc>
-              <MDEditor.Markdown
-                style={{ padding: 2 }}
-                source={code1}
-                linkTarget="_blank"
-              />
-              <ContentSpan>
-                ApproveAll은 핵심 기능을 담당하는 함수 approve_all을 호출합니다.
-                approve_all에서는 우선 만기 expires가 유효한지를 확인합니다.
-                이후 (권한 부여자 sender에 대한, 권한 수여자 operator 정보) 쌍을
-                키로, 만기를 값으로 하여 operators에 등록합니다.
-              </ContentSpan>
+              <Markdown code={code1} />
+              <BasicP>
+                <CodeBlock></CodeBlock>ApproveAll calls the function{" "}
+                <CodeBlock>approve_all</CodeBlock>, which is the key
+                implementation that verifies whether{" "}
+                <CodeBlock>expires</CodeBlock> is valid. Then, register{" "}
+                <CodeBlock>expires</CodeBlock> to{" "}
+                <CodeBlock>operators</CodeBlock> with the pair (
+                <CodeBlock>sender</CodeBlock>, <CodeBlock>operator</CodeBlock>)
+                as the key.
+              </BasicP>
             </ContentDesc>
           </div>
         </div>

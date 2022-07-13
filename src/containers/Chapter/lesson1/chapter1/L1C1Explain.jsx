@@ -5,12 +5,13 @@ function L1C1Explain() {
   return (
     <>
       <BasicP>
-        Base에서는 고유한 ID(컨트랙트 안에서 고유한 임의의 문자열)와 소유자를
-        가지는 토큰을 중심으로, 이와 관련된 소유권, 전송, 그리고 허가와 관련된
-        요소를 다루고 있습니다.
+        The core of CW721 Base is a token with a unique ID and owner. And Base
+        also handles ownership, transfer and authorization related to that
+        token.
         <br />
         <br />
-        Base는 모든 CW721 컨트랙트가 준수해야하는 필수 스펙입니다.
+        Base is an indispensable specification that all CW721 contracts must
+        contain.
       </BasicP>
     </>
   );

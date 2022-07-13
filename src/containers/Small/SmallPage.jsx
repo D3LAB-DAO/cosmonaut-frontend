@@ -13,7 +13,7 @@ function SmallPage() {
   } else if (
     lessonID === "1" &&
     chID === "4" &&
-    uID === "1" &&
+    (uID === "1" || "2" || "3") &&
     (sID === "1" || "2")
   ) {
     return <EditorSchema />;
