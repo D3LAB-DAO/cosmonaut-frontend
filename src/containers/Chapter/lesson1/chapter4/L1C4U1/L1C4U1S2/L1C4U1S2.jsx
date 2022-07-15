@@ -42,8 +42,8 @@ function L1C4U1S2() {
                 The core of <CodeBlock>SendNft</CodeBlock> is also{" "}
                 <CodeBlock>_transfer_nft</CodeBlock>. But after the processing
                 of that function, it sends the{" "}
-                <CodeBlock>Cw721ReceiveMsg</CodeBlock>
-                message discussed by the Receiver to the contract.
+                <CodeBlock>Cw721ReceiveMsg</CodeBlock> message discussed by the
+                Receiver to the contract.
               </BasicP>
             </ContentDesc>
           </div>

@@ -14,6 +14,12 @@ function UnitPage() {
     return <LsDescSchema />;
   } else if (lessonID === "1" && (chID === "1" || "2" || "3") && uID === "1") {
     return <ChDescSchema />;
+  } else if (
+    lessonID === "2" &&
+    (chID === "1" || "2" || "3" || "4" || "5") &&
+    uID === "1"
+  ) {
+    return <ChDescSchema />;
   } else {
     return <UnDescSchema />;
   }

@@ -7,7 +7,15 @@ import CornerNail from "../../components/Common/Icon/CornerNail";
 import L1AboutCode from "../../containers/Chapter/lesson1/L1AboutCode";
 import L1C4AboutCode from "../../containers/Chapter/lesson1/L1C4AboutCode";
 import L1C4Desc from "../../containers/Chapter/lesson1/L1C4Desc";
+import L1C5AboutCode from "../../containers/Chapter/lesson1/L1C5AboutCode";
+import L1C5Desc from "../../containers/Chapter/lesson1/L1C5Desc";
 import L1Desc from "../../containers/Chapter/lesson1/L1Desc";
+import L2C6AboutCode from "../../containers/Chapter/lesson2/chapter6/L2C6AboutCode";
+import L2C6Desc from "../../containers/Chapter/lesson2/chapter6/L2C6Desc";
+import L2C7AboutCode from "../../containers/Chapter/lesson2/chapter7/L2C7AboutCode";
+import L2C7Desc from "../../containers/Chapter/lesson2/chapter7/L2C7Desc";
+import L2AboutCode from "../../containers/Chapter/lesson2/L2AboutCode";
+import L2Desc from "../../containers/Chapter/lesson2/L2Desc";
 import NotFound from "../../error/NotFound";
 
 const Container = tw.div`container mx-auto md:px-10 px-4 md:mb-20 mb-16`;
@@ -16,14 +24,22 @@ const Side = tw.div`lg:w-2/5 flex w-full px-4 items-center lg:px-12`;
 const ImgBulb = tw.div`md:py-2 flex justify-center text-orange-400 py-0`;
 
 function LSDesc() {
-  const { lessonID, chID, uID } = useParams();
+  const { lessonID, chID, uID, sID } = useParams();
   console.log(lessonID, chID);
 
   const ChDesc = () => {
     if (lessonID === "1" && chID === "1" && uID === "0") {
       return <L1Desc />;
-    } else if (lessonID === "1" && chID === "4" && uID === "1") {
+    } else if (lessonID === "1" && chID === "4" && uID === "1" && sID === "0") {
       return <L1C4Desc />;
+    } else if (lessonID === "1" && chID === "5" && uID === "1" && sID === "0") {
+      return <L1C5Desc />;
+    } else if (lessonID === "2" && chID === "1" && uID === "0") {
+      return <L2Desc />;
+    } else if (lessonID === "2" && chID === "6" && uID === "1" && sID === "0") {
+      return <L2C6Desc />;
+    } else if (lessonID === "2" && chID === "7" && uID === "1" && sID === "0") {
+      return <L2C7Desc />;
     } else {
       return <NotFound />;
     }
@@ -31,8 +47,16 @@ function LSDesc() {
   const AboutCode = () => {
     if (lessonID === "1" && chID === "1" && uID === "0") {
       return <L1AboutCode />;
-    } else if (lessonID === "1" && chID === "4" && uID === "1") {
+    } else if (lessonID === "1" && chID === "4" && uID === "1" && sID === "0") {
       return <L1C4AboutCode />;
+    } else if (lessonID === "1" && chID === "5" && uID === "1" && sID === "0") {
+      return <L1C5AboutCode />;
+    } else if (lessonID === "2" && chID === "1" && uID === "0") {
+      return <L2AboutCode />;
+    } else if (lessonID === "2" && chID === "6" && uID === "1" && sID === "0") {
+      return <L2C6AboutCode />;
+    } else if (lessonID === "2" && chID === "7" && uID === "1" && sID === "0") {
+      return <L2C7AboutCode />;
     } else {
       return <NotFound />;
     }

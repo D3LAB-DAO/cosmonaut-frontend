@@ -3,7 +3,7 @@ import AboutCode from "../../../components/Contents/AboutCode";
 import BasicP from "../../../components/Contents/BasicP";
 import ListStyle from "../../../components/Contents/ListStyle";
 
-function L1C13AboutCode() {
+function L1AboutCode() {
   return (
     <div class="block mx-4">
       <AboutCode>About Code</AboutCode>
@@ -21,4 +21,4 @@ function L1C13AboutCode() {
   );
 }
 
-export default L1C13AboutCode;
+export default L1AboutCode;

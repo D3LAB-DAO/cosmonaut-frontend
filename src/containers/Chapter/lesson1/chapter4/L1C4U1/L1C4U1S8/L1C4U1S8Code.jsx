@@ -75,9 +75,10 @@ function L1C4U1S8Code() {
 
     try {
       let res = await fetch("http://127.0.0.1:3334/rust/fmt", option);
-      // res = await res.json();
+      res = await res.json();
       console.log("Success!!!");
       console.log(res);
+      setResult(res);
       // setResult(res.result);
 
       setIsSuccess(true);

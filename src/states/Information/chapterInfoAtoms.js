@@ -49,34 +49,42 @@ export const chapterInfos = atom({
     [
       {
         id: 1,
-        title: "CW20 Spec",
+        title: "CW20 Spec::Base",
       },
       {
         id: 2,
-        title: "CW20 Basic",
+        title: "CW20 Spec::Allowances",
       },
       {
         id: 3,
-        title: "BUIDL FT (WIP)",
+        title: "CW20 Spec::Mintable",
       },
       {
         id: 4,
-        title: "Unit Test (WIP)",
+        title: "CW20 Spec::Enumerable",
+      },
+      {
+        id: 5,
+        title: "CW20 Spec::Marketing",
+      },
+      {
+        id: 6,
+        title: "CW20 Basic",
+      },
+      {
+        id: 7,
+        title: "BUIDL FT",
       },
     ],
     // lesson3
     [
       {
         id: 1,
-        title: "Cosmonaut Main (WIP, CHECK)",
+        title: "Cosmonaut Main",
       },
       {
         id: 2,
-        title: "Change NFT (WIP, CHECK)",
-      },
-      {
-        id: 3,
-        title: "Test (WIP)",
+        title: "Change NFT",
       },
     ],
     // lesson4

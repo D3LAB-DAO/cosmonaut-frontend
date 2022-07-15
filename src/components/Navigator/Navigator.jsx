@@ -9,14 +9,12 @@ import HandleSideMenu from "./Components/HandleSideMenu";
 const Container = tw.div`z-auto fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50`;
 
 function Navigator() {
-  const { lessonID, chID, uID } = useParams();
+  const { lessonID, chID, uID, sID } = useParams();
   const navigate = useNavigate();
   const nextUnit = Number(uID) + 1;
   const prevUnit = Number(uID) - 1;
 
   const handleRight = () => {
-    console.log("handle Right");
-
     if (lessonID === "0" && chID === "1" && uID === "2") {
       return navigate(`/lesson/0/chapter/2/unit/1`);
     } else if (lessonID === "0" && chID === "2" && uID === "1") {
@@ -29,14 +27,28 @@ function Navigator() {
       return navigate(`/lesson/1/chapter/3/unit/1`);
     } else if (lessonID === "1" && chID === "3" && uID === "1") {
       return navigate(`/lesson/1/chapter/4/unit/1/small/0`);
+    } else if (lessonID === "1" && chID === "4" && uID === "1" && sID === "0") {
+      return navigate(`/lesson/1/chapter/4/unit/1/small/1`);
+    } else if (lessonID === "1" && chID === "5" && uID === "1" && sID === "0") {
+      return navigate(`/lesson/1/chapter/5/unit/1/small/1`);
+    } else if (lessonID === "2" && chID === "7" && uID === "1" && sID === "0") {
+      return navigate(`/lesson/2/chapter/7/unit/1/small/1`);
+    } else if (lessonID === "2" && chID === "1" && uID === "3") {
+      return navigate(`/lesson/2/chapter/2/unit/1`);
+    } else if (lessonID === "2" && chID === "2" && uID === "2") {
+      return navigate(`/lesson/2/chapter/3/unit/1`);
+    } else if (lessonID === "2" && chID === "3" && uID === "2") {
+      return navigate(`/lesson/2/chapter/4/unit/1`);
+    } else if (lessonID === "2" && chID === "4" && uID === "1") {
+      return navigate(`/lesson/2/chapter/5/unit/1`);
+    } else if (lessonID === "2" && chID === "5" && uID === "2") {
+      return navigate(`/lesson/2/chapter/6/unit/1/small/0`);
     } else {
       navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${nextUnit}`);
     }
   };
 
   const handleLeft = () => {
-    console.log("handle Left");
-
     navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${prevUnit}`);
     if (chID === "1" && uID === "0") {
       return navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${uID}`);

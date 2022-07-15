@@ -58,28 +58,27 @@ function L1C3U1() {
               <Markdown code={code2} />
               <BasicP>
                 Lists all tokens of the given <CodeBlock>owner</CodeBlock>.
-                Return type is
-                <CodeBlock>TokensResponse</CodeBlock>. The tokens are listed in
-                alphabetical order.
+                Return type is <CodeBlock>TokensResponse</CodeBlock>. The tokens
+                are listed in alphabetical order.
               </BasicP>
               <BasicP>
                 If <CodeBlock>start_after</CodeBlock> is not set, the query will
                 return the results from the beginning in a dictionary order for
-                the tokens. If
-                <CodeBlock>start_after</CodeBlock> is set, returns as many as{" "}
-                <CodeBlock>limit</CodeBlock> tokens from that address.
+                the tokens. If <CodeBlock>start_after</CodeBlock> is set,
+                returns as many as <CodeBlock>limit</CodeBlock> tokens from that
+                address.
               </BasicP>
               <BasicP>
                 If <CodeBlock>limit</CodeBlock> is not set, the default value is{" "}
                 <CodeBlock>DEFAULT_LIMIT</CodeBlock>. In addition, it cannot
                 exceed the maximum limit of <CodeBlock>MAX_LIMIT</CodeBlock>,
                 and if it is greater than that, it will be adjusted to{" "}
-                <CodeBlock>MAX_LIMIT</CodeBlock>.
+                <CodeBlock>MAX_LIMIT</CodeBlock>.{" "}
                 <CodeBlock>DEFAULT_LIMIT</CodeBlock> and{" "}
                 <CodeBlock>MAX_LIMIT</CodeBlock> are values that can be
                 arbitrarily set by the contract without harming the CW721 Spec.
                 The default and recommended values are 30 for{" "}
-                <CodeBlock>MAX_LIMIT</CodeBlock> and 10 for
+                <CodeBlock>MAX_LIMIT</CodeBlock> and 10 for{" "}
                 <CodeBlock>DEFAULT_LIMIT</CodeBlock>.
               </BasicP>
               <BasicP>

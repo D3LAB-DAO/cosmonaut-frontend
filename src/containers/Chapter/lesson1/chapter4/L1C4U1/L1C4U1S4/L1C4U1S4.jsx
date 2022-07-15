@@ -43,7 +43,7 @@ function L1C4U1S4() {
                 If you understand the flow of the above{" "}
                 <CodeBlock>_update_approvals</CodeBlock>, you may easily
                 implement
-                <CodeBlock>Revoke</CodeBlock>. Call
+                <CodeBlock>Revoke</CodeBlock>. Call{" "}
                 <CodeBlock>_update_approvals</CodeBlock> with
                 <CodeBlock>add</CodeBlock> as false.
               </BasicP>

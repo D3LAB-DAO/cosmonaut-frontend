@@ -20,6 +20,31 @@ function SmallNavigator() {
       return navigate(`/lesson/1/chapter/4/unit/1/small/1`);
     } else if (lessonID === "1" && chID === "4" && uID === "1" && sID === "8") {
       return navigate(`/lesson/1/chapter/4/unit/2/small/1`);
+    } else if (
+      lessonID === "1" &&
+      chID === "4" &&
+      uID === "2" &&
+      sID === "11"
+    ) {
+      return navigate(`/lesson/1/chapter/4/unit/3/small/1`);
+    } else if (lessonID === "1" && chID === "4" && uID === "3" && sID === "1") {
+      return navigate(`/lesson/1/chapter/5/unit/1/small/0`);
+    } else if (lessonID === "1" && chID === "5" && uID === "1" && sID === "3") {
+      return navigate(`/lesson/1/chapter/5/unit/2/small/1`);
+    } else if (lessonID === "2" && chID === "6" && uID === "1" && sID === "5") {
+      return navigate(`/lesson/2/chapter/6/unit/2/small/1`);
+    } else if (lessonID === "2" && chID === "6" && uID === "2" && sID === "5") {
+      return navigate(`/lesson/2/chapter/6/unit/3/small/1`);
+    } else if (lessonID === "2" && chID === "6" && uID === "3" && sID === "5") {
+      return navigate(`/lesson/2/chapter/6/unit/4/small/1`);
+    } else if (lessonID === "2" && chID === "6" && uID === "4" && sID === "2") {
+      return navigate(`/lesson/2/chapter/6/unit/5/small/1`);
+    } else if (lessonID === "2" && chID === "6" && uID === "5" && sID === "2") {
+      return navigate(`/lesson/2/chapter/7/unit/1/small/1`);
+    } else if (lessonID === "2" && chID === "7" && uID === "1" && sID === "1") {
+      return navigate(`/lesson/2/chapter/7/unit/2/small/1`);
+    } else if (lessonID === "2" && chID === "7" && uID === "2" && sID === "1") {
+      return navigate(`/lesson/2/chapter/7/unit/2/small/2`);
     } else {
       navigate(
         `/lesson/${lessonID}/chapter/${chID}/unit/${uID}/small/${nextSmall}`
@@ -33,7 +58,11 @@ function SmallNavigator() {
     navigate(
       `/lesson/${lessonID}/chapter/${chID}/unit/${uID}/small/${prevSmall}`
     );
-    if (sID === "0") {
+    if (sID === "1") {
+      return navigate(
+        `/lesson/${lessonID}/chapter/${chID}/unit/${uID}/small/${sID}`
+      );
+    } else if (uID === "1" && sID === "0") {
       return navigate(
         `/lesson/${lessonID}/chapter/${chID}/unit/${uID}/small/${sID}`
       );

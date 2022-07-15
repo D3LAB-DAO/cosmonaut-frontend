@@ -52,7 +52,7 @@ function Navbar() {
         id="navbar"
         class="transition delay-200 ease-in-out duration-200 hover:opacity-100 focus:opacity-100 flex justify-between items-center lg:py-3 py-2 md:px-6 xl:px-10 px-6 relative bg-gray-700 shadow-xl"
       >
-        <Logo href="/cosmonaut-frontend">
+        <Logo href="/">
           <img class="md:h-9 h-8 py-1" src={LogoV4} alt="" width="auto" />
         </Logo>
 

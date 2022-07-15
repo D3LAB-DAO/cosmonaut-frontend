@@ -31,10 +31,19 @@ function LsDescSchema() {
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
         <LsDesc />
-        {chID === "4" && uID === "1" && sID === "0" ? <L1C4PlusDesc /> : null}
+        {lessonID === "1" && chID === "4" && uID === "1" && sID === "0" ? (
+          <L1C4PlusDesc />
+        ) : null}
       </Background>
       <Footer />
-      {chID === "4" ? <SmallNavigator /> : <Navigator />}
+
+      {lessonID === "1" && chID === "4" && uID === "1" ? (
+        <SmallNavigator />
+      ) : (
+        <Navigator />
+      )}
+      {lessonID === "1" && chID === "5" ? <SmallNavigator /> : <Navigator />}
+      {lessonID === "2" && chID === "6" ? <SmallNavigator /> : <Navigator />}
     </>
   );
 }

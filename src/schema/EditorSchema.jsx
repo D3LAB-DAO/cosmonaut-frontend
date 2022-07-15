@@ -13,11 +13,12 @@ import EditorContents from "./components/EditorContents";
 import ShortBg from "../assets/images/short_bg.png";
 import StartModal from "../components/StartModal/StartModal";
 import SmallNavigator from "../components/Navigator/SmallNavigator";
+import FinishModal from "../components/FinishModal/FinishModal";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
 function EditorSchema() {
-  const { lessonID, chID } = useParams();
+  const { lessonID, chID, uID, sID } = useParams();
   const chInfo = useRecoilValue(chapterInfos);
   const unitInfo = useRecoilValue(unitInfos);
   const unitData = unitInfo[lessonID];
@@ -32,6 +33,11 @@ function EditorSchema() {
       </Background>
       <EditorContents />
       <Footer />
+      {lessonID === "1" && chID === "5" && uID === "2" && sID === "1" ? (
+        <FinishModal />
+      ) : lessonID === "2" && chID === "7" && uID === "2" && sID === "2" ? (
+        <FinishModal />
+      ) : null}
       <SmallNavigator />
     </>
   );
