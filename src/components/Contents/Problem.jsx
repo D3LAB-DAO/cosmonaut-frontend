@@ -3,9 +3,7 @@ import React from "react";
 function Problem(props) {
   return (
     <div>
-      <h1 class="font-extrabold font-heading text-blue-500 md:text-xl text-lg">
-        {props.children}
-      </h1>
+      <h1 class="text-2xl text-blue-500 font-heading mb-4">{props.children}</h1>
     </div>
   );
 }

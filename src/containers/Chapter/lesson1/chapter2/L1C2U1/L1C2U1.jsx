@@ -1,6 +1,7 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import UnitName from "../../../../../components/Common/UnitName";
+import BasicA from "../../../../../components/Contents/BasicA";
 import BasicP from "../../../../../components/Contents/BasicP";
 import CodeBlock from "../../../../../components/Contents/CodeBlock";
 import Header from "../../../../../components/Contents/Header";
@@ -112,10 +113,16 @@ function L1C2U1() {
               </BasicP>
               <BasicP>
                 <CodeBlock>token_uri</CodeBlock> should be referencing the JSON
-                file following the [ERC721 Metadata JSON Schema]
-                <a class="block" href="https://eips.ethereum.org/EIPS/eip-721">
-                  (https://eips.ethereum.org/EIPS/eip-721)
-                </a>
+                file following the
+                <BasicA>
+                  <a
+                    target="_blank"
+                    href="https://eips.ethereum.org/EIPS/eip-721"
+                    rel="noreferrer"
+                  >
+                    [ERC721 Metadata JSON Schema]
+                  </a>
+                </BasicA>
               </BasicP>
             </ContentDesc>
           </div>

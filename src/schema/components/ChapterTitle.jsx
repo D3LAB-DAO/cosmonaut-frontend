@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import tw from "tailwind-styled-components";
+import ChTitle from "../../components/Contents/ChTitle";
 
 const Container = tw.div`mb-4 md:mb-4 lg:mb-8`;
 
@@ -24,9 +25,9 @@ function ChapterTitle({ chInfo }) {
           <h2 class="text-2xl md:text-left text-center md:text-3xl mr-6 font-heading">
             Lesson{lessonID}
           </h2>
-          <h3 class="text-xl  md:text-left text-center md:text-2xl text-yellow-200 font-heading">
+          <ChTitle>
             Chp{chID}. {chInfo[chID - 1]?.title}
-          </h3>
+          </ChTitle>
         </div>
       )}
     </Container>

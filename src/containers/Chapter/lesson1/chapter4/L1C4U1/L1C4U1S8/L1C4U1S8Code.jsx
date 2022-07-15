@@ -11,21 +11,22 @@ import CheckAnswer from "../../../../../../components/Contents/CheckAnswer";
 import Check from "../../../../../../components/Contents/Check";
 import SubmitAgain from "../../../../../../components/Contents/SubmitAgain";
 import Result from "../../../../../../components/Contents/Result";
-import Markdown from "../../../../../../components/Contents/Markdown";
 import Correct from "../../../../../../components/Contents/Correct";
 import Wrong from "../../../../../../components/Contents/Wrong";
-import HideAnswer from "../../../../../../components/Contents/HideAnswer";
 import { useParams } from "react-router-dom";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
 import EditorCode from "../../../../../../components/CodeEditor/EditorCode";
 import EditorCodeHeader from "../../../../../../components/CodeEditor/EditorCodeHeader";
 import ResultHeader from "../../../../../../components/CodeEditor/ResultHeader";
-import { usePostApi } from "../../../../../../libs/api/post";
+import ProblemSection from "../../../../../../components/Contents/ProblemSection";
+import Hint from "../../../../../../components/Contents/Hint";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
 
 const Results = tw.div``;
 const ResultCode = tw.div`mx-auto px-4`;
 const ResultResponse = tw.div``;
+const HintSection = tw.div``;
 
 function L1C4U1S8Code() {
   const { lessonID, chID } = useParams();
@@ -37,6 +38,7 @@ function L1C4U1S8Code() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [result, setResult] = useState({});
 
   // Code Example
   const file = L1C4U1S1PbFiles[fileName];
@@ -52,17 +54,16 @@ function L1C4U1S8Code() {
   };
 
   const myStorage = window.localStorage;
+  console.log(myStorage);
   const option = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      lesson: lessonID,
-      chapter: chID,
       files: {
-        file1: myStorage.file1,
-        file2: myStorage.file2,
+        filename1: myStorage.file1,
+        filename2: myStorage.file2,
       },
     }),
   };
@@ -73,18 +74,11 @@ function L1C4U1S8Code() {
     setIsLoading(true);
 
     try {
-      let res = await fetch("http://localhost:3334/rust/fmt", option);
-      res = await res.json();
+      let res = await fetch("http://127.0.0.1:3334/rust/fmt", option);
+      // res = await res.json();
       console.log("Success!!!");
-      console.log(res.result);
-      window.localStorage?.setItem(
-        "file1",
-        atob(decodeURIComponent(res.result.file1))
-      );
-      window.localStorage?.setItem(
-        "file2",
-        atob(decodeURIComponent(res.result.file2))
-      );
+      console.log(res);
+      // setResult(res.result);
 
       setIsSuccess(true);
     } catch (error) {
@@ -95,6 +89,17 @@ function L1C4U1S8Code() {
     setIsLoading(false);
   };
 
+  // useEffect(() => {
+  //   window.localStorage?.setItem(
+  //     "file1",
+  //     atob(decodeURIComponent(result.filename1))
+  //   );
+  //   window.localStorage?.setItem(
+  //     "file2",
+  //     atob(decodeURIComponent(result.filename2))
+  //   );
+  // }, [result]);
+
   // const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
   //   option,
   // });
@@ -103,12 +108,12 @@ function L1C4U1S8Code() {
     file1: {
       name: "file1",
       language: "rust",
-      value: window.localStorage.getItem("file1"),
+      value: result.filename1,
     },
     file2: {
       name: "file2",
       language: "rust",
-      value: window.localStorage.getItem("file2"),
+      value: result.filename2,
     },
   };
 
@@ -120,28 +125,38 @@ function L1C4U1S8Code() {
   return (
     <>
       <EditorDesc>
-        <Problem>Problem</Problem>
-        <BasicP>
-          Let's fill in the code that corresponds to the process from three to
-          five.
-        </BasicP>
-        <BasicP>Don't worry. They are not complicated.</BasicP>
-        {hide ? null : (
-          <>
-            <ListStyle>
-              <li>Owner is recorded in token.owner.</li>
-              <li>Approvals are recorded in token.approvals.</li>
-              <li>
-                Uses addr_validate to verify the recipient address is correct.
-                You can use deps.api.addr_validate(...) at this context of
-                contract.
-              </li>
-            </ListStyle>
-            <Markdown
-              code={"fn addr_validate(&self, human: &str) -> StdResult<Addr>"}
-            />
-          </>
-        )}
+        <ProblemSection>
+          <Problem>Problem</Problem>
+          <BasicP>
+            1. Let's fill in the code that corresponds to the process from three
+            to five.
+          </BasicP>
+          <BasicP>2. Don't worry. They are not complicated.</BasicP>
+        </ProblemSection>
+        <HintSection>
+          <button onClick={async () => setHide(!hide)}>
+            <Hint hide={hide} />
+            {hide ? null : (
+              <>
+                <ListStyle>
+                  <li>
+                    Owner is recorded in <CodeBlock>token.owner</CodeBlock>.
+                  </li>
+                  <li>
+                    Approvals are recorded in{" "}
+                    <CodeBlock>token.approvals</CodeBlock>.
+                  </li>
+                  <li>
+                    Uses <CodeBlock>addr_validate</CodeBlock> to verify the
+                    recipient address is correct. You can use{" "}
+                    <CodeBlock>deps.api.addr_validate(...)</CodeBlock> at this
+                    context of contract.
+                  </li>
+                </ListStyle>
+              </>
+            )}
+          </button>
+        </HintSection>
       </EditorDesc>
       <EditorCode>
         <EditorCodeHeader>
@@ -195,18 +210,15 @@ function L1C4U1S8Code() {
                     </CheckAnswer>
                   )}
                 </ResultHeader>
-                <ResultCode></ResultCode>
+                <ResultCode>
+                  <h1>tbu</h1>
+                </ResultCode>
                 <ResultResponse>
                   {isSuccess ? (
                     <Correct>Correct! Jump to Next Chapter</Correct>
                   ) : isError ? (
                     <Wrong>Wrong! Wanna see the Answer?</Wrong>
                   ) : null}
-                  <HideAnswer>
-                    <button onClick={async () => setHide(!hide)}>
-                      {hide ? "Show the Hints" : "Hide the Hints"}
-                    </button>
-                  </HideAnswer>
                 </ResultResponse>
               </Results>
             </>

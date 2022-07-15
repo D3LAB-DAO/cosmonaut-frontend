@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import Note from "../../components/Common/Icon/Note";
 import L1C1Explain from "../../containers/Chapter/lesson1/chapter1/L1C1Explain";
 import L1C2Explain from "../../containers/Chapter/lesson1/chapter2/L1C2Explain";
 import L1C3Explain from "../../containers/Chapter/lesson1/chapter3/L1C3Explain";
@@ -8,7 +9,7 @@ import L1C4Explain from "../../containers/Chapter/lesson1/chapter4/L1C4Explain";
 
 import NotFound from "../../error/NotFound";
 
-const Container = tw.div`container mx-auto md:px-10 px-4 md:mb-20 mb-16`;
+const Container = tw.div`container mx-auto md:px-10 px-4 md:mb-12 mb-8`;
 
 function ChDesc() {
   const { lessonID, chID, uID } = useParams();
@@ -30,7 +31,12 @@ function ChDesc() {
 
   return (
     <Container>
-      <div class="flex flex-wrap justify-center">{ChDesc()}</div>
+      <div class="mx-auto px-8 md:px-4 bg-gray-700 bg-opacity-75 rounded-xl md:py-8 mb-10 py-6">
+        <Note />
+        <div class="flex justify-between mx-auto w-1/2 text-center mb-3 items-center">
+          {ChDesc()}
+        </div>
+      </div>
     </Container>
   );
 }

@@ -12,8 +12,6 @@ const ContentTitle = tw.div`mb-4 lg:mb-8`;
 const ContentDesc = tw.div`mb-3`;
 const ContentSpan = tw.span`font-normal lg:text-base text-sm mb-4 block`;
 
-const Editors = tw.div`container mx-auto lg:px-0 px-4`;
-
 const code1 = `
 \`\`\`rust
 ExecuteMsg::Burn { token_id } => self.burn(deps, env, info, token_id),
@@ -24,7 +22,7 @@ function L1C4U1S8() {
     <>
       {/* Contents Part */}
       <Contents>
-        <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
+        <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
           <OrangeID>8</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>

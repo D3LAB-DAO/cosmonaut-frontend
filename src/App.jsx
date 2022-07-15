@@ -27,7 +27,7 @@ function App() {
             element={<SmallPage />}
           />
           <Route path="/lesson/:lessonID/finish" element={<FinishModal />} />
-          <Route path={"*"} element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </ScrollToTop>
     </div>

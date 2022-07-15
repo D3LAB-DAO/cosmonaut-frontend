@@ -1,16 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
+import axios from "axios";
 import Account8 from "../../assets/images/account8.svg";
 
 import LogoV4 from "../../assets/images/logo-v4.svg";
+import { LoginState } from "../../states/login";
+import SignIn from "../Common/SignIn";
 import Version from "../Common/Version";
 
 const Container = tw.div`fixed top-0 w-full z-50`;
 const Logo = tw.a`text-lg font-bold ease-in-out duration-300 transform hover:scale-110`;
 
 function Navbar() {
-  const [login, setLogin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
+
+  const loginCheck = async () => {
+    try {
+      const opt = {
+        method: "GET",
+        credentials: "include",
+      };
+      let res = await fetch("http://127.0.0.1:3334/auth/check", opt);
+      res = await res.json();
+      console.log(res);
+      // const onLogin = res.isLogin;
+      // setIsLoggedIn(onLogin);
+      // console.log(isLoggedIn);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  loginCheck();
 
   window.addEventListener("scroll", e => {
     if (window.scrollY > 1) {
@@ -34,7 +56,7 @@ function Navbar() {
           <img class="md:h-9 h-8 py-1" src={LogoV4} alt="" width="auto" />
         </Logo>
 
-        {login ? (
+        {isLoggedIn ? (
           <div class="flex items-center">
             <Version />
             <Link to="/profile">
@@ -45,11 +67,8 @@ function Navbar() {
           </div>
         ) : (
           <div class="flex items-center">
-            <Version />
             <Link to="/signUp">
-              <button class="block w-7 h-7 rounded-full border-2 border-indigo-900 shadow-sm ease-in-out duration-300  transform hover:scale-110">
-                <img src={LogoV4} alt="" width="auto" />
-              </button>
+              <SignIn />
             </Link>
           </div>
         )}

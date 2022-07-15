@@ -1,6 +1,7 @@
 import MDEditor from "@uiw/react-md-editor";
 import React from "react";
 import tw from "tailwind-styled-components";
+import CodeEditor from "../../../../../../components/CodeEditor/CodeEditor";
 import BasicP from "../../../../../../components/Contents/BasicP";
 import CodeBlock from "../../../../../../components/Contents/CodeBlock";
 import Header from "../../../../../../components/Contents/Header";
@@ -111,13 +112,9 @@ function L1C4U1S7() {
       </Contents>
 
       {/* Editor Part */}
-      <Editors>
-        <div class="container w-full">
-          <div class="flex flex-wrap bg-indigo-900 rounded-2xl">
-            <L1C4U1S7Code />
-          </div>
-        </div>
-      </Editors>
+      <CodeEditor>
+        <L1C4U1S7Code />
+      </CodeEditor>
     </>
   );
 }

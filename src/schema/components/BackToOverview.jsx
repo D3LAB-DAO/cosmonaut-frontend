@@ -24,7 +24,7 @@ function BackToOverview() {
             d="M10 19l-7-7m0 0l7-7m-7 7h18"
           ></path>
         </svg>
-        <span class="md:text-lg text-sm font-extrabold mb-4">
+        <span class="md:text-lg text-sm font-extrabold mt-1">
           Back to Overview
         </span>
       </button>

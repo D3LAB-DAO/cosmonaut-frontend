@@ -1,12 +1,13 @@
 import React from "react";
 import BasicP from "../../../../components/Contents/BasicP";
+import Keyword from "../../../../components/Contents/Keyword";
 
 function L1C2Explain() {
   return (
     <>
       <BasicP>
-        It is an extension that covers the metadata associated with contact and
-        each NFT.
+        It is an extension that covers the <Keyword>metadata</Keyword>{" "}
+        associated with contact and each <Keyword>NFT</Keyword>.
       </BasicP>
     </>
   );
