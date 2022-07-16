@@ -16,6 +16,10 @@ import L2C7AboutCode from "../../containers/Chapter/lesson2/chapter7/L2C7AboutCo
 import L2C7Desc from "../../containers/Chapter/lesson2/chapter7/L2C7Desc";
 import L2AboutCode from "../../containers/Chapter/lesson2/L2AboutCode";
 import L2Desc from "../../containers/Chapter/lesson2/L2Desc";
+import L3AboutCode from "../../containers/Chapter/lesson3/L3AboutCode";
+import L3Desc from "../../containers/Chapter/lesson3/L3Desc";
+import L4AboutCode from "../../containers/Chapter/lesson4/L4AboutCode";
+import L4Desc from "../../containers/Chapter/lesson4/L4Desc";
 import NotFound from "../../error/NotFound";
 
 const Container = tw.div`container mx-auto md:px-10 px-4 md:mb-20 mb-16`;
@@ -40,6 +44,10 @@ function LSDesc() {
       return <L2C6Desc />;
     } else if (lessonID === "2" && chID === "7" && uID === "1" && sID === "0") {
       return <L2C7Desc />;
+    } else if (lessonID === "3" && chID === "1" && uID === "0") {
+      return <L3Desc />;
+    } else if (lessonID === "4" && chID === "1" && uID === "0") {
+      return <L4Desc />;
     } else {
       return <NotFound />;
     }
@@ -57,6 +65,10 @@ function LSDesc() {
       return <L2C6AboutCode />;
     } else if (lessonID === "2" && chID === "7" && uID === "1" && sID === "0") {
       return <L2C7AboutCode />;
+    } else if (lessonID === "3" && chID === "1" && uID === "0") {
+      return <L3AboutCode />;
+    } else if (lessonID === "4" && chID === "1" && uID === "0") {
+      return <L4AboutCode />;
     } else {
       return <NotFound />;
     }

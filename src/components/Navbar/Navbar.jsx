@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
-import axios from "axios";
 import Account8 from "../../assets/images/account8.svg";
 
 import LogoV4 from "../../assets/images/logo-v4.svg";
@@ -24,10 +23,9 @@ function Navbar() {
       };
       let res = await fetch("http://127.0.0.1:3334/auth/check", opt);
       res = await res.json();
-      console.log(res);
-      // const onLogin = res.isLogin;
-      // setIsLoggedIn(onLogin);
-      // console.log(isLoggedIn);
+
+      const onLogin = res.isLogin;
+      setIsLoggedIn(onLogin);
     } catch (error) {
       console.log(error);
     }

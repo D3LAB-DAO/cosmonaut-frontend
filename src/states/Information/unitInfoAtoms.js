@@ -259,5 +259,80 @@ export const unitInfos = atom({
         },
       ],
     ],
+    // lesson3
+    [
+      // chapter1
+      [
+        {
+          id: 1,
+          title: "state (state.rs)",
+          subTitle: ["Config"],
+        },
+        {
+          id: 2,
+          title: "ExecuteMsg (execute.rs)",
+          subTitle: [
+            "Mint",
+            "BuyMoneyToken",
+            "BuyFreightToken",
+            "BuyFuelToken",
+            "BuyNft",
+            "LoadFreight",
+            "UnloadFreight",
+            "FuelUp",
+            "BurnFuel",
+          ],
+        },
+        {
+          id: 3,
+          title: "QueryMsg (query.rs)",
+          subTitle: [
+            "MoneyBalance",
+            "FreightTokenBalance",
+            "FuelBalance",
+            "OwnerOfSpaceShip",
+            "SpaceShipInfo",
+            "Config",
+          ],
+        },
+      ],
+      // chapter2
+      [
+        {
+          id: 1,
+          title: "state (state.rs)",
+          subTitle: [""],
+        },
+        {
+          id: 2,
+          title: "ExecuteMsg (execute.rs)",
+          subTitle: [""],
+        },
+      ],
+    ],
+    // lesson4
+    [
+      // chapter1
+      [
+        {
+          id: 1,
+          title: "Get Block Information",
+          subTitle: [""],
+        },
+        {
+          id: 2,
+          title: "Simple Random Number Generator",
+          subTitle: [""],
+        },
+      ],
+      // chapter2
+      [
+        {
+          id: 1,
+          title: "Execute Play Game (execute.rs)",
+          subTitle: [""],
+        },
+      ],
+    ],
   ],
 });

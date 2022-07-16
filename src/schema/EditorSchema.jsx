@@ -37,6 +37,8 @@ function EditorSchema() {
         <FinishModal />
       ) : lessonID === "2" && chID === "7" && uID === "2" && sID === "2" ? (
         <FinishModal />
+      ) : lessonID === "3" && chID === "2" && uID === "2" && sID === "5" ? (
+        <FinishModal />
       ) : null}
       <SmallNavigator />
     </>
