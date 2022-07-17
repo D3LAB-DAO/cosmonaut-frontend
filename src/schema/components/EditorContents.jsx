@@ -12,6 +12,11 @@ import L2C6U4 from "../../containers/Chapter/lesson2/chapter6/L2C6U4/L2C6U4";
 import L2C6U5 from "../../containers/Chapter/lesson2/chapter6/L2C6U5/L2C6U5";
 import L2C7U1 from "../../containers/Chapter/lesson2/chapter7/L2C7U1/L2C7U1";
 import L2C7U2 from "../../containers/Chapter/lesson2/chapter7/L2C7U2/L2C7U2";
+import L3C1U2 from "../../containers/Chapter/lesson3/chapter1/L3C1U2/L3C1U2";
+import L3C1U3 from "../../containers/Chapter/lesson3/chapter1/L3C1U3/L3C1U3";
+import L3C2U1 from "../../containers/Chapter/lesson3/chapter2/L3C2U1/L3C2U1";
+import L3C2U2 from "../../containers/Chapter/lesson3/chapter2/L3C2U2/L3C2U2";
+import L4C2U1 from "../../containers/Chapter/lesson4/chapter2/L4C2U1/L4C2U1";
 
 function EditorContents() {
   const { lessonID, chID, uID } = useParams();
@@ -40,6 +45,16 @@ function EditorContents() {
       return <L2C7U1 />;
     } else if (lessonID === "2" && chID === "7" && uID === "2") {
       return <L2C7U2 />;
+    } else if (lessonID === "3" && chID === "1" && uID === "2") {
+      return <L3C1U2 />;
+    } else if (lessonID === "3" && chID === "1" && uID === "3") {
+      return <L3C1U3 />;
+    } else if (lessonID === "3" && chID === "2" && uID === "1") {
+      return <L3C2U1 />;
+    } else if (lessonID === "3" && chID === "2" && uID === "2") {
+      return <L3C2U2 />;
+    } else if (lessonID === "4" && chID === "2" && uID === "1") {
+      return <L4C2U1 />;
     }
   };
   return <>{Content()}</>;

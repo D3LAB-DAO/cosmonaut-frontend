@@ -6,7 +6,6 @@ import Intro from "./components/Intro";
 import Learn from "./components/Learn";
 import Made from "./components/Made";
 import Special from "./components/Special";
-import axios from "axios";
 
 function MainPage() {
   return (

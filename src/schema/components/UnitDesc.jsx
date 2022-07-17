@@ -9,7 +9,6 @@ import L1C5Explain from "../../containers/Chapter/lesson1/chapter5/L1C5Explain";
 import NotFound from "../../error/NotFound";
 
 const Container = tw.div`flex flex-wrap justify-center mx-auto md:px-20 px-8 mb-10`;
-const ChapterTitle = tw.h1`lg:w-2/5 md:text-left w-full text-yellow-200 font-heading place-content-center lg:text-2xl text-1xl mb-3`;
 const ChapterExplain = tw.div`w-full block`;
 
 function UnitDesc({ unitInfo }) {

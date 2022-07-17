@@ -1,34 +1,46 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export const usePostApi = ({ option }) => {
+export const usePostApi = ({ files }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [control, setControl] = useState(false);
   const [response, setResponse] = useState({});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
+  const option = {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      files,
+    }),
+  };
+  const fetchData = async e => {
+    e.preventDefault();
+    setIsError(false);
+    setIsLoading(true);
 
-      try {
-        let res = await fetch("http://localhost:3334/rust/fmt", option);
-        res = await res.json();
-        console.log("Success!!!");
-        setResponse(res.result);
+    try {
+      let res = await fetch("http://127.0.0.1:3334/v1/rust/fmt", option);
+      const data = await res.json();
+      console.log(data);
+      console.log(Object.entries(data.result));
+      console.log("Success!!!");
+      let resResult = Object.fromEntries(
+        Object.entries(data.result).map(([key, value]) => [key, atob(value)])
+      );
+      console.log(resResult);
+      setResponse(resResult);
 
-        setIsSuccess(true);
-      } catch (error) {
-        console.log(error);
-        setIsError(true);
-      }
+      setIsSuccess(true);
+    } catch (error) {
+      console.log(error);
+      setIsError(true);
+    }
 
-      setIsLoading(false);
-    };
+    setIsLoading(false);
+  };
 
-    fetchData();
-  }, [control]);
-
-  return [{ response, isLoading, isSuccess, isError }, setControl];
+  return [{ response, isLoading, isSuccess, isError }, fetchData];
 };

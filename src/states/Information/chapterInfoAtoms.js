@@ -95,7 +95,11 @@ export const chapterInfos = atom({
       },
       {
         id: 2,
-        title: "Flight Game",
+        title: "Flight Game: Encounter an Asteroid Belt",
+      },
+      {
+        id: 3,
+        title: "The Journey Continues",
       },
     ],
   ],

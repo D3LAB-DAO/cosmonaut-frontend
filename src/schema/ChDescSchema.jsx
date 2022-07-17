@@ -16,7 +16,7 @@ import Navigator from "../components/Navigator/Navigator";
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
 function ChDescSchema() {
-  const { lessonID, chID } = useParams();
+  const { lessonID, chID, uID } = useParams();
   const chInfo = useRecoilValue(chapterInfos);
   const unitInfo = useRecoilValue(unitInfos);
   const unitData = unitInfo[lessonID];
@@ -27,7 +27,9 @@ function ChDescSchema() {
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
-        <ChDesc />
+        {(lessonID === "3" || "4") && chID === "1" && uID === "1" ? null : (
+          <ChDesc />
+        )}
       </Background>
       <DetailContents />
       <Footer />

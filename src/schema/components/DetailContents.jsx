@@ -18,6 +18,9 @@ import L2C3U2 from "../../containers/Chapter/lesson2/chapter3/L2C3U2/L2C3U2";
 import L2C4U1 from "../../containers/Chapter/lesson2/chapter4/L2C4U1/L2C4U1";
 import L2C5U1 from "../../containers/Chapter/lesson2/chapter5/L2C5U1/L2C5U1";
 import L2C5U2 from "../../containers/Chapter/lesson2/chapter5/L2C5U2/L2C5U2";
+import L3C1U1 from "../../containers/Chapter/lesson3/chapter1/L3C1U1/L3C1U1";
+import L4C1U1 from "../../containers/Chapter/lesson4/chapter1/L4C1U1/L4C1U1";
+import L4C1U2 from "../../containers/Chapter/lesson4/chapter1/L4C1U2/L4C1U2";
 
 function DetailContents() {
   const { lessonID, chID, uID } = useParams();
@@ -75,6 +78,15 @@ function DetailContents() {
     }
     if (lessonID === "2" && chID === "5" && uID === "2") {
       return <L2C5U2 />;
+    }
+    if (lessonID === "3" && chID === "1" && uID === "1") {
+      return <L3C1U1 />;
+    }
+    if (lessonID === "4" && chID === "1" && uID === "1") {
+      return <L4C1U1 />;
+    }
+    if (lessonID === "4" && chID === "1" && uID === "2") {
+      return <L4C1U2 />;
     }
   };
   return <>{Content()}</>;

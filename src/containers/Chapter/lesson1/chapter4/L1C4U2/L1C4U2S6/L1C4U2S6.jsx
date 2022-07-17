@@ -3,9 +3,11 @@ import tw from "tailwind-styled-components";
 import CodeEditor from "../../../../../../components/CodeEditor/CodeEditor";
 import BasicP from "../../../../../../components/Contents/BasicP";
 import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import ContentsBox from "../../../../../../components/Contents/ContentsBox";
 import GreenID from "../../../../../../components/Contents/GreenID";
 import Header from "../../../../../../components/Contents/Header";
 import Markdown from "../../../../../../components/Contents/Markdown";
+import L1C4U2S6Code from "./L1C4U2S6Code";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -21,7 +23,7 @@ function L1C4U2S6() {
     <>
       {/* Contents Part */}
       <Contents>
-        <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
+        <ContentsBox>
           <GreenID>6</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
@@ -39,11 +41,13 @@ function L1C4U2S6() {
               </BasicP>
             </ContentDesc>
           </div>
-        </div>
+        </ContentsBox>
       </Contents>
 
       {/* Editor Part */}
-      <CodeEditor>{/* <L1C4U1S8Code /> */}</CodeEditor>
+      <CodeEditor>
+        <L1C4U2S6Code />
+      </CodeEditor>
     </>
   );
 }

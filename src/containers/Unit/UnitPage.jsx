@@ -20,6 +20,10 @@ function UnitPage() {
     uID === "1"
   ) {
     return <ChDescSchema />;
+  } else if (lessonID === "3" && (chID === "1" || "3") && uID === "1") {
+    return <ChDescSchema />;
+  } else if (lessonID === "4" && chID === "1" && uID === "1") {
+    return <ChDescSchema />;
   } else {
     return <UnDescSchema />;
   }
