@@ -7,6 +7,7 @@ import BasicP from "../../../../../components/Contents/BasicP";
 import OrangeID from "../../../../../components/Contents/OrangeID";
 import CodeBlock from "../../../../../components/Contents/CodeBlock";
 import ListStyle from "../../../../../components/Contents/ListStyle";
+import ContentsBox from "../../../../../components/Contents/ContentsBox";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -38,7 +39,7 @@ function L3C2U1() {
     <>
       <UnitName />
       <Contents>
-        <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
+        <ContentsBox>
           <OrangeID>1</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
@@ -75,7 +76,7 @@ function L3C2U1() {
               </BasicP>
             </ContentDesc>
           </div>
-        </div>
+        </ContentsBox>
 
         <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
           <OrangeID>2</OrangeID>

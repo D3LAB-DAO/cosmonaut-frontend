@@ -18,6 +18,8 @@ function L3C2U2() {
       return <L3C2U2S3 />;
     } else if (lessonID === "3" && chID === "2" && uID === "2" && sID === "4") {
       return <L3C2U2S4 />;
+    } else if (lessonID === "3" && chID === "2" && uID === "2" && sID === "5") {
+      return <L3C2U2S4 />;
     } else {
       <NotFound />;
     }

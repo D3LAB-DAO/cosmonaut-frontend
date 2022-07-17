@@ -18,6 +18,9 @@ function FinishModal() {
   const nextLesson = () => {
     navigate(`/lesson/${nextL}/chapter/1/unit/0`);
   };
+  const finishLesson = () => {
+    navigate(`/`);
+  };
   return (
     <>
       <Container>
@@ -62,7 +65,11 @@ function FinishModal() {
               <br />
               You can check out this mission badge in your Journey Page.
             </h4>
-            <Button onClick={nextLesson}>Ready for Next Lesson?</Button>
+            {lessonID === "4" ? (
+              <Button onClick={finishLesson}>Ready for Next Lesson?</Button>
+            ) : (
+              <Button onClick={nextLesson}>Ready for Next Lesson?</Button>
+            )}
           </div>
         </div>
       </Container>

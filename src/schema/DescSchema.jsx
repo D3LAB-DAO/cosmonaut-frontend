@@ -33,6 +33,7 @@ function DescSchema() {
       </Background>
       <Footer />
       {lessonID === "0" && chID === "4" && uID === "3" ? <FinishModal /> : null}
+      {lessonID === "4" && chID === "3" && uID === "2" ? <FinishModal /> : null}
       <Navigator />
     </>
   );

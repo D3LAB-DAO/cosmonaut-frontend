@@ -36,6 +36,8 @@ function ChDesc() {
       return <L2C4Explain />;
     } else if (lessonID === "2" && chID === "5" && uID === "1") {
       return <L2C5Explain />;
+    } else if (lessonID === "4" && chID === "3" && uID === "1") {
+      return <L2C5Explain />;
     } else {
       return <NotFound />;
     }

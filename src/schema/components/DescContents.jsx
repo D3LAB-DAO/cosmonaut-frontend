@@ -13,6 +13,7 @@ import L0C3U2 from "../../containers/Chapter/lesson0/chapter3/L0C3U2";
 import L0C4U1 from "../../containers/Chapter/lesson0/chapter4/L0C4U1";
 import L0C4U2 from "../../containers/Chapter/lesson0/chapter4/L0C4U2";
 import L0C1U0 from "../../containers/Chapter/lesson0/L0C1U0";
+import { L4C3Desc } from "../../containers/Chapter/lesson4/chapter3/L4C3Desc";
 
 const Container = tw.div`mx-auto flex flex-wrap justify-center px-8 md:px-4 bg-gray-700 bg-opacity-75 rounded-xl md:py-8 mb-10 py-6`;
 const Contents = tw.div`lg:w-1/2 w-full md:w-2/3`;
@@ -52,6 +53,12 @@ function ContentSchema({ unitInfo }) {
     }
     if (lessonID === "0" && chID === "4" && uID === "3") {
       return <L0C4U2 />;
+    }
+    if (lessonID === "4" && chID === "3" && uID === "1") {
+      return <L4C3Desc />;
+    }
+    if (lessonID === "4" && chID === "3" && uID === "2") {
+      return <L4C3Desc />;
     }
   };
   return (

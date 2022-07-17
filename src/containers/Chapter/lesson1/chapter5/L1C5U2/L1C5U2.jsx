@@ -9,6 +9,8 @@ function L1C5U2() {
   const Content = () => {
     if (lessonID === "1" && chID === "5" && uID === "2" && sID === "1") {
       return <L1C5U2S1 />;
+    } else if (lessonID === "1" && chID === "5" && uID === "2" && sID === "2") {
+      return <L1C5U2S1 />;
     } else {
       <NotFound />;
     }

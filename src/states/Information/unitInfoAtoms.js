@@ -337,7 +337,7 @@ export const unitInfos = atom({
       [
         {
           id: 1,
-          title: "Execute Play Game (execute.rs)",
+          title: "The Journey Continues",
           subTitle: [""],
         },
       ],

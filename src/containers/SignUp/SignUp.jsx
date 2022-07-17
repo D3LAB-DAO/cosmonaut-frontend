@@ -8,10 +8,6 @@ import GoogleLogo from "../../assets/images/google.svg";
 import Footer from "../../components/Footer/Footer";
 
 const Container = tw.div`py-24 bg-space-3 relative pt-32`;
-const githubLogin = e => {
-  e.preventDefault();
-  window.location.href = "http://127.0.0.1:3334/auth/login/federated/github";
-};
 function SignUp() {
   return (
     <>
@@ -28,23 +24,18 @@ function SignUp() {
               </p>
             </div>
             <div>
-              <button
-                onClick={githubLogin}
-                class="flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200"
-              >
-                {/* <a
+              <a
                 href="http://127.0.0.1:3334/auth/login/federated/github"
                 class="flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200"
                 rel="noreferrer"
               >
-                </a> */}
                 <img
                   class="block rounded-full bg-white py-1.5 px-1.5 w-8 h-8 mr-3"
                   src={GithubLogo}
                   alt=""
                 />
                 <span>Sign in with Github</span>
-              </button>
+              </a>
               <a
                 href="http://127.0.0.1:3334/auth/login/federated/google"
                 class="flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200"

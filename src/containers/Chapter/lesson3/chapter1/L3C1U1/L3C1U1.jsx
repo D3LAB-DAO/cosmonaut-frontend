@@ -45,7 +45,7 @@ function L3C1U1() {
     <>
       <UnitName />
       <Contents>
-        <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
+        <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
           <OrangeID>1</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>

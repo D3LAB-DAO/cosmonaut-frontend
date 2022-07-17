@@ -33,7 +33,7 @@ function EditorSchema() {
       </Background>
       <EditorContents />
       <Footer />
-      {lessonID === "1" && chID === "5" && uID === "2" && sID === "1" ? (
+      {lessonID === "1" && chID === "5" && uID === "2" && sID === "2" ? (
         <FinishModal />
       ) : lessonID === "2" && chID === "7" && uID === "2" && sID === "2" ? (
         <FinishModal />

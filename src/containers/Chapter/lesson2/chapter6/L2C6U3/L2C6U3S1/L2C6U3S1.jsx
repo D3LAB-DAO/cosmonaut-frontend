@@ -4,8 +4,10 @@ import CodeEditor from "../../../../../../components/CodeEditor/CodeEditor";
 import BasicP from "../../../../../../components/Contents/BasicP";
 import BlueID from "../../../../../../components/Contents/BlueID";
 import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import ContentsBox from "../../../../../../components/Contents/ContentsBox";
 import Header from "../../../../../../components/Contents/Header";
 import Markdown from "../../../../../../components/Contents/Markdown";
+import { L2C6U3S1Code } from "./L2C6U3S1Code";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -21,7 +23,7 @@ function L2C6U3S1() {
     <>
       {/* Contents Part */}
       <Contents>
-        <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
+        <ContentsBox>
           <BlueID>1</BlueID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
@@ -42,11 +44,13 @@ function L2C6U3S1() {
               </BasicP>
             </ContentDesc>
           </div>
-        </div>
+        </ContentsBox>
       </Contents>
 
       {/* Editor Part */}
-      <CodeEditor>{/* <L1C4U1S8Code /> */}</CodeEditor>
+      <CodeEditor>
+        <L2C6U3S1Code />
+      </CodeEditor>
     </>
   );
 }

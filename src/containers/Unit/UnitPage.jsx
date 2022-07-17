@@ -10,6 +10,8 @@ function UnitPage() {
 
   if (lessonID === "0") {
     return <DescSchema />;
+  } else if (lessonID === "4" && chID === "3" && uID === "1") {
+    return <DescSchema />;
   } else if (uID === "0") {
     return <LsDescSchema />;
   } else if (lessonID === "1" && (chID === "1" || "2" || "3") && uID === "1") {

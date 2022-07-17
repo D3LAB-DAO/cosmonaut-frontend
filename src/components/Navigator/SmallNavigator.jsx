@@ -31,6 +31,8 @@ function SmallNavigator() {
       return navigate(`/lesson/1/chapter/5/unit/1/small/0`);
     } else if (lessonID === "1" && chID === "5" && uID === "1" && sID === "3") {
       return navigate(`/lesson/1/chapter/5/unit/2/small/1`);
+    } else if (lessonID === "1" && chID === "5" && uID === "2" && sID === "1") {
+      return navigate(`/lesson/1/chapter/5/unit/2/small/2`);
     } else if (lessonID === "2" && chID === "6" && uID === "1" && sID === "5") {
       return navigate(`/lesson/2/chapter/6/unit/2/small/1`);
     } else if (lessonID === "2" && chID === "6" && uID === "2" && sID === "5") {
@@ -52,7 +54,7 @@ function SmallNavigator() {
     } else if (lessonID === "3" && chID === "2" && uID === "1" && sID === "1") {
       return navigate(`/lesson/3/chapter/2/unit/2/small/1`);
     } else if (lessonID === "4" && chID === "2" && uID === "1" && sID === "3") {
-      return navigate(`/lesson/4/chapter/3/unit/1/small/1`);
+      return navigate(`/lesson/4/chapter/3/unit/1`);
     } else {
       navigate(
         `/lesson/${lessonID}/chapter/${chID}/unit/${uID}/small/${nextSmall}`

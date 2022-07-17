@@ -7,6 +7,7 @@ import Header from "../../../../../../components/Contents/Header";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
 import OrangeID from "../../../../../../components/Contents/OrangeID";
+import L2C6U1S5Code from "./L2C6U1S5Code";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
@@ -73,7 +74,9 @@ function L2C6U1S5() {
       </Contents>
 
       {/* Editor Part */}
-      <CodeEditor>{/* <L1C4U1S8Code /> */}</CodeEditor>
+      <CodeEditor>
+        <L2C6U1S5Code />
+      </CodeEditor>
     </>
   );
 }
