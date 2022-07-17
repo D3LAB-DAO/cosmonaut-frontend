@@ -15,11 +15,12 @@ import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
 import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
 import { useParams } from "react-router-dom";
 import HintButton from "../../../../../../components/Contents/HintButton";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U2S10Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -60,7 +61,7 @@ function L1C4U1S6Code() {
 
   const code1 = `
   \`\`\`rust
-  pub fn remove(&self, store: &mut dyn Storage, k: K)
+  item.map(|(k, _)| k)
   \`\`\``;
 
   return (
@@ -69,24 +70,41 @@ function L1C4U1S6Code() {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's remove the information from the{" "}
-            <CodeBlock>operators</CodeBlock>, <CodeBlock>Map</CodeBlock>.
+            Let's find the desired information through{" "}
+            <CodeBlock>map</CodeBlock> and <CodeBlock>filter</CodeBlock> while
+            satisfying the <CodeBlock>start_after</CodeBlock> and{" "}
+            <CodeBlock>limit</CodeBlock> conditions.
           </BasicP>
           <BasicP>
-            You can remove it through <CodeBlock>remove()</CodeBlock>.
+            <BasicP>
+              The information needed here is token IDs, the key values of
+              <CodeBlock>self.tokens</CodeBlock>.
+            </BasicP>
           </BasicP>
-          <Markdown code={code1} />
+          <BasicP>
+            Like Tokens, it can be obtained with <CodeBlock>keys</CodeBlock> or
+            it can be extracted from (key, value) pairs obtained with{" "}
+            <CodeBlock>range</CodeBlock>.
+          </BasicP>
+          <BasicP>
+            Now, let's use the <CodeBlock>range</CodeBlock>.
+          </BasicP>
         </ProblemSection>
         <HintSection>
           <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
-                <BasicP>Do we need it?</BasicP>
-                <BasicP>
-                  You just need to combine the keys and use{" "}
-                  <CodeBlock>remove</CodeBlock>!
-                </BasicP>
+                <ListStyle>
+                  <li>
+                    Now you may know how to use <CodeBlock>range</CodeBlock>.
+                  </li>
+                  <li>
+                    You only need to extract a key from the items. Consider the
+                    following structures:
+                    <Markdown code={code1} />
+                  </li>
+                </ListStyle>
               </>
             )}
           </HintButton>
@@ -138,4 +156,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U2S10Code;

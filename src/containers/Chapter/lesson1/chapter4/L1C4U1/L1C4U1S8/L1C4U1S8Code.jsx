@@ -1,31 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import tw from "tailwind-styled-components";
-import base64 from "base-64";
-import Editor from "@monaco-editor/react";
 import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
-import { L1C4U1S1PbFiles } from "./L1C4U1S1Files";
 import BasicP from "../../../../../../components/Contents/BasicP";
 import Problem from "../../../../../../components/Contents/Problem";
 import MultiTab from "../../../../../../components/Contents/MultiTab";
-import CheckAnswer from "../../../../../../components/Contents/CheckAnswer";
-import Check from "../../../../../../components/Contents/Check";
-import SubmitAgain from "../../../../../../components/Contents/SubmitAgain";
-import Result from "../../../../../../components/Contents/Result";
-import Correct from "../../../../../../components/Contents/Correct";
-import Wrong from "../../../../../../components/Contents/Wrong";
-import { useParams } from "react-router-dom";
-import ListStyle from "../../../../../../components/Contents/ListStyle";
 import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
 import EditorCode from "../../../../../../components/CodeEditor/EditorCode";
 import EditorCodeHeader from "../../../../../../components/CodeEditor/EditorCodeHeader";
-import ResultHeader from "../../../../../../components/CodeEditor/ResultHeader";
 import ProblemSection from "../../../../../../components/Contents/ProblemSection";
 import Hint from "../../../../../../components/Contents/Hint";
 import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import { usePostApi } from "../../../../../../libs/api/post";
+import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
+import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
+import { useParams } from "react-router-dom";
+import HintButton from "../../../../../../components/Contents/HintButton";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
+import Markdown from "../../../../../../components/Contents/Markdown";
 
-const Results = tw.div``;
-const ResultCode = tw.div`mx-auto px-4`;
-const ResultResponse = tw.div``;
 const HintSection = tw.div``;
 
 function L1C4U1S8Code() {
@@ -33,95 +25,44 @@ function L1C4U1S8Code() {
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
   const [code, setCode] = useState();
-  const [value, setValue] = useState();
+  const [value, setValue] = useState("");
   const [hide, setHide] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [result, setResult] = useState({});
 
-  // Code Example
-  const file = L1C4U1S1PbFiles[fileName];
+  const [files, setFiles] = useState({});
+
+  // POST user code
+  useEffect(() => {
+    setFiles({ ...files, [fileName]: btoa(code) });
+  }, [code]);
 
   useEffect(() => {
     editorRef.current?.focus();
     setFileName(fileName);
+    setValue(response[fileName]);
   }, [fileName]);
+  console.log(value);
 
-  const handleEditor = value => {
-    setCode(value);
-    window.localStorage?.setItem(file.name, base64?.encode(code));
-  };
+  const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
+    files,
+  });
 
-  const myStorage = window.localStorage;
-  console.log(myStorage);
-  const option = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      files: {
-        filename1: myStorage.file1,
-        filename2: myStorage.file2,
-      },
-    }),
-  };
-
-  const submitData = async e => {
-    e.preventDefault();
-    setIsError(false);
-    setIsLoading(true);
-
-    try {
-      let res = await fetch("http://127.0.0.1:3334/rust/fmt", option);
-      res = await res.json();
-      console.log("Success!!!");
-      console.log(res);
-      setResult(res);
-      // setResult(res.result);
-
-      setIsSuccess(true);
-    } catch (error) {
-      console.log(error);
-      setIsError(true);
-    }
-
-    setIsLoading(false);
-  };
-
-  // useEffect(() => {
-  //   window.localStorage?.setItem(
-  //     "file1",
-  //     atob(decodeURIComponent(result.filename1))
-  //   );
-  //   window.localStorage?.setItem(
-  //     "file2",
-  //     atob(decodeURIComponent(result.filename2))
-  //   );
-  // }, [result]);
-
-  // const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
-  //   option,
-  // });
-
-  const ResFiles = {
+  // Code Example
+  const fakeFiles = {
     file1: {
-      name: "file1",
-      language: "rust",
-      value: result.filename1,
+      value: "// File1 Testing !!!",
     },
     file2: {
-      name: "file2",
-      language: "rust",
-      value: result.filename2,
+      value: "// File2 Testing !!!",
     },
   };
+  const file = fakeFiles[fileName];
+  // const { data } = getTargetCodes({ lessonID, chID });
+  // console.log(data);
 
-  const resFiles = ResFiles[fileName];
-  useEffect(() => {
-    setValue(resFiles.value);
-  }, [fileName]);
+  const code1 = `
+  \`\`\`rust
+  pub fn remove(&self, store: &mut dyn Storage, key: K) -> StdResult<()>
+  \`\`\``;
 
   return (
     <>
@@ -129,34 +70,39 @@ function L1C4U1S8Code() {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            1. Let's fill in the code that corresponds to the process from three
-            to five.
+            Let's write the part that removes the token requested by the user.
+            And let's also decrease the <CodeBlock>token_count</CodeBlock>.
           </BasicP>
-          <BasicP>2. Don't worry. They are not complicated.</BasicP>
         </ProblemSection>
         <HintSection>
-          <button onClick={async () => setHide(!hide)}>
+          <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
                 <ListStyle>
                   <li>
-                    Owner is recorded in <CodeBlock>token.owner</CodeBlock>.
+                    Mint에서 <CodeBlock>token_id</CodeBlock>를 등록했다면,
+                    Burn에서는 <CodeBlock>token_id를</CodeBlock> 지우면 됩니다.
+                    지우기 위해서는 <CodeBlock>remove</CodeBlock>를 호출하면
+                    됩니다.
                   </li>
                   <li>
-                    Approvals are recorded in{" "}
-                    <CodeBlock>token.approvals</CodeBlock>.
+                    If you registered <CodeBlock>token_id</CodeBlock> in{" "}
+                    <CodeBlock>Mint</CodeBlock>, you can remove it in
+                    <CodeBlock>Burn</CodeBlock>. You can call{" "}
+                    <CodeBlock>remove</CodeBlock>.
+                    <Markdown code={code1} />
                   </li>
                   <li>
-                    Uses <CodeBlock>addr_validate</CodeBlock> to verify the
-                    recipient address is correct. You can use{" "}
-                    <CodeBlock>deps.api.addr_validate(...)</CodeBlock> at this
-                    context of contract.
+                    If the <CodeBlock>increment_tokens</CodeBlock> increased the{" "}
+                    <CodeBlock>token_count</CodeBlock> by 1, then the{" "}
+                    <CodeBlock>decrement_tokens</CodeBlock> could decrease the{" "}
+                    <CodeBlock>token_count</CodeBlock> by 1.
                   </li>
                 </ListStyle>
               </>
             )}
-          </button>
+          </HintButton>
         </HintSection>
       </EditorDesc>
       <EditorCode>
@@ -187,41 +133,16 @@ function L1C4U1S8Code() {
             <AnswerCheck />
           ) : (
             <>
-              <Editor
-                height="60vh"
-                theme="vs-dark"
-                path={file.name}
-                defaultLanguage={file.language}
-                defaultValue={file.value}
-                value={isSuccess ? value : null}
-                onChange={handleEditor}
+              <EditorResult
+                path={fileName}
+                defaultLanguage="rust"
+                value={!isSuccess ? file.value : value}
+                onChange={async e => setCode(e)}
                 onMount={editor => (editorRef.current = editor)}
+                isSuccess={isSuccess}
+                isError={isError}
+                onClick={doFetch}
               />
-
-              <Results>
-                <ResultHeader>
-                  <Result>Result</Result>
-                  {isSuccess ? (
-                    <Check />
-                  ) : isError ? (
-                    <SubmitAgain>submit again</SubmitAgain>
-                  ) : (
-                    <CheckAnswer>
-                      <button onClick={submitData}>check your answer</button>
-                    </CheckAnswer>
-                  )}
-                </ResultHeader>
-                <ResultCode>
-                  <h1>tbu</h1>
-                </ResultCode>
-                <ResultResponse>
-                  {isSuccess ? (
-                    <Correct>Correct! Jump to Next Chapter</Correct>
-                  ) : isError ? (
-                    <Wrong>Wrong! Wanna see the Answer?</Wrong>
-                  ) : null}
-                </ResultResponse>
-              </Results>
             </>
           )}
         </>

@@ -14,7 +14,6 @@ function MultiTab(props) {
   if (click) {
     tab.target.classList.add("bg-blue-500");
   }
-  console.log(tab.target);
   return (
     <>
       <Tab id="tab">{props.children}</Tab>

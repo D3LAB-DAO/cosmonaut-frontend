@@ -15,7 +15,7 @@ function Intro() {
     <Section>
       <Backgrounds
         style={{
-          backgroundImage: `url(${require("../../../assets/images/space4Artboard-22.png")})`,
+          backgroundImage: `url(${require("../../../assets/images/bg1-compress4.gif")})`,
         }}
       >
         <Background

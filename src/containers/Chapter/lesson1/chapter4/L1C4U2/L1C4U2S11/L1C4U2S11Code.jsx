@@ -15,11 +15,10 @@ import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
 import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
 import { useParams } from "react-router-dom";
 import HintButton from "../../../../../../components/Contents/HintButton";
-import Markdown from "../../../../../../components/Contents/Markdown";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U2S11Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -58,34 +57,23 @@ function L1C4U1S6Code() {
   // const { data } = getTargetCodes({ lessonID, chID });
   // console.log(data);
 
-  const code1 = `
-  \`\`\`rust
-  pub fn remove(&self, store: &mut dyn Storage, k: K)
-  \`\`\``;
-
   return (
     <>
       <EditorDesc>
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's remove the information from the{" "}
-            <CodeBlock>operators</CodeBlock>, <CodeBlock>Map</CodeBlock>.
+            There is no logic complicated enough to make a problem.
           </BasicP>
-          <BasicP>
-            You can remove it through <CodeBlock>remove()</CodeBlock>.
-          </BasicP>
-          <Markdown code={code1} />
+          <BasicP>There's no problem.</BasicP>
         </ProblemSection>
         <HintSection>
           <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
-                <BasicP>Do we need it?</BasicP>
                 <BasicP>
-                  You just need to combine the keys and use{" "}
-                  <CodeBlock>remove</CodeBlock>!
+                  Just look at the cute <CodeBlock>minter</CodeBlock> function.
                 </BasicP>
               </>
             )}
@@ -138,4 +126,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U2S11Code;

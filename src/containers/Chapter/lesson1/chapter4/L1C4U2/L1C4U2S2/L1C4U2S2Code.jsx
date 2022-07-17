@@ -15,11 +15,12 @@ import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
 import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
 import { useParams } from "react-router-dom";
 import HintButton from "../../../../../../components/Contents/HintButton";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U2S2Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -60,7 +61,14 @@ function L1C4U1S6Code() {
 
   const code1 = `
   \`\`\`rust
-  pub fn remove(&self, store: &mut dyn Storage, k: K)
+  cw721::Approval {
+    spender: /* Something */,
+    expires: /* Something */,
+};
+  \`\`\``;
+  const code2 = `
+  \`\`\`rust
+  Expiration::Never {}
   \`\`\``;
 
   return (
@@ -69,24 +77,38 @@ function L1C4U1S6Code() {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's remove the information from the{" "}
-            <CodeBlock>operators</CodeBlock>, <CodeBlock>Map</CodeBlock>.
-          </BasicP>
-          <BasicP>
-            You can remove it through <CodeBlock>remove()</CodeBlock>.
+            Let's create a response that corresponds to the case where the
+            <CodeBlock>spender</CodeBlock> is the owner. Please refer to{" "}
+            <CodeBlock>cw721::Approval</CodeBlock> for the form of the{" "}
+            <CodeBlock>approval</CodeBlock>.
           </BasicP>
           <Markdown code={code1} />
+          <BasicP>
+            In a typical case where the <CodeBlock>spender</CodeBlock> is not
+            the owner, it will go through two filters. The first is to find the
+            approval corresponding to the <CodeBlock>spender</CodeBlock> among
+            the all approvals. The second is to find the approval that has not
+            expired among them.
+          </BasicP>
+          <BasicP>Let's fill in these filters.</BasicP>
         </ProblemSection>
         <HintSection>
           <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
-                <BasicP>Do we need it?</BasicP>
-                <BasicP>
-                  You just need to combine the keys and use{" "}
-                  <CodeBlock>remove</CodeBlock>!
-                </BasicP>
+                <ListStyle>
+                  <li>
+                    Absolute permission means never-ending expiration. This can
+                    be expressed as follows:
+                    <Markdown code={code2} />
+                  </li>
+                  <li>
+                    The conditions for finding expiration is as follows: If the
+                    <CodeBlock>include_expired</CodeBlock> is true, it must
+                    include expired approvals. And if false, it must not.
+                  </li>
+                </ListStyle>
               </>
             )}
           </HintButton>
@@ -138,4 +160,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U2S2Code;

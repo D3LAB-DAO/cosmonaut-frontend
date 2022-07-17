@@ -15,11 +15,12 @@ import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
 import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
 import { useParams } from "react-router-dom";
 import HintButton from "../../../../../../components/Contents/HintButton";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U2S9Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -60,7 +61,16 @@ function L1C4U1S6Code() {
 
   const code1 = `
   \`\`\`rust
-  pub fn remove(&self, store: &mut dyn Storage, k: K)
+  pub fn keys<'c>(
+    &self,
+    store: &'c dyn Storage,
+    min: Option<Bound<'a, K>>,
+    max: Option<Bound<'a, K>>,
+    order: cosmwasm_std::Order,
+) -> Box<dyn Iterator<Item = StdResult<K::Output>> + 'c>
+where
+    T: 'c,
+    K::Output: 'static,
   \`\`\``;
 
   return (
@@ -69,24 +79,47 @@ function L1C4U1S6Code() {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's remove the information from the{" "}
-            <CodeBlock>operators</CodeBlock>, <CodeBlock>Map</CodeBlock>.
+            Let's find the information you want while meeting the{" "}
+            <CodeBlock>start_after</CodeBlock>
+            and <CodeBlock>limit</CodeBlock> range.
           </BasicP>
           <BasicP>
-            You can remove it through <CodeBlock>remove()</CodeBlock>.
+            Note that the information needed here is token IDs, the key values
+            of <CodeBlock>self.tokens</CodeBlock>.
           </BasicP>
-          <Markdown code={code1} />
         </ProblemSection>
         <HintSection>
           <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
-                <BasicP>Do we need it?</BasicP>
-                <BasicP>
-                  You just need to combine the keys and use{" "}
-                  <CodeBlock>remove</CodeBlock>!
-                </BasicP>
+                <ListStyle>
+                  <li>
+                    Receive keys through <CodeBlock>keys</CodeBlock>, the
+                    following function:
+                    <Markdown code={code1} />
+                  </li>
+                  <ListStyle>
+                    <li>
+                      Insert the min, max, and order of the key list to call.
+                      <CodeBlock>store</CodeBlock> will be{" "}
+                      <CodeBlock>deps.storage</CodeBlock> as usual.
+                    </li>
+                    <li>
+                      You can pass the order in ascending order. Uses
+                      <CodeBlock>Order::Ascending</CodeBlock>.
+                    </li>
+                    <li>
+                      You don't need to define <CodeBlock>max</CodeBlock>.{" "}
+                      <CodeBlock>None</CodeBlock> is enough.
+                    </li>
+                  </ListStyle>
+                  <li>
+                    If a large amount of information has been replied, you have
+                    to cut off as much as <CodeBlock>limit</CodeBlock>. You can{" "}
+                    <CodeBlock>take</CodeBlock> what you know well.
+                  </li>
+                </ListStyle>
               </>
             )}
           </HintButton>
@@ -138,4 +171,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U2S9Code;

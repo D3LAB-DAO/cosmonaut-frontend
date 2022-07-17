@@ -15,11 +15,12 @@ import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
 import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
 import { useParams } from "react-router-dom";
 import HintButton from "../../../../../../components/Contents/HintButton";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U2S3Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -60,7 +61,7 @@ function L1C4U1S6Code() {
 
   const code1 = `
   \`\`\`rust
-  pub fn remove(&self, store: &mut dyn Storage, k: K)
+  pub fn remove(&self, store: &mut dyn Storage, key: K) -> StdResult<()>
   \`\`\``;
 
   return (
@@ -69,24 +70,20 @@ function L1C4U1S6Code() {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's remove the information from the{" "}
-            <CodeBlock>operators</CodeBlock>, <CodeBlock>Map</CodeBlock>.
+            Let's write the <CodeBlock>filter</CodeBlock> condition.
           </BasicP>
-          <BasicP>
-            You can remove it through <CodeBlock>remove()</CodeBlock>.
-          </BasicP>
-          <Markdown code={code1} />
         </ProblemSection>
         <HintSection>
           <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
-                <BasicP>Do we need it?</BasicP>
-                <BasicP>
-                  You just need to combine the keys and use{" "}
-                  <CodeBlock>remove</CodeBlock>!
-                </BasicP>
+                <ListStyle>
+                  <li>
+                    If the <CodeBlock>include_expired</CodeBlock> is true, it
+                    must include expired approvals. And if false, it must not.
+                  </li>
+                </ListStyle>
               </>
             )}
           </HintButton>
@@ -138,4 +135,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U2S3Code;

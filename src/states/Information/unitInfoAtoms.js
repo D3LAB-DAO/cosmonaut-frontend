@@ -333,6 +333,14 @@ export const unitInfos = atom({
           subTitle: [""],
         },
       ],
+      // chapter3
+      [
+        {
+          id: 1,
+          title: "Execute Play Game (execute.rs)",
+          subTitle: [""],
+        },
+      ],
     ],
   ],
 });

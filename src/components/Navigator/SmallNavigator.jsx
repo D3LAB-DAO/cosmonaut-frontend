@@ -51,6 +51,8 @@ function SmallNavigator() {
       return navigate(`/lesson/3/chapter/2/unit/1/small/1`);
     } else if (lessonID === "3" && chID === "2" && uID === "1" && sID === "1") {
       return navigate(`/lesson/3/chapter/2/unit/2/small/1`);
+    } else if (lessonID === "4" && chID === "2" && uID === "1" && sID === "3") {
+      return navigate(`/lesson/4/chapter/3/unit/1/small/1`);
     } else {
       navigate(
         `/lesson/${lessonID}/chapter/${chID}/unit/${uID}/small/${nextSmall}`

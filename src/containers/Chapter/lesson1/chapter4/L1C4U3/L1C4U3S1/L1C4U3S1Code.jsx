@@ -15,11 +15,13 @@ import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
 import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
 import { useParams } from "react-router-dom";
 import HintButton from "../../../../../../components/Contents/HintButton";
+import Header from "../../../../../../components/Contents/Header";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U3S1Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -60,7 +62,11 @@ function L1C4U1S6Code() {
 
   const code1 = `
   \`\`\`rust
-  pub fn remove(&self, store: &mut dyn Storage, k: K)
+  #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
+  pub struct ContractInfoResponse {
+      pub name: String,
+      pub symbol: String,
+  }
   \`\`\``;
 
   return (
@@ -68,25 +74,33 @@ function L1C4U1S6Code() {
       <EditorDesc>
         <ProblemSection>
           <Problem>Problem</Problem>
+          <Header>instantiate</Header>
           <BasicP>
-            Let's remove the information from the{" "}
-            <CodeBlock>operators</CodeBlock>, <CodeBlock>Map</CodeBlock>.
+            Set the basic features in the contract by{" "}
+            <CodeBlock>InstantiateMsg</CodeBlock> as defined above.
           </BasicP>
-          <BasicP>
-            You can remove it through <CodeBlock>remove()</CodeBlock>.
-          </BasicP>
-          <Markdown code={code1} />
         </ProblemSection>
         <HintSection>
           <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
-                <BasicP>Do we need it?</BasicP>
-                <BasicP>
-                  You just need to combine the keys and use{" "}
-                  <CodeBlock>remove</CodeBlock>!
-                </BasicP>
+                <ListStyle>
+                  <li>
+                    Do you remember? The{" "}
+                    <CodeBlock>ContractInfoResponse</CodeBlock> is:
+                  </li>
+                  <Markdown code={code1} />
+                  <ListStyle>
+                    <li>
+                      You can save this to{" "}
+                      <CodeBlock>self.contract_info</CodeBlock>.
+                    </li>
+                  </ListStyle>
+                  <li>
+                    Minter can be saved in <CodeBlock>self.minter</CodeBlock>.
+                  </li>
+                </ListStyle>
               </>
             )}
           </HintButton>
@@ -138,4 +152,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U3S1Code;

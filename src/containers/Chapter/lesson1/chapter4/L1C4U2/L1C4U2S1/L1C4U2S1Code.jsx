@@ -15,11 +15,12 @@ import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
 import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
 import { useParams } from "react-router-dom";
 import HintButton from "../../../../../../components/Contents/HintButton";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U2S1Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -60,7 +61,14 @@ function L1C4U1S6Code() {
 
   const code1 = `
   \`\`\`rust
-  pub fn remove(&self, store: &mut dyn Storage, k: K)
+  cw721::Approval {
+    spender: approval.spender.to_string(),
+    expires: approval.expires,
+}
+  \`\`\``;
+  const code2 = `
+  \`\`\`rust
+  pub fn is_expired(&self, block: &BlockInfo) -> bool
   \`\`\``;
 
   return (
@@ -69,24 +77,43 @@ function L1C4U1S6Code() {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's remove the information from the{" "}
-            <CodeBlock>operators</CodeBlock>, <CodeBlock>Map</CodeBlock>.
-          </BasicP>
-          <BasicP>
-            You can remove it through <CodeBlock>remove()</CodeBlock>.
+            <CodeBlock>humanize_approvals</CodeBlock> returns a vector of{" "}
+            <CodeBlock>cw721</CodeBlock>::Approval configured as follows:
           </BasicP>
           <Markdown code={code1} />
+          <BasicP>
+            More precisely, <CodeBlock>humanize_approval</CodeBlock> returns a
+            single <CodeBlock>cw721::Approval</CodeBlock>. Uses this function
+            and <CodeBlock>map</CodeBlock> to collect valid information from
+            <CodeBlock>info.approvals</CodeBlock> to obtain a vector.
+          </BasicP>
+          <BasicP>
+            But you should leave only valid information among the collected
+            information, shouldn’t you? Let's use a filter.
+          </BasicP>
         </ProblemSection>
         <HintSection>
           <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
-                <BasicP>Do we need it?</BasicP>
-                <BasicP>
-                  You just need to combine the keys and use{" "}
-                  <CodeBlock>remove</CodeBlock>!
-                </BasicP>
+                <ListStyle>
+                  <li>
+                    The <CodeBlock>filter</CodeBlock> of an iterator is used to
+                    create a new iterator that contains only the elements that
+                    meet the conditions.
+                  </li>
+                  <li>
+                    The conditions are as follows: If the factor{" "}
+                    <CodeBlock>include_expired</CodeBlock>
+                    is true, it should include expired information. And if it is
+                    false, it should not.
+                  </li>
+                  <li>
+                    The function to check for expiration is as follows:
+                    <Markdown code={code2} />
+                  </li>
+                </ListStyle>
               </>
             )}
           </HintButton>
@@ -138,4 +165,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U2S1Code;

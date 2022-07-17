@@ -22,9 +22,9 @@ function Navbar() {
         credentials: "include",
       };
       let res = await fetch("http://127.0.0.1:3334/auth/check", opt);
-      res = await res.json();
+      const data = await res.json();
 
-      const onLogin = res.isLogin;
+      const onLogin = data.isLogin;
       setIsLoggedIn(onLogin);
     } catch (error) {
       console.log(error);

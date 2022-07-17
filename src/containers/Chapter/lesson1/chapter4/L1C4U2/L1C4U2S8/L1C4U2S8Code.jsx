@@ -15,11 +15,11 @@ import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
 import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
 import { useParams } from "react-router-dom";
 import HintButton from "../../../../../../components/Contents/HintButton";
-import Markdown from "../../../../../../components/Contents/Markdown";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U2S8Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -58,35 +58,50 @@ function L1C4U1S6Code() {
   // const { data } = getTargetCodes({ lessonID, chID });
   // console.log(data);
 
-  const code1 = `
-  \`\`\`rust
-  pub fn remove(&self, store: &mut dyn Storage, k: K)
-  \`\`\``;
-
   return (
     <>
       <EditorDesc>
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's remove the information from the{" "}
-            <CodeBlock>operators</CodeBlock>, <CodeBlock>Map</CodeBlock>.
+            The response <CodeBlock>AllNftInfoResponse</CodeBlock> consists of
+            two fields:
           </BasicP>
+          <ListStyle>
+            <li>
+              <CodeBlock>access</CodeBlock>:{" "}
+              <CodeBlock>OwnerOfResponse</CodeBlock>
+            </li>
+            <li>
+              <CodeBlock>info</CodeBlock>:{" "}
+              <CodeBlock>NftInfoResponse</CodeBlock>
+            </li>
+          </ListStyle>
           <BasicP>
-            You can remove it through <CodeBlock>remove()</CodeBlock>.
+            Aren't they both familiar? <CodeBlock>OwnerOfResponse</CodeBlock>{" "}
+            appeared in OwnerOf and
+            <CodeBlock>NftInfoResponse</CodeBlock> appeared in NftInfo just
+            above.
           </BasicP>
-          <Markdown code={code1} />
+          <BasicP>Let's fill in the blanks using them.</BasicP>
         </ProblemSection>
         <HintSection>
           <HintButton onClick={async () => setHide(!hide)}>
             <Hint hide={hide} />
             {hide ? null : (
               <>
-                <BasicP>Do we need it?</BasicP>
-                <BasicP>
-                  You just need to combine the keys and use{" "}
-                  <CodeBlock>remove</CodeBlock>!
-                </BasicP>
+                <ListStyle>
+                  <li>
+                    As you may remember, <CodeBlock>OwnerOfResponse</CodeBlock>{" "}
+                    consists of <CodeBlock>owner</CodeBlock> and
+                    <CodeBlock>approval</CodeBlock>.
+                  </li>
+                  <li>
+                    <CodeBlock>NftInfoResponse</CodeBlock> consists of{" "}
+                    <CodeBlock>token_uri</CodeBlock> and{" "}
+                    <CodeBlock>extension</CodeBlock>.
+                  </li>
+                </ListStyle>
               </>
             )}
           </HintButton>
@@ -138,4 +153,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U2S8Code;
