@@ -12,6 +12,7 @@ import BgV4 from "../assets/images/bg-v4.svg";
 import ChDesc from "./components/ChDesc";
 import DetailContents from "./components/DetailContents";
 import Navigator from "../components/Navigator/Navigator";
+import StartModal from "../components/StartModal/StartModal";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
@@ -24,6 +25,12 @@ function ChDescSchema() {
   return (
     <>
       <Navbar />
+      {lessonID === "1" && chID === "2" && uID === "1" ? <StartModal /> : null}
+      {lessonID === "1" && chID === "3" && uID === "1" ? <StartModal /> : null}
+      {lessonID === "2" && chID === "2" && uID === "1" ? <StartModal /> : null}
+      {lessonID === "2" && chID === "3" && uID === "1" ? <StartModal /> : null}
+      {lessonID === "2" && chID === "4" && uID === "1" ? <StartModal /> : null}
+      {lessonID === "2" && chID === "5" && uID === "1" ? <StartModal /> : null}
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
@@ -26,7 +26,18 @@ function EditorSchema() {
   return (
     <>
       <Navbar />
-      <StartModal />
+
+      {uID === "0" || sID === "0" ? <StartModal /> : null}
+      {lessonID === "2" && chID === "7" && uID === "1" && sID === "1" ? (
+        <StartModal />
+      ) : null}
+      {lessonID === "3" && chID === "2" && uID === "1" && sID === "1" ? (
+        <StartModal />
+      ) : null}
+      {lessonID === "4" && chID === "2" && uID === "1" && sID === "1" ? (
+        <StartModal />
+      ) : null}
+
       <Background style={{ backgroundImage: `url(${ShortBg})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />

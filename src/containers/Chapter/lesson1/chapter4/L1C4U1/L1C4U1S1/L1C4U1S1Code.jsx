@@ -56,8 +56,8 @@ function L1C4U1S1Code() {
     },
   };
   const file = fakeFiles[fileName];
-  // const { data } = getTargetCodes({ lessonID, chID });
-  // console.log(data);
+  const { data } = getTargetCodes({ lessonID, chID });
+  console.log(data);
 
   const code1 = `
 \`\`\`rust

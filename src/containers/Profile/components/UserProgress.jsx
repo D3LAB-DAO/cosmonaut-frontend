@@ -4,6 +4,7 @@ import tw from "tailwind-styled-components";
 import CNFT from "../../../assets/images/esfera-nft.jpg";
 import { useRecoilValue } from "recoil";
 import { testUserInfos } from "../../../states/User/testUserInfosAtoms";
+import { userProgressState } from "../../../states/User/userProgress";
 
 const Container = tw.div`flex flex-wrap -mb-12`;
 const Progress = tw.div`mx-auto w-full mb-6`;
@@ -11,6 +12,8 @@ const Bar = tw.div`flex bg-green-500 rounded-full justify-end items-center pr-0.
 
 function UserProgress() {
   const testUserInfo = useRecoilValue(testUserInfos);
+  const userProgress = useRecoilValue(userProgressState);
+  console.log(userProgress);
 
   return (
     <Container>

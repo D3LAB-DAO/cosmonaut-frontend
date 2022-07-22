@@ -11,7 +11,6 @@ import { chapterInfos } from "../states/Information/chapterInfoAtoms";
 import { unitInfos } from "../states/Information/unitInfoAtoms";
 import BgV4 from "../assets/images/bg-v4.svg";
 import Navigator from "../components/Navigator/Navigator";
-import StartModal from "../components/StartModal/StartModal";
 import FinishModal from "../components/FinishModal/FinishModal";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
@@ -25,14 +24,13 @@ function DescSchema() {
   return (
     <>
       <Navbar />
-      <StartModal />
+
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
         <ContentSchema unitInfo={unitData[chID - 1]} />
       </Background>
       <Footer />
-      {lessonID === "0" && chID === "4" && uID === "3" ? <FinishModal /> : null}
       {lessonID === "4" && chID === "3" && uID === "2" ? <FinishModal /> : null}
       <Navigator />
     </>

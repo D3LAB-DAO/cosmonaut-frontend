@@ -11,11 +11,12 @@ import { unitInfos } from "../states/Information/unitInfoAtoms";
 import ShortBg from "../assets/images/short_bg.png";
 import DetailContents from "./components/DetailContents";
 import Navigator from "../components/Navigator/Navigator";
+import StartModal from "../components/StartModal/StartModal";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
 function UnDescSchema() {
-  const { lessonID, chID } = useParams();
+  const { lessonID, chID, uID } = useParams();
   const chInfo = useRecoilValue(chapterInfos);
   const unitInfo = useRecoilValue(unitInfos);
   const unitData = unitInfo[lessonID];
@@ -23,6 +24,8 @@ function UnDescSchema() {
   return (
     <>
       <Navbar />
+
+      {lessonID === "4" && chID === "1" && uID === "1" ? <StartModal /> : null}
       <Background style={{ backgroundImage: `url(${ShortBg})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />

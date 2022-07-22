@@ -91,7 +91,7 @@ function Overview() {
                 </h3>
               </SubTitle>
 
-              <ProgressBar />
+              <ProgressBar lesson={lessonID} />
 
               <Desc>
                 <div class="col-span-1">

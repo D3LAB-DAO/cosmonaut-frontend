@@ -11,7 +11,7 @@ import FinishModal from "./components/FinishModal/FinishModal";
 
 function App() {
   return (
-    <div>
+    <>
       <ScrollToTop>
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -19,18 +19,24 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/lesson/:lessonID" element={<IndexPage />} />
           <Route
+            exact
             path="/lesson/:lessonID/chapter/:chID/unit/:uID"
             element={<UnitPage />}
           />
           <Route
+            exact
             path="/lesson/:lessonID/chapter/:chID/unit/:uID/small/:sID"
             element={<SmallPage />}
           />
-          <Route path="/lesson/:lessonID/finish" element={<FinishModal />} />
+          <Route
+            exact
+            path="/lesson/:lessonID/finish"
+            element={<FinishModal />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ScrollToTop>
-    </div>
+    </>
   );
 }
 

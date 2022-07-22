@@ -21,6 +21,8 @@ function Navigator() {
       return navigate(`/lesson/0/chapter/3/unit/1`);
     } else if (lessonID === "0" && chID === "3" && uID === "2") {
       return navigate(`/lesson/0/chapter/4/unit/1`);
+    } else if (lessonID === "0" && chID === "4" && uID === "2") {
+      return navigate(`/lesson/1/chapter/1/unit/0`);
     } else if (lessonID === "1" && chID === "1" && uID === "3") {
       return navigate(`/lesson/1/chapter/2/unit/1`);
     } else if (lessonID === "1" && chID === "2" && uID === "1") {
@@ -112,20 +114,12 @@ function Navigator() {
           <div class="w-full flex flex-wrap items-center justify-end ">
             <button onClick={handleLeft}>
               <div class="bg-green-500 inline-block lg:h-10 h-9 md:w-16 w-10 md:mr-6 mr-2 border-3 border-indigo-900 lg:shadow shadow-sm rounded ease-in-out duration-300 transform hover:scale-110 hover:translate-x-2">
-                <img
-                  class="lg:h-6 lg:w-5 w-3 h-3 mx-auto mt-1"
-                  src={Arrowleft}
-                  alt=""
-                />
+                <img class="w-6 h-5 mx-auto mt-1" src={Arrowleft} alt="" />
               </div>
             </button>
             <button onClick={handleRight}>
               <div class="bg-blue-500 inline-block lg:h-10 h-9 md:w-16 w-10 md:mr-6 mr-2 border-3 border-indigo-900 lg:shadow shadow-sm rounded ease-in-out duration-300 transform hover:scale-110 hover:translate-x-2">
-                <img
-                  class="lg:h-6 lg:w-5 w-3 h-3 mx-auto mt-1"
-                  src={Arrowright}
-                  alt=""
-                />
+                <img class="w-6 h-5 mx-auto mt-1" src={Arrowright} alt="" />
               </div>
             </button>
           </div>

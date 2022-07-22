@@ -11,15 +11,15 @@ export const chapterInfos = atom({
       },
       {
         id: 2,
-        title: "wasm / wasmd",
+        title: "Install wasm/wasmd",
       },
       {
         id: 3,
-        title: "Testnet (Cliffnet)",
+        title: "Testnet",
       },
       {
         id: 4,
-        title: "Interaction w/ Contract",
+        title: "Interaction with Contract",
       },
     ],
     // lesson1

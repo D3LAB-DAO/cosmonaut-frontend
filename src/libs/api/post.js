@@ -22,7 +22,7 @@ export const usePostApi = ({ files }) => {
     setIsLoading(true);
 
     try {
-      let res = await fetch("http://127.0.0.1:3334/v1/rust/fmt", option);
+      let res = await fetch("http://127.0.0.1:8080/v1/rust/fmt", option);
       const data = await res.json();
       console.log(data);
       console.log(Object.entries(data.result));

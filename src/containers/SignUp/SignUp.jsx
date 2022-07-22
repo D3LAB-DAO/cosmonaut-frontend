@@ -25,7 +25,7 @@ function SignUp() {
             </div>
             <div>
               <a
-                href="http://127.0.0.1:3334/auth/login/federated/github"
+                href="http://127.0.0.1:8080/auth/login/federated/github"
                 class="flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200"
                 rel="noreferrer"
               >
@@ -37,7 +37,7 @@ function SignUp() {
                 <span>Sign in with Github</span>
               </a>
               <a
-                href="http://127.0.0.1:3334/auth/login/federated/google"
+                href="http://127.0.0.1:8080/auth/login/federated/google"
                 class="flex items-center justify-center md:mx-4 mb-6 py-3 px-6 leading-6 text-lg font-bold md:font-extrabold bg-green-500 hover:bg-yellow-500 hover:text-black border-3 border-indigo-900 shadow rounded-lg transition duration-200"
                 rel="noreferrer"
               >

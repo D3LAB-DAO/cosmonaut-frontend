@@ -13,18 +13,30 @@ function ChapterTitle({ chInfo }) {
     <Container>
       {uID === "0" ? (
         <div class="flex flex-wrap items-baseline md:mx-0 mx-4 lg:mb-16 mb-8">
-          <h2 class="text-2xl md:text-left text-center md:text-3xl mr-6 font-heading">
-            Lesson {lessonID}
-          </h2>
+          {lessonID === "0" ? (
+            <h2 class="text-2xl md:text-left text-center md:text-3xl mr-6 font-heading">
+              Prologue
+            </h2>
+          ) : (
+            <h2 class="text-2xl md:text-left text-center md:text-3xl mr-6 font-heading">
+              Lesson {lessonID}
+            </h2>
+          )}
           <h3 class="text-xl  md:text-left text-center md:text-2xl text-yellow-200 font-heading">
             Description
           </h3>
         </div>
       ) : (
         <div class="flex flex-wrap items-baseline md:mx-0 mx-4 lg:mb-16 mb-8">
-          <h2 class="text-2xl md:text-left text-center md:text-3xl mr-6 font-heading">
-            Lesson{lessonID}
-          </h2>
+          {lessonID === "0" ? (
+            <h2 class="text-2xl md:text-left text-center md:text-3xl mr-6 font-heading">
+              Prologue
+            </h2>
+          ) : (
+            <h2 class="text-2xl md:text-left text-center md:text-3xl mr-6 font-heading">
+              Lesson {lessonID}
+            </h2>
+          )}
           <ChTitle>
             Chp{chID}. {chInfo[chID - 1]?.title}
           </ChTitle>

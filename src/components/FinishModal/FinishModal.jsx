@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
-import L0FinishNft from "../../assets/images/0-80.jpg";
+import { useGetLessonPic } from "../../libs/api/getLessonPic";
+import { useGetUserProgress } from "../../libs/api/getUserProgress";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
+import { userProgressState } from "../../states/User/userProgress";
 
 const Container = tw.div`fixed h-screen bottom-0 w-full z-50 flex items-center bg-gray-900 bg-opacity-80`;
 const ProgressBar = tw.div`grid grid-cols-6 justify-between my-2 gap-1`;
@@ -21,6 +23,22 @@ function FinishModal() {
   const finishLesson = () => {
     navigate(`/`);
   };
+
+  const [lessonPic, picFetch] = useGetLessonPic();
+  const [userProgress, userFetch] = useGetUserProgress();
+  const [progress, setProgress] = useRecoilState(userProgressState);
+
+  useEffect(() => {
+    picFetch();
+    userFetch();
+  }, []);
+
+  // const img = window.sessionStorage.getItem(`${lessonID}`);
+
+  console.log(lessonPic);
+
+  setProgress(userProgress.chapter);
+  console.log(progress);
   return (
     <>
       <Container>
@@ -34,8 +52,8 @@ function FinishModal() {
                 <div class="bg-white border-4 border-indigo-900 rounded-xl text-center p-3 px-6">
                   <img
                     class="block mx-auto mb-2 max-h-56"
-                    src={L0FinishNft}
-                    alt=""
+                    src={lessonPic}
+                    alt="Blob URL"
                   />
                   <p class="text-indigo-900 font-heading mb-1 leading-tight text-base">
                     Lesson {lessonID}.
@@ -77,4 +95,4 @@ function FinishModal() {
   );
 }
 
-export default FinishModal;
+export default React.memo(FinishModal);

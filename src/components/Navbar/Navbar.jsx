@@ -5,6 +5,7 @@ import tw from "tailwind-styled-components";
 import Account8 from "../../assets/images/account8.svg";
 
 import LogoV4 from "../../assets/images/logo-v4.svg";
+import { useGetLessonPic } from "../../libs/api/getLessonPic";
 import { LoginState } from "../../states/login";
 import SignIn from "../Common/SignIn";
 import Version from "../Common/Version";
@@ -14,6 +15,8 @@ const Logo = tw.a`text-lg font-bold ease-in-out duration-300 transform hover:sca
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
+  const [{ lessonPic }, picFetch] = useGetLessonPic(1);
+  console.log(lessonPic);
 
   const loginCheck = async () => {
     try {
@@ -21,7 +24,7 @@ function Navbar() {
         method: "GET",
         credentials: "include",
       };
-      let res = await fetch("http://127.0.0.1:3334/auth/check", opt);
+      let res = await fetch("http://127.0.0.1:8080/auth/check", opt);
       const data = await res.json();
 
       const onLogin = data.isLogin;
@@ -66,7 +69,7 @@ function Navbar() {
         ) : (
           <div class="flex items-center">
             <Link to="/signUp">
-              <SignIn />
+              <SignIn onClick={picFetch} />
             </Link>
           </div>
         )}
