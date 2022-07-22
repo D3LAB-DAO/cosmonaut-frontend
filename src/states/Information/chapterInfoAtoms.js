@@ -44,6 +44,10 @@ export const chapterInfos = atom({
         id: 5,
         title: "BUIDL NFT",
       },
+      {
+        id: 6,
+        title: "Practice",
+      },
     ],
     // lesson2
     [
@@ -75,6 +79,10 @@ export const chapterInfos = atom({
         id: 7,
         title: "BUIDL FT",
       },
+      {
+        id: 8,
+        title: "Practice",
+      },
     ],
     // lesson3
     [
@@ -85,6 +93,10 @@ export const chapterInfos = atom({
       {
         id: 2,
         title: "Change NFT",
+      },
+      {
+        id: 3,
+        title: "Practice",
       },
     ],
     // lesson4
@@ -99,7 +111,7 @@ export const chapterInfos = atom({
       },
       {
         id: 3,
-        title: "The Journey Continues",
+        title: "Practice",
       },
     ],
   ],

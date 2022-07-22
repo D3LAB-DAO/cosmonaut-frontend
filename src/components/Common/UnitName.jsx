@@ -13,7 +13,7 @@ function UnitName(props) {
 
   return (
     <Header style={{ backgroundColor: `${props.color}` }}>
-      <div class=" container px-4 mx-auto">
+      <div class="container px-4 mx-auto">
         <div class="text-center">
           <h1 class="font-extrabold font-heading text-yellow-100 md:text-2xl text-lg">
             {chID}-{unitInfo[chID - 1][uID - 1]?.id}.{" "}

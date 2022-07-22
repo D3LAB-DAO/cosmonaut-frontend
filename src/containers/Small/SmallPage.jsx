@@ -21,28 +21,28 @@ function SmallPage() {
     return <LsDescSchema />;
   } else if (
     lessonID === "1" &&
-    (chID === "4" || "5") &&
+    (chID === "4" || "5" || "6") &&
     (uID === "1" || "2" || "3") &&
     (sID === "1" || "2" || "3")
   ) {
     return <EditorSchema />;
   } else if (
     lessonID === "2" &&
-    (chID === "6" || "7") &&
+    (chID === "6" || "7" || "8") &&
     (uID === "1" || "2" || "3" || "4" || "5") &&
     (sID === "1" || "2" || "3" || "4" || "5" || "6")
   ) {
     return <EditorSchema />;
   } else if (
     lessonID === "3" &&
-    (chID === "1" || "2") &&
+    (chID === "1" || "2" || "3") &&
     (uID === "1" || "2" || "3") &&
     (sID === "1" || "2" || "3" || "4" || "5" || "6")
   ) {
     return <EditorSchema />;
   } else if (
     lessonID === "4" &&
-    chID === "2" &&
+    (chID === "2" || "3") &&
     uID === "1" &&
     (sID === "1" || "2" || "3")
   ) {

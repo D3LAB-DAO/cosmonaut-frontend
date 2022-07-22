@@ -29,8 +29,8 @@ function L2C2U2() {
     <>
       <UnitName color={"rgba(76, 133, 87, 1)"} />
       <Contents>
-        <div class="mx-auto flex flex-wrap justify-center border-dashed border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
-          <GreenID>1</GreenID>
+        <div class="mx-auto flex flex-wrap justify-center border-gray-200 border-b-2 py-16 bg-gray-700 px-8 md:px-4">
+          <GreenID>!</GreenID>
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentTitle>
               <div class="flex sm:flex-nowrap">

@@ -136,6 +136,14 @@ export const unitInfos = atom({
           subTitle: ["Example"],
         },
       ],
+      // chapter6
+      [
+        {
+          id: "1",
+          title: "Practice",
+          subTitle: [],
+        },
+      ],
     ],
     // lesson2
     [
@@ -258,6 +266,14 @@ export const unitInfos = atom({
           subTitle: ["Base Query", "TokenExtension"],
         },
       ],
+      // chapter8
+      [
+        {
+          id: "1",
+          title: "Practice",
+          subTitle: [],
+        },
+      ],
     ],
     // lesson3
     [
@@ -309,6 +325,14 @@ export const unitInfos = atom({
           subTitle: [""],
         },
       ],
+      // chapter3
+      [
+        {
+          id: "1",
+          title: "Practice",
+          subTitle: [],
+        },
+      ],
     ],
     // lesson4
     [
@@ -336,9 +360,9 @@ export const unitInfos = atom({
       // chapter3
       [
         {
-          id: 1,
-          title: "The Journey Continues",
-          subTitle: [""],
+          id: "1",
+          title: "Practice",
+          subTitle: [],
         },
       ],
     ],

@@ -23,6 +23,8 @@ function Navigator() {
       return navigate(`/lesson/0/chapter/4/unit/1`);
     } else if (lessonID === "0" && chID === "4" && uID === "2") {
       return navigate(`/lesson/1/chapter/1/unit/0`);
+
+      // lesson 1
     } else if (lessonID === "1" && chID === "1" && uID === "3") {
       return navigate(`/lesson/1/chapter/2/unit/1`);
     } else if (lessonID === "1" && chID === "2" && uID === "1") {
@@ -33,6 +35,8 @@ function Navigator() {
       return navigate(`/lesson/1/chapter/4/unit/1/small/1`);
     } else if (lessonID === "1" && chID === "5" && uID === "1" && sID === "0") {
       return navigate(`/lesson/1/chapter/5/unit/1/small/1`);
+
+      // lesson 2
     } else if (lessonID === "2" && chID === "7" && uID === "1" && sID === "0") {
       return navigate(`/lesson/2/chapter/7/unit/1/small/1`);
     } else if (lessonID === "2" && chID === "1" && uID === "3") {
@@ -45,10 +49,14 @@ function Navigator() {
       return navigate(`/lesson/2/chapter/5/unit/1`);
     } else if (lessonID === "2" && chID === "5" && uID === "2") {
       return navigate(`/lesson/2/chapter/6/unit/1/small/0`);
+
+      // lesson 3
     } else if (lessonID === "3" && chID === "1" && uID === "1") {
       return navigate(`/lesson/3/chapter/1/unit/2/small/1`);
     } else if (lessonID === "3" && chID === "1" && uID === "3" && sID === "1") {
       return navigate(`/lesson/3/chapter/2/unit/1/small/1`);
+
+      // lesson 4
     } else if (lessonID === "4" && chID === "1" && uID === "2") {
       return navigate(`/lesson/4/chapter/2/unit/1/small/1`);
     } else if (lessonID === "4" && chID === "3" && uID === "1") {
