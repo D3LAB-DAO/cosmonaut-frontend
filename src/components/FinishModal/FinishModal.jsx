@@ -20,8 +20,8 @@ function FinishModal() {
   const nextLesson = () => {
     navigate(`/lesson/${nextL}/chapter/1/unit/0`);
   };
-  const finishLesson = () => {
-    navigate(`/`);
+  const goEpilogue = () => {
+    navigate(`/epilogue`);
   };
 
   const [lessonPic, picFetch] = useGetLessonPic();
@@ -34,7 +34,6 @@ function FinishModal() {
   }, []);
 
   // const img = window.sessionStorage.getItem(`${lessonID}`);
-
   console.log(lessonPic);
 
   setProgress(userProgress.chapter);
@@ -84,7 +83,7 @@ function FinishModal() {
               You can check out this mission badge in your Journey Page.
             </h4>
             {lessonID === "4" ? (
-              <Button onClick={finishLesson}>Ready for Next Lesson?</Button>
+              <Button onClick={goEpilogue}>Ready for Next Lesson?</Button>
             ) : (
               <Button onClick={nextLesson}>Ready for Next Lesson?</Button>
             )}

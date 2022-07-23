@@ -8,6 +8,8 @@ import SignUp from "./containers/SignUp/SignUp";
 import ScrollToTop from "./components/Common/ScrollToTop";
 import SmallPage from "./containers/Small/SmallPage";
 import FinishModal from "./components/FinishModal/FinishModal";
+import { EpiloguePage } from "./containers/Epilogue/EpiloguePage";
+import { AppendixPage } from "./containers/Appendix/AppendixPage";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
             path="/lesson/:lessonID/finish"
             element={<FinishModal />}
           />
+          <Route exact path="/epilogue" element={<EpiloguePage />} />
+          <Route exact path="/appendix/:aID" element={<AppendixPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ScrollToTop>

@@ -24,7 +24,6 @@ function UnDescSchema() {
   return (
     <>
       <Navbar />
-
       {lessonID === "4" && chID === "1" && uID === "1" ? <StartModal /> : null}
       <Background style={{ backgroundImage: `url(${ShortBg})` }}>
         <BackToOverview />

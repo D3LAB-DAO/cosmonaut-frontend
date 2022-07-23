@@ -132,6 +132,7 @@ function SmallNavigator() {
             </h3>
           </div>
         </div>
+
         <div class="lg:w-1/2 w-1/3 md:px-4 px-2">
           <div class="w-full flex flex-wrap items-center justify-end ">
             <button onClick={handleLeft}>

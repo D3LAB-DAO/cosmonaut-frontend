@@ -280,7 +280,7 @@ module.exports = {
       lg: "0.75rem",
       xl: "1rem",
       "2xl": "1.5rem",
-      "3xl": "2rem",
+      "3xl": "1.9rem",
       full: "9999px",
     },
     borderWidth: {
@@ -342,7 +342,7 @@ module.exports = {
       lg: ["1.125rem", { lineHeight: "1.875rem" }],
       xl: ["1.25rem", { lineHeight: "2.25rem" }],
       "2xl": ["1.5rem", { lineHeight: "2rem" }],
-      "3xl": ["2.25rem", { lineHeight: "1.125" }],
+      "3xl": ["2rem", { lineHeight: "1.125" }],
       "4xl": ["3rem", { lineHeight: "1.125" }],
       "5xl": ["4rem", { lineHeight: "1.125" }],
       "6xl": ["4.5rem", { lineHeight: "1" }],

@@ -23,7 +23,6 @@ function DescSchema() {
   return (
     <>
       <Navbar />
-
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
