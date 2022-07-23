@@ -47,7 +47,11 @@ function EditorSchema() {
         <StartModal />
       ) : null}
 
-      <Background style={{ backgroundImage: `url(${ShortBg})` }}>
+      <Background
+        style={{
+          backgroundImage: `url(${ShortBg})`,
+        }}
+      >
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
       </Background>

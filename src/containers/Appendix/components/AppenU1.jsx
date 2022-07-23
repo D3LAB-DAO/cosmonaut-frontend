@@ -5,7 +5,7 @@ import BasicP from "../../../components/Contents/BasicP";
 import CodeBlock from "../../../components/Contents/CodeBlock";
 import ListStyle from "../../../components/Contents/ListStyle";
 
-const UnitName = tw.div`py-2 lg:py-6 md:py-3`;
+const UnitName = tw.div`py-2 lg:py-4 md:py-1`;
 
 const AppenU1 = () => {
   return (

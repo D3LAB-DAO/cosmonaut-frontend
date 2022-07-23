@@ -8,7 +8,7 @@ import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import { chapterInfos } from "../states/Information/chapterInfoAtoms";
 import { unitInfos } from "../states/Information/unitInfoAtoms";
-import BgV4 from "../assets/images/bg-v4.svg";
+import ShortBg from "../assets/images/short_bg.png";
 import ChDesc from "./components/ChDesc";
 import DetailContents from "./components/DetailContents";
 import Navigator from "../components/Navigator/Navigator";
@@ -31,7 +31,7 @@ function ChDescSchema() {
       {lessonID === "2" && chID === "3" && uID === "1" ? <StartModal /> : null}
       {lessonID === "2" && chID === "4" && uID === "1" ? <StartModal /> : null}
       {lessonID === "2" && chID === "5" && uID === "1" ? <StartModal /> : null}
-      <Background style={{ backgroundImage: `url(${BgV4})` }}>
+      <Background style={{ backgroundImage: `url(${ShortBg})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />
         {(lessonID === "3" || "4") && chID === "1" && uID === "1" ? null : (

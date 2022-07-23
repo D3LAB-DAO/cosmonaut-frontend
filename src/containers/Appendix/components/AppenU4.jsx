@@ -1,14 +1,11 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import Alert from "../../../components/Contents/Alert";
-import BasicA from "../../../components/Contents/BasicA";
 import BasicP from "../../../components/Contents/BasicP";
 import CodeBlock from "../../../components/Contents/CodeBlock";
 import Header from "../../../components/Contents/Header";
-import ListStyle from "../../../components/Contents/ListStyle";
 import Markdown from "../../../components/Contents/Markdown";
 
-const UnitName = tw.div`py-2 lg:py-6 md:py-3`;
+const UnitName = tw.div`py-2 lg:py-4 md:py-1`;
 
 const code1 = `
 \`\`\`javascript

@@ -9,6 +9,9 @@ import { EpDesc } from "./components/EpDesc";
 import { EpSummary } from "./components/EpSummary";
 import CornerNail from "../../components/Common/Icon/CornerNail";
 import bulb from "../../assets/images/light_bulb_icon.png";
+import { Link } from "react-router-dom";
+import { GoHome } from "../../components/Common/Icon/GoHome";
+import { WhiteBtn } from "../../components/Common/Icon/WhiteBtn";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 const ChapterTitle = tw.div`mb-4 md:mb-4 lg:mb-8`;
@@ -53,6 +56,14 @@ export const EpiloguePage = () => {
           </div>
         </Container>
         <EpPlusDesc />
+        <div class="py-4 flex flex-wrap items-center justify-center">
+          <Link to="/">
+            <GoHome>Go back to Homepage</GoHome>
+          </Link>
+          <Link to="/appendix/0">
+            <WhiteBtn>Go to Appendix</WhiteBtn>
+          </Link>
+        </div>
       </Background>
       <Footer />
     </>

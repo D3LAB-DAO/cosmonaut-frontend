@@ -16,7 +16,7 @@ function AppenNavigator() {
   const handleRight = () => {
     console.log("handle Right");
     if (aID === "4") {
-      return navigate(`/appendix/4`);
+      return navigate(`/`);
     } else {
       navigate(`/appendix/${nextAppen}`);
     }

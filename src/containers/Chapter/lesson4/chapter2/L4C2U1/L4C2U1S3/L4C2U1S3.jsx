@@ -62,7 +62,7 @@ function L4C2U1S3() {
             <ContentTitle>
               <div class="flex sm:flex-nowrap">
                 <div class="w-full lg:w-auto lg:pt-3 pt-2 pb-2 lg:pb-0">
-                  <Header>The fate of the spaceship is</Header>
+                  <Header>The fate of the spaceship is...</Header>
                 </div>
               </div>
             </ContentTitle>
