@@ -10,6 +10,7 @@ import SmallPage from "./containers/Small/SmallPage";
 import FinishModal from "./components/FinishModal/FinishModal";
 import { EpiloguePage } from "./containers/Epilogue/EpiloguePage";
 import { AppendixPage } from "./containers/Appendix/AppendixPage";
+import IndexInitialPage from "./containers/Index/IndexInitialPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/index" element={<IndexInitialPage />} />
           <Route path="/lesson/:lessonID" element={<IndexPage />} />
           <Route
             exact

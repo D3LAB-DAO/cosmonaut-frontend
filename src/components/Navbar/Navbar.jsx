@@ -18,22 +18,22 @@ function Navbar() {
   const [{ lessonPic }, picFetch] = useGetLessonPic(1);
   console.log(lessonPic);
 
-  const loginCheck = async () => {
-    try {
-      const opt = {
-        method: "GET",
-        credentials: "include",
-      };
-      let res = await fetch("http://127.0.0.1:8080/auth/check", opt);
-      const data = await res.json();
+  // const loginCheck = async () => {
+  //   try {
+  //     const opt = {
+  //       method: "GET",
+  //       credentials: "include",
+  //     };
+  //     let res = await fetch("http://127.0.0.1:8080/auth/check", opt);
+  //     const data = await res.json();
 
-      const onLogin = data.isLogin;
-      setIsLoggedIn(onLogin);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  loginCheck();
+  //     const onLogin = data.isLogin;
+  //     setIsLoggedIn(onLogin);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // loginCheck();
 
   window.addEventListener("scroll", e => {
     if (window.scrollY > 1) {

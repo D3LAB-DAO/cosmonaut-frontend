@@ -23,17 +23,7 @@ export const useGetLessonPic = () => {
 
       let imgObjectURL = URL.createObjectURL(data);
       console.log(imgObjectURL);
-      // let blobA = imgObjectURL.replace("blob:", "");
-      // let blobB = blobA.replace('"', "");
-      // console.log(blobB);
 
-      // let blobC = imgObjectURL.replace("blob:http://127.0.0.1:8080/", "");
-      // let blobD = blobC.replace('"', "");
-      // console.log(blobD);
-
-      // window.sessionStorage.setItem(`${lessonID}`, atob(blobD));
-
-      console.log(sessionStorage);
       setResponse(imgObjectURL);
     } catch (error) {
       console.log(error);

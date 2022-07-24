@@ -1,21 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import AngleRight from "../../../components/Common/Icon/AngleRight";
 import ProgressBar from "../../../components/Common/ProgressBar";
 import Goal from "../../../assets/images/goal.svg";
 import Result from "../../../assets/images/result.svg";
-import Icon1 from "../../../assets/images/icon1.svg";
-import Icon2 from "../../../assets/images/icon2.svg";
-import Icon3 from "../../../assets/images/icon3.svg";
 import NFT from "../../../assets/images/grayscale-cosmonaut-nft.png";
 
 import { useRecoilValue } from "recoil";
 import {
-  lessonEngInfo,
   lessonGoal,
   lessonResult,
 } from "../../../states/Information/lessonInfoAtoms";
 import { useParams } from "react-router-dom";
+import { useGetLessonPic } from "../../../libs/api/getLessonPic";
+import { useGetUserProgress } from "../../../libs/api/getUserProgress";
+import { indexInfo } from "../../../states/Information/indexInfo";
 
 const Container = tw.div`w-full lg:col-span-1 col-span-2 lg:mx-0 mx-auto lg:order-1 order-2`;
 const Title = tw.h1`text-xs md:text-lg font-semibold text-center text-yellow-500 mb-1`;
@@ -27,130 +26,97 @@ const Background = tw.div`bg-indigo-900 justify-center rounded-2xl border-indigo
 
 function Overview() {
   const { lessonID } = useParams();
-  const engInfo = useRecoilValue(lessonEngInfo);
+  const engInfo = useRecoilValue(indexInfo);
   const goal = useRecoilValue(lessonGoal);
   const result = useRecoilValue(lessonResult);
 
+  // const [picRes, picFetch] = useGetLessonPic();
+  // const [userRes, userFetch] = useGetUserProgress();
+
+  // useEffect(() => {
+  //   picFetch();
+  //   userFetch();
+  // }, []);
+
+  // console.log(picRes);
+
+  // console.log(userRes);
+  // console.log(userRes.chapter);
+
   return (
     <Container>
-      {lessonID === "99" ? (
-        <div class="animate-fadeInLtoR lg:border-b-0 lg:border-t-0 bg-green-500 rounded-3xl mx-6 lg:mx-0 md:px-2 px-1 md:py-2 py-1">
-          <div class="block object-cover mx-auto">
-            <Background
-              style={{
-                backgroundImage: `url(${require("../../../assets/images/spacetrip.gif")})`,
-              }}
-            >
-              <div class="mx-auto grid grid-cols-1 border-t-2 border-b-2 border-dashed border-white place-content-center h-full py-40">
-                <h3 class="w-full block text-2xl text-center font-heading text-yellow-500">
-                  Ready for your Journey?
-                </h3>
-                <div class="w-full grid grid-cols-3 md:my-6 py-4 place-items-center px-12">
-                  <div class="col-span-1">
-                    <img
-                      class="block h-20 object-cover rounded-md"
-                      alt=""
-                      src={Icon1}
-                    />
-                  </div>
-                  <div class="col-span-1">
-                    <img
-                      class="block h-20 object-cover rounded-md"
-                      alt=""
-                      src={Icon2}
-                    />
-                  </div>
-                  <div class="col-span-1">
-                    <img
-                      class="block h-20 object-cover rounded-md"
-                      alt=""
-                      src={Icon3}
-                    />
-                  </div>
-                </div>
-                <h3 class="w-full block text-base text-center text-white font-medium leading-normal px-12">
-                  Click any lessons on the right.You’ll see the overview plan
-                  for each trip.
-                </h3>
+      <div class="animate-fadeInLtoR lg:border-b-0 lg:border-t-0 bg-green-500 rounded-3xl mx-6 lg:mx-0 md:px-2 px-1 md:py-2 py-1">
+        <div class="block object-cover mx-auto">
+          <div class="px-4 bg-gray-50 rounded-2xl lg:pt-4 pt-6 border-indigo-900 border-4 md:pb-10 pb-6">
+            <Title>Lesson Overview</Title>
+
+            <SubTitle>
+              <h2 class="text-center text-lg font-heading text-indigo-900">
+                {engInfo[lessonID]?.num}.
+              </h2>
+              <h3 class="text-2xl text-center font-heading text-indigo-900">
+                {engInfo[lessonID]?.title}
+              </h3>
+            </SubTitle>
+
+            <ProgressBar lesson={lessonID} />
+            <Desc>
+              <div class="col-span-1">
+                <img
+                  class="block h-40 object-cover rounded-md"
+                  src={NFT}
+                  alt="cosmonaut-nft"
+                />
               </div>
-            </Background>
-          </div>
-        </div>
-      ) : (
-        <div class="animate-fadeInLtoR lg:border-b-0 lg:border-t-0 bg-green-500 rounded-3xl mx-6 lg:mx-0 md:px-2 px-1 md:py-2 py-1">
-          <div class="block object-cover mx-auto">
-            <div class="px-4 bg-gray-50 rounded-2xl lg:pt-4 pt-6 border-indigo-900 border-4 md:pb-10 pb-6">
-              <Title>Lesson Overview</Title>
-
-              <SubTitle>
-                <h2 class="text-center text-lg font-heading text-indigo-900">
-                  Lesson. {engInfo[lessonID]?.id}
+              <div class="flex ml-4 h-full col-span-2 border-t-2 border-b-2 border-dashed border-white items-center justify-center">
+                <h2 class="md:text-lg text-sm font-mono text-gray-50">
+                  {engInfo[lessonID]?.desc}
                 </h2>
-                <h3 class="text-2xl text-center font-heading text-indigo-900">
-                  {engInfo[lessonID]?.title}
-                </h3>
-              </SubTitle>
+              </div>
+            </Desc>
 
-              <ProgressBar lesson={lessonID} />
+            <SubDesc>
+              <AngleRight />
+              <span class="md:text-lg text-left font-normal text-xs">
+                {engInfo[lessonID]?.subDesc}
+              </span>
+            </SubDesc>
 
-              <Desc>
-                <div class="col-span-1">
-                  <img
-                    class="block h-40 object-cover rounded-md"
-                    src={NFT}
-                    alt="cosmonaut-nft"
-                  />
+            <Wrapper>
+              <div class="md:col-span-1 flex md:justify-start">
+                <div class="flex-shrink-0 flex items-center justify-center w-9 h-9">
+                  <img class="block" src={Goal} alt="" />
                 </div>
-                <div class="flex ml-4 h-full col-span-2 border-t-2 border-b-2 border-dashed border-white items-center justify-center">
-                  <h2 class="md:text-lg text-sm font-mono text-gray-50">
-                    {engInfo[lessonID]?.desc}
-                  </h2>
+                <h4 class="xl:text-lg text-base font-heading text-indigo-900 self-center lg:ml-4 ml-2">
+                  goal
+                </h4>
+              </div>
+
+              <ul class="col-span-2 list-disc xl:text-base md:text-sm text-xs font-normal text-indigo-900 md:ml-3 ml-5 md:mt-0 mt-3">
+                {goal[lessonID]?.map(e => (
+                  <li key={e?.id}>{e?.goal}</li>
+                ))}
+              </ul>
+            </Wrapper>
+
+            <Wrapper>
+              <div class="md:col-span-1 flex md:justify-start">
+                <div class="flex-shrink-0 flex items-center justify-center w-9 h-9 ml">
+                  <img class="block" src={Result} alt="" />
                 </div>
-              </Desc>
-
-              <SubDesc>
-                <AngleRight />
-                <span class="md:text-lg text-left font-normal text-xs">
-                  {engInfo[lessonID]?.subDesc}
-                </span>
-              </SubDesc>
-
-              <Wrapper>
-                <div class="md:col-span-1 flex md:justify-start">
-                  <div class="flex-shrink-0 flex items-center justify-center w-9 h-9">
-                    <img class="block" src={Goal} alt="" />
-                  </div>
-                  <h4 class="xl:text-lg text-base font-heading text-indigo-900 self-center lg:ml-4 ml-2">
-                    goal
-                  </h4>
-                </div>
-
-                <ul class="col-span-2 list-disc xl:text-base md:text-sm text-xs font-normal text-indigo-900 md:ml-3 ml-5 md:mt-0 mt-3">
-                  {goal[lessonID]?.map(e => (
-                    <li key={e?.id}>{e?.goal}</li>
-                  ))}
-                </ul>
-              </Wrapper>
-
-              <Wrapper>
-                <div class="md:col-span-1 flex md:justify-start">
-                  <div class="flex-shrink-0 flex items-center justify-center w-9 h-9 ml">
-                    <img class="block" src={Result} alt="" />
-                  </div>
-                  <h4 class="xl:text-lg text-base font-heading text-indigo-900 self-center lg:ml-4 ml-2">
-                    result
-                  </h4>
-                </div>
-                <ul class="col-span-2 list-disc xl:text-base md:text-sm text-xs font-normal text-indigo-900 md:ml-3 ml-5 md:mt-0 mt-3">
-                  {result[lessonID]?.map(e => (
-                    <li key={e?.id}>{e?.result}</li>
-                  ))}
-                </ul>
-              </Wrapper>
-            </div>
+                <h4 class="xl:text-lg text-base font-heading text-indigo-900 self-center lg:ml-4 ml-2">
+                  result
+                </h4>
+              </div>
+              <ul class="col-span-2 list-disc xl:text-base md:text-sm text-xs font-normal text-indigo-900 md:ml-3 ml-5 md:mt-0 mt-3">
+                {result[lessonID]?.map(e => (
+                  <li key={e?.id}>{e?.result}</li>
+                ))}
+              </ul>
+            </Wrapper>
           </div>
         </div>
-      )}
+      </div>
     </Container>
   );
 }
