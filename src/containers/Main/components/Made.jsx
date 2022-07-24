@@ -43,7 +43,7 @@ function Made() {
                   role in the near multi-chain future. And Rust, the core
                   language on both the core and contract, will be essential
                   knowledge to astronauts. However, there are not enough
-                  educational materials to study them and there is no space to
+                  educational materials to study them, and there is no space to
                   learn as an integrated flow. That makes many learners
                   discouraged. So we make Cosmonaut to educate astronauts as
                   pioneers.

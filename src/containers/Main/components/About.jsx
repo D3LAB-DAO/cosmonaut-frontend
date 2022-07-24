@@ -16,7 +16,7 @@ function About() {
         <div class="max-w-3xl mx-auto text-center">
           <p class="lg:text-xl md:text-lg text-sm md:px-4 px-2 font-bold leading-relaxed mb-12 text-gray-50">
             Cosmonaut is a free coding school that teaches you how to create and
-            deploy contracts on Cosmos ecosystem.
+            deploy contracts on the Cosmos ecosystem.
           </p>
         </div>
         <img
