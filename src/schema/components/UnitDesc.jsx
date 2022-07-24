@@ -11,8 +11,8 @@ import NotFound from "../../error/NotFound";
 const Container = tw.div`flex flex-wrap justify-center mx-auto md:px-20 px-8 mb-10`;
 const ChapterExplain = tw.div`w-full block`;
 
-function UnitDesc({ unitInfo }) {
-  const { lessonID, chID, uID } = useParams();
+function UnitDesc() {
+  const { lessonID, chID } = useParams();
   const ChExplain = () => {
     if (lessonID === "1" && chID === "1") {
       return <L1C1Explain />;

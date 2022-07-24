@@ -7,8 +7,9 @@ import AboutCode from "../../components/Contents/AboutCode";
 
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
-import AppenNavigator from "../../components/Navigator/AppenNavigator";
+
 import BackToOverview from "../../schema/components/BackToOverview";
+import AppenNavigator from "../../schema/components/Navigator/AppenNavigator";
 import AppenDesc from "./components/AppenDesc";
 import AppenU1 from "./components/AppenU1";
 import AppenU2 from "./components/AppenU2";
