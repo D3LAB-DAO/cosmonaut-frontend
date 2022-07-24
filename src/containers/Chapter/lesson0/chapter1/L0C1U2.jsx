@@ -74,15 +74,14 @@ $ cargo --version
       </BasicA>
       <BasicP>
         You can use the Package Manager, the Standalone installer, or build
-        directly from the source code. But it's much easier and faster to use
+        directly from the source code. Nevertheless, it is much easier and faster to use
         <CodeBlock>rustup</CodeBlock>.
       </BasicP>
 
       <Header>Check Rust Installation</Header>
       <Markdown code={code3} />
       <BasicP>
-        To make sure that Rust is installed well, we'll make a simple "Hello,
-        world!" example.
+        We will make a simple "Hello, world!" example to ensure that Rust is installed well.
       </BasicP>
       <BasicP>
         Just as a Python file ends with a py extension, the Rust file ends with

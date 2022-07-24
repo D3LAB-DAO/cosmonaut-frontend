@@ -25,7 +25,7 @@ $ export PATH=$PATH:/usr/local/go/bin
         </a>
       </BasicA>
       <BasicP>
-        You can install Go easily with the Go installer, or you can install it
+        You can install Go easily with the Go installer or install it
         with the following installation command.
       </BasicP>
       <BasicP>It is recommended to install Go v1.17+ or higher.</BasicP>

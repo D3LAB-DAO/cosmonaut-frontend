@@ -34,9 +34,9 @@ $ wasmd version
         which supports smart contract.
       </BasicP>
       <BasicP>
-        It is an addition of x/wasm based on cosmos/gaia. That is, the wasmd
-        binaries basically behave like gaiad, with the functionality of the
-        x/wasm module. If someone is going to develop a smart contract, he
+        It is an addition of x/wasm based on cosmos/gaia.
+        That is, the wasmd binaries behave like gaiad, with the x/wasm module’s
+        functionality. If someone is going to develop a smart contract, he
         should use a wasmd.
       </BasicP>
       <BasicP>

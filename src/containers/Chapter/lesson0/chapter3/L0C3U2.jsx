@@ -24,7 +24,7 @@ client.getAccount()
       <BasicP>
         CosmJS, a type script library, allows you to process queries and
         transaction registrations. There is also @cosmjs/cli which is similar
-        with a Node console.
+        to a Node console.
       </BasicP>
       <BasicP>
         Let's use the REPL environment to do the same thing as the Go CLI above.

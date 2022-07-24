@@ -8,7 +8,7 @@ export const indexInfo = atom({
       num: "Prologue",
       title: "Become a Pioneer",
       desc: "Get ready for terraforming.",
-      subDesc: "Let's build a development environment and do some tests.",
+      subDesc: "Let's build an environment and do some sample tests.",
       imgUrl: "",
     },
     {

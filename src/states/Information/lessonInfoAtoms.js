@@ -52,7 +52,7 @@ export const lessonEngInfo = atom({
       num: "0",
       title: "Become a Pioneer",
       desc: "Get ready for terraforming.",
-      subDesc: "Let's build a development environment and do some tests.",
+      subDesc: "Let's build an environment and do some sample tests.",
       imgUrl: "",
     },
     {
@@ -95,11 +95,11 @@ export const lessonGoal = atom({
     [
       {
         id: 0,
-        goal: "Establishing a development environment",
+        goal: "Set the development environment",
       },
       {
         id: 1,
-        goal: "Compile Example Contracts",
+        goal: "Experience deployment and testing",
       },
     ],
     // Lesson1

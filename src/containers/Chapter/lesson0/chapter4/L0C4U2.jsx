@@ -88,7 +88,7 @@ $ wasmd tx wasm execute $CONTRACT "$TRANSFER" \
         You can upload the created wasm binary executable to the blockchain.
       </BasicP>
       <BasicP>
-        Bytecode can be downloaded through CODE_ID, and verified by comparing it
+        Bytecode can be downloaded through CODE_ID and verified by comparing it
         with its own bytecode. Do diff.
       </BasicP>
 
@@ -98,7 +98,7 @@ $ wasmd tx wasm execute $CONTRACT "$TRANSFER" \
       <Markdown code={code3} />
       <BasicP>
         You can call the method to request a state change for this instance
-        (execute) or just get the data (query), after the instantiation.
+        (execute) or get the data (query) after the instantiation.
       </BasicP>
     </>
   );
