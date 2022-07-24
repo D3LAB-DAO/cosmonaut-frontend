@@ -93,7 +93,6 @@ function Navigator() {
 
   window.addEventListener("scroll", e => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      console.log("bottom");
       const navigator = document.querySelectorAll("#navigator");
       navigator[0].classList.add("opacity-100");
       navigator[0].classList.remove("opacity-0");

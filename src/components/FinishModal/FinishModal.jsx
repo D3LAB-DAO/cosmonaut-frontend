@@ -6,9 +6,10 @@ import { useGetLessonPic } from "../../libs/api/getLessonPic";
 import { useGetUserProgress } from "../../libs/api/getUserProgress";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
 import { userProgressState } from "../../states/User/userProgress";
+import ProgressBar from "../Common/ProgressBar";
 
 const Container = tw.div`fixed h-screen bottom-0 w-full z-50 flex items-center bg-gray-900 bg-opacity-80`;
-const ProgressBar = tw.div`grid grid-cols-6 justify-between my-2 gap-1`;
+// const ProgressBar = tw.div`grid grid-cols-6 justify-between my-2 gap-1`;
 const Button = tw.button`animate-bounce block mx-auto lg:mt-8 md:mt-4 md:mb-4 text-center lg:text-lg md:text-sm border-3 transition duration-200 rounded-full py-2 px-8 bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:border-white hover:to-blue-500 hover:text-white mt-3 text-xs`;
 
 function FinishModal() {
@@ -24,8 +25,8 @@ function FinishModal() {
     navigate(`/epilogue`);
   };
 
-  const [lessonPic, picFetch] = useGetLessonPic();
-  const [userProgress, userFetch] = useGetUserProgress();
+  const [lessonPic, picFetch] = useGetLessonPic({ lessonID });
+  const [userRes, userFetch] = useGetUserProgress({ lessonID });
   const [progress, setProgress] = useRecoilState(userProgressState);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ function FinishModal() {
   // const img = window.sessionStorage.getItem(`${lessonID}`);
   console.log(lessonPic);
 
-  setProgress(userProgress.chapter);
+  setProgress(userRes.chapter);
   console.log(progress);
   return (
     <>
@@ -60,7 +61,7 @@ function FinishModal() {
                   <p class="text-indigo-900 font-heading mb-2 leading-tight text-xs">
                     {lessonInfos[lessonID]?.title}
                   </p>
-                  <div class="mx-auto w-full mb-3">
+                  {/* <div class="mx-auto w-full mb-3">
                     <div class="w-full rounded-full bg-gray-200 mb-1">
                       <div
                         class="flex bg-green-500 rounded-full justify-end items-center pr-0.5 py-0.5"
@@ -70,7 +71,8 @@ function FinishModal() {
                       </div>
                     </div>
                     <ProgressBar />
-                  </div>
+                  </div> */}
+                  <ProgressBar progress={userRes.chapter} />
                   <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 font-heading text-sm">
                     Completed
                   </p>

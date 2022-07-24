@@ -1,7 +1,9 @@
 import { atom } from "recoil";
+import { useGetLessonPic } from "../../libs/api/getLessonPic";
 
 export const testUserInfos = atom({
   key: "lessonEngInfos",
+
   default: [
     {
       number: 0,

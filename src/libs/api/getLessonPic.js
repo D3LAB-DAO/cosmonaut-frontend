@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const useGetLessonPic = () => {
+export const useGetLessonPic = lessonID => {
   const [response, setResponse] = useState({});
-  const { lessonID } = useParams();
 
   const option = {
     method: "GET",

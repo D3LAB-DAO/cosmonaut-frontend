@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const useGetUserProgress = () => {
+export const useGetUserProgress = lessonID => {
   const [response, setResponse] = useState({});
-  const { lessonID } = useParams();
+  // const { lessonID } = useParams();
 
   const option = {
     method: "GET",

@@ -30,18 +30,17 @@ function Overview() {
   const goal = useRecoilValue(lessonGoal);
   const result = useRecoilValue(lessonResult);
 
-  // const [picRes, picFetch] = useGetLessonPic();
-  // const [userRes, userFetch] = useGetUserProgress();
+  const [picRes, picFetch] = useGetLessonPic({ lessonID });
+  const [userRes, userFetch] = useGetUserProgress({ lessonID });
 
-  // useEffect(() => {
-  //   picFetch();
-  //   userFetch();
-  // }, []);
+  useEffect(() => {
+    picFetch();
+    userFetch();
+  }, [lessonID]);
 
-  // console.log(picRes);
-
-  // console.log(userRes);
-  // console.log(userRes.chapter);
+  console.log(picRes);
+  console.log(userRes);
+  console.log(userRes.chapter);
 
   return (
     <Container>
@@ -59,13 +58,13 @@ function Overview() {
               </h3>
             </SubTitle>
 
-            <ProgressBar lesson={lessonID} />
+            <ProgressBar progress={userRes.chapter} />
             <Desc>
               <div class="col-span-1">
                 <img
                   class="block h-40 object-cover rounded-md"
-                  src={NFT}
                   alt="cosmonaut-nft"
+                  src={picRes}
                 />
               </div>
               <div class="flex ml-4 h-full col-span-2 border-t-2 border-b-2 border-dashed border-white items-center justify-center">
