@@ -121,6 +121,8 @@ function EditorContents() {
       return <L3C2U2 />;
     } else if (lessonID === "3" && chID === "3" && uID === "1") {
       return <L3C3Pr />;
+    } else if (lessonID === "3" && chID === "3" && uID === "2") {
+      return <L3C3Pr />;
 
       // lesson 4
     } else if (lessonID === "4" && chID === "1" && uID === "1") {
@@ -130,6 +132,8 @@ function EditorContents() {
     } else if (lessonID === "4" && chID === "2" && uID === "1") {
       return <L4C2U1 />;
     } else if (lessonID === "4" && chID === "3" && uID === "1") {
+      return <L4C3Pr />;
+    } else if (lessonID === "4" && chID === "3" && uID === "2") {
       return <L4C3Pr />;
     }
   };

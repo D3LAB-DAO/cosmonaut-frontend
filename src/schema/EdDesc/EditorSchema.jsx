@@ -55,9 +55,9 @@ function EditorSchema() {
         <FinishModal />
       ) : lessonID === "2" && chID === "8" && uID === "2" ? (
         <FinishModal />
-      ) : lessonID === "3" && chID === "3" && uID === "1" ? (
+      ) : lessonID === "3" && chID === "3" && uID === "2" ? (
         <FinishModal />
-      ) : lessonID === "4" && chID === "3" && uID === "1" ? (
+      ) : lessonID === "4" && chID === "3" && uID === "2" ? (
         <FinishModal />
       ) : null}
       <Navigator />

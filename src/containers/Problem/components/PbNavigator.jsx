@@ -38,6 +38,16 @@ export const PbNavigator = () => {
     } else if (lessonID === "2" && chID === "7" && uID === "2" && pID === "1") {
       return navigate(`/lesson/2/chapter/8/unit/1`);
     }
+    // lesson 3
+    else if (lessonID === "3" && chID === "1" && uID === "2" && pID === "1") {
+      return navigate(`/lesson/3/chapter/1/unit/3`);
+    } else if (lessonID === "3" && chID === "2" && uID === "2" && pID === "1") {
+      return navigate(`/lesson/3/chapter/3/unit/1`);
+    }
+    // lesson 4
+    else if (lessonID === "4" && chID === "2" && uID === "1" && pID === "1") {
+      return navigate(`/lesson/4/chapter/3/unit/1`);
+    }
   };
 
   const handleLeft = () => {
