@@ -74,7 +74,7 @@ function Special() {
           </h1>
           <p class="leading-7 text-sm md:text-lg text-green-500 font-semibold">
             Learn Cosmwasm's secure multi-chain contract. Cosmonaut is made to
-            be easy to follow, even for unfamiliar one with Cosmos, Cosmwasm,
+            be easy to follow, even for unfamiliar ones with Cosmos, Cosmwasm,
             and Rust. Don't worry and just follow us! Let's deep dive into the
             world of Cosmos with our pretty and kind explanations.
           </p>

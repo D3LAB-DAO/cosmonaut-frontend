@@ -89,7 +89,7 @@ function Intro() {
                 DApp
               </h4>
               <p class="px-4 text-white lg:text-base leading-tight">
-                Create a DApp by connecting frontend to your contracts through
+                Create a DApp by connecting the frontend to your contracts through
                 CosmJS.
               </p>
             </div>
