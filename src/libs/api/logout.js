@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useGetUserProgress = lessonID => {
+export const useLogOut = () => {
   const [response, setResponse] = useState({});
 
   const option = {
@@ -10,10 +10,7 @@ export const useGetUserProgress = lessonID => {
 
   const fetchData = async () => {
     try {
-      let res = await fetch(
-        `http://127.0.0.1:8080/v1/cosm/progress?lesson=${lessonID}`,
-        option
-      );
+      let res = await fetch("http://127.0.0.1:8080/auth/logout", option);
 
       const data = await res.json();
 

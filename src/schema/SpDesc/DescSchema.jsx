@@ -11,11 +11,12 @@ import { chapterInfos } from "../../states/Information/chapterInfoAtoms";
 import { unitInfos } from "../../states/Information/unitInfoAtoms";
 import BgV4 from "../../assets/images/bg-v4.svg";
 import Navigator from "../components/Navigator/Navigator";
+import FinishModal from "../../components/FinishModal/FinishModal";
 
 const Background = tw.div`pt-24 pb-8 px-6 lg:px-10 bg-black bg-cover bg-center`;
 
 function DescSchema() {
-  const { lessonID, chID } = useParams();
+  const { lessonID, chID, uID } = useParams();
   const chInfo = useRecoilValue(chapterInfos);
   const unitInfo = useRecoilValue(unitInfos);
   const unitData = unitInfo[lessonID];
@@ -29,6 +30,7 @@ function DescSchema() {
         <DescContents unitInfo={unitData[chID - 1]} />
       </Background>
       <Footer />
+      {lessonID === "0" && chID === "4" && uID === "3" ? <FinishModal /> : null}
       <Navigator />
     </>
   );

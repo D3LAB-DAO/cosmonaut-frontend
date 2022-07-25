@@ -3,8 +3,12 @@ import tw from "tailwind-styled-components";
 import { useRecoilValue } from "recoil";
 import { userProgressState } from "../../../states/User/userProgress";
 import { useGetLessonPic } from "../../../libs/api/getLessonPic";
-import ProgressBar from "../../../components/Common/ProgressBar";
+import ProgressBar, {
+  ProgressBar0,
+  ProgressBar1,
+} from "../../../components/Common/ProgressBar";
 import { useGetUserProgress } from "../../../libs/api/getUserProgress";
+import error from "../../../assets/images/dummy-nft.jpg";
 
 const Container = tw.div`flex flex-wrap -mb-12`;
 
@@ -39,18 +43,26 @@ function UserProgress() {
   // console.log(firPro.chapter);
 
   const Profile = tw.div`w-full md:w-1/2 lg:w-1/3 mb-12`;
+  const onErrorImg = e => {
+    e.target.src = error;
+  };
 
   return (
     <Container>
       <Profile>
         <div class="mx-2 lg:p-2 shadow rounded-2xl bg-yellow-500 p-2">
           <div class="h-full p-4 md:p-8 bg-white border-4 border-indigo-900  rounded-xl text-center">
-            <img class="block mx-auto mb-4" src={zeroRes} alt="" />
+            <img
+              class="block mx-auto mb-4"
+              src={zeroRes}
+              onError={onErrorImg}
+              alt=""
+            />
             <h4 class="text-2xl text-indigo-900 font-heading mb-1">Prologue</h4>
             <h3 class="text-lg text-indigo-900 font-heading mb-4">
               Get Ready for Terraforming
             </h3>
-            {/* <ProgressBar progress={zeroPro.chapter} /> */}
+            {/* <ProgressBar0 progress={1} /> */}
             {/* <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
               states
             </p> */}
@@ -60,14 +72,19 @@ function UserProgress() {
       <Profile>
         <div class="mx-2 lg:p-2 shadow rounded-2xl bg-yellow-500 p-2">
           <div class="h-full p-4 md:p-8 bg-white border-4 border-indigo-900  rounded-xl text-center">
-            <img class="block mx-auto mb-4" src={firRes} alt="" />
+            <img
+              class="block mx-auto mb-4"
+              src={firRes}
+              onError={onErrorImg}
+              alt=""
+            />
             <h4 class="text-2xl text-indigo-900 font-heading mb-1">
               Lesson. 1
             </h4>
             <h3 class="text-lg text-indigo-900 font-heading mb-4">
               Welcome to Spaceship Factory
             </h3>
-            {/* <ProgressBar progress={firPro.chapter} /> */}
+            {/* <ProgressBar1 progress={0} /> */}
             {/* <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
               states
             </p> */}
@@ -77,7 +94,12 @@ function UserProgress() {
       <Profile>
         <div class="mx-2 lg:p-2 shadow rounded-2xl bg-yellow-500 p-2">
           <div class="h-full p-4 md:p-8 bg-white border-4 border-indigo-900  rounded-xl text-center">
-            <img class="block mx-auto mb-4" src={secRes} alt="" />
+            <img
+              class="block mx-auto mb-4"
+              src={secRes}
+              onError={onErrorImg}
+              alt=""
+            />
             <h4 class="text-2xl text-indigo-900 font-heading mb-1">
               Lesson. 2
             </h4>
@@ -94,7 +116,12 @@ function UserProgress() {
       <Profile>
         <div class="mx-2 lg:p-2 shadow rounded-2xl bg-yellow-500 p-2">
           <div class="h-full p-4 md:p-8 bg-white border-4 border-indigo-900  rounded-xl text-center">
-            <img class="block mx-auto mb-4" src={thrRes} alt="" />
+            <img
+              class="block mx-auto mb-4"
+              src={thrRes}
+              onError={onErrorImg}
+              alt=""
+            />
             <h4 class="text-2xl text-indigo-900 font-heading mb-1">
               Lesson. 3
             </h4>
@@ -111,7 +138,12 @@ function UserProgress() {
       <Profile>
         <div class="mx-2 lg:p-2 shadow rounded-2xl bg-yellow-500 p-2">
           <div class="h-full p-4 md:p-8 bg-white border-4 border-indigo-900  rounded-xl text-center">
-            <img class="block mx-auto mb-4" src={fourRes} alt="" />
+            <img
+              class="block mx-auto mb-4"
+              src={fourRes}
+              onError={onErrorImg}
+              alt=""
+            />
             <h4 class="text-2xl text-indigo-900 font-heading mb-1">
               Lesson. 4
             </h4>

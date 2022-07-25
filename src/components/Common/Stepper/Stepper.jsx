@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { L0Step } from "./L0Step";
 import { L1C1Step } from "./L1C1Step";
 import { L1C2Step } from "./L1C2Step";
 import { L1C3Step } from "./L1C3Step";
@@ -22,7 +23,9 @@ const Stepper = () => {
 
   return (
     <>
-      {lessonID === "1" && chID === "1" ? (
+      {lessonID === "0" ? (
+        <L0Step />
+      ) : lessonID === "1" && chID === "1" ? (
         <L1C1Step />
       ) : lessonID === "1" && chID === "2" ? (
         <L1C2Step />

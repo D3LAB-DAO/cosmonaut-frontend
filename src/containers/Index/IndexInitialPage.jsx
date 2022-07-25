@@ -7,7 +7,7 @@ import Icon2 from "../../assets/images/icon2.svg";
 import Icon3 from "../../assets/images/icon3.svg";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
-import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
+import { indexInfo } from "../../states/Information/indexInfo";
 
 const Container = tw.div`relative lg:pb-20 bg-cover bg-center bg-opacity-10 lg:pt-32`;
 const Background = tw.div`bg-indigo-900 justify-center rounded-2xl border-indigo-900 border-4 flex h-index px-12 items-center bg-center bg-no-repeat`;
@@ -19,7 +19,7 @@ const Curriculum = tw.div`w-full mb-14 lg:mb-0 lg:col-span-1 col-span-2 lg:order
 function IndexInitialPage() {
   const { lessonID } = useParams();
   const startLesson = `/${lessonID}/chapter/1/unit/0`;
-  const engInfo = useRecoilValue(lessonEngInfo);
+  const engInfo = useRecoilValue(indexInfo);
   return (
     <>
       <Navbar />
@@ -83,7 +83,7 @@ function IndexInitialPage() {
                       <Link key={e?.id} to={lessonUrl}>
                         <button class="animate-fadeInRtoL mb-5 flex w-full md:px-6 px-3 md:py-3 py-1 bg-white md:shadow shadow-sm border-2 border-indigo-900 items-center justify-between ease-in-out duration-300 transform hover:scale-105 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none focus:ring focus:ring-green-500 active:bg-yellow-500 rounded-md">
                           <span class="md:text-lg text-sm font-heading text-indigo-900">
-                            Lesson {e?.num}.
+                            {e?.num}.
                           </span>
                           <span class="md:text-base text-xs font-heading text-indigo-900">
                             {e?.title}
