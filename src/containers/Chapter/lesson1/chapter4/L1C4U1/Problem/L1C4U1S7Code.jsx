@@ -19,7 +19,7 @@ import ListStyle from "../../../../../../components/Contents/ListStyle";
 
 const HintSection = tw.div``;
 
-function L1C4U1S6Code() {
+function L1C4U1S7Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
   const [fileName, setFileName] = useState("file1");
@@ -141,4 +141,4 @@ function L1C4U1S6Code() {
   );
 }
 
-export default L1C4U1S6Code;
+export default L1C4U1S7Code;

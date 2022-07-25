@@ -51,11 +51,17 @@ export const PbNavigator = () => {
   };
 
   const handleLeft = () => {
-    console.log("handle Left");
-    navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${uID}/pb/1`);
-    if (pID === "1") {
-      return navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${uID}/pb/1`);
+    // lesson 1
+    if (lessonID === "1" && chID === "4" && uID === "1" && pID === "1") {
+      return navigate(`/lesson/1/chapter/4/unit/1`);
+    } else if (lessonID === "1" && chID === "4" && uID === "2" && pID === "1") {
+      return navigate(`/lesson/1/chapter/4/unit/2`);
+    } else if (lessonID === "1" && chID === "4" && uID === "3" && pID === "1") {
+      return navigate(`/lesson/1/chapter/4/unit/3`);
+    } else if (lessonID === "1" && chID === "5" && uID === "1" && pID === "1") {
+      return navigate(`/lesson/1/chapter/5/unit/1`);
     }
+    // lesson 2
   };
 
   const lessonTitle = () => {

@@ -21,12 +21,13 @@ export default function EditorResult({
   onMount,
   isSuccess,
   isError,
-  onClick,
+  // onBuild,
+  onFormat,
 }) {
   return (
     <>
       <Editor
-        height="60vh"
+        height="40vh"
         theme="vs-dark"
         path={path}
         defaultLanguage={defaultLanguage}
@@ -38,16 +39,23 @@ export default function EditorResult({
       <Results>
         <ResultHeader>
           <Result>Result</Result>
-          {isSuccess ? (
-            <Check />
-          ) : isError ? (
-            <SubmitAgain>submit again</SubmitAgain>
-          ) : (
+          <div class="flex">
             <CheckAnswer>
-              <button onClick={onClick}>check your answer</button>
+              <button onClick={onFormat}>format your code</button>
             </CheckAnswer>
-          )}
+
+            {isSuccess ? (
+              <Check />
+            ) : isError ? (
+              <SubmitAgain>submit again</SubmitAgain>
+            ) : (
+              <CheckAnswer>
+                <button>check your answer</button>
+              </CheckAnswer>
+            )}
+          </div>
         </ResultHeader>
+
         <ResultCode>
           <h1>tbu...</h1>
         </ResultCode>

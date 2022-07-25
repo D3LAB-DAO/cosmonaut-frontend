@@ -5,7 +5,7 @@ import check from "../../assets/images/check_icon.png";
 
 const Container = tw.div`mb-2 w-full mx-auto`;
 
-export const ProgressBar0 = progress => {
+export const ProgressBar0 = ({ progress }) => {
   const [width, setWidth] = useState("");
   console.log(progress);
   useEffect(() => {
@@ -42,7 +42,7 @@ export const ProgressBar0 = progress => {
   );
 };
 
-export const ProgressBar1 = progress => {
+export const ProgressBar1 = ({ progress }) => {
   const [width, setWidth] = useState("");
   console.log(progress);
   useEffect(() => {
@@ -106,7 +106,7 @@ export const ProgressBar1 = progress => {
   );
 };
 
-export const ProgressBar2 = progress => {
+export const ProgressBar2 = ({ progress }) => {
   const [width, setWidth] = useState("");
   useEffect(() => {
     if (progress === "0") {
@@ -179,7 +179,7 @@ export const ProgressBar2 = progress => {
   );
 };
 
-export const ProgressBar3 = progress => {
+export const ProgressBar3 = ({ progress }) => {
   const [width, setWidth] = useState("");
   console.log(progress);
   useEffect(() => {
@@ -228,7 +228,7 @@ export const ProgressBar3 = progress => {
   );
 };
 
-export const ProgressBar4 = progress => {
+export const ProgressBar4 = ({ progress }) => {
   const [width, setWidth] = useState("");
   console.log(progress);
   useEffect(() => {

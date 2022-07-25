@@ -42,7 +42,7 @@ function L1C4U1S1Code() {
   }, [fileName]);
   console.log(value);
 
-  const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
+  const [{ response, isLoading, isSuccess, isError }, doFormat] = usePostApi({
     files,
   });
 
@@ -56,8 +56,8 @@ function L1C4U1S1Code() {
     },
   };
   const file = fakeFiles[fileName];
-  const { data } = getTargetCodes({ lessonID, chID });
-  console.log(data);
+  // const { data } = getTargetCodes({ lessonID, chID });
+  // console.log(data);
 
   const code1 = `
 \`\`\`rust
@@ -138,7 +138,8 @@ fn addr_validate(&self, human: &str) -> StdResult<Addr>
                 onMount={editor => (editorRef.current = editor)}
                 isSuccess={isSuccess}
                 isError={isError}
-                onClick={doFetch}
+                onFormat={doFormat}
+                // onBuild={onBuild}
               />
             </>
           )}

@@ -84,6 +84,7 @@ function Navigator() {
 
   const handleLeft = () => {
     navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${prevUnit}`);
+    // lesson 0
     if (lessonID === "0" && chID === "1" && uID === "1") {
       return navigate(`/lesson/0/chapter/1/unit/0`);
     } else if (lessonID === "0" && chID === "2" && uID === "1") {
@@ -92,6 +93,30 @@ function Navigator() {
       return navigate(`/lesson/0/chapter/2/unit/1`);
     } else if (lessonID === "0" && chID === "4" && uID === "1") {
       return navigate(`/lesson/0/chapter/3/unit/2`);
+      // lesson 1
+    } else if (lessonID === "1" && chID === "1" && uID === "1") {
+      return navigate(`/lesson/1/chapter/1/unit/0`);
+    } else if (lessonID === "1" && chID === "2" && uID === "1") {
+      return navigate(`/lesson/1/chapter/1/unit/3`);
+    } else if (lessonID === "1" && chID === "3" && uID === "1") {
+      return navigate(`/lesson/1/chapter/2/unit/1`);
+    } else if (lessonID === "1" && chID === "4" && uID === "0") {
+      return navigate(`/lesson/1/chapter/3/unit/1`);
+    } else if (lessonID === "1" && chID === "4" && uID === "1") {
+      return navigate(`/lesson/1/chapter/4/unit/0`);
+    } else if (lessonID === "1" && chID === "4" && uID === "2") {
+      return navigate(`/lesson/1/chapter/4/unit/1/pb/1`);
+    } else if (lessonID === "1" && chID === "4" && uID === "3") {
+      return navigate(`/lesson/1/chapter/4/unit/2/pb/1`);
+    } else if (lessonID === "1" && chID === "5" && uID === "0") {
+      return navigate(`/lesson/1/chapter/4/unit/3/pb/1`);
+    } else if (lessonID === "1" && chID === "5" && uID === "1") {
+      return navigate(`/lesson/1/chapter/5/unit/0`);
+      // lesson 2
+    } else if (lessonID === "2" && chID === "1" && uID === "0") {
+      return navigate(`/lesson/1/chapter/5/unit/1/pb/1`);
+    } else if (lessonID === "2" && chID === "1" && uID === "1") {
+      return navigate(`/lesson/2/chapter/1/unit/0`);
     } else if (chID === "1" && uID === "0") {
       return navigate(`/lesson/${lessonID}/chapter/${chID}/unit/${uID}`);
     } else if (uID === "1") {
