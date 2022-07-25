@@ -127,7 +127,7 @@ function L1C1U2() {
                 Returns an error if queried about a token that does not exist.
               </BasicP>
               <BasicP>
-                Return type is <CodeBlock>OwnerOfResponse</CodeBlock>.
+                The return type is <CodeBlock>OwnerOfResponse</CodeBlock>.
               </BasicP>
               <BasicP>
                 If <CodeBlock>include_expired</CodeBlock> is not set or set to
@@ -153,12 +153,12 @@ function L1C1U2() {
               <Markdown code={code3} />
               <Markdown code={code4} />
               <BasicP>
-                Returns approval for <CodeBlock>spender</CodeBlock> of{" "}
+                Returns the approval information for the <CodeBlock>spender</CodeBlock> of{" "}
                 <CodeBlock>token_id</CodeBlock> token. Returns an error if
                 approval information is not found.
               </BasicP>
               <BasicP>
-                Return type is <CodeBlock>ApprovalResponse</CodeBlock>.
+                The return type is <CodeBlock>ApprovalResponse</CodeBlock>.
               </BasicP>
               <BasicP>
                 If <CodeBlock>include_expired</CodeBlock> is not set or set to
@@ -188,7 +188,7 @@ function L1C1U2() {
                 <CodeBlock>token_id</CodeBlock>.
               </BasicP>
               <BasicP>
-                Return type is <CodeBlock>ApprovalsResponse</CodeBlock>.
+                The return type is <CodeBlock>ApprovalsResponse</CodeBlock>.
               </BasicP>
               <BasicP>
                 If 'include_expired' is not set or set to false, the expired
@@ -214,7 +214,7 @@ function L1C1U2() {
               <Markdown code={code8} />
               <BasicP>
                 Returns all <CodeBlock>operators</CodeBlock> authorized by{" "}
-                <CodeBlock>owner</CodeBlock>. Return type is
+                <CodeBlock>owner</CodeBlock>. The return type is
                 <CodeBlock>OperatorsResponse</CodeBlock>.
               </BasicP>
               <BasicP>
@@ -227,7 +227,7 @@ function L1C1U2() {
                 If <CodeBlock>start_after</CodeBlock> is not set, the query will
                 be returned from the beginning in a dictionary order for{" "}
                 <CodeBlock>operators</CodeBlock>. If{" "}
-                <CodeBlock>start_after</CodeBlock> is set, returns{" "}
+                <CodeBlock>start_after</CodeBlock> is set, it returns{" "}
                 <CodeBlock>operators</CodeBlock> as many as{" "}
                 <CodeBlock>limit</CodeBlock> from that address.
               </BasicP>
@@ -249,7 +249,7 @@ function L1C1U2() {
               <Markdown code={code9} />
               <Markdown code={code10} />
               <BasicP>
-                Returns the number of all issued tokens. Return type is
+                Returns the number of all issued tokens. The return type is
                 <CodeBlock> NumTokensResponse</CodeBlock>.
               </BasicP>
             </ContentDesc>

@@ -32,16 +32,17 @@ function L1C1U3() {
           <div class="lg:w-1/2 w-full md:w-2/3">
             <ContentDesc>
               <BasicP>
-                There is <CodeBlock>ReceiveNft</CodeBlock> at the opposite side
+                There is <CodeBlock>ReceiveNft</CodeBlock> on the opposite side
                 of <CodeBlock></CodeBlock>SendNft.{" "}
                 <CodeBlock>ReceiveNft</CodeBlock> is a specification that must
                 be implemented by any contract that wants to handle the CW721
-                token. Usually not the CW721 contract itself.
+                token. Usually, not the specification that the CW721 contract
+                itself should implement.
               </BasicP>
               <BasicP>
                 The address of CW721 implementation, sending the{" "}
                 <CodeBlock>SendNft</CodeBlock>
-                message, is covered by <CodeBlock>env.sender</CodeBlock> and
+                message, is handled by <CodeBlock>env.sender</CodeBlock> and
                 cannot be falsified.
               </BasicP>
               <BasicP>
@@ -59,7 +60,7 @@ function L1C1U3() {
               </ContentTitle>
               <Markdown code={code1} />
               <BasicP>
-                <CodeBlock>sender</CodeBlock> is the address from which you want
+                The <CodeBlock>sender</CodeBlock> is the address from which you want
                 to send the token.
               </BasicP>
               <BasicP>
@@ -67,8 +68,8 @@ function L1C1U3() {
               </BasicP>
               <BasicP>
                 <CodeBlock>msg</CodeBlock> is a binary that can be decoded into
-                contract-specific messages or arbitrary data. If you want to
-                perform only the default action, it may be empty.
+                contract-specific messages or arbitrary data. It can be empty if
+                you want to execute only the default action.
               </BasicP>
             </ContentDesc>
           </div>
