@@ -49,7 +49,7 @@ export const lessonEngInfo = atom({
   default: [
     {
       id: 0,
-      num: "0",
+      num: "Prologue",
       title: "Become a Pioneer",
       desc: "Get ready for terraforming.",
       subDesc: "Let's build an environment and do some sample tests.",
@@ -57,33 +57,31 @@ export const lessonEngInfo = atom({
     },
     {
       id: 1,
-      num: "1",
+      num: "Lesson 1",
       title: "Build a Ship",
-      desc: "Welcome to the spaceship factory!",
-      subDesc: "Let's build a spacecraft called ESFERA to explore.",
+      desc: "Welcome to the spaceship factory.",
+      subDesc: "Build a spaceship called ESFERA to explore.",
     },
     {
       id: 2,
-      num: "2",
-      title: "Get Fule and Freight",
-      desc: "All crew members aboard the spacecraft ESFERA, please inject fuel and board the cargo.",
-      subDesc: "Let's secure fuel and cargo, and supply it to the spacecraft.",
+      num: "Lesson 2",
+      title: "Get Fuel and Freight",
+      desc: "All crews aboard the ship ESFERA. Please fill the fuel and board the freight from now on.",
+      subDesc: "Get fuels and freights, and supply them to the spaceship.",
     },
     {
       id: 3,
-      num: "3",
+      num: "Lesson 3",
       title: "Load into the Ship",
-      desc: "ESFERA ready to launch. 5, 4, 3, …",
-      subDesc:
-        "Before launching the spacecraft, let's test it to see if there is any problem. Also, let's proceed with optimization to achieve optimal performance.",
+      desc: "ESFERA, All ready for launch. … Five, Four, Three, …",
+      subDesc: "Supply fuels and freights into ESFERA.",
     },
     {
       id: 4,
-      num: "4",
+      num: "Lesson 4",
       title: "Evade Asteroids",
-      desc: "Enter the asteroid belt. All crew members, please be prepared for a sudden collision.",
-      subDesc:
-        "Let's take random numbers from a random number generator and create a game to avoid asteroids.",
+      desc: "Now ESFERA is entering the asteroid belt. Please be prepared for a sudden collision.",
+      subDesc: "We are going to make a simple spaceship game that stochastically avoids asteroids.",
     },
   ],
 });
@@ -106,59 +104,35 @@ export const lessonGoal = atom({
     [
       {
         id: 2,
-        goal: "NFT (CW721) Code Analysis",
+        goal: "Create a CW721-based NFT",
       },
       {
         id: 3,
-        goal: "Rust Grammar Peek",
-      },
-      {
-        id: 4,
-        goal: "CW721 Spacecraft NFT Code",
-      },
-      {
-        id: 5,
-        goal: "Instantiate",
+        goal: "Use the NFT metadata field",
       },
     ],
     // Lesson2
     [
       {
-        id: 6,
-        goal: "Build CW20 FTs.",
-      },
-      {
-        id: 7,
-        goal: "Hierarchically connecting NFT and FTs’ contracts.",
-      },
-      {
-        id: 8,
-        goal: "Use NFT metadata field.",
+        id: 4,
+        goal: "Build CW20 contracts",
       },
     ],
     // Lesson3
     [
       {
-        id: 9,
-        goal: "Run unit tests.",
-      },
-      {
-        id: 10,
-        goal: "Do optimization.",
+        id: 5,
+        goal: "Hierarchically connecting NFT and FTs’ contracts.",
       },
     ],
     // Lesson4
     [
       {
-        id: 11,
+        id: 6,
         goal: "Create a simple random number generator.",
       },
       {
-        id: 12,
-        goal: "Learn how to create a perfect random number on blockchain.",
-      },
-      {
-        id: 13,
+        id: 7,
         goal: "Connect the random number generator and NFT to make a game.",
       },
     ],
@@ -172,55 +146,47 @@ export const lessonResult = atom({
     [
       {
         id: 0,
-        result:
-          "Codes: Example codes with compilation output",
-      },
-      {
-        id: 1,
-        result: "Asset: Astronaut + Planet Background", // TODO: check
+        result: "Example codes with compilation output",
       },
     ],
     // Lesson1
     [
       {
-        id: 2,
-        result: "Codes: NFT (CW721) code",
+        id: 1,
+        result: "Spaceship NFT (CW721)",
       },
       {
-        id: 3,
-        result: "Asset: Spacecraft Factory Image + NFT Spacecraft",
+        id: 2,
+        result: "and its code",
       },
     ],
     // Lesson2
     [
       {
+        id: 3,
+        result: "Fuel and freight FTs (CW20s)",
+      },
+      {
         id: 4,
-        result: "Spaceship loaded with fuels and freights.",
+        result: "and its codes",
       },
     ],
     // Lesson3
     [
       {
         id: 5,
-        result: "Upgraded (optimized) spaceship.",
+        result: "A spaceship loaded with fuels and freights",
       },
     ],
     // Lesson4
     [
       {
         id: 6,
-        result: "A wrecked spaceship that was damaged by asteroid,",
+        result: "A spaceship crashed into asteroids",
       },
       {
         id: 7,
-        result: "or a spaceship that avoided the asteroid quite well.",
-      },
-    ],
-    // Lesson5
-    [
-      {
-        id: 8,
-        result: "Connect Keplr Wallet.",
+        result: "or a spaceship that successfully escaped from the asteroid belt",
       },
     ],
   ],
