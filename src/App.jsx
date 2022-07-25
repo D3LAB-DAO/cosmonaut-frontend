@@ -6,11 +6,10 @@ import Profile from "./containers/Profile/Profile";
 import UnitPage from "./containers/Unit/UnitPage";
 import SignUp from "./containers/SignUp/SignUp";
 import ScrollToTop from "./components/Common/ScrollToTop";
-import SmallPage from "./containers/Small/SmallPage";
-import FinishModal from "./components/FinishModal/FinishModal";
 import { EpiloguePage } from "./containers/Epilogue/EpiloguePage";
 import { AppendixPage } from "./containers/Appendix/AppendixPage";
 import IndexInitialPage from "./containers/Index/IndexInitialPage";
+import ProblemPage from "./containers/Problem/ProblemPage";
 
 function App() {
   return (
@@ -29,13 +28,8 @@ function App() {
           />
           <Route
             exact
-            path="/lesson/:lessonID/chapter/:chID/unit/:uID/small/:sID"
-            element={<SmallPage />}
-          />
-          <Route
-            exact
-            path="/lesson/:lessonID/finish"
-            element={<FinishModal />}
+            path="/lesson/:lessonID/chapter/:chID/unit/:uID/pb/:pID"
+            element={<ProblemPage />}
           />
           <Route exact path="/epilogue" element={<EpiloguePage />} />
           <Route exact path="/appendix/:aID" element={<AppendixPage />} />

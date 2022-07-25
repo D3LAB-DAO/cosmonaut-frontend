@@ -5,21 +5,13 @@ import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
 import BasicP from "../../../../../components/Contents/BasicP";
 import CodeBlock from "../../../../../components/Contents/CodeBlock";
-import CodeEditor from "../../../../../components/CodeEditor/CodeEditor";
 import GreenID from "../../../../../components/Contents/GreenID";
 import ContentsBox from "../../../../../components/Contents/ContentsBox";
-import { L2C7U2Code } from "./L2C7U2Code";
+import { code } from "./L2C7U2Code";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
 const ContentDesc = tw.div`mb-3`;
-
-const code1 = `
-\`\`\`rust
-use cw20_base::contract::{
-    query as cw20_query,
-};
-\`\`\``;
 
 function L2C7U2() {
   return (
@@ -37,7 +29,7 @@ function L2C7U2() {
               </div>
             </ContentTitle>
             <ContentDesc>
-              <Markdown code={code1} />
+              <Markdown code={code[0]} />
               <BasicP>
                 Similarly, The basic queries of CW20 are already implemented in
                 CW20-base.
@@ -74,11 +66,6 @@ function L2C7U2() {
           </div>
         </ContentsBox>
       </Contents>
-
-      {/* Editor Part */}
-      <CodeEditor>
-        <L2C7U2Code />
-      </CodeEditor>
     </>
   );
 }

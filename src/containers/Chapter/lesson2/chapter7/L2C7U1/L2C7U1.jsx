@@ -5,21 +5,13 @@ import Header from "../../../../../components/Contents/Header";
 import Markdown from "../../../../../components/Contents/Markdown";
 import BasicP from "../../../../../components/Contents/BasicP";
 import CodeBlock from "../../../../../components/Contents/CodeBlock";
-import CodeEditor from "../../../../../components/CodeEditor/CodeEditor";
 import OrangeID from "../../../../../components/Contents/OrangeID";
 import ContentsBox from "../../../../../components/Contents/ContentsBox";
-import { L2C7U1Code } from "./L2C7U1Code";
+import { code } from "./L2C7U1Code";
 
 const Contents = tw.section`bg-black`;
 const ContentTitle = tw.div`mb-4 lg:mb-8`;
 const ContentDesc = tw.div`mb-3`;
-
-const code1 = `
-\`\`\`rust
-use cw20_base::contract::{
-  execute as cw20_execute,
-};
-\`\`\``;
 
 function L2C7U1() {
   return (
@@ -37,7 +29,7 @@ function L2C7U1() {
               </div>
             </ContentTitle>
             <ContentDesc>
-              <Markdown code={code1} />
+              <Markdown code={code[0]} />
               <BasicP>
                 The basic functions of CW20 are already implemented through
                 CW20-base.
@@ -57,7 +49,8 @@ function L2C7U1() {
             </ContentDesc>
           </div>
         </ContentsBox>
-
+      </Contents>
+      <Contents>
         <ContentsBox>
           <OrangeID>2</OrangeID>
           <div class="lg:w-1/2 w-full md:w-2/3">
@@ -82,11 +75,6 @@ function L2C7U1() {
           </div>
         </ContentsBox>
       </Contents>
-
-      {/* Editor Part */}
-      <CodeEditor>
-        <L2C7U1Code />
-      </CodeEditor>
     </>
   );
 }
