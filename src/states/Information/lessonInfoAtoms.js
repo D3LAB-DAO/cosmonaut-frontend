@@ -177,7 +177,7 @@ export const lessonResult = atom({
       },
       {
         id: 1,
-        result: "Asset: Astronaut + Planet Background",
+        result: "Asset: Astronaut + Planet Background", // TODO: check
       },
     ],
     // Lesson1
