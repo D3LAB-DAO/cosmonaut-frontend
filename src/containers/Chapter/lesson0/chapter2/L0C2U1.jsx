@@ -26,7 +26,7 @@ $ wasmd version
           href="https://docs.cosmwasm.com/docs/0.14/getting-started/installation/"
           rel="noreferrer"
         >
-          Installation | CosmWasm Document
+          Installation | CosmWasm Documentation
         </a>
       </BasicA>
       <BasicP>

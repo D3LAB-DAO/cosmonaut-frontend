@@ -66,8 +66,7 @@ $ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"umlg","addres
       <BasicP>
         If the wallet registration for the test was successfully done, wasmd
         would print out the information. Although it is a testnet, keep the
-        mnemonic separately in a safe place if you lose your password to prevent
-        any minor problems.
+        mnemonic separately in a safe place in case of losing a password.
       </BasicP>
       <BasicP>
         As you know, all activities on the blockchain cost a fee. So you will need

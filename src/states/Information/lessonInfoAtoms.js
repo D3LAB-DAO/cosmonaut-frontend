@@ -173,11 +173,11 @@ export const lessonResult = atom({
       {
         id: 0,
         result:
-          "Codes: Set development environment, example code (w/ compilation result)",
+          "Codes: Example codes with compilation output",
       },
       {
         id: 1,
-        result: "Asset: Astronaut + Background Planet Background",
+        result: "Asset: Astronaut + Planet Background",
       },
     ],
     // Lesson1

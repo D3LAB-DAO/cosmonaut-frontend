@@ -73,7 +73,7 @@ $ cargo --version
         </a>
       </BasicA>
       <BasicP>
-        You can use the Package Manager, the Standalone installer, or build
+        You can use the Package Manager, the standalone installer, or build
         directly from the source code. Nevertheless, it is much easier and faster to use
         <CodeBlock>rustup</CodeBlock>.
       </BasicP>
@@ -94,8 +94,8 @@ $ cargo --version
       <Markdown code={code5} />
       <BasicP>
         That's it! Now save the file, and try the following command.
+        This command compiles and executes the main.rs file.
       </BasicP>
-      <BasicP>This command compiles and executes the main.rs file.</BasicP>
       <BasicP>Look at the "Hello, world!" printout on the terminal!</BasicP>
 
       <Header>Cargo</Header>
