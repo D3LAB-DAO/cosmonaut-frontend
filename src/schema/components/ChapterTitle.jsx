@@ -42,9 +42,7 @@ function ChapterTitle({ chInfo }) {
                 Lesson {lessonID}
               </h2>
             )}
-            <ChTitle>
-              Chp{chID}. {chInfo[chID - 1]?.title}
-            </ChTitle>
+            <ChTitle>{chInfo[chID - 1]?.title}</ChTitle>
           </div>
           <Stepper />
         </div>

@@ -116,8 +116,8 @@ const AppenU4 = () => {
         string) which is Alias.
       </BasicP>
       <BasicP>
-        If it is difficult, use {window} or {window}. It automatically returns
-        the most appropriate signer. This means that if you only need Amino as
+        If it is difficult, use windo or {window}. It automatically returns the
+        most appropriate signer. This means that if you only need Amino as
         Ledger Nano's situation, return an Amino compatible signer, and in the
         context of a mnemonic or private key-based address, return a compatible
         signer for both Amino and Protobuf.

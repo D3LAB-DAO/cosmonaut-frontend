@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import SignInAccount3 from "../../../assets/images/signed-in-account3.svg";
 
-const Container = tw.div`text-left mb-16 md:px-10 px-4`;
+const Container = tw.div`text-left mt-10 mb-16 md:px-10 px-4`;
 
 function ProfileHeader() {
   return (

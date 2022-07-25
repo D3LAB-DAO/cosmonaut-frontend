@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
+import TestNavbar from "../../components/Navbar/TestNavbar";
 import About from "./components/About";
 import Intro from "./components/Intro";
 import Learn from "./components/Learn";
@@ -11,6 +12,7 @@ function MainPage() {
   return (
     <>
       <Navbar />
+      {/* <TestNavbar /> */}
       <Intro />
       <About />
       <Learn />

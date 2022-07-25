@@ -25,7 +25,7 @@ function Intro() {
         >
           <div class="mx-auto text-center px-8 lg:pt-32 lg:pb-12 md:pt-16 md:pb-6 pt-12 pb-8 md:mb-4">
             <span class="text-orange-500 font-semibold text-base lg:text-2xl md:text-xl">
-              Become a pioneer of Cosmos!!
+              Become a pioneer of Cosmos!
             </span>
             <h1 class="font-heading mt-4 mb-6 text-4xl md:text-6xl">
               COSMONAUT

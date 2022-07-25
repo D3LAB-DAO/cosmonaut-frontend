@@ -50,7 +50,9 @@ export const PbContents = () => {
       return <L2C7U2Pb />;
     }
     // lesson 3
-    else if (lessonID === "3" && chID === "2" && uID === "2" && pID === "1") {
+    else if (lessonID === "3" && chID === "1" && uID === "2" && pID === "1") {
+      return <L3C1U2Pb />;
+    } else if (lessonID === "3" && chID === "2" && uID === "2" && pID === "1") {
       return <L3C2U2Pb />;
     }
     // lesson 4
