@@ -35,14 +35,14 @@ function L1C4U1() {
               <Markdown code={code[1]} />
               <BasicP>
                 <CodeBlock>TransferNft</CodeBlock> calls the function{" "}
-                <CodeBlock>_transfer_nft</CodeBlock> in which actual logic is
+                <CodeBlock>_transfer_nft</CodeBlock>, in which actual logic is
                 implemented.
               </BasicP>
               <BasicP>
                 <CodeBlock>_transfer_nft</CodeBlock> verifies that sender{" "}
                 <CodeBlock>info</CodeBlock>.sender has valid approval to send
                 tokens via <CodeBlock>check_can_send</CodeBlock>. If he is a
-                legitimate sender, then change the owner of the token to
+                legitimate sender, change the token owner to the
                 <CodeBlock>recipient</CodeBlock> and remove all existing
                 approvals.
               </BasicP>
@@ -82,10 +82,9 @@ function L1C4U1() {
               <Markdown code={code[2]} />
               <BasicP>
                 The core of <CodeBlock>SendNft</CodeBlock> is also{" "}
-                <CodeBlock>_transfer_nft</CodeBlock>. But after the processing
-                of that function, it sends the{" "}
-                <CodeBlock>Cw721ReceiveMsg</CodeBlock> message discussed by the
-                Receiver to the contract.
+                <CodeBlock>_transfer_nft</CodeBlock>. However, after processing
+                that function, it sends the{" "}
+                <CodeBlock>Cw721ReceiveMsg</CodeBlock> message to the contract.
               </BasicP>
             </ContentDesc>
           </div>
@@ -191,7 +190,7 @@ function L1C4U1() {
                 <CodeBlock></CodeBlock>ApproveAll calls the function{" "}
                 <CodeBlock>approve_all</CodeBlock>, which is the key
                 implementation that verifies whether{" "}
-                <CodeBlock>expires</CodeBlock> is valid. Then, register{" "}
+                <CodeBlock>expires</CodeBlock> is valid. Then, registers{" "}
                 <CodeBlock>expires</CodeBlock> to{" "}
                 <CodeBlock>operators</CodeBlock> with the pair (
                 <CodeBlock>sender</CodeBlock>, <CodeBlock>operator</CodeBlock>)
@@ -248,8 +247,8 @@ function L1C4U1() {
               </BasicP>
               <BasicP>
                 <CodeBlock>mint</CodeBlock> verifies that{" "}
-                <CodeBlock>info.sender</CodeBlock> is an address with a valid
-                minting permission. And if so, generates a new token.
+                <CodeBlock>info.sender</CodeBlock> is an address with valid
+                minting permission. Moreover, if so, it generates a new token.
               </BasicP>
               <BasicP>
                 Tokens are stored in the <CodeBlock>TokenInfo</CodeBlock>{" "}
@@ -272,7 +271,7 @@ function L1C4U1() {
               <ListStyle>
                 <li>
                   <CodeBlock>token_uri</CodeBlock>: Resource identifier for the
-                  NFT. It must be referring to a file that follows the ERC721
+                  NFT. It must refer to a file that follows the ERC721
                   Metadata JSON Schema.
                 </li>
               </ListStyle>
@@ -285,7 +284,7 @@ function L1C4U1() {
               <BasicP>
                 Update <CodeBlock>self.token</CodeBlock> with token identifier{" "}
                 <CodeBlock>token_id</CodeBlock> and call
-                <CodeBlock>increment_token</CodeBlock> which is a function that
+                <CodeBlock>increment_token</CodeBlock>, a function that
                 increases <CodeBlock>token_count</CodeBlock>
                 by 1. <CodeBlock>token_count</CodeBlock> is defined in{" "}
                 <CodeBlock>state.rs</CodeBlock> as u64 via the Item in
@@ -316,7 +315,7 @@ function L1C4U1() {
                 <CodeBlock>check_can_send</CodeBlock> to verify that the sender{" "}
                 <CodeBlock>info.sender</CodeBlock> has valid permissions to
                 handle it. It also reduces <CodeBlock>token_count</CodeBlock> by
-                1. It's literally the opposite of <CodeBlock>Mint</CodeBlock>.
+                1. It is the opposite of <CodeBlock>Mint</CodeBlock>.
               </BasicP>
             </ContentDesc>
           </div>

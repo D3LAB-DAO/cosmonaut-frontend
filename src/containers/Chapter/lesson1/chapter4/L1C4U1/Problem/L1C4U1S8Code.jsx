@@ -81,16 +81,9 @@ function L1C4U1S8Code() {
               <>
                 <ListStyle>
                   <li>
-                    Mint에서 <CodeBlock>token_id</CodeBlock>를 등록했다면,
-                    Burn에서는 <CodeBlock>token_id를</CodeBlock> 지우면 됩니다.
-                    지우기 위해서는 <CodeBlock>remove</CodeBlock>를 호출하면
-                    됩니다.
-                  </li>
-                  <li>
                     If you registered <CodeBlock>token_id</CodeBlock> in{" "}
-                    <CodeBlock>Mint</CodeBlock>, you can remove it in
-                    <CodeBlock>Burn</CodeBlock>. You can call{" "}
-                    <CodeBlock>remove</CodeBlock>.
+                    <CodeBlock>Mint</CodeBlock>, you could remove it in
+                    <CodeBlock>Burn</CodeBlock>.
                     <Markdown code={code1} />
                   </li>
                   <li>

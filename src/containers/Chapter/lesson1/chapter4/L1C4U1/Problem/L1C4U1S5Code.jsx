@@ -84,10 +84,10 @@ pub fn save(&self, store: &mut dyn Storage, k: K, data: &T) -> StdResult<()>
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Add information to <CodeBlock>operators</CodeBlock> which is{" "}
+            Add information to <CodeBlock>operators</CodeBlock>, which is{" "}
             <CodeBlock>Map</CodeBlock>. According to implementation logic, the
             pair (<CodeBlock>sender</CodeBlock>, <CodeBlock>operator</CodeBlock>
-            ) is the key and the
+            ) is the key, and the
             <CodeBlock>expires</CodeBlock> is the value. The sender is
             authorizing the operator.
           </BasicP>

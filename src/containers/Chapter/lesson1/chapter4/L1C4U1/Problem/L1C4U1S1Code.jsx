@@ -70,7 +70,7 @@ fn addr_validate(&self, human: &str) -> StdResult<Addr>
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's fill in the code that corresponds to the process from three to
+            Let's fill in the codes that correspond to the process from three to
             five.
           </BasicP>
           <BasicP>Don't worry. They are not complicated.</BasicP>

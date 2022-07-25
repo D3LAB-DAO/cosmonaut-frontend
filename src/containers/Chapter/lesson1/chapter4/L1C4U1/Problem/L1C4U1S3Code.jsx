@@ -81,7 +81,7 @@ pub struct Cw721ReceiveMsg {
           </BasicP>
           <ListStyle>1. Get token information.</ListStyle>
           <ListStyle>
-            2. Check that the sender has authority to update.
+            2. Check that the sender has the authority to update.
           </ListStyle>
           <ListStyle>
             3. Verify that the address of the <CodeBlock>spender</CodeBlock> is
@@ -101,7 +101,7 @@ pub struct Cw721ReceiveMsg {
           </ListStyle>
           <ListStyle>7. Save the changed token information.</ListStyle>
           <BasicP>
-            Let's fill in the code that corresponds to step 3, 4, and 6.
+            Let's fill in the code corresponding to steps 3, 4, and 6.
           </BasicP>
         </ProblemSection>
         <HintSection>

@@ -75,7 +75,7 @@ function L1C4U1S6Code() {
                 <ListStyle>
                   <li>
                     <CodeBlock>msg</CodeBlock>.owner becomes{" "}
-                    <CodeBlock>owner</CodeBlock>. To make sure the address is
+                    <CodeBlock>owner</CodeBlock>. To ensure the address is
                     correct, we now know what to call!
                   </li>
                   <li>
@@ -87,7 +87,7 @@ function L1C4U1S6Code() {
                     <CodeBlock>msg</CodeBlock> just like
                     <CodeBlock>owner</CodeBlock>. They will be{" "}
                     <CodeBlock>msg.token_uri</CodeBlock> and{" "}
-                    <CodeBlock>msg.extension</CodeBlock> respectively.
+                    <CodeBlock>msg.extension</CodeBlock>, respectively.
                   </li>
                 </ListStyle>
               </>

@@ -91,14 +91,14 @@ pub struct Cw721ReceiveMsg {
               <>
                 <ListStyle>
                   <li>
-                    We can access to sender information as{" "}
+                    We can access sender information as{" "}
                     <CodeBlock>info.sender</CodeBlock> in the context of this
-                    contract. The type to hand over to{" "}
+                    contract. The type to hand over to the{" "}
                     <CodeBlock>sender</CodeBlock> is String, so we need to take{" "}
                     <CodeBlock>to_string()</CodeBlock>.
                   </li>
                   <li>
-                    <CodeBlock>token_id</CodeBlock> should be literally{" "}
+                    <CodeBlock>token_id</CodeBlock> should be{" "}
                     <CodeBlock>token_id</CodeBlock>. However, always pay
                     attention to call by value or reference.
                   </li>
