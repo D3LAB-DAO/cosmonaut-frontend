@@ -7,7 +7,7 @@ function L1C2Explain() {
     <>
       <BasicP>
         It is an extension that covers the <Keyword>metadata</Keyword>{" "}
-        associated with contact and each <Keyword>NFT</Keyword>.
+        associated with contract and each <Keyword>NFT</Keyword>.
       </BasicP>
     </>
   );
