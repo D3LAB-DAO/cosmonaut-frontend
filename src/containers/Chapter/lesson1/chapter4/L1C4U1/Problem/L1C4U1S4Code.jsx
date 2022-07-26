@@ -21,7 +21,7 @@ const HintSection = tw.div``;
 function L1C4U1S4Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
+  const [fileName, setFileName] = useState("problem");
   const [code, setCode] = useState();
   const [value, setValue] = useState("");
   const [hide, setHide] = useState(true);
@@ -46,10 +46,10 @@ function L1C4U1S4Code() {
 
   // Code Example
   const fakeFiles = {
-    file1: {
+    problem: {
       value: "// File1 Testing !!!",
     },
-    file2: {
+    answer: {
       value: "// File2 Testing !!!",
     },
   };
@@ -59,73 +59,75 @@ function L1C4U1S4Code() {
 
   return (
     <>
-      <EditorDesc>
-        <ProblemSection>
-          <Problem>Problem</Problem>
-          <BasicP>
-            Let's implement <CodeBlock>Revoke</CodeBlock>'s{" "}
-            <CodeBlock>_update_approval</CodeBlock> calls.
-          </BasicP>
-        </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
+      <div class="flex">
+        <EditorDesc>
+          <ProblemSection>
+            <Problem>Problem</Problem>
+            <BasicP>
+              Let's implement <CodeBlock>Revoke</CodeBlock>'s{" "}
+              <CodeBlock>_update_approval</CodeBlock> calls.
+            </BasicP>
+          </ProblemSection>
+          <HintSection>
+            <HintButton onClick={async () => setHide(!hide)}>
+              <Hint hide={hide} />
+              {hide ? null : (
+                <>
+                  <BasicP>
+                    It's too easy, isn’t it? Same as{" "}
+                    <CodeBlock>Approve</CodeBlock>
+                  </BasicP>
+                  <BasicP>
+                    Just note to call with <CodeBlock>add</CodeBlock> as false.
+                  </BasicP>
+                </>
+              )}
+            </HintButton>
+          </HintSection>
+        </EditorDesc>
+        <EditorCode>
+          <EditorCodeHeader>
+            <button
+              disabled={fileName === "problem"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("problem");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Problem</MultiTab>
+            </button>
+            <button
+              disabled={fileName === "answer"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("answer");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Answer</MultiTab>
+            </button>
+          </EditorCodeHeader>
+          <>
+            {isLoading ? (
+              <AnswerCheck />
+            ) : (
               <>
-                <BasicP>
-                  It's too easy, isn’t it? Same as{" "}
-                  <CodeBlock>Approve</CodeBlock>
-                </BasicP>
-                <BasicP>
-                  Just note to call with <CodeBlock>add</CodeBlock> as false.
-                </BasicP>
+                <EditorResult
+                  path={fileName}
+                  defaultLanguage="rust"
+                  value={!isSuccess ? file.value : value}
+                  onChange={async e => setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  isSuccess={isSuccess}
+                  isError={isError}
+                  onClick={doFetch}
+                />
               </>
             )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
-            <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
-            </>
-          )}
-        </>
-      </EditorCode>
+          </>
+        </EditorCode>
+      </div>
     </>
   );
 }

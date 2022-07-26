@@ -48,17 +48,13 @@ export default function EditorResult({
               <Check />
             ) : isError ? (
               <SubmitAgain>submit again</SubmitAgain>
-            ) : (
-              <CheckAnswer>
-                <button>check your answer</button>
-              </CheckAnswer>
-            )}
+            ) : null}
           </div>
         </ResultHeader>
 
-        <ResultCode>
+        {/* <ResultCode>
           <h1>tbu...</h1>
-        </ResultCode>
+        </ResultCode> */}
         <ResultResponse>
           {isSuccess ? (
             <Correct>Correct! Jump to Next Chapter</Correct>

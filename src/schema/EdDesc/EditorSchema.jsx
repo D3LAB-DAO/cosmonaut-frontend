@@ -50,6 +50,7 @@ function EditorSchema() {
         {lessonID === "1" && chID === "3" && uID === "1" ? <ChDesc /> : null}
       </Background>
       <EditorContents />
+
       <Footer />
       {lessonID === "1" && chID === "6" && uID === "2" ? (
         <FinishModal />

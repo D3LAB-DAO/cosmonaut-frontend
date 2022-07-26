@@ -23,7 +23,7 @@ const HintSection = tw.div`flex-nowrap flex mb-8 pb-8`;
 function L1C4U1S3Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
+  const [fileName, setFileName] = useState("problem");
   const [code, setCode] = useState();
   const [value, setValue] = useState("");
   const [hide, setHide] = useState(true);
@@ -48,10 +48,10 @@ function L1C4U1S3Code() {
 
   // Code Example
   const fakeFiles = {
-    file1: {
+    problem: {
       value: "// File1 Testing !!!",
     },
-    file2: {
+    answer: {
       value: "// File2 Testing !!!",
     },
   };
@@ -73,128 +73,132 @@ pub struct Cw721ReceiveMsg {
 
   return (
     <>
-      <EditorDesc>
-        <ProblemSection>
-          <Problem>Problem</Problem>
-          <BasicP>
-            The flow of <CodeBlock>_update_approvals</CodeBlock> is as follows:
-          </BasicP>
-          <ListStyle>1. Get token information.</ListStyle>
-          <ListStyle>
-            2. Check that the sender has authority to update.
-          </ListStyle>
-          <ListStyle>
-            3. Verify that the address of the <CodeBlock>spender</CodeBlock> is
-            correct.
-          </ListStyle>
-          <ListStyle>
-            4. Check the approvals stored in the token repeatedly and delete the
-            <CodeBlock>spender</CodeBlock> if it already exists.
-          </ListStyle>
-          <ListStyle>
-            5. Check whether the expiration date is valid. If valid, create the
-            approval with the <CodeBlock>spender</CodeBlock> and expiration
-            information.
-          </ListStyle>
-          <ListStyle>
-            6. Add this approval to the approvals of the token.
-          </ListStyle>
-          <ListStyle>7. Save the changed token information.</ListStyle>
-          <BasicP>
-            Let's fill in the code that corresponds to step 3, 4, and 6.
-          </BasicP>
-        </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
+      <div class="flex">
+        <EditorDesc>
+          <ProblemSection>
+            <Problem>Problem</Problem>
+            <BasicP>
+              The flow of <CodeBlock>_update_approvals</CodeBlock> is as
+              follows:
+            </BasicP>
+            <ListStyle>1. Get token information.</ListStyle>
+            <ListStyle>
+              2. Check that the sender has authority to update.
+            </ListStyle>
+            <ListStyle>
+              3. Verify that the address of the <CodeBlock>spender</CodeBlock>{" "}
+              is correct.
+            </ListStyle>
+            <ListStyle>
+              4. Check the approvals stored in the token repeatedly and delete
+              the
+              <CodeBlock>spender</CodeBlock> if it already exists.
+            </ListStyle>
+            <ListStyle>
+              5. Check whether the expiration date is valid. If valid, create
+              the approval with the <CodeBlock>spender</CodeBlock> and
+              expiration information.
+            </ListStyle>
+            <ListStyle>
+              6. Add this approval to the approvals of the token.
+            </ListStyle>
+            <ListStyle>7. Save the changed token information.</ListStyle>
+            <BasicP>
+              Let's fill in the code that corresponds to step 3, 4, and 6.
+            </BasicP>
+          </ProblemSection>
+          <HintSection>
+            <HintButton onClick={async () => setHide(!hide)}>
+              <Hint hide={hide} />
+              {hide ? null : (
+                <>
+                  <ListStyle>
+                    <li>
+                      To verify that the <CodeBlock>spender</CodeBlock> address
+                      is correct, we need to call the{" "}
+                      <CodeBlock>addr_validate</CodeBlock>. In the context of
+                      this contract, it can be used as{" "}
+                      <CodeBlock>deps.api.addr_validate(...)</CodeBlock>.
+                    </li>
+                    <li>
+                      Approvals are recorded as a collection (vector) in
+                      <CodeBlock>token.approvals</CodeBlock>.
+                    </li>
+                    <Markdown code={code1} />
+                    <li>
+                      There are three ways to make an iterator in collection:
+                      <ListStyle>
+                        <li>
+                          <CodeBlock>iter()</CodeBlock>: Iterate{" "}
+                          <CodeBlock>&T</CodeBlock>
+                        </li>
+                        <li>
+                          <CodeBlock>iter_mut()</CodeBlock>: Iterate{" "}
+                          <CodeBlock>&mut T</CodeBlock>
+                        </li>
+                        <li>
+                          <CodeBlock>into_iter()</CodeBlock>: Iterate{" "}
+                          <CodeBlock>T</CodeBlock>
+                        </li>
+                      </ListStyle>
+                    </li>
+                    <li>
+                      Typically, <CodeBlock>into_iter()</CodeBlock> will
+                      suitably perform as values, mutable references, and
+                      immutable references for the context. Call{" "}
+                      <CodeBlock>iter()</CodeBlock>
+                      for an immutable references, or
+                      <CodeBlock>iter_mut()</CodeBlock> for a mutable reference.
+                    </li>
+                  </ListStyle>
+                </>
+              )}
+            </HintButton>
+          </HintSection>
+        </EditorDesc>
+        <EditorCode>
+          <EditorCodeHeader>
+            <button
+              disabled={fileName === "problem"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("problem");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Problem</MultiTab>
+            </button>
+            <button
+              disabled={fileName === "answer"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("answer");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Answer</MultiTab>
+            </button>
+          </EditorCodeHeader>
+          <>
+            {isLoading ? (
+              <AnswerCheck />
+            ) : (
               <>
-                <ListStyle>
-                  <li>
-                    To verify that the <CodeBlock>spender</CodeBlock> address is
-                    correct, we need to call the{" "}
-                    <CodeBlock>addr_validate</CodeBlock>. In the context of this
-                    contract, it can be used as{" "}
-                    <CodeBlock>deps.api.addr_validate(...)</CodeBlock>.
-                  </li>
-                  <li>
-                    Approvals are recorded as a collection (vector) in
-                    <CodeBlock>token.approvals</CodeBlock>.
-                  </li>
-                  <Markdown code={code1} />
-                  <li>
-                    There are three ways to make an iterator in collection:
-                    <ListStyle>
-                      <li>
-                        <CodeBlock>iter()</CodeBlock>: Iterate{" "}
-                        <CodeBlock>&T</CodeBlock>
-                      </li>
-                      <li>
-                        <CodeBlock>iter_mut()</CodeBlock>: Iterate{" "}
-                        <CodeBlock>&mut T</CodeBlock>
-                      </li>
-                      <li>
-                        <CodeBlock>into_iter()</CodeBlock>: Iterate{" "}
-                        <CodeBlock>T</CodeBlock>
-                      </li>
-                    </ListStyle>
-                  </li>
-                  <li>
-                    Typically, <CodeBlock>into_iter()</CodeBlock> will suitably
-                    perform as values, mutable references, and immutable
-                    references for the context. Call{" "}
-                    <CodeBlock>iter()</CodeBlock>
-                    for an immutable references, or
-                    <CodeBlock>iter_mut()</CodeBlock> for a mutable reference.
-                  </li>
-                </ListStyle>
+                <EditorResult
+                  path={fileName}
+                  defaultLanguage="rust"
+                  value={!isSuccess ? file.value : value}
+                  onChange={async e => setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  isSuccess={isSuccess}
+                  isError={isError}
+                  onClick={doFetch}
+                />
               </>
             )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
-            <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
-            </>
-          )}
-        </>
-      </EditorCode>
+          </>
+        </EditorCode>
+      </div>
     </>
   );
 }

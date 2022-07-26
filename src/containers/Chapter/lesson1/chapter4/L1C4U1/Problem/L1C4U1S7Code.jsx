@@ -22,7 +22,7 @@ const HintSection = tw.div``;
 function L1C4U1S7Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
+  const [fileName, setFileName] = useState("problem");
   const [code, setCode] = useState();
   const [value, setValue] = useState("");
   const [hide, setHide] = useState(true);
@@ -47,10 +47,10 @@ function L1C4U1S7Code() {
 
   // Code Example
   const fakeFiles = {
-    file1: {
+    problem: {
       value: "// File1 Testing !!!",
     },
-    file2: {
+    answer: {
       value: "// File2 Testing !!!",
     },
   };
@@ -60,83 +60,85 @@ function L1C4U1S7Code() {
 
   return (
     <>
-      <EditorDesc>
-        <ProblemSection>
-          <Problem>Problem</Problem>
-          <BasicP>
-            Let's create a new token with <CodeBlock>TokenInfo</CodeBlock>.
-          </BasicP>
-        </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
+      <div class="flex">
+        <EditorDesc>
+          <ProblemSection>
+            <Problem>Problem</Problem>
+            <BasicP>
+              Let's create a new token with <CodeBlock>TokenInfo</CodeBlock>.
+            </BasicP>
+          </ProblemSection>
+          <HintSection>
+            <HintButton onClick={async () => setHide(!hide)}>
+              <Hint hide={hide} />
+              {hide ? null : (
+                <>
+                  <ListStyle>
+                    <li>
+                      <CodeBlock>msg</CodeBlock>.owner becomes{" "}
+                      <CodeBlock>owner</CodeBlock>. To make sure the address is
+                      correct, we now know what to call!
+                    </li>
+                    <li>
+                      Approvals information should be formed as an empty vector.
+                    </li>
+                    <li>
+                      <CodeBlock>token_uri</CodeBlock> and{" "}
+                      <CodeBlock>extension</CodeBlock> can also be taken from{" "}
+                      <CodeBlock>msg</CodeBlock> just like
+                      <CodeBlock>owner</CodeBlock>. They will be{" "}
+                      <CodeBlock>msg.token_uri</CodeBlock> and{" "}
+                      <CodeBlock>msg.extension</CodeBlock> respectively.
+                    </li>
+                  </ListStyle>
+                </>
+              )}
+            </HintButton>
+          </HintSection>
+        </EditorDesc>
+        <EditorCode>
+          <EditorCodeHeader>
+            <button
+              disabled={fileName === "problem"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("problem");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Problem</MultiTab>
+            </button>
+            <button
+              disabled={fileName === "answer"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("answer");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Answer</MultiTab>
+            </button>
+          </EditorCodeHeader>
+          <>
+            {isLoading ? (
+              <AnswerCheck />
+            ) : (
               <>
-                <ListStyle>
-                  <li>
-                    <CodeBlock>msg</CodeBlock>.owner becomes{" "}
-                    <CodeBlock>owner</CodeBlock>. To make sure the address is
-                    correct, we now know what to call!
-                  </li>
-                  <li>
-                    Approvals information should be formed as an empty vector.
-                  </li>
-                  <li>
-                    <CodeBlock>token_uri</CodeBlock> and{" "}
-                    <CodeBlock>extension</CodeBlock> can also be taken from{" "}
-                    <CodeBlock>msg</CodeBlock> just like
-                    <CodeBlock>owner</CodeBlock>. They will be{" "}
-                    <CodeBlock>msg.token_uri</CodeBlock> and{" "}
-                    <CodeBlock>msg.extension</CodeBlock> respectively.
-                  </li>
-                </ListStyle>
+                <EditorResult
+                  path={fileName}
+                  defaultLanguage="rust"
+                  value={!isSuccess ? file.value : value}
+                  onChange={async e => setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  isSuccess={isSuccess}
+                  isError={isError}
+                  onClick={doFetch}
+                />
               </>
             )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
-            <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
-            </>
-          )}
-        </>
-      </EditorCode>
+          </>
+        </EditorCode>
+      </div>
     </>
   );
 }

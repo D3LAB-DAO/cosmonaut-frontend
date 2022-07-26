@@ -23,7 +23,7 @@ const HintSection = tw.div`flex-nowrap flex mb-8 pb-8`;
 function L1C4U1S2Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
+  const [fileName, setFileName] = useState("problem");
   const [code, setCode] = useState();
   const [value, setValue] = useState("");
   const [hide, setHide] = useState(true);
@@ -48,10 +48,10 @@ function L1C4U1S2Code() {
 
   // Code Example
   const fakeFiles = {
-    file1: {
+    problem: {
       value: "// File1 Testing !!!",
     },
-    file2: {
+    answer: {
       value: "// File2 Testing !!!",
     },
   };
@@ -73,87 +73,89 @@ pub struct Cw721ReceiveMsg {
 
   return (
     <>
-      <EditorDesc>
-        <ProblemSection>
-          <Problem>Problem</Problem>
-          <BasicP>
-            Let's configure the <CodeBlock>Cw721ReceiveMsg</CodeBlock>{" "}
-            ourselves. The following is the format of the{" "}
-            <CodeBlock>Cw721ReceiveMsg</CodeBlock> that we discussed in
-            Receiver.
-          </BasicP>
-          <Markdown code={code1} />
-        </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
+      <div class="flex">
+        <EditorDesc>
+          <ProblemSection>
+            <Problem>Problem</Problem>
+            <BasicP>
+              Let's configure the <CodeBlock>Cw721ReceiveMsg</CodeBlock>{" "}
+              ourselves. The following is the format of the{" "}
+              <CodeBlock>Cw721ReceiveMsg</CodeBlock> that we discussed in
+              Receiver.
+            </BasicP>
+            <Markdown code={code1} />
+          </ProblemSection>
+          <HintSection>
+            <HintButton onClick={async () => setHide(!hide)}>
+              <Hint hide={hide} />
+              {hide ? null : (
+                <>
+                  <ListStyle>
+                    <li>
+                      We can access to sender information as{" "}
+                      <CodeBlock>info.sender</CodeBlock> in the context of this
+                      contract. The type to hand over to{" "}
+                      <CodeBlock>sender</CodeBlock> is String, so we need to
+                      take <CodeBlock>to_string()</CodeBlock>.
+                    </li>
+                    <li>
+                      <CodeBlock>token_id</CodeBlock> should be literally{" "}
+                      <CodeBlock>token_id</CodeBlock>. However, always pay
+                      attention to call by value or reference.
+                    </li>
+                    <li>
+                      <CodeBlock>msg</CodeBlock> should be the same as the{" "}
+                      <CodeBlock>msg</CodeBlock> that we received.
+                    </li>
+                  </ListStyle>
+                </>
+              )}
+            </HintButton>
+          </HintSection>
+        </EditorDesc>
+        <EditorCode>
+          <EditorCodeHeader>
+            <button
+              disabled={fileName === "problem"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("problem");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Problem</MultiTab>
+            </button>
+            <button
+              disabled={fileName === "answer"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("answer");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Answer</MultiTab>
+            </button>
+          </EditorCodeHeader>
+          <>
+            {isLoading ? (
+              <AnswerCheck />
+            ) : (
               <>
-                <ListStyle>
-                  <li>
-                    We can access to sender information as{" "}
-                    <CodeBlock>info.sender</CodeBlock> in the context of this
-                    contract. The type to hand over to{" "}
-                    <CodeBlock>sender</CodeBlock> is String, so we need to take{" "}
-                    <CodeBlock>to_string()</CodeBlock>.
-                  </li>
-                  <li>
-                    <CodeBlock>token_id</CodeBlock> should be literally{" "}
-                    <CodeBlock>token_id</CodeBlock>. However, always pay
-                    attention to call by value or reference.
-                  </li>
-                  <li>
-                    <CodeBlock>msg</CodeBlock> should be the same as the{" "}
-                    <CodeBlock>msg</CodeBlock> that we received.
-                  </li>
-                </ListStyle>
+                <EditorResult
+                  path={fileName}
+                  defaultLanguage="rust"
+                  value={!isSuccess ? file.value : value}
+                  onChange={async e => setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  isSuccess={isSuccess}
+                  isError={isError}
+                  onClick={doFetch}
+                />
               </>
             )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
-            <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
-            </>
-          )}
-        </>
-      </EditorCode>
+          </>
+        </EditorCode>
+      </div>
     </>
   );
 }

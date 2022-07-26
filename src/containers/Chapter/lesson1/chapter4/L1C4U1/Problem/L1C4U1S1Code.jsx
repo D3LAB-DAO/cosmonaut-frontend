@@ -23,7 +23,7 @@ const HintSection = tw.div``;
 function L1C4U1S1Code() {
   const { lessonID, chID } = useParams();
   const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
+  const [fileName, setFileName] = useState("problem");
   const [code, setCode] = useState();
   const [value, setValue] = useState("");
   const [hide, setHide] = useState(true);
@@ -48,11 +48,11 @@ function L1C4U1S1Code() {
 
   // Code Example
   const fakeFiles = {
-    file1: {
-      value: "// File1 Testing !!!",
+    problem: {
+      value: "// Problem Testing !!!",
     },
-    file2: {
-      value: "// File2 Testing !!!",
+    answer: {
+      value: "// Answer Testing !!!",
     },
   };
   const file = fakeFiles[fileName];
@@ -66,85 +66,87 @@ fn addr_validate(&self, human: &str) -> StdResult<Addr>
 
   return (
     <>
-      <EditorDesc>
-        <ProblemSection>
-          <Problem>Problem</Problem>
-          <BasicP>
-            Let's fill in the code that corresponds to the process from three to
-            five.
-          </BasicP>
-          <BasicP>Don't worry. They are not complicated.</BasicP>
-          <Markdown code={code1} />
-        </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
+      <div class="flex">
+        <EditorDesc>
+          <ProblemSection>
+            <Problem>Problem</Problem>
+            <BasicP>
+              Let's fill in the code that corresponds to the process from three
+              to five.
+            </BasicP>
+            <BasicP>Don't worry. They are not complicated.</BasicP>
+            <Markdown code={code1} />
+          </ProblemSection>
+          <HintSection>
+            <HintButton onClick={async () => setHide(!hide)}>
+              <Hint hide={hide} />
+              {hide ? null : (
+                <>
+                  <ListStyle>
+                    <li>
+                      Owner is recorded in <CodeBlock>token.owner</CodeBlock>.
+                    </li>
+                    <li>
+                      Approvals are recorded in{" "}
+                      <CodeBlock>token.approvals</CodeBlock>.
+                    </li>
+                    <li>
+                      Uses <CodeBlock>addr_validate</CodeBlock> to verify the
+                      recipient address is correct. You can use{" "}
+                      <CodeBlock>deps.api.addr_validate(...)</CodeBlock> at this
+                      context of contract.
+                    </li>
+                  </ListStyle>
+                  <Markdown code={code1} />
+                </>
+              )}
+            </HintButton>
+          </HintSection>
+        </EditorDesc>
+        <EditorCode>
+          <EditorCodeHeader>
+            <button
+              disabled={fileName === "problem"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("problem");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Problem</MultiTab>
+            </button>
+            <button
+              disabled={fileName === "answer"}
+              onClick={async e => {
+                e.preventDefault();
+                setFileName("answer");
+                setValue(...value);
+              }}
+            >
+              <MultiTab>Answer</MultiTab>
+            </button>
+          </EditorCodeHeader>
+          <>
+            {isLoading ? (
+              <AnswerCheck />
+            ) : (
               <>
-                <ListStyle>
-                  <li>
-                    Owner is recorded in <CodeBlock>token.owner</CodeBlock>.
-                  </li>
-                  <li>
-                    Approvals are recorded in{" "}
-                    <CodeBlock>token.approvals</CodeBlock>.
-                  </li>
-                  <li>
-                    Uses <CodeBlock>addr_validate</CodeBlock> to verify the
-                    recipient address is correct. You can use{" "}
-                    <CodeBlock>deps.api.addr_validate(...)</CodeBlock> at this
-                    context of contract.
-                  </li>
-                </ListStyle>
-                <Markdown code={code1} />
+                <EditorResult
+                  path={fileName}
+                  defaultLanguage="rust"
+                  value={!isSuccess ? file.value : value}
+                  onChange={async e => setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  isSuccess={isSuccess}
+                  isError={isError}
+                  onFormat={doFormat}
+                  // onBuild={onBuild}
+                />
               </>
             )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
-            <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onFormat={doFormat}
-                // onBuild={onBuild}
-              />
-            </>
-          )}
-        </>
-      </EditorCode>
+          </>
+        </EditorCode>
+      </div>
     </>
   );
 }
