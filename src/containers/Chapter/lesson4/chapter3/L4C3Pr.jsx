@@ -1,5 +1,4 @@
 import tw from "tailwind-styled-components";
-import CodeEditor from "../../../../components/CodeEditor/CodeEditor";
 import UnitName from "../../../../components/Common/UnitName";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -20,6 +19,7 @@ import { useParams } from "react-router-dom";
 import HintButton from "../../../../components/Contents/HintButton";
 import ListStyle from "../../../../components/Contents/ListStyle";
 import Markdown from "../../../../components/Contents/Markdown";
+import PracticePart from "../../../../components/Practice/PracticePart";
 
 const HintSection = tw.div``;
 
@@ -98,225 +98,224 @@ BurnFuel {
       {/* Contents Part */}
       <UnitName />
       {/* Editor Part */}
-      <CodeEditor>
-        <EditorDesc>
-          <ProblemSection>
-            <Problem>Question 1.</Problem>
-            <ListStyle>
-              <li>
-                <b>
-                  Where to Implement: <CodeBlock>execute.rs</CodeBlock>
-                </b>
-              </li>
-            </ListStyle>
-            <BasicP>
-              Query <CodeBlock>NftInfo</CodeBlock> from{" "}
-              <CodeBlock>config.spaceship_cw721_contract</CodeBlock>.
-            </BasicP>
-            <BasicP>
-              Save the response to <CodeBlock>nft_info</CodeBlock>:{" "}
-              <CodeBlock>{nftmeta}</CodeBlock>.
-            </BasicP>
-            <HintSection>
-              <HintButton onClick={async () => setHide(!hide)}>
-                <Hint hide={hide} />
-                {hide ? null : (
-                  <>
-                    <ListStyle>
-                      <li>
-                        Use <CodeBlock>deps.querier.query_wasm_smart</CodeBlock>{" "}
-                        to make the query.{" "}
-                      </li>
-                      <Markdown code={code1} />
-                      <li>
-                        Use <CodeBlock>{nftinfo}</CodeBlock> to query
-                        information of <CodeBlock>token_id</CodeBlock> NFT.
-                      </li>
-                    </ListStyle>
-                  </>
-                )}
-              </HintButton>
-            </HintSection>
-          </ProblemSection>
+      <PracticePart />
+      <EditorDesc>
+        <ProblemSection>
+          <Problem>Question 1.</Problem>
+          <ListStyle>
+            <li>
+              <b>
+                Where to Implement: <CodeBlock>execute.rs</CodeBlock>
+              </b>
+            </li>
+          </ListStyle>
+          <BasicP>
+            Query <CodeBlock>NftInfo</CodeBlock> from{" "}
+            <CodeBlock>config.spaceship_cw721_contract</CodeBlock>.
+          </BasicP>
+          <BasicP>
+            Save the response to <CodeBlock>nft_info</CodeBlock>:{" "}
+            <CodeBlock>{nftmeta}</CodeBlock>.
+          </BasicP>
+          <HintSection>
+            <HintButton onClick={async () => setHide(!hide)}>
+              <Hint hide={hide} />
+              {hide ? null : (
+                <>
+                  <ListStyle>
+                    <li>
+                      Use <CodeBlock>deps.querier.query_wasm_smart</CodeBlock>{" "}
+                      to make the query.{" "}
+                    </li>
+                    <Markdown code={code1} />
+                    <li>
+                      Use <CodeBlock>{nftinfo}</CodeBlock> to query information
+                      of <CodeBlock>token_id</CodeBlock> NFT.
+                    </li>
+                  </ListStyle>
+                </>
+              )}
+            </HintButton>
+          </HintSection>
+        </ProblemSection>
 
-          <ProblemSection>
-            <Problem>Question 2.</Problem>
-            <ListStyle>
-              <li>
-                <b>
-                  Where to Implement: <CodeBlock>execute.rs</CodeBlock>
-                </b>
-              </li>
-            </ListStyle>
-            <BasicP>
-              Sum up every freight’s <CodeBlock>amount</CodeBlock> in{" "}
-              <CodeBlock>nft_info</CodeBlock>, weighted by
-              <CodeBlock>unit_weight</CodeBlock>.
-            </BasicP>
-            <BasicP>
-              Save the result to variable named{" "}
-              <CodeBlock>total_freight_weight</CodeBlock>.
-            </BasicP>
-          </ProblemSection>
+        <ProblemSection>
+          <Problem>Question 2.</Problem>
+          <ListStyle>
+            <li>
+              <b>
+                Where to Implement: <CodeBlock>execute.rs</CodeBlock>
+              </b>
+            </li>
+          </ListStyle>
+          <BasicP>
+            Sum up every freight’s <CodeBlock>amount</CodeBlock> in{" "}
+            <CodeBlock>nft_info</CodeBlock>, weighted by
+            <CodeBlock>unit_weight</CodeBlock>.
+          </BasicP>
+          <BasicP>
+            Save the result to variable named{" "}
+            <CodeBlock>total_freight_weight</CodeBlock>.
+          </BasicP>
+        </ProblemSection>
 
-          <ProblemSection>
-            <Problem>Question 3.</Problem>
-            <ListStyle>
-              <li>
-                <b>
-                  Where to Implement: <CodeBlock>msg.rs</CodeBlock>
-                </b>
-              </li>
-            </ListStyle>
-            <BasicP>
-              Return the simple random number calculated by{" "}
-              <CodeBlock>timestamp_int_nanos% MAX_FREIGHT_WEIGHT</CodeBlock>.
-            </BasicP>
-          </ProblemSection>
+        <ProblemSection>
+          <Problem>Question 3.</Problem>
+          <ListStyle>
+            <li>
+              <b>
+                Where to Implement: <CodeBlock>msg.rs</CodeBlock>
+              </b>
+            </li>
+          </ListStyle>
+          <BasicP>
+            Return the simple random number calculated by{" "}
+            <CodeBlock>timestamp_int_nanos% MAX_FREIGHT_WEIGHT</CodeBlock>.
+          </BasicP>
+        </ProblemSection>
 
-          <ProblemSection>
-            <Problem>Question 4.</Problem>
-            <ListStyle>
-              <li>
-                <b>
-                  Where to Implement: <CodeBlock>execute.rs</CodeBlock>
-                </b>
-              </li>
-            </ListStyle>
-            <BasicP>
-              Fill in the blank in <CodeBlock>for</CodeBlock> loop.
-            </BasicP>
-            <BasicP>
-              Do loop from zero to <CodeBlock>epoch</CodeBlock>.
-            </BasicP>
-          </ProblemSection>
+        <ProblemSection>
+          <Problem>Question 4.</Problem>
+          <ListStyle>
+            <li>
+              <b>
+                Where to Implement: <CodeBlock>execute.rs</CodeBlock>
+              </b>
+            </li>
+          </ListStyle>
+          <BasicP>
+            Fill in the blank in <CodeBlock>for</CodeBlock> loop.
+          </BasicP>
+          <BasicP>
+            Do loop from zero to <CodeBlock>epoch</CodeBlock>.
+          </BasicP>
+        </ProblemSection>
 
-          <ProblemSection>
-            <Problem>Question 5.</Problem>
-            <ListStyle>
-              <li>
-                <b>
-                  Where to Implement: <CodeBlock>execute.rs</CodeBlock>
-                </b>
-              </li>
-            </ListStyle>
-            <BasicP>
-              Create the message to burn fuel as much as{" "}
-              <CodeBlock>FUEL_PER_GAME * epoch</CodeBlock>.
-            </BasicP>
-            <HintSection>
-              <HintButton onClick={async () => setHide(!hide)}>
-                <Hint hide={hide} />
-                {hide ? null : (
-                  <>
-                    <ListStyle>
-                      <li>
-                        Use <CodeBlock>Cw721ExecuteMsg::BurnFuel</CodeBlock> as
-                        follow:
-                      </li>
-                      <Markdown code={code2} />
-                      <li>Check overflow.</li>
-                    </ListStyle>
-                  </>
-                )}
-              </HintButton>
-            </HintSection>
-          </ProblemSection>
-        </EditorDesc>
+        <ProblemSection>
+          <Problem>Question 5.</Problem>
+          <ListStyle>
+            <li>
+              <b>
+                Where to Implement: <CodeBlock>execute.rs</CodeBlock>
+              </b>
+            </li>
+          </ListStyle>
+          <BasicP>
+            Create the message to burn fuel as much as{" "}
+            <CodeBlock>FUEL_PER_GAME * epoch</CodeBlock>.
+          </BasicP>
+          <HintSection>
+            <HintButton onClick={async () => setHide(!hide)}>
+              <Hint hide={hide} />
+              {hide ? null : (
+                <>
+                  <ListStyle>
+                    <li>
+                      Use <CodeBlock>Cw721ExecuteMsg::BurnFuel</CodeBlock> as
+                      follow:
+                    </li>
+                    <Markdown code={code2} />
+                    <li>Check overflow.</li>
+                  </ListStyle>
+                </>
+              )}
+            </HintButton>
+          </HintSection>
+        </ProblemSection>
+      </EditorDesc>
 
-        <EditorCode>
-          <EditorCodeHeader>
-            <button
-              disabled={fileName === "contract"}
-              onClick={async e => {
-                e.preventDefault();
-                setFileName("contract");
-                setValue(...value);
-              }}
-            >
-              <MultiTab>contract.rs</MultiTab>
-            </button>
-            <button
-              disabled={fileName === "error"}
-              onClick={async e => {
-                e.preventDefault();
-                setFileName("error");
-                setValue(...value);
-              }}
-            >
-              <MultiTab>error.rs</MultiTab>
-            </button>
-            <button
-              disabled={fileName === "execute"}
-              onClick={async e => {
-                e.preventDefault();
-                setFileName("execute");
-                setValue(...value);
-              }}
-            >
-              <MultiTab>execute.rs</MultiTab>
-            </button>
-            <button
-              disabled={fileName === "lib"}
-              onClick={async e => {
-                e.preventDefault();
-                setFileName("lib");
-                setValue(...value);
-              }}
-            >
-              <MultiTab>lib.rs</MultiTab>
-            </button>
-            <button
-              disabled={fileName === "msg"}
-              onClick={async e => {
-                e.preventDefault();
-                setFileName("msg");
-                setValue(...value);
-              }}
-            >
-              <MultiTab>msg.rs</MultiTab>
-            </button>
-            <button
-              disabled={fileName === "query"}
-              onClick={async e => {
-                e.preventDefault();
-                setFileName("query");
-                setValue(...value);
-              }}
-            >
-              <MultiTab>query.rs</MultiTab>
-            </button>
-            <button
-              disabled={fileName === "state"}
-              onClick={async e => {
-                e.preventDefault();
-                setFileName("state");
-                setValue(...value);
-              }}
-            >
-              <MultiTab>state.rs</MultiTab>
-            </button>
-          </EditorCodeHeader>
-          <>
-            {isLoading ? (
-              <AnswerCheck />
-            ) : (
-              <>
-                <EditorResult
-                  path={fileName}
-                  defaultLanguage="rust"
-                  value={!isSuccess ? file.value : value}
-                  onChange={async e => setCode(e)}
-                  onMount={editor => (editorRef.current = editor)}
-                  isSuccess={isSuccess}
-                  isError={isError}
-                  onClick={doFetch}
-                />
-              </>
-            )}
-          </>
-        </EditorCode>
-      </CodeEditor>
+      <EditorCode>
+        <EditorCodeHeader>
+          <button
+            disabled={fileName === "contract"}
+            onClick={async e => {
+              e.preventDefault();
+              setFileName("contract");
+              setValue(...value);
+            }}
+          >
+            <MultiTab>contract.rs</MultiTab>
+          </button>
+          <button
+            disabled={fileName === "error"}
+            onClick={async e => {
+              e.preventDefault();
+              setFileName("error");
+              setValue(...value);
+            }}
+          >
+            <MultiTab>error.rs</MultiTab>
+          </button>
+          <button
+            disabled={fileName === "execute"}
+            onClick={async e => {
+              e.preventDefault();
+              setFileName("execute");
+              setValue(...value);
+            }}
+          >
+            <MultiTab>execute.rs</MultiTab>
+          </button>
+          <button
+            disabled={fileName === "lib"}
+            onClick={async e => {
+              e.preventDefault();
+              setFileName("lib");
+              setValue(...value);
+            }}
+          >
+            <MultiTab>lib.rs</MultiTab>
+          </button>
+          <button
+            disabled={fileName === "msg"}
+            onClick={async e => {
+              e.preventDefault();
+              setFileName("msg");
+              setValue(...value);
+            }}
+          >
+            <MultiTab>msg.rs</MultiTab>
+          </button>
+          <button
+            disabled={fileName === "query"}
+            onClick={async e => {
+              e.preventDefault();
+              setFileName("query");
+              setValue(...value);
+            }}
+          >
+            <MultiTab>query.rs</MultiTab>
+          </button>
+          <button
+            disabled={fileName === "state"}
+            onClick={async e => {
+              e.preventDefault();
+              setFileName("state");
+              setValue(...value);
+            }}
+          >
+            <MultiTab>state.rs</MultiTab>
+          </button>
+        </EditorCodeHeader>
+        <>
+          {isLoading ? (
+            <AnswerCheck />
+          ) : (
+            <>
+              <EditorResult
+                path={fileName}
+                defaultLanguage="rust"
+                value={!isSuccess ? file.value : value}
+                onChange={async e => setCode(e)}
+                onMount={editor => (editorRef.current = editor)}
+                isSuccess={isSuccess}
+                isError={isError}
+                onClick={doFetch}
+              />
+            </>
+          )}
+        </>
+      </EditorCode>
     </>
   );
 }

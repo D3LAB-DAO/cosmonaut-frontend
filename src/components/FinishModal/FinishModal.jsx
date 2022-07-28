@@ -4,8 +4,17 @@ import { useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
 import { useGetLessonPic } from "../../libs/api/getLessonPic";
 import { useGetUserProgress } from "../../libs/api/getUserProgress";
+import { usePostRead } from "../../libs/api/postRead";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
-import { ProgressBar1 } from "../Common/ProgressBar";
+import {
+  ProgressBar0,
+  ProgressBar1,
+  ProgressBar2,
+  ProgressBar3,
+  ProgressBar4,
+} from "../Common/ProgressBar";
+import error from "../../assets/images/dummy-nft.jpg";
+import { usePostInitial } from "../../libs/api/postInitial";
 
 const Container = tw.div`fixed h-screen bottom-0 w-full z-50 flex items-center bg-gray-900 bg-opacity-80`;
 const Button = tw.button`animate-bounce block mx-auto lg:mt-8 md:mt-4 md:mb-4 text-center lg:text-lg md:text-sm border-3 transition duration-200 rounded-full py-2 px-8 bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:border-white hover:to-blue-500 hover:text-white mt-3 text-xs`;
@@ -23,15 +32,19 @@ function FinishModal() {
     navigate(`/epilogue`);
   };
 
-  const [lessonPic, picFetch] = useGetLessonPic({ lessonID });
-  const [userRes, userFetch] = useGetUserProgress({ lessonID });
+  const [lessonPic, picFetch] = useGetLessonPic(lessonID);
+  const [userRes, userFetch] = useGetUserProgress(lessonID);
 
   useEffect(() => {
     picFetch();
     userFetch();
   }, []);
-
+  const onErrorImg = e => {
+    e.target.src = error;
+  };
   console.log(lessonPic);
+  console.log(userRes.chapter);
+
   return (
     <>
       <Container>
@@ -47,6 +60,7 @@ function FinishModal() {
                     class="block mx-auto mb-2 max-h-56"
                     src={lessonPic}
                     alt="Blob URL"
+                    onError={onErrorImg}
                   />
                   <p class="text-indigo-900 font-heading mb-1 leading-tight text-base">
                     Lesson {lessonID}.
@@ -54,8 +68,17 @@ function FinishModal() {
                   <p class="text-indigo-900 font-heading mb-2 leading-tight text-xs">
                     {lessonInfos[lessonID]?.title}
                   </p>
-
-                  <ProgressBar1 progress={userRes.chapter} />
+                  {lessonID === "0" ? (
+                    <ProgressBar0 progress={userRes.chapter} />
+                  ) : lessonID === "1" ? (
+                    <ProgressBar1 progress={userRes.chapter} />
+                  ) : lessonID === "2" ? (
+                    <ProgressBar2 progress={userRes.chapter} />
+                  ) : lessonID === "3" ? (
+                    <ProgressBar3 progress={userRes.chapter} />
+                  ) : lessonID === "4" ? (
+                    <ProgressBar4 progress={userRes.chapter} />
+                  ) : null}
                   <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 font-heading text-sm">
                     Completed
                   </p>

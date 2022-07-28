@@ -15,14 +15,8 @@ export const useGetLessonPic = lessonID => {
         `http://127.0.0.1:8080/v1/cosm/picture?lesson=${lessonID}`,
         option
       );
-      console.log(res);
-
       const data = await res.blob();
-      console.log(data);
-
       let imgObjectURL = URL.createObjectURL(data);
-      console.log(imgObjectURL);
-
       setResponse(imgObjectURL);
     } catch (error) {
       console.log(error);

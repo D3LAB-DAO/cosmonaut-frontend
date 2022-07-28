@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
 import { useGetUserProgress } from "../../../libs/api/getUserProgress";
+import { usePostInitial } from "../../../libs/api/postInitial";
 import { indexInfo } from "../../../states/Information/indexInfo";
 
 const Container = tw.div`w-full mb-14 lg:mb-0 lg:col-span-1 col-span-2 lg:order-2 order-1`;
@@ -15,13 +16,15 @@ function Curriculum() {
   const { lessonID } = useParams();
   const startLesson = `/lesson/${lessonID}/chapter/1/unit/0`;
   const engInfo = useRecoilValue(indexInfo);
-  const [userRes, userFetch] = useGetUserProgress({ lessonID });
+  const [userRes, userFetch] = useGetUserProgress(lessonID);
+  const [initLoading, initRes, initFetch] = usePostInitial();
+  console.log(initRes);
 
   const handleList = e => {
     e.preventDefault();
     userFetch();
   };
-  console.log(userRes);
+  console.log(userRes.chapter);
 
   return (
     <Container>
@@ -44,11 +47,14 @@ function Curriculum() {
             );
           })}
         </LessonList>
-        {userRes === "0" ? (
+        {userRes.chapter === "0" ? (
           <>
             <Link to={startLesson}>
               <ButtonWrap>
-                <button class="hover:from-green-500 hover:to-blue-500 hover:text-white inline-block md:w-auto mb-2 md:mb-0 text-center leading-6 text-lg text-gray-900 font-heading bg-gradient-to-r from-yellow-500 to-orange-400 border-3 border-indigo-900 shadow rounded-full md:mx-0 mx-8 md:px-10 md:py-4 py-2 px-12">
+                <button
+                  onClick={initFetch()}
+                  class="hover:from-green-500 hover:to-blue-500 hover:text-white inline-block md:w-auto mb-2 md:mb-0 text-center leading-6 text-lg text-gray-900 font-heading bg-gradient-to-r from-yellow-500 to-orange-400 border-3 border-indigo-900 shadow rounded-full md:mx-0 mx-8 md:px-10 md:py-4 py-2 px-12"
+                >
                   START LESSON
                 </button>
               </ButtonWrap>
@@ -58,7 +64,10 @@ function Curriculum() {
           <>
             <Link to={startLesson}>
               <ButtonWrap>
-                <button class="hover:from-green-500 hover:to-blue-500 hover:text-white inline-block md:w-auto mb-2 md:mb-0 text-center leading-6 text-lg text-gray-900 font-heading bg-gradient-to-r from-yellow-500 to-orange-400 border-3 border-indigo-900 shadow rounded-full md:mx-0 mx-8 md:px-10 md:py-4 py-2 px-12">
+                <button
+                  onClick={initFetch()}
+                  class="hover:from-green-500 hover:to-blue-500 hover:text-white inline-block md:w-auto mb-2 md:mb-0 text-center leading-6 text-lg text-gray-900 font-heading bg-gradient-to-r from-yellow-500 to-orange-400 border-3 border-indigo-900 shadow rounded-full md:mx-0 mx-8 md:px-10 md:py-4 py-2 px-12"
+                >
                   START LESSON
                 </button>
               </ButtonWrap>

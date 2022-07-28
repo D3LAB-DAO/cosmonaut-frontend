@@ -20,7 +20,7 @@ export const PbNavigator = () => {
     } else if (lessonID === "1" && chID === "4" && uID === "3" && pID === "1") {
       return navigate(`/lesson/1/chapter/5/unit/0`);
     } else if (lessonID === "1" && chID === "5" && uID === "1" && pID === "1") {
-      return navigate(`/lesson/1/chapter/5/unit/1/pb/2`);
+      return navigate(`/lesson/1/chapter/6/unit/1`);
     }
     // lesson 2
     else if (lessonID === "2" && chID === "6" && uID === "1" && pID === "1") {

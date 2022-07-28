@@ -1,17 +1,7 @@
 import React from "react";
-import Editor from "@monaco-editor/react";
 import tw from "tailwind-styled-components";
-import ResultHeader from "./ResultHeader";
-import Result from "../Contents/Result";
-import Check from "../Contents/Check";
-import SubmitAgain from "../Contents/SubmitAgain";
-import CheckAnswer from "../Contents/CheckAnswer";
-import Correct from "../Contents/Correct";
-import Wrong from "../Contents/Wrong";
-
-const Results = tw.div``;
-const ResultCode = tw.div`mx-auto px-4`;
-const ResultResponse = tw.div``;
+import Editor from "@monaco-editor/react";
+import { FmtBtn } from "./FmtBtn";
 
 export default function EditorResult({
   path,
@@ -21,8 +11,8 @@ export default function EditorResult({
   onMount,
   isSuccess,
   isError,
-  // onBuild,
   onFormat,
+  onBuild,
 }) {
   return (
     <>
@@ -35,34 +25,9 @@ export default function EditorResult({
         onChange={onChange}
         onMount={onMount}
       />
-
-      <Results>
-        <ResultHeader>
-          <Result>Result</Result>
-          <div class="flex">
-            <CheckAnswer>
-              <button onClick={onFormat}>format your code</button>
-            </CheckAnswer>
-
-            {isSuccess ? (
-              <Check />
-            ) : isError ? (
-              <SubmitAgain>submit again</SubmitAgain>
-            ) : null}
-          </div>
-        </ResultHeader>
-
-        {/* <ResultCode>
-          <h1>tbu...</h1>
-        </ResultCode> */}
-        <ResultResponse>
-          {isSuccess ? (
-            <Correct>Correct! Jump to Next Chapter</Correct>
-          ) : isError ? (
-            <Wrong>Wrong! Wanna see the Answer?</Wrong>
-          ) : null}
-        </ResultResponse>
-      </Results>
+      <div class="flex justify-end px-2 mt-1">
+        <FmtBtn>Click to Format</FmtBtn>
+      </div>
     </>
   );
 }

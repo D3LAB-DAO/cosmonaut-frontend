@@ -28,14 +28,14 @@ const Desc = tw.div`grid grid-cols-3 items-center block grid place-content-cente
 const SubDesc = tw.div`flex items-start md:my-6 md:mx-8 mx-4 text-gray-500 my-4`;
 const Wrapper = tw.div`bg-yellow-100 md:grid md:grid-cols-3 xl:gap-4 gap-2 md:mt-3 mt-2 md:items-start items-center xl:px-6 rounded-xl px-3 py-3 py-4 mx-4`;
 
-function Overview(progress) {
+function Overview() {
   const { lessonID } = useParams();
   const engInfo = useRecoilValue(indexInfo);
   const goal = useRecoilValue(lessonGoal);
   const result = useRecoilValue(lessonResult);
 
-  const [picRes, picFetch] = useGetLessonPic({ lessonID });
-  const [userRes, userFetch] = useGetUserProgress({ lessonID });
+  const [picRes, picFetch] = useGetLessonPic(lessonID);
+  const [userRes, userFetch] = useGetUserProgress(lessonID);
 
   useEffect(() => {
     picFetch();
@@ -43,7 +43,6 @@ function Overview(progress) {
   }, [lessonID]);
 
   console.log(picRes);
-  console.log(userRes);
   console.log(userRes.chapter);
 
   const onErrorImg = e => {
@@ -65,17 +64,19 @@ function Overview(progress) {
                 {engInfo[lessonID]?.title}
               </h3>
             </SubTitle>
+
             {lessonID === "0" ? (
-              <ProgressBar0 progress={progress} />
+              <ProgressBar0 progress={userRes.chapter} />
             ) : lessonID === "1" ? (
-              <ProgressBar1 progress={progress} />
+              <ProgressBar1 progress={userRes.chapter} />
             ) : lessonID === "2" ? (
-              <ProgressBar2 progress={progress} />
+              <ProgressBar2 progress={userRes.chapter} />
             ) : lessonID === "3" ? (
-              <ProgressBar3 progress={progress} />
+              <ProgressBar3 progress={userRes.chapter} />
             ) : lessonID === "4" ? (
-              <ProgressBar4 progress={progress} />
+              <ProgressBar4 progress={userRes.chapter} />
             ) : null}
+
             <Desc>
               <div class="col-span-1">
                 <img

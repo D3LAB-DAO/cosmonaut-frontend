@@ -2,10 +2,8 @@ import React from "react";
 
 function EditorCodeHeader(props) {
   return (
-    <div class="border-b-3 border-white mx-2 mb-2 mt-4 font-bold text-sm text-white leading-4">
-      <div class="grid md:grid-cols-4 grid-cols-3 text-center">
-        {props.children}
-      </div>
+    <div class="border-b-3 border-orange-400 mb-2 mt-4 leading-4">
+      <div class="flex text-center mx-2">{props.children}</div>
     </div>
   );
 }

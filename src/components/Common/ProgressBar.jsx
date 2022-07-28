@@ -5,24 +5,24 @@ import check from "../../assets/images/check_icon.png";
 
 const Container = tw.div`mb-2 w-full mx-auto`;
 
-export const ProgressBar0 = ({ progress }) => {
-  const [width, setWidth] = useState("");
-  console.log(progress);
+export const ProgressBar0 = progress => {
+  const [width, setWidth] = useState();
   useEffect(() => {
-    if (progress === "-1") {
-      setWidth(0);
-    } else if (progress === "0") {
+    if (progress.progress === 0) {
       setWidth(100);
-    } else {
+    } else if (progress.progress === -1) {
       setWidth(0);
+    } else {
+      setWidth(5);
     }
-  }, []);
+  }, [progress]);
   return (
     <>
       <Container>
         <div class="w-full rounded-full bg-gray-200 mb-1">
           <div
             class="flex bg-green-500 rounded-full justify-end items-center pr-0.5 py-0.5"
+            // style={{ width: `${width}%` }}
             style={{ width: `${width}%` }}
           >
             <div class="block bg-white border-1 border-gray-200 md:h-1.5 md:w-1.5 h-1 w-1 rounded-full"></div>
@@ -42,26 +42,25 @@ export const ProgressBar0 = ({ progress }) => {
   );
 };
 
-export const ProgressBar1 = ({ progress }) => {
+export const ProgressBar1 = progress => {
   const [width, setWidth] = useState("");
-  console.log(progress);
   useEffect(() => {
-    if (progress === "0") {
+    if (progress.progress === 0) {
       setWidth(100);
-    } else if (progress === "1") {
+    } else if (progress.progress === 1) {
       setWidth(14);
-    } else if (progress === "2") {
+    } else if (progress.progress === 2) {
       setWidth(29);
-    } else if (progress === "3") {
+    } else if (progress.progress === 3) {
       setWidth(43);
-    } else if (progress === "4") {
+    } else if (progress.progress === 4) {
       setWidth(58);
-    } else if (progress === "5") {
+    } else if (progress.progress === 5) {
       setWidth(72);
-    } else if (progress === "6") {
+    } else if (progress.progress === 6) {
       setWidth(86);
     } else {
-      setWidth(0);
+      setWidth(5);
     }
   }, []);
   return (
@@ -106,29 +105,29 @@ export const ProgressBar1 = ({ progress }) => {
   );
 };
 
-export const ProgressBar2 = ({ progress }) => {
+export const ProgressBar2 = progress => {
   const [width, setWidth] = useState("");
   useEffect(() => {
-    if (progress === "0") {
+    if (progress.progress === "0") {
       setWidth(100);
-    } else if (progress === "1") {
+    } else if (progress.progress === 1) {
       setWidth(11);
-    } else if (progress === "2") {
+    } else if (progress.progress === 2) {
       setWidth(22);
-    } else if (progress === "3") {
+    } else if (progress.progress === 3) {
       setWidth(33);
-    } else if (progress === "4") {
+    } else if (progress.progress === 4) {
       setWidth(45);
-    } else if (progress === "5") {
+    } else if (progress.progress === 5) {
       setWidth(56);
-    } else if (progress === "6") {
+    } else if (progress.progress === 6) {
       setWidth(67);
-    } else if (progress === "7") {
+    } else if (progress.progress === 7) {
       setWidth(78);
-    } else if (progress === "8") {
+    } else if (progress.progress === 8) {
       setWidth(90);
     } else {
-      setWidth(0);
+      setWidth(5);
     }
   }, []);
   return (
@@ -179,20 +178,19 @@ export const ProgressBar2 = ({ progress }) => {
   );
 };
 
-export const ProgressBar3 = ({ progress }) => {
+export const ProgressBar3 = progress => {
   const [width, setWidth] = useState("");
-  console.log(progress);
   useEffect(() => {
-    if (progress === "0") {
+    if (progress.progress === "0") {
       setWidth(100);
-    } else if (progress === "1") {
+    } else if (progress.progress === 1) {
       setWidth(25);
-    } else if (progress === "2") {
+    } else if (progress.progress === 2) {
       setWidth(50);
-    } else if (progress === "3") {
+    } else if (progress.progress === 3) {
       setWidth(75);
     } else {
-      setWidth(0);
+      setWidth(5);
     }
   }, []);
   return (
@@ -228,20 +226,19 @@ export const ProgressBar3 = ({ progress }) => {
   );
 };
 
-export const ProgressBar4 = ({ progress }) => {
+export const ProgressBar4 = progress => {
   const [width, setWidth] = useState("");
-  console.log(progress);
   useEffect(() => {
-    if (progress === "0") {
+    if (progress.progress === "0") {
       setWidth(100);
-    } else if (progress === "1") {
+    } else if (progress.progress === 1) {
       setWidth(25);
-    } else if (progress === "2") {
+    } else if (progress.progress === 2) {
       setWidth(50);
-    } else if (progress === "3") {
+    } else if (progress.progress === 3) {
       setWidth(75);
     } else {
-      setWidth(0);
+      setWidth(5);
     }
   }, []);
   return (

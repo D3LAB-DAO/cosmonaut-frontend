@@ -51,6 +51,8 @@ function EditorContents() {
       return <L1C1U3 />;
     } else if (lessonID === "1" && chID === "2" && uID === "1") {
       return <L1C2U1 />;
+    } else if (lessonID === "1" && chID === "2" && uID === "2") {
+      return <L1C2U1 />;
     } else if (lessonID === "1" && chID === "3" && uID === "1") {
       return <L1C3U1 />;
     } else if (lessonID === "1" && chID === "4" && uID === "1") {

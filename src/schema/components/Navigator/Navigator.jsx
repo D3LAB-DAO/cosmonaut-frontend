@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import Arrowleft from "../../../assets/images/arrow-left.svg";
 import Arrowright from "../../../assets/images/arrow-right.svg";
+import { usePostInitial } from "../../../libs/api/postInitial";
+import { usePostRead } from "../../../libs/api/postRead";
 
 import HandleSideMenu from "./Components/HandleSideMenu";
 
@@ -13,6 +15,17 @@ function Navigator() {
   const navigate = useNavigate();
   const nextUnit = Number(uID) + 1;
   const prevUnit = Number(uID) - 1;
+  const [readRes, readFetch] = usePostRead();
+
+  useEffect(() => {
+    if (lessonID === "1" && chID === "4") {
+      console.log("Use diff API");
+    } else {
+      readFetch();
+      console.log("read fetch?");
+    }
+  }, []);
+  console.log(readRes);
 
   const handleRight = () => {
     if (lessonID === "0" && chID === "1" && uID === "2") {
@@ -41,7 +54,7 @@ function Navigator() {
       // lesson 2
     } else if (lessonID === "2" && chID === "1" && uID === "3") {
       return navigate(`/lesson/2/chapter/2/unit/1`);
-    } else if (lessonID === "2" && chID === "2" && uID === "2") {
+    } else if (lessonID === "2" && chID === "2" && uID === "1") {
       return navigate(`/lesson/2/chapter/3/unit/1`);
     } else if (lessonID === "2" && chID === "3" && uID === "2") {
       return navigate(`/lesson/2/chapter/4/unit/1`);
