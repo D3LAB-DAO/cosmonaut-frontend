@@ -73,16 +73,15 @@ $ cargo --version
         </a>
       </BasicA>
       <BasicP>
-        You can use the Package Manager, the Standalone installer, or build
-        directly from the source code. But it's much easier and faster to use
+        You can use the Package Manager, the standalone installer, or build
+        directly from the source code. Nevertheless, it is much easier and faster to use
         <CodeBlock>rustup</CodeBlock>.
       </BasicP>
 
       <Header>Check Rust Installation</Header>
       <Markdown code={code3} />
       <BasicP>
-        To make sure that Rust is installed well, we'll make a simple "Hello,
-        world!" example.
+        We will make a simple "Hello, world!" example to ensure that Rust is installed well.
       </BasicP>
       <BasicP>
         Just as a Python file ends with a py extension, the Rust file ends with
@@ -95,8 +94,8 @@ $ cargo --version
       <Markdown code={code5} />
       <BasicP>
         That's it! Now save the file, and try the following command.
+        This command compiles and executes the main.rs file.
       </BasicP>
-      <BasicP>This command compiles and executes the main.rs file.</BasicP>
       <BasicP>Look at the "Hello, world!" printout on the terminal!</BasicP>
 
       <Header>Cargo</Header>

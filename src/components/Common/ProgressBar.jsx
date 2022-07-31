@@ -6,6 +6,7 @@ import check from "../../assets/images/check_icon.png";
 const Container = tw.div`mb-2 w-full mx-auto`;
 
 export const ProgressBar0 = progress => {
+
   const [width, setWidth] = useState();
   useEffect(() => {
     if (progress.progress === 0) {

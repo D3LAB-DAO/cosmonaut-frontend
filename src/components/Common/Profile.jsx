@@ -89,7 +89,9 @@ const Profile = () => {
             </button>
           </div>
           <div
+
             class="opacity-0 hover:opacity-100 origin-top-right absolute right-0 mt-1 w-32 rounded-md bg-white ring-1 border-4 border-black shadow-md ring-black ring-opacity-5 focus:outline-none text-center"
+
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"

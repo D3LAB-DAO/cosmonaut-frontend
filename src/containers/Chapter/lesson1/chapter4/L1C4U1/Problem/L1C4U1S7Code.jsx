@@ -41,6 +41,7 @@ const L1C4U1S7Code = ({ ex, difRes, difLoading, difSuccess }) => {
         <HintButton onClick={async () => setHide(!hide)}>
           <Hint hide={hide} />
           {hide ? null : (
+
             <>
               <ListStyle>
                 <li>

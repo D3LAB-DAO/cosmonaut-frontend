@@ -51,8 +51,8 @@ function Learn() {
                 <div class="md:-pr-32">
                   <p class="leading-7 font-medium md:text-lg text-sm lg:mr-10">
                     Learn Cosmwasm's secure multi-chain contract. Cosmonaut is
-                    made to be easy to follow, even for unfamiliar one with
-                    Cosmos, Cosmwasm, and Rust. Don't worry and just follow us!
+                    made to be easy to follow, even for unfamiliar ones with
+                    Cosmos, Cosmwasm, and Rust. Don't worry and follow us!
                     Let's deep dive into the world of Cosmos with our pretty and
                     kind explanations.
                   </p>

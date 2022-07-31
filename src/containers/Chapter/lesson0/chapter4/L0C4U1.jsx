@@ -30,7 +30,7 @@ $ RUSTFLAGS='-C link-arg=-s' cargo wasm
     <>
       <Markdown code={code1} />
       <BasicP>
-        Let's compile an example contract and create a wasm binary excutable. It
+        Let's compile an example contract and create a wasm binary executable. It
         is based on
         <BasicA>
           <a
@@ -46,7 +46,7 @@ $ RUSTFLAGS='-C link-arg=-s' cargo wasm
       <BasicP>
         We will use a famous one, <CodeBlock>nameservice</CodeBlock>.
       </BasicP>
-      <BasicP>First, get the code from the github.</BasicP>
+      <BasicP>First, get the code from Github.</BasicP>
 
       <Markdown code={code2} />
       <BasicA>
@@ -59,12 +59,12 @@ $ RUSTFLAGS='-C link-arg=-s' cargo wasm
         </a>
       </BasicA>
       <BasicP>
-        rustup allows you to compile with more explicitly specified toolchain.
-        The toolchain contains a number of lists and components. By specifying
+        rustup allows you to compile with a more explicitly specified toolchain.
+        The toolchain contains several lists and components. By specifying
         it, a project can be compiled with a specific channel (stable, nightly,
         beta) and settings.
       </BasicP>
-      <BasicP>We will use the stable toolchain at this example.</BasicP>
+      <BasicP>We will use the stable toolchain in this example.</BasicP>
 
       <Markdown code={code3} />
       <BasicP>

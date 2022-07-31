@@ -7,7 +7,7 @@ import ListStyle from "../../../../components/Contents/ListStyle";
 function L0C3U1() {
   const code1 = `
 \`\`\`bash
-$ source <(curl -sSL https://raw.githubusercontent.com/CosmWasm/testnets/master/cliffnet-1/defaults.env)
+$ source <(curl -sSL https://raw.githubusercontent.com/CosmWasm/testnets/master/malaga-420/defaults.env)
 
 # add wallets for testing
 $ wasmd keys add wallet
@@ -15,37 +15,48 @@ $ wasmd keys add wallet2
 \`\`\``;
   const code2 = `
 \`\`\`bash
-$ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
-$ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
+$ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet) '{"denom":"umlg","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.malaga-420.cosmwasm.com/credit
+$ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"umlg","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.malaga-420.cosmwasm.com/credit
 \`\`\``;
 
   return (
     <>
       <BasicP>
-        You also need an environment in which the contract run. You can build a
-        local network to deploy and test the contracts you’ve created, but you
-        can also use a network that already exists publically.
+        It would help if you also had an environment where the contract runs.
+        You can build a local network to deploy and test the contracts you have
+        created, but you can also use a network that already exists publically.
+      </BasicP>
+      <BasicP>
+        Currently, The Malaga testnet is running actively. You can find out whether it is working well or not from the following URL.
       </BasicP>
       <BasicA>
         <a
           target="_blank"
-          href="https://rpc.cliffnet.cosmwasm.com/status"
+          href="https://rpc.malaga-420.cosmwasm.com/status"
           rel="noreferrer"
         >
-          rpc.cliffnet.cosmwasm.com
+          rpc.malaga-420.cosmwasm.com
+        </a>
+      </BasicA>
+      <BasicA>
+        <a
+          target="_blank"
+          href="https://faucet.malaga-420.cosmwasm.com/status"
+          rel="noreferrer"
+        >
+          faucet.malaga-420.cosmwasm.com
         </a>
       </BasicA>
       <BasicP>
-        Currently, The Cliffnet testnet is running actively. You can find out
-        whether it's working well or not from the following URL.
+        Also, you can check the details through Block Explorer:
       </BasicP>
       <BasicA>
         <a
           target="_blank"
-          href="https://block-explorer.cliffnet.cosmwasm.com/"
+          href="https://block-explorer.malaga-420.cosmwasm.com"
           rel="noreferrer"
         >
-          block-explorer.cliffnet.cosmwasm
+          block-explorer.malaga-420.cosmwasm
         </a>
       </BasicA>
       <BasicP>
@@ -54,19 +65,18 @@ $ JSON=$(jq -n --arg addr $(wasmd keys show -a wallet2) '{"denom":"upebble","add
       <Markdown code={code1} />
       <BasicP>
         If the wallet registration for the test was successfully done, wasmd
-        will print out the information. Although it is a testnet, keep the
-        mnemonic separately in a safe place in case of losing your password to
-        prevent any small problems.
+        would print out the information. Although it is a testnet, keep the
+        mnemonic separately in a safe place in case of losing a password.
       </BasicP>
       <BasicP>
-        As you know, all activities on the blockchain cost a fee. So you'll need
+        As you know, all activities on the blockchain cost a fee. So you will need
         some tokens for interaction.
       </BasicP>
-      <BasicP>There are two native tokens in here.</BasicP>
+      <BasicP>There are two native tokens here.</BasicP>
       <BasicP>
         <ListStyle>
-          <li>ROCK (urock) : Used to be a validator.</li>
-          <li>PEBBLE (upebble) : Used to pay fees.</li>
+          <li>ROCK (urock): Used to be a validator.</li>
+          <li>PEBBLE (upebble): Used to pay fees.</li>
         </ListStyle>
       </BasicP>
       <Markdown code={code2} />

@@ -68,6 +68,7 @@ function FinishModal() {
                   <p class="text-indigo-900 font-heading mb-2 leading-tight text-xs">
                     {lessonInfos[lessonID]?.title}
                   </p>
+
                   {lessonID === "0" ? (
                     <ProgressBar0 progress={userRes.chapter} />
                   ) : lessonID === "1" ? (

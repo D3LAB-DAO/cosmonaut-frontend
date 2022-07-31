@@ -6,7 +6,7 @@ function L1C4Desc() {
     <div>
       <ChapterDesc>
         CW721 Basic or CW721-base is the basic implementation of the CW721 Spec
-        discussed in the previous chapter. This helps you easily create NFTs or
+        discussed in the previous chapter. It helps you easily create NFTs or
         NFT-based applications.
         <br />
         <br />

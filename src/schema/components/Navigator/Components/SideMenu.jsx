@@ -64,7 +64,7 @@ function SideMenu() {
                         <a href="/">Chp.2 Wasm / Wasmd</a>
                       </li>
                       <li class="mb-4  text-gray-700 hover:text-orange-400">
-                        <a href="/">Chp.3 Testnet(Cliffnet)</a>
+                        <a href="/">Chp.3 Testnet (Malaga)</a>
                       </li>
                       <li class="text-gray-700 hover:text-orange-400">
                         <a href="/">Chp.4 Interaction with Contract</a>

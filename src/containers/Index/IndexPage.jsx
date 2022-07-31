@@ -24,6 +24,7 @@ function IndexPage() {
   const handleList = async e => {
     e.preventDefault();
     await userFetch();
+
   };
 
   return (

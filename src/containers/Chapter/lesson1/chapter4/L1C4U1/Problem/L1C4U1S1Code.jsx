@@ -34,7 +34,7 @@ const L1C4U1S1Code = ({ ex, difRes, difLoading, difSuccess }) => {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Let's fill in the code that corresponds to the process from three to
+            Let's fill in the codes that correspond to the process from three to
             five.
           </BasicP>
           <BasicP>Don't worry. They are not complicated.</BasicP>

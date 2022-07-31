@@ -28,7 +28,7 @@ const Desc = tw.div`grid grid-cols-3 items-center block grid place-content-cente
 const SubDesc = tw.div`flex items-start md:my-6 md:mx-8 mx-4 text-gray-500 my-4`;
 const Wrapper = tw.div`bg-yellow-100 md:grid md:grid-cols-3 xl:gap-4 gap-2 md:mt-3 mt-2 md:items-start items-center xl:px-6 rounded-xl px-3 py-3 py-4 mx-4`;
 
-function Overview() {
+function Overview(progress) {
   const { lessonID } = useParams();
   const engInfo = useRecoilValue(indexInfo);
   const goal = useRecoilValue(lessonGoal);
@@ -76,7 +76,6 @@ function Overview() {
             ) : lessonID === "4" ? (
               <ProgressBar4 progress={userRes.chapter} />
             ) : null}
-
             <Desc>
               <div class="col-span-1">
                 <img

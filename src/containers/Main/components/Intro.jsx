@@ -32,7 +32,7 @@ function Intro() {
             </h1>
             <p class="lg:text-lg md:text-md mb-10 leading-relaxed mx-4 md:mx-12 lg:mx-32">
               Cosmonaut is a coding school where you can experience creating
-              Cosmwasm contracts and DApps while making NFT games yourself.
+              Cosmwasm contracts and DApps while making NFT games.
               <br /> Learners can expect to achieve the following:
             </p>
             <div class="flex flex-wrap justify-center md:mb-10 mb-6">
@@ -89,7 +89,7 @@ function Intro() {
                 DApp
               </h4>
               <p class="px-4 text-white lg:text-base leading-tight">
-                Create a DApp by connecting frontend to your contracts through
+                Create a DApp by connecting the frontend to your contracts through
                 CosmJS.
               </p>
             </div>

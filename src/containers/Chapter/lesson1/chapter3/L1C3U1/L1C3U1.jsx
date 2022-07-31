@@ -58,7 +58,7 @@ function L1C3U1() {
               <Markdown code={code2} />
               <BasicP>
                 Lists all tokens of the given <CodeBlock>owner</CodeBlock>.
-                Return type is <CodeBlock>TokensResponse</CodeBlock>. The tokens
+                The return type is <CodeBlock>TokensResponse</CodeBlock>. The tokens
                 are listed in alphabetical order.
               </BasicP>
               <BasicP>
@@ -71,21 +71,21 @@ function L1C3U1() {
               <BasicP>
                 If <CodeBlock>limit</CodeBlock> is not set, the default value is{" "}
                 <CodeBlock>DEFAULT_LIMIT</CodeBlock>. In addition, it cannot
-                exceed the maximum limit of <CodeBlock>MAX_LIMIT</CodeBlock>,
-                and if it is greater than that, it will be adjusted to{" "}
+                exceed the maximum limit of <CodeBlock>MAX_LIMIT</CodeBlock>;
+                if it is greater than that, it will be adjusted to{" "}
                 <CodeBlock>MAX_LIMIT</CodeBlock>.{" "}
                 <CodeBlock>DEFAULT_LIMIT</CodeBlock> and{" "}
-                <CodeBlock>MAX_LIMIT</CodeBlock> are values that can be
-                arbitrarily set by the contract without harming the CW721 Spec.
+                <CodeBlock>MAX_LIMIT</CodeBlock> are variables the contract can
+                arbitrarily set by without harming the CW721 Spec.
                 The default and recommended values are 30 for{" "}
                 <CodeBlock>MAX_LIMIT</CodeBlock> and 10 for{" "}
                 <CodeBlock>DEFAULT_LIMIT</CodeBlock>.
               </BasicP>
               <BasicP>
                 If the number of tokens to query is greater than{" "}
-                <CodeBlock>limit</CodeBlock>, you can continuously set{" "}
-                <CodeBlock>start_after</CodeBlock> of the next query to the last
-                value of this current one. It makes pagination intuitive.
+                <CodeBlock>limit</CodeBlock>, you can continue to set{" "}
+                <CodeBlock>start_after</CodeBlock> of the following query to the last
+                value of the current one. It makes pagination intuitive.
               </BasicP>
             </ContentDesc>
           </div>
@@ -108,7 +108,7 @@ function L1C3U1() {
                 contract through pagination.
               </BasicP>
               <BasicP>
-                Return type is <CodeBlock>TokensResponse</CodeBlock>.
+                The return type is <CodeBlock>TokensResponse</CodeBlock>.
               </BasicP>
             </ContentDesc>
           </div>

@@ -81,12 +81,12 @@ function L1C2U1() {
               <Markdown code={code1} />
               <Markdown code={code2} />
               <BasicP>
-                Returns the metadata at the contract level such as{" "}
+                Returns the metadata at the contract level, such as{" "}
                 <CodeBlock>name</CodeBlock> or
                 <CodeBlock>symbol</CodeBlock>.
               </BasicP>
               <BasicP>
-                Return type is <CodeBlock>ContractInfoResponse</CodeBlock>.
+                The return type is <CodeBlock>ContractInfoResponse</CodeBlock>.
               </BasicP>
             </ContentDesc>
           </div>
@@ -109,7 +109,7 @@ function L1C2U1() {
                 Returns metadata for one <CodeBlock>token_id</CodeBlock> token.
               </BasicP>
               <BasicP>
-                Return type is <CodeBlock>NftInfoResponse</CodeBlock>.
+                The return type is <CodeBlock>NftInfoResponse</CodeBlock>.
               </BasicP>
               <BasicP>
                 <CodeBlock>token_uri</CodeBlock> should be referencing the JSON
@@ -147,12 +147,12 @@ function L1C2U1() {
                 for optimization.
               </BasicP>
               <BasicP>
-                Return type is <CodeBlock>AllNftInfoResponse</CodeBlock>, which
-                includes
+                The return type is <CodeBlock>AllNftInfoResponse</CodeBlock>, which
+                includes both
                 <CodeBlock>OwnerOfResponse</CodeBlock> and{" "}
-                <CodeBlock>NftInfoResponse</CodeBlock> for each return type of
+                <CodeBlock>NftInfoResponse</CodeBlock> for each{" "}
                 <CodeBlock>NftInfo</CodeBlock> and{" "}
-                <CodeBlock>OwnerOf</CodeBlock> query.
+                <CodeBlock>OwnerOf</CodeBlock> query response.
               </BasicP>
               <BasicP>
                 If <CodeBlock>include_expired</CodeBlock> is not set or set to

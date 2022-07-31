@@ -65,11 +65,11 @@ function L1C1U1() {
             <ContentDesc>
               <Markdown code={code1} />
               <BasicP>
-                Transfers ownership of token to <CodeBlock>recipient</CodeBlock>
-                . This assumes only address managed by private key.
+                Transfers ownership of the token to the <CodeBlock>recipient</CodeBlock>
+                . It assumes only address managed by a private key.
               </BasicP>
               <BasicP>
-                It does not trigger any action, even if{" "}
+                It does not trigger any action, even if the{" "}
                 <CodeBlock>recipient</CodeBlock> is a contract.
               </BasicP>
               <BasicP>
@@ -94,12 +94,12 @@ function L1C1U1() {
             <ContentDesc>
               <Markdown code={code2} />
               <BasicP>
-                Transfers ownership of the token to{" "}
-                <CodeBlock>contract</CodeBlock> and then trigger the action of
-                the recipient contract. <CodeBlock>Contract</CodeBlock> must be
+                Transfers ownership of the token to the{" "}
+                <CodeBlock>contract</CodeBlock> and then triggers the recipient
+                contract's action. <CodeBlock>Contract</CodeBlock> must be
                 a smart contract and must comply with the CW721 Receiver
-                interface. msg is passed to the receiving contract with the
-                token ID.
+                interface. <CodeBlock>msg</CodeBlock> is passed to the receiving
+                contract with the token ID.
               </BasicP>
               <BasicP>
                 Similarly, <CodeBlock>token_id</CodeBlock> must be a valid ID,
@@ -131,7 +131,7 @@ function L1C1U1() {
                 Once the token has been transferred or sent, it is initialized.
               </BasicP>
               <BasicP>
-                This can only be done if the <CodeBlock>env.sender</CodeBlock>
+                It can only be done if the <CodeBlock>env.sender</CodeBlock>
                 owns the token or he is an <CodeBlock>operator</CodeBlock>.
               </BasicP>
             </ContentDesc>
@@ -151,11 +151,11 @@ function L1C1U1() {
             <ContentDesc>
               <Markdown code={code4} />
               <BasicP>
-                Revokes previously granted approval for{" "}
+                Revokes previously approved{" "}
                 <CodeBlock>token_id</CodeBlock> token.
               </BasicP>
               <BasicP>
-                This can only be done if the <CodeBlock>env.sender</CodeBlock>
+                It can only be done if the <CodeBlock>env.sender</CodeBlock>
                 owns the token or he is an <CodeBlock>operator</CodeBlock>.
               </BasicP>
             </ContentDesc>
@@ -175,12 +175,12 @@ function L1C1U1() {
             <ContentDesc>
               <Markdown code={code5} />
               <BasicP>
-                Allows <CodeBlock>operator</CodeBlock> to transfer or send the
+                Allows <CodeBlock>operator</CodeBlock> to transfer or send
                 all tokens held by
-                <CodeBlock>env.sender</CodeBlock>. It makes the{" "}
-                <CodeBlock>operator</CodeBlock> to have equal rights to the
-                <CodeBlock>owner</CodeBlock>, so it applies to all tokens that
-                will be received later, too.
+                <CodeBlock>env.sender</CodeBlock>. It gives the{" "}
+                <CodeBlock>operator</CodeBlock> equal rights to the
+                <CodeBlock>owner</CodeBlock>, which also applies to all tokens
+                received later, too.
               </BasicP>
             </ContentDesc>
           </div>
@@ -199,7 +199,7 @@ function L1C1U1() {
             <ContentDesc>
               <Markdown code={code6} />
               <BasicP>
-                Revokes <CodeBlock>ApproveAll</CodeBlock> approval on{" "}
+                Revokes <CodeBlock>ApproveAll</CodeBlock> approval from the{" "}
                 <CodeBlock>operator</CodeBlock>.
               </BasicP>
             </ContentDesc>
