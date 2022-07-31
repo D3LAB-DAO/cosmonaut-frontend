@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import tw from "tailwind-styled-components";
 import { useRecoilValue } from "recoil";
-import { userProgressState } from "../../../states/User/userProgress";
 import { useGetLessonPic } from "../../../libs/api/getLessonPic";
 import ProgressBar, {
   ProgressBar0,
   ProgressBar1,
+  ProgressBar2,
+  ProgressBar3,
+  ProgressBar4,
 } from "../../../components/Common/ProgressBar";
 import { useGetUserProgress } from "../../../libs/api/getUserProgress";
 import error from "../../../assets/images/dummy-nft.jpg";
@@ -62,15 +64,15 @@ function UserProgress() {
             <h3 class="text-lg text-indigo-900 font-heading mb-4">
               Get Ready for Terraforming
             </h3>
-            {/* <ProgressBar0 progress={1} /> */}
-            {/* <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
-              states
-            </p> */}
+            <ProgressBar0 progress={"0"} />
+            <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
+              Completed
+            </p>
           </div>
         </div>
       </Profile>
       <Profile>
-        <div class="mx-2 lg:p-2 shadow rounded-2xl bg-yellow-500 p-2">
+        <div class="mx-2 lg:p-2 shadow rounded-2xl bg-orange-500 p-2">
           <div class="h-full p-4 md:p-8 bg-white border-4 border-indigo-900  rounded-xl text-center">
             <img
               class="block mx-auto mb-4"
@@ -84,15 +86,15 @@ function UserProgress() {
             <h3 class="text-lg text-indigo-900 font-heading mb-4">
               Welcome to Spaceship Factory
             </h3>
-            {/* <ProgressBar1 progress={0} /> */}
-            {/* <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
-              states
-            </p> */}
+            <ProgressBar1 progress={"0"} />
+            <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
+              Completed
+            </p>
           </div>
         </div>
       </Profile>
       <Profile>
-        <div class="mx-2 lg:p-2 shadow rounded-2xl bg-yellow-500 p-2">
+        <div class="mx-2 lg:p-2 shadow rounded-2xl bg-green-500 p-2">
           <div class="h-full p-4 md:p-8 bg-white border-4 border-indigo-900  rounded-xl text-center">
             <img
               class="block mx-auto mb-4"
@@ -106,15 +108,15 @@ function UserProgress() {
             <h3 class="text-lg text-indigo-900 font-heading mb-4">
               Fuel Up and Load the Freight
             </h3>
-            {/* <ProgressBar progress={secPro.chapter} /> */}
-            {/* <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
-              states
-            </p> */}
+            <ProgressBar2 progress={"4"} />
+            <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
+              Progress
+            </p>
           </div>
         </div>
       </Profile>
       <Profile>
-        <div class="mx-2 lg:p-2 shadow rounded-2xl bg-yellow-500 p-2">
+        <div class="mx-2 lg:p-2 shadow rounded-2xl bg-blue-500 p-2">
           <div class="h-full p-4 md:p-8 bg-white border-4 border-indigo-900  rounded-xl text-center">
             <img
               class="block mx-auto mb-4"
@@ -128,10 +130,10 @@ function UserProgress() {
             <h3 class="text-lg text-indigo-900 font-heading mb-4">
               Prepare to Launch
             </h3>
-            {/* <ProgressBar progress={thrPro.chapter} /> */}
-            {/* <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
-              states
-            </p> */}
+            <ProgressBar3 progress={"-1"} />
+            <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
+              0%
+            </p>
           </div>
         </div>
       </Profile>
@@ -150,10 +152,10 @@ function UserProgress() {
             <h3 class="text-lg text-indigo-900 font-heading mb-4">
               ESFERA Takeoff
             </h3>
-            {/* <ProgressBar progress={fourPro.chapter} /> */}
-            {/* <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
-              states
-            </p> */}
+            <ProgressBar4 progress={"-1"} />
+            <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 text-lg font-heading">
+              0%
+            </p>
           </div>
         </div>
       </Profile>

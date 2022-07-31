@@ -24,9 +24,9 @@ function IndexPage() {
   const handleList = async e => {
     e.preventDefault();
     await userFetch();
-    console.log("handleList!!!");
+
   };
-  console.log(userRes);
+
   return (
     <>
       <Navbar />
@@ -38,7 +38,7 @@ function IndexPage() {
       >
         <div class="container lg:px-8 mx-auto relative mb-24">
           <div class="grid grid-cols-2 w-full mx-auto lg:gap-12 lg:-mx-4">
-            <Overview progress={userRes.chapter} />
+            <Overview />
             <Curriculum>
               <div class="max-w-lg px-4 mx-auto">
                 <Title>Curriculum</Title>
@@ -59,7 +59,7 @@ function IndexPage() {
                     );
                   })}
                 </LessonList>
-                {userRes === "0" ? (
+                {!(userRes.chapter === -1) ? (
                   <>
                     <Link to={startLesson}>
                       <ButtonWrap>

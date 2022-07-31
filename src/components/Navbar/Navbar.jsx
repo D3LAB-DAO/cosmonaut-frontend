@@ -4,7 +4,6 @@ import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
 
 import LogoV4 from "../../assets/images/logo-v4.svg";
-import { useGetLessonPic } from "../../libs/api/getLessonPic";
 import { LoginState } from "../../states/login";
 import Profile from "../Common/Profile";
 import SignIn from "../Common/SignIn";
@@ -14,8 +13,6 @@ const Logo = tw.a`text-lg font-bold ease-in-out duration-300 transform hover:sca
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
-  const [{ lessonPic }, picFetch] = useGetLessonPic(1);
-  console.log(lessonPic);
 
   const loginCheck = async () => {
     try {
@@ -33,7 +30,6 @@ function Navbar() {
     }
   };
   loginCheck();
-  console.log(isLoggedIn);
 
   window.addEventListener("scroll", e => {
     if (window.scrollY > 1) {
@@ -62,7 +58,7 @@ function Navbar() {
         ) : (
           <div class="flex items-center">
             <Link to="/signUp">
-              <SignIn onClick={picFetch} />
+              <SignIn />
             </Link>
           </div>
         )}

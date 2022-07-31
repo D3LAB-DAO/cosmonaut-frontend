@@ -14,9 +14,7 @@ export const useGetUserProgress = lessonID => {
         `http://127.0.0.1:8080/v1/cosm/progress?lesson=${lessonID}`,
         option
       );
-
       const data = await res.json();
-
       setResponse(data);
     } catch (error) {
       console.log(error);

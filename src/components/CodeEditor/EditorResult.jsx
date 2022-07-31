@@ -1,64 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
-import tw from "tailwind-styled-components";
-import ResultHeader from "./ResultHeader";
-import Result from "../Contents/Result";
-import Check from "../Contents/Check";
-import SubmitAgain from "../Contents/SubmitAgain";
-import CheckAnswer from "../Contents/CheckAnswer";
-import Correct from "../Contents/Correct";
-import Wrong from "../Contents/Wrong";
-
-const Results = tw.div``;
-const ResultCode = tw.div`mx-auto px-4`;
-const ResultResponse = tw.div``;
+import { useFmtApi } from "../../libs/api/postFmt";
 
 export default function EditorResult({
   path,
   defaultLanguage,
-  value,
+  defaultValue,
+  answer,
+  files,
   onChange,
   onMount,
-  isSuccess,
-  isError,
-  onClick,
+  onFormat,
+  onBuild,
+  difSuccess,
 }) {
+  const [fmtRes, fmtLoading, fmtSuccess, fmtError, fmtFetch] = useFmtApi({
+    files,
+  });
+
+  const fmtBtn = async () => {
+    await fmtFetch();
+  };
   return (
     <>
-      <Editor
-        height="60vh"
-        theme="vs-dark"
-        path={path}
-        defaultLanguage={defaultLanguage}
-        value={value}
-        onChange={onChange}
-        onMount={onMount}
-      />
-
-      <Results>
-        <ResultHeader>
-          <Result>Result</Result>
-          {isSuccess ? (
-            <Check />
-          ) : isError ? (
-            <SubmitAgain>submit again</SubmitAgain>
-          ) : (
-            <CheckAnswer>
-              <button onClick={onClick}>check your answer</button>
-            </CheckAnswer>
-          )}
-        </ResultHeader>
-        <ResultCode>
-          <h1>tbu...</h1>
-        </ResultCode>
-        <ResultResponse>
-          {isSuccess ? (
-            <Correct>Correct! Jump to Next Chapter</Correct>
-          ) : isError ? (
-            <Wrong>Wrong! Wanna see the Answer?</Wrong>
-          ) : null}
-        </ResultResponse>
-      </Results>
+      {difSuccess ? (
+        <Editor
+          height="60vh"
+          theme="vs-dark"
+          path={path}
+          onChange={onChange}
+          onMount={onMount}
+          defaultValue={defaultValue}
+          defaultLanguage={defaultLanguage}
+          value={answer}
+        />
+      ) : (
+        <Editor
+          height="60vh"
+          theme="vs-dark"
+          path={path}
+          onChange={onChange}
+          onMount={onMount}
+          defaultValue={defaultValue}
+          defaultLanguage={defaultLanguage}
+          value={fmtSuccess ? fmtRes : defaultValue}
+        />
+      )}
+      <div class="flex justify-end px-2 mt-1">
+        <button
+          onClick={fmtBtn}
+          class="transform transition ease-in-out hover:scale-105 hover:text-yellow-500 font-heading text-orange-400 rounded-full py-1 text-sm text-center"
+        >
+          Click to Format
+        </button>
+      </div>
     </>
   );
 }

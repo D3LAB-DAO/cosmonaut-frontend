@@ -1,73 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
-import tw from "tailwind-styled-components";
-import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
-import BasicP from "../../../../../../components/Contents/BasicP";
-import Problem from "../../../../../../components/Contents/Problem";
-import MultiTab from "../../../../../../components/Contents/MultiTab";
-import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
+import { AnsTabAble } from "../../../../../../components/CodeEditor/AnsTabAble";
 import EditorCode from "../../../../../../components/CodeEditor/EditorCode";
 import EditorCodeHeader from "../../../../../../components/CodeEditor/EditorCodeHeader";
-import ProblemSection from "../../../../../../components/Contents/ProblemSection";
-import Hint from "../../../../../../components/Contents/Hint";
-import CodeBlock from "../../../../../../components/Contents/CodeBlock";
-import { usePostApi } from "../../../../../../libs/api/post";
+import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
 import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
-import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
-import { useParams } from "react-router-dom";
-import HintButton from "../../../../../../components/Contents/HintButton";
+import { MobileEnv } from "../../../../../../components/CodeEditor/MobileEnv";
+import { ProblemTab } from "../../../../../../components/CodeEditor/ProblemTab";
+import { Loading } from "../../../../../../components/Common/Loading";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
 import Header from "../../../../../../components/Contents/Header";
+import Hint from "../../../../../../components/Contents/Hint";
+import HintButton from "../../../../../../components/Contents/HintButton";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
+import Problem from "../../../../../../components/Contents/Problem";
+import ProblemSection from "../../../../../../components/Contents/ProblemSection";
 
-const HintSection = tw.div``;
-
-function L1C4U3S1Code() {
-  const { lessonID, chID } = useParams();
-  const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
-  const [code, setCode] = useState();
-  const [value, setValue] = useState("");
+const L1C4U3S1Code = ({ ex, difRes, difLoading, difSuccess }) => {
   const [hide, setHide] = useState(true);
+  const [tab, setTab] = useState("problem");
+  const editorRef = useRef(null);
 
+  const [code, setCode] = useState("");
   const [files, setFiles] = useState({});
-
-  // POST user code
   useEffect(() => {
-    setFiles({ ...files, [fileName]: btoa(code) });
+    setFiles({ ...files, [tab]: btoa(code) });
   }, [code]);
-
-  useEffect(() => {
-    editorRef.current?.focus();
-    setFileName(fileName);
-    setValue(response[fileName]);
-  }, [fileName]);
-  console.log(value);
-
-  const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
-    files,
-  });
-
-  // Code Example
-  const fakeFiles = {
-    file1: {
-      value: "// File1 Testing !!!",
-    },
-    file2: {
-      value: "// File2 Testing !!!",
-    },
-  };
-  const file = fakeFiles[fileName];
-  // const { data } = getTargetCodes({ lessonID, chID });
-  // console.log(data);
-
-  const code1 = `
-  \`\`\`rust
-  #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
-  pub struct ContractInfoResponse {
-      pub name: String,
-      pub symbol: String,
-  }
-  \`\`\``;
 
   return (
     <>
@@ -80,76 +39,97 @@ function L1C4U3S1Code() {
             <CodeBlock>InstantiateMsg</CodeBlock> as defined above.
           </BasicP>
         </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
-              <>
+
+        <HintButton onClick={async () => setHide(!hide)}>
+          <Hint hide={hide} />
+          {hide ? null : (
+            <>
+              <ListStyle>
+                <li>
+                  Do you remember? The{" "}
+                  <CodeBlock>ContractInfoResponse</CodeBlock> is:
+                </li>
+                <Markdown code={code1} />
                 <ListStyle>
                   <li>
-                    Do you remember? The{" "}
-                    <CodeBlock>ContractInfoResponse</CodeBlock> is:
-                  </li>
-                  <Markdown code={code1} />
-                  <ListStyle>
-                    <li>
-                      You can save this to{" "}
-                      <CodeBlock>self.contract_info</CodeBlock>.
-                    </li>
-                  </ListStyle>
-                  <li>
-                    Minter can be saved in <CodeBlock>self.minter</CodeBlock>.
+                    You can save this to{" "}
+                    <CodeBlock>self.contract_info</CodeBlock>.
                   </li>
                 </ListStyle>
-              </>
-            )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
-            <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
+                <li>
+                  Minter can be saved in <CodeBlock>self.minter</CodeBlock>.
+                </li>
+              </ListStyle>
             </>
           )}
-        </>
-      </EditorCode>
+        </HintButton>
+      </EditorDesc>
+
+      {/* Code Editor */}
+      <div class="w-full lg:w-3/5 md:mx-0 ">
+        <MobileEnv />
+        <EditorCode>
+          {difLoading ? (
+            <Loading />
+          ) : (
+            <div class="mb-1 px-4">
+              <EditorCodeHeader>
+                {difSuccess ? (
+                  <AnsTabAble
+                    disabled={tab === "answer"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("answer");
+                    }}
+                  />
+                ) : (
+                  <ProblemTab
+                    disabled={tab === "problem"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("problem");
+                    }}
+                  >
+                    Problem
+                  </ProblemTab>
+                )}
+              </EditorCodeHeader>
+              <div class="mx-auto mb-1">
+                {/* Mobile Version */}
+                <div class="md:hidden block w-full bg-black py-4 px-5 h-quiz">
+                  <h2 class="text-xl font-extrabold text-blue-500">
+                    Mobile Environment not supported
+                  </h2>
+                </div>
+
+                {/* Editor */}
+                <EditorResult
+                  defaultLanguage="rust"
+                  defaultValue={ex}
+                  answer={difRes}
+                  path={tab}
+                  onChange={async e => await setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  files={files}
+                  difSuccess={difSuccess}
+                  // onBuild={onBuild}
+                />
+              </div>
+            </div>
+          )}
+        </EditorCode>
+      </div>
     </>
   );
-}
+};
 
 export default L1C4U3S1Code;
+
+const code1 = `
+\`\`\`rust
+#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
+pub struct ContractInfoResponse {
+    pub name: String,
+    pub symbol: String,
+}
+\`\`\``;

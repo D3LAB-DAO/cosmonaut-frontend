@@ -32,7 +32,7 @@ let mint_msg = MintMsg {
 let execute_mint_msg = ExecuteMsg::Mint(mint_msg);
 \`\`\``;
 
-function L1C5U2S1() {
+function L1C5U2S2() {
   return (
     <>
       {/* Contents Part */}
@@ -82,4 +82,4 @@ function L1C5U2S1() {
   );
 }
 
-export default L1C5U2S1;
+export default L1C5U2S2;

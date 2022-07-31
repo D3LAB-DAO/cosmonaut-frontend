@@ -1,75 +1,34 @@
 import React, { useEffect, useRef, useState } from "react";
-import tw from "tailwind-styled-components";
-import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
-import BasicP from "../../../../../../components/Contents/BasicP";
-import Problem from "../../../../../../components/Contents/Problem";
-import MultiTab from "../../../../../../components/Contents/MultiTab";
-import ListStyle from "../../../../../../components/Contents/ListStyle";
-import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
+import { useParams } from "react-router-dom";
+import { AnsTabAble } from "../../../../../../components/CodeEditor/AnsTabAble";
+import { AnsTabDis } from "../../../../../../components/CodeEditor/AnsTabDis";
 import EditorCode from "../../../../../../components/CodeEditor/EditorCode";
 import EditorCodeHeader from "../../../../../../components/CodeEditor/EditorCodeHeader";
-import ProblemSection from "../../../../../../components/Contents/ProblemSection";
-import Hint from "../../../../../../components/Contents/Hint";
-import CodeBlock from "../../../../../../components/Contents/CodeBlock";
-import { usePostApi } from "../../../../../../libs/api/post";
+import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
 import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
-import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
-import { useParams } from "react-router-dom";
-import Markdown from "../../../../../../components/Contents/Markdown";
+import { MobileEnv } from "../../../../../../components/CodeEditor/MobileEnv";
+import { ProblemTab } from "../../../../../../components/CodeEditor/ProblemTab";
+import { Loading } from "../../../../../../components/Common/Loading";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Hint from "../../../../../../components/Contents/Hint";
 import HintButton from "../../../../../../components/Contents/HintButton";
+import ListStyle from "../../../../../../components/Contents/ListStyle";
+import Markdown from "../../../../../../components/Contents/Markdown";
+import Problem from "../../../../../../components/Contents/Problem";
+import ProblemSection from "../../../../../../components/Contents/ProblemSection";
 
-const HintSection = tw.div`flex-nowrap flex mb-8 pb-8`;
-
-function L1C4U1S3Code() {
-  const { lessonID, chID } = useParams();
-  const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
-  const [code, setCode] = useState();
-  const [value, setValue] = useState("");
+const L1C4U1S3Code = ({ ex, difRes, difLoading, difSuccess }) => {
   const [hide, setHide] = useState(true);
+  const [tab, setTab] = useState("problem");
+  const editorRef = useRef(null);
 
+  const [code, setCode] = useState("");
   const [files, setFiles] = useState({});
-
-  // POST user code
   useEffect(() => {
-    setFiles({ ...files, [fileName]: btoa(code) });
+    setFiles({ ...files, [tab]: btoa(code) });
   }, [code]);
-
-  useEffect(() => {
-    editorRef.current?.focus();
-    setFileName(fileName);
-    setValue(response[fileName]);
-  }, [fileName]);
-  console.log(value);
-
-  const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
-    files,
-  });
-
-  // Code Example
-  const fakeFiles = {
-    file1: {
-      value: "// File1 Testing !!!",
-    },
-    file2: {
-      value: "// File2 Testing !!!",
-    },
-  };
-  const file = fakeFiles[fileName];
-  // const { data } = getTargetCodes({ lessonID, chID });
-  // console.log(data);
-
-  const code1 = `
-\`\`\`rust
-/// Cw721ReceiveMsg should be de/serialized under 'Receive()' variant in a ExecuteMsg
-#[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
-#[serde(rename_all = "snake_case")]
-pub struct Cw721ReceiveMsg {
-    pub sender: String,
-    pub token_id: String,
-    pub msg: Binary,
-}
-\`\`\``;
+  console.log(files);
 
   return (
     <>
@@ -104,99 +63,112 @@ pub struct Cw721ReceiveMsg {
             Let's fill in the code corresponding to steps 3, 4, and 6.
           </BasicP>
         </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
-              <>
-                <ListStyle>
-                  <li>
-                    To verify that the <CodeBlock>spender</CodeBlock> address is
-                    correct, we need to call the{" "}
-                    <CodeBlock>addr_validate</CodeBlock>. In the context of this
-                    contract, it can be used as{" "}
-                    <CodeBlock>deps.api.addr_validate(...)</CodeBlock>.
-                  </li>
-                  <li>
-                    Approvals are recorded as a collection (vector) in
-                    <CodeBlock>token.approvals</CodeBlock>.
-                  </li>
-                  <Markdown code={code1} />
-                  <li>
-                    There are three ways to make an iterator in collection:
-                    <ListStyle>
-                      <li>
-                        <CodeBlock>iter()</CodeBlock>: Iterate{" "}
-                        <CodeBlock>&T</CodeBlock>
-                      </li>
-                      <li>
-                        <CodeBlock>iter_mut()</CodeBlock>: Iterate{" "}
-                        <CodeBlock>&mut T</CodeBlock>
-                      </li>
-                      <li>
-                        <CodeBlock>into_iter()</CodeBlock>: Iterate{" "}
-                        <CodeBlock>T</CodeBlock>
-                      </li>
-                    </ListStyle>
-                  </li>
-                  <li>
-                    Typically, <CodeBlock>into_iter()</CodeBlock> will suitably
-                    perform as values, mutable references, and immutable
-                    references for the context. Call{" "}
-                    <CodeBlock>iter()</CodeBlock>
-                    for an immutable references, or
-                    <CodeBlock>iter_mut()</CodeBlock> for a mutable reference.
-                  </li>
-                </ListStyle>
-              </>
-            )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
+
+        <HintButton onClick={async () => setHide(!hide)}>
+          <Hint hide={hide} />
+          {hide ? null : (
             <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
+              <ListStyle>
+                <li>
+                  To verify that the <CodeBlock>spender</CodeBlock> address is
+                  correct, we need to call the{" "}
+                  <CodeBlock>addr_validate</CodeBlock>. In the context of this
+                  contract, it can be used as{" "}
+                  <CodeBlock>deps.api.addr_validate(...)</CodeBlock>.
+                </li>
+                <li>
+                  Approvals are recorded as a collection (vector) in
+                  <CodeBlock>token.approvals</CodeBlock>.
+                </li>
+                <Markdown code={code1} />
+                <li>
+                  There are three ways to make an iterator in collection:
+                  <ListStyle>
+                    <li>
+                      <CodeBlock>iter()</CodeBlock>: Iterate{" "}
+                      <CodeBlock>&T</CodeBlock>
+                    </li>
+                    <li>
+                      <CodeBlock>iter_mut()</CodeBlock>: Iterate{" "}
+                      <CodeBlock>&mut T</CodeBlock>
+                    </li>
+                    <li>
+                      <CodeBlock>into_iter()</CodeBlock>: Iterate{" "}
+                      <CodeBlock>T</CodeBlock>
+                    </li>
+                  </ListStyle>
+                </li>
+                <li>
+                  Typically, <CodeBlock>into_iter()</CodeBlock> will suitably
+                  perform as values, mutable references, and immutable
+                  references for the context. Call <CodeBlock>iter()</CodeBlock>
+                  for an immutable references, or
+                  <CodeBlock>iter_mut()</CodeBlock> for a mutable reference.
+                </li>
+              </ListStyle>
             </>
           )}
-        </>
-      </EditorCode>
+        </HintButton>
+      </EditorDesc>
+
+      {/* Code Editor */}
+      <div class="w-full lg:w-3/5 md:mx-0 ">
+        <MobileEnv />
+        <EditorCode>
+          {difLoading ? (
+            <Loading />
+          ) : (
+            <div class="mb-1 px-4">
+              <EditorCodeHeader>
+                {difSuccess ? (
+                  <AnsTabAble
+                    disabled={tab === "answer"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("answer");
+                    }}
+                  />
+                ) : (
+                  <ProblemTab
+                    disabled={tab === "problem"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("problem");
+                    }}
+                  >
+                    Problem
+                  </ProblemTab>
+                )}
+              </EditorCodeHeader>
+              <div class="mx-auto mb-1">
+                {/* Mobile Version */}
+                <div class="md:hidden block w-full bg-black py-4 px-5 h-quiz">
+                  <h2 class="text-xl font-extrabold text-blue-500">
+                    Mobile Environment not supported
+                  </h2>
+                </div>
+
+                {/* Editor */}
+                <EditorResult
+                  defaultLanguage="rust"
+                  defaultValue={ex}
+                  answer={difRes}
+                  path={tab}
+                  onChange={async e => await setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  files={files}
+                  difSuccess={difSuccess}
+                />
+              </div>
+            </div>
+          )}
+        </EditorCode>
+      </div>
     </>
   );
-}
+};
 
 export default L1C4U1S3Code;
+
+const code1 = `
+fn addr_validate(&self, human: &str) -> StdResult<Addr>`;

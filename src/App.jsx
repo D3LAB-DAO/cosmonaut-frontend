@@ -22,17 +22,15 @@ function App() {
           <Route path="/index" element={<IndexInitialPage />} />
           <Route path="/lesson/:lessonID" element={<IndexPage />} />
           <Route
-            exact
             path="/lesson/:lessonID/chapter/:chID/unit/:uID"
             element={<UnitPage />}
           />
           <Route
-            exact
             path="/lesson/:lessonID/chapter/:chID/unit/:uID/pb/:pID"
             element={<ProblemPage />}
           />
-          <Route exact path="/epilogue" element={<EpiloguePage />} />
-          <Route exact path="/appendix/:aID" element={<AppendixPage />} />
+          <Route path="/epilogue" element={<EpiloguePage />} />
+          <Route path="/appendix/:aID" element={<AppendixPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ScrollToTop>

@@ -1,14 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Account3 from "../../assets/images/signed-in-account3.svg";
 import { useLogOut } from "../../libs/api/logout";
 import Version from "./Version";
 
 const Profile = () => {
-  const [response, fetchData] = useLogOut();
-  console.log(response);
-  const handleLogOut = () => {
+  let navigate = useNavigate();
+  const [fetchData] = useLogOut();
+
+  const handleLogOut = e => {
+    e.preventDefault();
     fetchData();
+    navigate("/");
   };
   return (
     <>
@@ -49,14 +52,16 @@ const Profile = () => {
                   mypage
                 </div>
               </Link>
-              <div
-                class="text-gray-700 bg-white font-heading rounded-sm block px-4 py-2 text-xs hover:bg-orange-500"
-                role="menuitem"
-                tabindex="-1"
-                id="menu-item-1"
-              >
-                sign out
-              </div>
+              <button onClick={handleLogOut}>
+                <div
+                  class="text-gray-700 bg-white font-heading rounded-sm block px-4 py-2 text-xs hover:bg-orange-500"
+                  role="menuitem"
+                  tabindex="-1"
+                  id="menu-item-1"
+                >
+                  sign out
+                </div>
+              </button>
             </div>
           </div>
         </div>
@@ -84,7 +89,9 @@ const Profile = () => {
             </button>
           </div>
           <div
-            class="opacity-0 hover:opacity-100 origin-top-right absolute right-0 mt-1 w-32 rounded-md bg-white ring-1 border-4 border-black shadow-md ring-black ring-opacity-5 focus:outline-none text-right"
+
+            class="opacity-0 hover:opacity-100 origin-top-right absolute right-0 mt-1 w-32 rounded-md bg-white ring-1 border-4 border-black shadow-md ring-black ring-opacity-5 focus:outline-none text-center"
+
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"

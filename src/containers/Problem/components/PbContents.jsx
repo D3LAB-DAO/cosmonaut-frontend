@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import CodeEditor from "../../../components/CodeEditor/CodeEditor";
+import BgV4 from "../../../assets/images/bg-v4.svg";
+import QuizPart from "../../../components/CodeEditor/QuizPart";
 import UnitName from "../../../components/Common/UnitName";
 import { L1C4U1Pb } from "../../Chapter/lesson1/chapter4/L1C4U1/L1C4U1Pb";
 import { L1C4U2Pb } from "../../Chapter/lesson1/chapter4/L1C4U2/L1C4U2Pb";
@@ -74,7 +75,13 @@ export const PbContents = () => {
       ) : uID === "5" ? (
         <UnitName color={"rgba(76, 133, 87, 1)"} />
       ) : null}
-      <CodeEditor>{Content()}</CodeEditor>
+      <div
+        style={{ backgroundImage: `url(${BgV4})` }}
+        class="pt-8 pb-20 md:px-6 px-4 lg:px-10 bg-black bg-cover bg-center md:pt-8"
+      >
+        <QuizPart />
+        {Content()}
+      </div>
     </>
   );
 };

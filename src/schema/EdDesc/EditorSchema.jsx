@@ -29,6 +29,7 @@ function EditorSchema() {
       {uID === "0" ? <StartModal /> : null}
       {lessonID === "1" && chID === "2" && uID === "1" ? <StartModal /> : null}
       {lessonID === "1" && chID === "3" && uID === "1" ? <StartModal /> : null}
+      {lessonID === "1" && chID === "6" && uID === "1" ? <StartModal /> : null}
       {lessonID === "2" && chID === "2" && uID === "1" ? <StartModal /> : null}
       {lessonID === "2" && chID === "3" && uID === "1" ? <StartModal /> : null}
       {lessonID === "2" && chID === "4" && uID === "1" ? <StartModal /> : null}
@@ -50,6 +51,7 @@ function EditorSchema() {
         {lessonID === "1" && chID === "3" && uID === "1" ? <ChDesc /> : null}
       </Background>
       <EditorContents />
+
       <Footer />
       {lessonID === "1" && chID === "6" && uID === "2" ? (
         <FinishModal />

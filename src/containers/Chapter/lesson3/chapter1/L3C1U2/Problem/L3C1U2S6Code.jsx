@@ -1,71 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
-import tw from "tailwind-styled-components";
-import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
-import BasicP from "../../../../../../components/Contents/BasicP";
-import Problem from "../../../../../../components/Contents/Problem";
-import MultiTab from "../../../../../../components/Contents/MultiTab";
-import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
+import { AnsTabAble } from "../../../../../../components/CodeEditor/AnsTabAble";
+import { AnsTabDis } from "../../../../../../components/CodeEditor/AnsTabDis";
 import EditorCode from "../../../../../../components/CodeEditor/EditorCode";
 import EditorCodeHeader from "../../../../../../components/CodeEditor/EditorCodeHeader";
-import ProblemSection from "../../../../../../components/Contents/ProblemSection";
-import Hint from "../../../../../../components/Contents/Hint";
-import CodeBlock from "../../../../../../components/Contents/CodeBlock";
-import { usePostApi } from "../../../../../../libs/api/post";
+import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
 import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
-import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
-import { useParams } from "react-router-dom";
+import { MobileEnv } from "../../../../../../components/CodeEditor/MobileEnv";
+import { ProblemTab } from "../../../../../../components/CodeEditor/ProblemTab";
+import { Loading } from "../../../../../../components/Common/Loading";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Hint from "../../../../../../components/Contents/Hint";
 import HintButton from "../../../../../../components/Contents/HintButton";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
+import Problem from "../../../../../../components/Contents/Problem";
+import ProblemSection from "../../../../../../components/Contents/ProblemSection";
 
-const HintSection = tw.div``;
-
-export function L3C1U2S6Code() {
-  const { lessonID, chID } = useParams();
-  const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
-  const [code, setCode] = useState();
-  const [value, setValue] = useState("");
+const L3C1U2S6Code = ({ difRes, difLoading, difSuccess }) => {
   const [hide, setHide] = useState(true);
+  const [tab, setTab] = useState("problem");
+  const editorRef = useRef(null);
 
+  const [code, setCode] = useState("");
   const [files, setFiles] = useState({});
-
-  // POST user code
   useEffect(() => {
-    setFiles({ ...files, [fileName]: btoa(code) });
+    setFiles({ ...files, [tab]: btoa(code) });
   }, [code]);
-
-  useEffect(() => {
-    editorRef.current?.focus();
-    setFileName(fileName);
-    setValue(response[fileName]);
-  }, [fileName]);
-  console.log(value);
-
-  const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
-    files,
-  });
-
-  // Code Example
-  const fakeFiles = {
-    file1: {
-      value: "// File1 Testing !!!",
-    },
-    file2: {
-      value: "// File2 Testing !!!",
-    },
-  };
-  const file = fakeFiles[fileName];
-  // const { data } = getTargetCodes({ lessonID, chID });
-  // console.log(data);
-  const code1 = `
-  \`\`\`rust
-  cosmonaut_cw20::msg::QueryMsg::TokenExtension {}
-  \`\`\``;
-  const code2 = `
-  \`\`\`rust
-  const MAX_FREIGHT_WEIGHT: u128 = 1000 * 1000;
-  \`\`\``;
+  console.log(files);
 
   return (
     <>
@@ -97,80 +59,173 @@ export function L3C1U2S6Code() {
           </ListStyle>
           <BasicP>Let's write the code for this parts.</BasicP>
         </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
-              <>
-                <ListStyle>
-                  <li>
-                    First, we receive the information of the token through the
-                    <CodeBlock>TokenExtension</CodeBlock> query of CW20. The
-                    destination address is the address that has been passed over
-                    as an argument.
-                    <Markdown code={code1} />
-                  </li>
-                  <li>
-                    Then the weight is retrieved from the token information. In
-                    the context of this contract, you can access
-                    <CodeBlock>token_extension</CodeBlock>.unit_weight.
-                  </li>
-                  <li>
-                    Multiply <CodeBlock>amount</CodeBlock> and weight to compare
-                    whether it exceeds
-                    <CodeBlock>MAX_FREIGHT_WEIGHT</CodeBlock>.{" "}
-                    <CodeBlock>MAX_FREIGHT_WEIGHT</CodeBlock> is defined as
-                    follows:
-                    <Markdown code={code2} />
-                  </li>
-                </ListStyle>
-              </>
-            )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
+
+        <HintButton onClick={async () => setHide(!hide)}>
+          <Hint hide={hide} />
+          {hide ? null : (
             <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
+              <ListStyle>
+                <li>
+                  First, we receive the information of the token through the
+                  <CodeBlock>TokenExtension</CodeBlock> query of CW20. The
+                  destination address is the address that has been passed over
+                  as an argument.
+                  <Markdown code={code1} />
+                </li>
+                <li>
+                  Then the weight is retrieved from the token information. In
+                  the context of this contract, you can access
+                  <CodeBlock>token_extension</CodeBlock>.unit_weight.
+                </li>
+                <li>
+                  Multiply <CodeBlock>amount</CodeBlock> and weight to compare
+                  whether it exceeds
+                  <CodeBlock>MAX_FREIGHT_WEIGHT</CodeBlock>.{" "}
+                  <CodeBlock>MAX_FREIGHT_WEIGHT</CodeBlock> is defined as
+                  follows:
+                  <Markdown code={code2} />
+                </li>
+              </ListStyle>
             </>
           )}
-        </>
-      </EditorCode>
+        </HintButton>
+      </EditorDesc>
+
+      {/* Code Editor */}
+      <div class="w-full lg:w-3/5 md:mx-0 ">
+        <MobileEnv />
+        <EditorCode>
+          {difLoading ? (
+            <Loading />
+          ) : (
+            <div class="mb-1 px-4">
+              <EditorCodeHeader>
+                <ProblemTab
+                  disabled={tab === "problem"}
+                  onClick={async e => {
+                    e.preventDefault();
+                    setTab("problem");
+                  }}
+                >
+                  Problem
+                </ProblemTab>
+                {difSuccess ? (
+                  <AnsTabAble
+                    disabled={tab === "answer"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("answer");
+                    }}
+                  />
+                ) : (
+                  <AnsTabDis />
+                )}
+              </EditorCodeHeader>
+              <div class="mx-auto mb-1">
+                {/* Mobile Version */}
+                <div class="md:hidden block w-full bg-black py-4 px-5 h-quiz">
+                  <h2 class="text-xl font-extrabold text-blue-500">
+                    Mobile Environment not supported
+                  </h2>
+                </div>
+
+                {/* Editor */}
+                <EditorResult
+                  defaultLanguage="rust"
+                  defaultValue={code3}
+                  path={tab}
+                  onChange={async e => await setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  files={files}
+                  // onBuild={onBuild}
+                />
+              </div>
+            </div>
+          )}
+        </EditorCode>
+      </div>
     </>
   );
-}
+};
+export default L3C1U2S6Code;
+
+const code1 = `
+\`\`\`rust
+cosmonaut_cw20::msg::QueryMsg::TokenExtension {}
+\`\`\``;
+const code2 = `
+\`\`\`rust
+const MAX_FREIGHT_WEIGHT: u128 = 1000 * 1000;
+\`\`\``;
+const code3 = `
+pub fn load_freight_to_nft(
+  deps: DepsMut,
+  info: MessageInfo,
+  address: String,
+  token_id: String,
+  amount: Uint128,
+) -> Result<Response, ContractError> {
+  let token_info: TokenInfoResponse = deps
+      .as_ref()
+      .querier
+      .query_wasm_smart(address, &cw20_base::msg::QueryMsg::TokenInfo {})?;
+
+  let denom = token_info.symbol;
+
+  let token_extension: TokenExtension = deps.as_ref().querier.query_wasm_smart(
+      address.clone(),
+      // Question 1. query TokenExtension
+      // Do yourself!
+  )?;
+
+  // Question 2. get unit_weight
+  // Do yourself!
+
+  // Question 3. compare unit_weight and MAX_FREIGHT_WEIGHT
+  if /* Do yourself! */ {
+      return Err(ContractError::FrightOverloaded {});
+  }
+
+  let config = CONFIG.load(deps.storage)?;
+  let target_contract_addr = config
+      .freight_contracts
+      .into_iter()
+      .find(|c| c.denom == denom);
+
+  if target_contract_addr.is_none() {
+      return Err(ContractError::TokenNotFound {});
+  }
+
+  check_is_sender_owner_of_nft(deps.as_ref(), &info.sender, &token_id)?;
+
+  let burn_cw20_token_msg_wrap = CosmosMsg::Wasm(WasmMsg::Execute {
+      contract_addr: target_contract_addr
+          .ok_or(ContractError::TokenNotFound {})?
+          .address,
+      msg: to_binary(&cw20_base::msg::ExecuteMsg::BurnFrom {
+          owner: info.sender.to_string(),
+          amount,
+      })?,
+      funds: vec![],
+  });
+
+  let load_freight_msg = Cw721ExecuteMsg::LoadFreight {
+      token_id: token_id.clone(),
+      denom: denom.clone(),
+      amount,
+      unit_weight,
+  };
+
+  let load_freight_msg_wrap = CosmosMsg::Wasm(WasmMsg::Execute {
+      contract_addr: config.spaceship_cw721_contract.to_string(),
+      msg: to_binary(&load_freight_msg)?,
+      funds: vec![],
+  });
+
+  Ok(Response::new()
+      .add_attribute("action", "load_freight")
+      .add_attribute("token_id", &token_id)
+      .add_attribute("denom", &denom)
+      .add_attribute("amount", amount.to_string())
+      .add_messages([burn_cw20_token_msg_wrap, load_freight_msg_wrap]))
+}`;

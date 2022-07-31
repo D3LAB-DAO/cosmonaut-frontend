@@ -1,71 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
-import tw from "tailwind-styled-components";
-import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
-import BasicP from "../../../../../../components/Contents/BasicP";
-import Problem from "../../../../../../components/Contents/Problem";
-import MultiTab from "../../../../../../components/Contents/MultiTab";
-import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
+import { AnsTabAble } from "../../../../../../components/CodeEditor/AnsTabAble";
+import { AnsTabDis } from "../../../../../../components/CodeEditor/AnsTabDis";
 import EditorCode from "../../../../../../components/CodeEditor/EditorCode";
 import EditorCodeHeader from "../../../../../../components/CodeEditor/EditorCodeHeader";
-import ProblemSection from "../../../../../../components/Contents/ProblemSection";
-import Hint from "../../../../../../components/Contents/Hint";
-import CodeBlock from "../../../../../../components/Contents/CodeBlock";
-import { usePostApi } from "../../../../../../libs/api/post";
+import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
 import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
-import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
-import { useParams } from "react-router-dom";
+import { MobileEnv } from "../../../../../../components/CodeEditor/MobileEnv";
+import { ProblemTab } from "../../../../../../components/CodeEditor/ProblemTab";
+import { Loading } from "../../../../../../components/Common/Loading";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Hint from "../../../../../../components/Contents/Hint";
 import HintButton from "../../../../../../components/Contents/HintButton";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
+import Problem from "../../../../../../components/Contents/Problem";
+import ProblemSection from "../../../../../../components/Contents/ProblemSection";
 
-const HintSection = tw.div``;
-
-export function L3C1U2S2Code() {
-  const { lessonID, chID } = useParams();
-  const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
-  const [code, setCode] = useState();
-  const [value, setValue] = useState("");
+const L3C1U2S2Code = ({ difRes, difLoading, difSuccess }) => {
   const [hide, setHide] = useState(true);
+  const [tab, setTab] = useState("problem");
+  const editorRef = useRef(null);
 
+  const [code, setCode] = useState("");
   const [files, setFiles] = useState({});
-
-  // POST user code
   useEffect(() => {
-    setFiles({ ...files, [fileName]: btoa(code) });
+    setFiles({ ...files, [tab]: btoa(code) });
   }, [code]);
-
-  useEffect(() => {
-    editorRef.current?.focus();
-    setFileName(fileName);
-    setValue(response[fileName]);
-  }, [fileName]);
-  console.log(value);
-
-  const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
-    files,
-  });
-
-  // Code Example
-  const fakeFiles = {
-    file1: {
-      value: "// File1 Testing !!!",
-    },
-    file2: {
-      value: "// File2 Testing !!!",
-    },
-  };
-  const file = fakeFiles[fileName];
-  // const { data } = getTargetCodes({ lessonID, chID });
-  // console.log(data);
-  const code1 = `
-  \`\`\`rust
-  cw20_base::msg::ExecuteMsg::Mint { /* ... */ }
-  \`\`\``;
-  const code2 = `
-  \`\`\`rust
-  Mint { recipient: String, amount: Uint128 },
-  \`\`\``;
+  console.log(files);
 
   return (
     <>
@@ -105,82 +67,138 @@ export function L3C1U2S2Code() {
           </ListStyle>
           <BasicP>Let's write the code about step 5 of the above flow.</BasicP>
         </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
-              <>
-                <ListStyle>
-                  <li>
-                    The message that needs to be sent is{" "}
-                    <CodeBlock>ExecuteMsg::Mint</CodeBlock> in cw20-base.
-                    Therefore, the code will be as follows:
-                    <Markdown code={code1} />
-                  </li>
-                  <li>
-                    Let's think of the <CodeBlock>Mint</CodeBlock> message from
-                    CW20.
-                    <Markdown code={code2} />
-                    <ListStyle>
-                      <li>
-                        <CodeBlock>recipient</CodeBlock> must be given. The
-                        address from which the actual Atom was sent, that is,
-                        the <CodeBlock>sender</CodeBlock> address of the current
-                        context.
-                      </li>
-                      <li>
-                        <CodeBlock>amount</CodeBlock> must be given.
-                      </li>
-                    </ListStyle>
-                  </li>
-                </ListStyle>
-              </>
-            )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
+
+        <HintButton onClick={async () => setHide(!hide)}>
+          <Hint hide={hide} />
+          {hide ? null : (
             <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
+              <ListStyle>
+                <li>
+                  The message that needs to be sent is{" "}
+                  <CodeBlock>ExecuteMsg::Mint</CodeBlock> in cw20-base.
+                  Therefore, the code will be as follows:
+                  <Markdown code={code1} />
+                </li>
+                <li>
+                  Let's think of the <CodeBlock>Mint</CodeBlock> message from
+                  CW20.
+                  <Markdown code={code2} />
+                  <ListStyle>
+                    <li>
+                      <CodeBlock>recipient</CodeBlock> must be given. The
+                      address from which the actual Atom was sent, that is, the{" "}
+                      <CodeBlock>sender</CodeBlock> address of the current
+                      context.
+                    </li>
+                    <li>
+                      <CodeBlock>amount</CodeBlock> must be given.
+                    </li>
+                  </ListStyle>
+                </li>
+              </ListStyle>
             </>
           )}
-        </>
-      </EditorCode>
+        </HintButton>
+      </EditorDesc>
+
+      {/* Code Editor */}
+      <div class="w-full lg:w-3/5 md:mx-0 ">
+        <MobileEnv />
+        <EditorCode>
+          {difLoading ? (
+            <Loading />
+          ) : (
+            <div class="mb-1 px-4">
+              <EditorCodeHeader>
+                <ProblemTab
+                  disabled={tab === "problem"}
+                  onClick={async e => {
+                    e.preventDefault();
+                    setTab("problem");
+                  }}
+                >
+                  Problem
+                </ProblemTab>
+                {difSuccess ? (
+                  <AnsTabAble
+                    disabled={tab === "answer"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("answer");
+                    }}
+                  />
+                ) : (
+                  <AnsTabDis />
+                )}
+              </EditorCodeHeader>
+              <div class="mx-auto mb-1">
+                {/* Mobile Version */}
+                <div class="md:hidden block w-full bg-black py-4 px-5 h-quiz">
+                  <h2 class="text-xl font-extrabold text-blue-500">
+                    Mobile Environment not supported
+                  </h2>
+                </div>
+
+                {/* Editor */}
+                <EditorResult
+                  defaultLanguage="rust"
+                  defaultValue={code3}
+                  path={tab}
+                  onChange={async e => await setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  files={files}
+                  // onBuild={onBuild}
+                />
+              </div>
+            </div>
+          )}
+        </EditorCode>
+      </div>
     </>
   );
-}
+};
+export default L3C1U2S2Code;
+
+const code1 = `
+\`\`\`rust
+cw20_base::msg::ExecuteMsg::Mint { /* ... */ }
+\`\`\``;
+const code2 = `
+\`\`\`rust
+Mint { recipient: String, amount: Uint128 },
+\`\`\``;
+const code3 = `
+pub fn buy_money_token(
+    deps: DepsMut,
+    info: MessageInfo,
+    amount: Uint128,
+) -> Result<Response, ContractError> {
+    let config = CONFIG.load(deps.storage)?;
+    let income_asset = info.funds;
+
+    let atom_income = income_asset
+        .into_iter()
+        .find(|coin| coin.denom == "uatom")
+        .unwrap_or_else(|| coin(0, "uatom"));
+
+    if atom_income.amount.u128() < amount.u128() {
+        return Err(ContractError::NotEnoughCoin {});
+    }
+
+    let mint_token_msg = CosmosMsg::Wasm(WasmMsg::Execute {
+        contract_addr: config.money_cw20_contract.as_ref().to_string(),
+
+        // Question 1: create ExecuteMsg::Mint in cw20-base
+        msg: to_binary(
+            // Do yourself!
+        )?,
+
+        funds: vec![],
+    });
+
+    Ok(Response::new()
+        .add_attribute("action", "buy_money_token".to_string())
+        .add_attribute("sender", info.sender.to_string())
+        .add_attribute("amount", amount.to_string())
+        .add_message(mint_token_msg))
+}`;

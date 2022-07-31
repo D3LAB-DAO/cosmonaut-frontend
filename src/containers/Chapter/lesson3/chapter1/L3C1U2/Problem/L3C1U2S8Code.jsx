@@ -1,67 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
-import tw from "tailwind-styled-components";
-import AnswerCheck from "../../../../../../components/Common/Icon/AnswerCheck";
-import BasicP from "../../../../../../components/Contents/BasicP";
-import Problem from "../../../../../../components/Contents/Problem";
-import MultiTab from "../../../../../../components/Contents/MultiTab";
-import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
+import { AnsTabAble } from "../../../../../../components/CodeEditor/AnsTabAble";
+import { AnsTabDis } from "../../../../../../components/CodeEditor/AnsTabDis";
 import EditorCode from "../../../../../../components/CodeEditor/EditorCode";
 import EditorCodeHeader from "../../../../../../components/CodeEditor/EditorCodeHeader";
-import ProblemSection from "../../../../../../components/Contents/ProblemSection";
-import Hint from "../../../../../../components/Contents/Hint";
-import CodeBlock from "../../../../../../components/Contents/CodeBlock";
-import { usePostApi } from "../../../../../../libs/api/post";
+import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
 import EditorResult from "../../../../../../components/CodeEditor/EditorResult";
-import { getTargetCodes } from "../../../../../../libs/api/getTargetCodes";
-import { useParams } from "react-router-dom";
+import { MobileEnv } from "../../../../../../components/CodeEditor/MobileEnv";
+import { ProblemTab } from "../../../../../../components/CodeEditor/ProblemTab";
+import { Loading } from "../../../../../../components/Common/Loading";
+import BasicP from "../../../../../../components/Contents/BasicP";
+import CodeBlock from "../../../../../../components/Contents/CodeBlock";
+import Hint from "../../../../../../components/Contents/Hint";
 import HintButton from "../../../../../../components/Contents/HintButton";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
+import Problem from "../../../../../../components/Contents/Problem";
+import ProblemSection from "../../../../../../components/Contents/ProblemSection";
 
-const HintSection = tw.div``;
-
-export function L3C1U2S8Code() {
-  const { lessonID, chID } = useParams();
-  const editorRef = useRef(null);
-  const [fileName, setFileName] = useState("file1");
-  const [code, setCode] = useState();
-  const [value, setValue] = useState("");
+const L3C1U2S8Code = ({ difRes, difLoading, difSuccess }) => {
   const [hide, setHide] = useState(true);
+  const [tab, setTab] = useState("problem");
+  const editorRef = useRef(null);
 
+  const [code, setCode] = useState("");
   const [files, setFiles] = useState({});
-
-  // POST user code
   useEffect(() => {
-    setFiles({ ...files, [fileName]: btoa(code) });
+    setFiles({ ...files, [tab]: btoa(code) });
   }, [code]);
-
-  useEffect(() => {
-    editorRef.current?.focus();
-    setFileName(fileName);
-    setValue(response[fileName]);
-  }, [fileName]);
-  console.log(value);
-
-  const [{ response, isLoading, isSuccess, isError }, doFetch] = usePostApi({
-    files,
-  });
-
-  // Code Example
-  const fakeFiles = {
-    file1: {
-      value: "// File1 Testing !!!",
-    },
-    file2: {
-      value: "// File2 Testing !!!",
-    },
-  };
-  const file = fakeFiles[fileName];
-  // const { data } = getTargetCodes({ lessonID, chID });
-  // console.log(data);
-  const code1 = `
-  \`\`\`rust
-  cosmonaut_cw20::msg::ExecuteMsg::BurnFrom { /* ... */ }
-  \`\`\``;
+  console.log(files);
 
   return (
     <>
@@ -95,66 +61,120 @@ export function L3C1U2S8Code() {
             <CodeBlock>BurnFrom</CodeBlock>. Let's fill in the code.
           </BasicP>
         </ProblemSection>
-        <HintSection>
-          <HintButton onClick={async () => setHide(!hide)}>
-            <Hint hide={hide} />
-            {hide ? null : (
-              <>
-                <BasicP>
-                  The owner of the <CodeBlock>fuel</CodeBlock> token is{" "}
-                  <CodeBlock>info.sender</CodeBlock>. Therefore, you should call{" "}
-                  <CodeBlock>BurnFrom</CodeBlock> instead of{" "}
-                  <CodeBlock>Burn</CodeBlock>. You can refer to the
-                  <CodeBlock>BurnFrom</CodeBlock> message of CW20:
-                </BasicP>
-                <Markdown code={code1} />
-              </>
-            )}
-          </HintButton>
-        </HintSection>
-      </EditorDesc>
-      <EditorCode>
-        <EditorCodeHeader>
-          <button
-            disabled={fileName === "file1"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file1");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files1</MultiTab>
-          </button>
-          <button
-            disabled={fileName === "file2"}
-            onClick={async e => {
-              e.preventDefault();
-              setFileName("file2");
-              setValue(...value);
-            }}
-          >
-            <MultiTab>Files2</MultiTab>
-          </button>
-        </EditorCodeHeader>
-        <>
-          {isLoading ? (
-            <AnswerCheck />
-          ) : (
+        <HintButton onClick={async () => setHide(!hide)}>
+          <Hint hide={hide} />
+          {hide ? null : (
             <>
-              <EditorResult
-                path={fileName}
-                defaultLanguage="rust"
-                value={!isSuccess ? file.value : value}
-                onChange={async e => setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                isSuccess={isSuccess}
-                isError={isError}
-                onClick={doFetch}
-              />
+              <BasicP>
+                The owner of the <CodeBlock>fuel</CodeBlock> token is{" "}
+                <CodeBlock>info.sender</CodeBlock>. Therefore, you should call{" "}
+                <CodeBlock>BurnFrom</CodeBlock> instead of{" "}
+                <CodeBlock>Burn</CodeBlock>. You can refer to the
+                <CodeBlock>BurnFrom</CodeBlock> message of CW20:
+              </BasicP>
+              <Markdown code={code1} />
             </>
           )}
-        </>
-      </EditorCode>
+        </HintButton>
+      </EditorDesc>
+
+      {/* Code Editor */}
+      <div class="w-full lg:w-3/5 md:mx-0 ">
+        <MobileEnv />
+        <EditorCode>
+          {difLoading ? (
+            <Loading />
+          ) : (
+            <div class="mb-1 px-4">
+              <EditorCodeHeader>
+                <ProblemTab
+                  disabled={tab === "problem"}
+                  onClick={async e => {
+                    e.preventDefault();
+                    setTab("problem");
+                  }}
+                >
+                  Problem
+                </ProblemTab>
+                {difSuccess ? (
+                  <AnsTabAble
+                    disabled={tab === "answer"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("answer");
+                    }}
+                  />
+                ) : (
+                  <AnsTabDis />
+                )}
+              </EditorCodeHeader>
+              <div class="mx-auto mb-1">
+                {/* Mobile Version */}
+                <div class="md:hidden block w-full bg-black py-4 px-5 h-quiz">
+                  <h2 class="text-xl font-extrabold text-blue-500">
+                    Mobile Environment not supported
+                  </h2>
+                </div>
+
+                {/* Editor */}
+                <EditorResult
+                  defaultLanguage="rust"
+                  defaultValue={code2}
+                  path={tab}
+                  onChange={async e => await setCode(e)}
+                  onMount={editor => (editorRef.current = editor)}
+                  files={files}
+                  // onBuild={onBuild}
+                />
+              </div>
+            </div>
+          )}
+        </EditorCode>
+      </div>
     </>
   );
-}
+};
+export default L3C1U2S8Code;
+
+const code1 = `
+\`\`\`rust
+cosmonaut_cw20::msg::ExecuteMsg::BurnFrom { /* ... */ }
+\`\`\``;
+const code2 = `
+pub fn fuel_up(
+  deps: DepsMut,
+  info: MessageInfo,
+  token_id: String,
+  amount: Uint128,
+) -> Result<Response, ContractError> {
+  check_is_sender_owner_of_nft(deps.as_ref(), &info.sender, &token_id)?;
+
+  let config = CONFIG.load(deps.storage)?;
+  let burn_fuel_token_msg = CosmosMsg::Wasm(WasmMsg::Execute {
+      contract_addr: config.fuel_cw20_contract.to_string(),
+
+      // Question 1: create ExecuteMsg::BurnFrom
+      msg: to_binary(
+          // Do yourself!
+      )?,
+
+      funds: vec![],
+  });
+
+  let fuel_up_msg = CosmosMsg::Wasm(WasmMsg::Execute {
+      contract_addr: config.spaceship_cw721_contract.to_string(),
+      msg: to_binary(&Cw721ExecuteMsg::FuelUp {
+          token_id: token_id.clone(),
+          amount,
+      })?,
+      funds: vec![],
+  });
+
+  Ok(Response::new()
+      .add_attributes([
+          attr("action", "fuel_up"),
+          attr("to", token_id),
+          attr("amount", amount.to_string()),
+      ])
+      .add_messages([burn_fuel_token_msg, fuel_up_msg]))
+}`;
