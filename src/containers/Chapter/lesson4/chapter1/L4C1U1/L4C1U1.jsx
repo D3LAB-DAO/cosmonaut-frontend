@@ -58,7 +58,7 @@ function L4C1U1() {
               </BasicP>
               <BasicP>
                 This information is accessible through{" "}
-                <CodeBlock>Env</CodeBlock>. It's the factor that we've already
+                <CodeBlock>Env</CodeBlock>. It's the value that we've already
                 met a lot with <CodeBlock>env</CodeBlock>: Env in the contract
                 code.
               </BasicP>
@@ -71,14 +71,14 @@ function L4C1U1() {
                 </li>
                 <li>
                   <CodeBlock>transaction</CodeBlock>: Transaction that the
-                  message is currently being performed on.
+                  message is currently being performed on it.
                 </li>
                 <li>
                   <CodeBlock>contract</CodeBlock>: Information for the current
                   contract. For example, the contract address can be retrieved
                   by <CodeBlock>env.contract.address</CodeBlock>.
                 </li>
-                Let's take a closer look at <CodeBlock>BlockInfo</CodeBlock>{" "}
+                Let's take a closer look at <CodeBlock>BlockInfo</CodeBlock>,
                 which corresponds to the block information.
               </ListStyle>
             </ContentDesc>
@@ -98,18 +98,17 @@ function L4C1U1() {
             <ContentDesc>
               <Markdown code={code2} />
               <ListStyle>
-                <CodeBlock>BlockInfo</CodeBlock> provides the height, time, and
-                chain ID information of the block.
+                Provides the block’s height, time, and chain ID information.
                 <li>
                   <CodeBlock>height</CodeBlock>: Height of this block.
                 </li>
                 <li>
                   <CodeBlock>time</CodeBlock>: The absolute time from which the
-                  block was generated, that is, the timestamp. Using UNIX epoch,
+                  block was generated, that is, the timestamp. Using the UNIX epoch,
                   it contains how many seconds have passed since the time
-                  (00:00:00:00 1970-01-01 UTC). The BFT time of the tendermint,
+                  (00:00:00:00 1970-01-01 UTC). The source is the BFT time of the tendermint,
                   which has the same precision as the nanoseconds of{" "}
-                  <CodeBlock>Timestamp</CodeBlock>, is the source.
+                  <CodeBlock>Timestamp</CodeBlock>.
                 </li>
                 <li>
                   <CodeBlock>chain_id</CodeBlock>: Each chain has a unique
@@ -134,7 +133,7 @@ function L4C1U1() {
               <Markdown code={code3} />
               <BasicP>
                 Among the block information, <CodeBlock>time</CodeBlock> is of
-                type <CodeBlock>Timestamp</CodeBlock>, so it can be handled in
+                type <CodeBlock>Timestamp</CodeBlock> so that it can be handled in
                 nanoseconds.
               </BasicP>
               <BasicP>

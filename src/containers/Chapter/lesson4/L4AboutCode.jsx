@@ -8,14 +8,14 @@ function L4AboutCode() {
       <AboutCode>Condition of Success</AboutCode>
       <ListStyle>
         <li>
-          When you pass the all rounds, if she has health and fuels left, you’ve
+          When you pass all rounds, if she has health and fuels left, you’ve
           successfully escaped the asteroid belt 🚀
         </li>
       </ListStyle>
       <AboutCode>Condition of Failure</AboutCode>
       <ListStyle>
-        <li>The ship has been drifted if there remains any round 💫</li>
-        <li>The ship has been wrecked if she run out of health 😭</li>
+        <li>The ship has drifted if there remains any round 💫</li>
+        <li>The ship has been wrecked if she runs out of health 😭</li>
       </ListStyle>
     </div>
   );

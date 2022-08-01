@@ -32,11 +32,11 @@ function L4C1U2() {
               <Markdown code={code2} />
               <BasicP>
                 You can create a simple random number generator through
-                timestamp of block.
+                the block's timestamp.
               </BasicP>
               <BasicP>
                 <CodeBlock>_generate_random_number</CodeBlock> has a timestamp
-                in nanoseconds, take a modular operation with a specific value,
+                in nanoseconds, takes a modular operation with a specific value,
                 and returns the result. In other words, it returns the remainder
                 divided by a specific value{" "}
                 <CodeBlock>MAX_FREIGHT_WEIGHT</CodeBlock>.
@@ -48,14 +48,13 @@ function L4C1U2() {
                 that returns a random value between 0 and (1000 * 1000 - 1).
               </BasicP>
               <Alert>
-                This random number generator can be very vulnerable. Because the
-                information of time is objective but also subjective within a
-                narrow range.
+                This random number generator can be very vulnerable because time
+                information is objective but also subjective within a narrow range.
                 <br />
                 <br />
-                Based on the current time, we can approximately infer that
+                Based on the current time, we can infer that
                 <CodeBlock>_generate_random_number</CodeBlock> will respond to a
-                certain range.
+                specific range.
                 <br />
                 <br />
                 Crucially, the block producer who makes the block can freely
@@ -63,9 +62,9 @@ function L4C1U2() {
                 desired random value comes out.
                 <br />
                 <br />
-                In the blockchain, the block producer often has strong authority
-                so you have to be very careful about making random values with
-                the information within the blockchain.
+                In the blockchain, the block producer often has overpowering
+                authority, so you must be careful about making random values
+                with the information within the blockchain.
               </Alert>
             </ContentDesc>
           </div>

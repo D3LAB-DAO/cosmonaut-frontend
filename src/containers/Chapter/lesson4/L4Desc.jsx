@@ -15,8 +15,8 @@ function L4Desc() {
           <li>10 rounds.</li>
           <li>Consume 100 fuels for each round.</li>
           <li>
-            The more freights you have, the heavier the ship will be. It makes
-            hard to avoid asteroids.
+            The more freights you have, the heavier the ship will be. The
+            harder to avoid asteroids.
           </li>
         </ListStyle>
       </ChapterDesc>
