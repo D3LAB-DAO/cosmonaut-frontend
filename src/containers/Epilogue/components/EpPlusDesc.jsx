@@ -5,11 +5,11 @@ import ChTitle from "../../../components/Contents/ChTitle";
 export const EpPlusDesc = () => {
   return (
     <div class="container mx-auto md:px-32 px-8 mb-12">
-      <ChTitle>Our journey is no over!</ChTitle>
+      <ChTitle>But our journey is not over!</ChTitle>
       <div class="w-full block">
         <BasicP>
-          There are still a lot of things we need to study. For example, we
-          could trade the freight that's loaded on our spaceship for another one
+          There are still many things we need to study. For example, we
+          could trade the freight loaded on our spaceship for another
           via swap.
         </BasicP>
 
