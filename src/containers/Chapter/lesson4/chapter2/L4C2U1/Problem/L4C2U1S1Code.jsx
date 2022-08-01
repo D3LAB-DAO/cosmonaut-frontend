@@ -37,8 +37,8 @@ const L4C2U1S1Code = ({ difRes, difLoading, difSuccess }) => {
           <BasicP>The flow of the game is as follows:</BasicP>
           <ListStyle>
             <li class="list-none">
-              1. Call the config, which contains the information of the contract
-              such as spaceship, money, fuel and freight.
+              1. Call the config, which contains the contract information
+              such as spaceship, money, fuel, and freight.
             </li>
             <li class="list-none">
               2. Send <CodeBlock>NftInfo</CodeBlock> message to{" "}
@@ -60,7 +60,7 @@ const L4C2U1S1Code = ({ difRes, difLoading, difSuccess }) => {
               <ListStyle>
                 <li>
                   The vector of freights is stored under the name{" "}
-                  <CodeBlock>freight</CodeBlock> in
+                  <CodeBlock>freight</CodeBlock> in the
                   <CodeBlock>extension</CodeBlock> of{" "}
                   <CodeBlock>nft_info</CodeBlock>.
                 </li>
@@ -68,11 +68,11 @@ const L4C2U1S1Code = ({ difRes, difLoading, difSuccess }) => {
                   For each element of the vector, multiply the{" "}
                   <CodeBlock>unit_weight</CodeBlock> by the{" "}
                   <CodeBlock>amount</CodeBlock>. After that, you can add all of
-                  that results.
+                  the results.
                 </li>
                 <li>
                   There are many ways to calculate the total weight of the
-                  freights. We will use <CodeBlock>map</CodeBlock> and{" "}
+                  freights. We will use a <CodeBlock>map</CodeBlock> and{" "}
                   <CodeBlock>sum</CodeBlock> for now.
                 </li>
               </ListStyle>

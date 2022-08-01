@@ -33,27 +33,17 @@ function L4C2U1() {
             <ContentDesc>
               <Markdown code={code[0]} />
               <BasicP>
-                We've come a long way. It's really time to make a game! In this
-                <CodeBlock>Flight Game</CodeBlock>, our lovely spaceship ESFERA
-                passes through the asteroid belt.
-              </BasicP>
-              <BasicP>
-                We've come a long way. It's really time to make a game! In this
-                Flight Game, our lovely spaceship ESFERA passes through the
-                asteroid belt.
-              </BasicP>
-              <BasicP>
-                The chances of passing through the asteroid belt depend on how
+                Passing through the asteroid belt depend on how
                 many types and weights you have loaded.
               </BasicP>
               <ListStyle>
                 <li>
-                  Of course, if you load a lot of heavy freight, it will be
-                  difficult for the spaceship to change direction and
-                  accelerate, so it will be difficult to avoid asteroids.
+                  Of course, if you load much heavy freight, it will be difficult
+                  for the spaceship to change direction and accelerate, so it will
+                  be challenging to avoid asteroids.
                 </li>
                 <li>
-                  Conversely, lightweight spaceship have a slightly higher
+                  Conversely, a lightweight spaceship has a slightly higher
                   probability of avoiding asteroids.
                 </li>
               </ListStyle>
@@ -66,13 +56,11 @@ function L4C2U1() {
                   Each round consumes 100 <CodeBlock>fuel</CodeBlock>.
                 </li>
                 <li>
-                  If you run out of <CodeBlock>fuel</CodeBlock> before/after you
-                  finish all the rounds, you're drifting.
+                  You are drifting if you run out
+                  of <CodeBlock>fuel</CodeBlock> before/after you finish
+                  all the rounds.
                 </li>
               </ListStyle>
-              <BasicP>
-                Let's pray for a successful passage through this asteroid belt.
-              </BasicP>
             </ContentDesc>
           </div>
         </ContentsBox>
@@ -91,7 +79,7 @@ function L4C2U1() {
             </ContentTitle>
             <ContentDesc>
               <BasicP>
-                Finally, we will use the random numbers calculated in previous
+                Finally, we will use the random numbers calculated in the previous
                 chapter to create and play a flight game.
               </BasicP>
               <BasicP>
@@ -126,9 +114,9 @@ function L4C2U1() {
                 message <CodeBlock>DecreaseHealth</CodeBlock>.
               </BasicP>
               <BasicP>
-                2. Calculate the amount of fuel consumed by multiplying
+                2. Calculate the fuel consumed by multiplying
                 <CodeBlock>FUEL_PER_GAME</CodeBlock> by the number of rounds{" "}
-                <CodeBlock>epoch</CodeBlock>. Use{" "}
+                <CodeBlock>epoch</CodeBlock>. Use the{" "}
                 <CodeBlock>BurnFuel</CodeBlock>
                 message to reduce fuel.
               </BasicP>

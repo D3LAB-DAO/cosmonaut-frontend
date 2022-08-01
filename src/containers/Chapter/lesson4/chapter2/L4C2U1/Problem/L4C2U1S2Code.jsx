@@ -34,22 +34,22 @@ const L4C2U1S2Code = ({ difRes, difLoading, difSuccess }) => {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Now, we're going to play the game <CodeBlock>epoch</CodeBlock>{" "}
+            Now, we are going to play the game <CodeBlock>epoch</CodeBlock>{" "}
             times.
           </BasicP>
           <ListStyle>
             <li class="list-none">
               1. As discussed above, simple random numbers are created based on
-              the timestamp of the block.
+              the block's timestamp.
             </li>
             <li class="list-none">
-              2. Determine the speed of the spaceship. The speed set by
-              <CodeBlock>MAX_FREIGHT_WEIGHT</CodeBlock> and decreases linearly
+              2. Determine the speed of the spaceship. The speed sets by
+              <CodeBlock>MAX_FREIGHT_WEIGHT</CodeBlock> first and decreases linearly
               relative to the total weight of the freights.
             </li>
             <li class="list-none">
-              3. If the random number is greater than the speed, an asteroid hit
-              the spaceship. Accumulate{" "}
+              3. An asteroid hits the spaceship if the random number is greater
+              than the speed. Accumulate{" "}
               <CodeBlock>health_decrease_value</CodeBlock>, which is used for
               decreasing NFT’s <CodeBlock>health</CodeBlock>.
             </li>
