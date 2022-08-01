@@ -29,7 +29,7 @@ const AppenU1 = () => {
         </a>
       </BasicA>
       <BasicP>
-        To provide the intuitive service and a great user interface, developers
+        To provide intuitive service and a great user interface, developers
         must consider the following at the browser level:
       </BasicP>
       <ListStyle>

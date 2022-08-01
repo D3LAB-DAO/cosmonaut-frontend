@@ -31,7 +31,7 @@ const AppenU2 = () => {
       <BasicP>
         As mentioned above, <CodeBlock>CosmJS</CodeBlock> is a library of small
         npm packages. This modular approach and clear dependencies between
-        modules allow users and developers to take only what they need.
+        modules allow users and developers to take needed codes only what they need.
       </BasicP>
       <BasicP>
         The following is a brief introduction to the representative packages:
@@ -50,8 +50,8 @@ const AppenU2 = () => {
           enabled.
         </li>
         <li>
-          <CodeBlock>@cosmjs/crypto</CodeBlock>: A library for cryptography,
-          used in blockchain. Hash, signature, encryption, etc.
+          <CodeBlock>@cosmjs/crypto</CodeBlock>: A library for cryptography
+          used in blockchain. Hash, signature, encryption, et al.
         </li>
         <li>
           <CodeBlock>@cosmjs/encoding</CodeBlock>: A library for encoding used

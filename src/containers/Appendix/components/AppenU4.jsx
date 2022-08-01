@@ -72,7 +72,7 @@ const AppenU4 = () => {
       <Markdown code={code2} />
       <BasicP>
         If a Keplr is installed, <CodeBlock>enable</CodeBlock> is recommended
-        before use. This will prompt users to grant access to the website they
+        before use. It will prompt users to grant access to the website they
         visit for the first time.
       </BasicP>
       <BasicP>Also, if the Keplr is locked, request the unlock.</BasicP>
@@ -100,12 +100,12 @@ const AppenU4 = () => {
       </BasicP>
       <BasicP>
         CosmJS has two types of signers: OfflineSigner and{" "}
-        <CodeBlock>OffilineDirectSigner</CodeBlock>. The former is used in Amino
+        <CodeBlock>OffilineDirectSigner</CodeBlock>. The former is used in Amino,
         and the latter is used in Probobuf to sign serialized/encoded SignDoc.
       </BasicP>
       <BasicP>
         Kepler's <CodeBlock>getOfflineSigner</CodeBlock> returns a signer that
-        satisfies both. That is, the Launchpad chain uses Amino and the Stargate
+        satisfies both. The Launchpad chain uses Amino, and the Stargate
         chain uses Protobuf.
       </BasicP>
       <BasicP>
@@ -116,11 +116,11 @@ const AppenU4 = () => {
         string) which is Alias.
       </BasicP>
       <BasicP>
-        If it is difficult, use windo or {window}. It automatically returns the
-        most appropriate signer. This means that if you only need Amino as
-        Ledger Nano's situation, return an Amino compatible signer, and in the
-        context of a mnemonic or private key-based address, return a compatible
-        signer for both Amino and Protobuf.
+        If it is difficult, use {window}. It automatically returns the
+        most appropriate signer. Return an Amino compatible signer if you only
+        need Amino, like Ledger Nano's situation. In the context of a mnemonic
+        or private key-based address, return a compatible signer for both Amino
+        and Protobuf.
       </BasicP>
     </>
   );
