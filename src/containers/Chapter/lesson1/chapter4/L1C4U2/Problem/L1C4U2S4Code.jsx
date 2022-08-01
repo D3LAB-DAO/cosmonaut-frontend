@@ -69,7 +69,7 @@ const L1C4U2S4Code = ({ ex, difRes, difLoading, difSuccess }) => {
                   </li>
                 </ListStyle>
                 <li>
-                  And if a large amount of information has been returned, it has
+                  If a large amount of information has been returned, it has
                   to be cut off as much as <CodeBlock>limit</CodeBlock>. You can
                   use <CodeBlock>take</CodeBlock>.
                 </li>

@@ -6,7 +6,7 @@ function L1C5Desc() {
   return (
     <div>
       <BasicP>
-        Let's make NFT using CW721-base that we learned. Yes, it's finally time
+        Let's make NFT using the CW721-base that we learned. Yes. Finally it is time
         to build a spaceship ESFERA to pioneer!
         <br />
         <br />

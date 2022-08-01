@@ -143,7 +143,7 @@ pub fn burn_fuel(
   let mut extension = token.extension;
 
   // Question 1. sub fuel by amount
-  // Do yourself!
+  // Do it yourself!
 
   token.extension = extension;
   contract.tokens.save(deps.storage, &token_id, &token)?;

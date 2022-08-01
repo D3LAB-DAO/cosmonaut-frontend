@@ -7,7 +7,7 @@ export const codeEx = {
     ) -> Vec<cw721::Approval> {
         info.approvals
             .iter()
-            .filter(/* Question 1: filtering */ /* Do yourself! */)
+            .filter(/* Question 1: filtering */ /* Do it yourself! */)
             .map(humanize_approval)
             .collect()
     }
@@ -33,15 +33,15 @@ export const codeEx = {
       // token owner has absolute approval
       if token.owner == spender {
           // Question 1: set ApprovalResponse for owner case
-          // Do yourself!
+          // Do it yourself!
           return Ok(ApprovalResponse { approval });
       }
     
       let filtered: Vec<_> = token
           .approvals
           .into_iter()
-          .filter(/* Question 2: find spender */ /* Do yourself! */)
-          .filter(/* Question 3: filtering */ /* Do yourself! */)
+          .filter(/* Question 2: find spender */ /* Do it yourself! */)
+          .filter(/* Question 3: filtering */ /* Do it yourself! */)
           .map(|a| cw721::Approval {
               spender: a.spender.into_string(),
               expires: a.expires,
@@ -68,7 +68,7 @@ export const codeEx = {
       let approvals: Vec<_> = token
           .approvals
           .into_iter()
-          .filter(/* Question 1: filtering */ /* Do yourself! */)
+          .filter(/* Question 1: filtering */ /* Do it yourself! */)
           .map(|a| cw721::Approval {
               spender: a.spender.into_string(),
               expires: a.expires,
@@ -96,11 +96,11 @@ export const codeEx = {
       let res: StdResult<Vec<_>> = self
           .operators
           .prefix(&owner_addr)
-          .range(/* Question 1: range */ /* Do yourself! */)
+          .range(/* Question 1: range */ /* Do it yourself! */)
           .filter(|r| {
               include_expired || r.is_err() || !r.as_ref().unwrap().1.is_expired(&env.block)
           })
-          .take(/* Question 2: take */ /* Do yourself! */)
+          .take(/* Question 2: take */ /* Do it yourself! */)
           .map(parse_approval)
           .collect();
       Ok(OperatorsResponse { operators: res? })
@@ -109,7 +109,7 @@ export const codeEx = {
   Q5: `
   fn num_tokens(&self, deps: Deps) -> StdResult<NumTokensResponse> {
     // Question 1: count
-    // Do yourself!
+    // Do it yourself!
     Ok(NumTokensResponse { count })
 }`,
   Q6: `
@@ -119,7 +119,7 @@ export const codeEx = {
   Q7: `
     fn nft_info(&self, deps: Deps, token_id: String) -> StdResult<NftInfoResponse<T>> {
         let info = self.tokens.load(deps.storage, &token_id)?;
-        Ok(NftInfoResponse{/* Question 1: NftInfoResponse */ /* Do yourself! */ })
+        Ok(NftInfoResponse{/* Question 1: NftInfoResponse */ /* Do it yourself! */ })
     }
 `,
   Q8: `
@@ -132,8 +132,8 @@ fn all_nft_info(
 ) -> StdResult<AllNftInfoResponse<T>> {
   let info = self.tokens.load(deps.storage, &token_id)?;
   Ok(AllNftInfoResponse {
-      access: /* Question 1: OwnerOfResponse */ /* Do yourself! */,
-      info: /* Question 2: NftInfoResponse */ /* Do yourself! */,
+      access: /* Question 1: OwnerOfResponse */ /* Do it yourself! */,
+      info: /* Question 2: NftInfoResponse */ /* Do it yourself! */,
   })
 }
 `,
@@ -154,8 +154,8 @@ fn tokens(
       .idx
       .owner
       .prefix(owner_addr)
-      .keys(/* Question 1: keys */ /* Do yourself! */)
-      .take(/* Question 2: takw */ /* Do yourself! */)
+      .keys(/* Question 1: keys */ /* Do it yourself! */)
+      .take(/* Question 2: takw */ /* Do it yourself! */)
       .collect::<StdResult<Vec<_>>>()?;
 
   Ok(TokensResponse { tokens })
@@ -175,7 +175,7 @@ fn all_tokens(
       .tokens
       .range(deps.storage, start, None, Order::Ascending)
       .take(limit)
-      .map(/* Question 1: get keys from item */ /* Do yourself! */)
+      .map(/* Question 1: get keys from item */ /* Do it yourself! */)
       .collect();
 
   Ok(TokensResponse { tokens: tokens? })

@@ -32,7 +32,7 @@ const L1C4U2S6Code = ({ ex, difRes, difLoading, difSuccess }) => {
       <EditorDesc>
         <ProblemSection>
           <Problem>Problem</Problem>
-          <BasicP>There is no complicated logic to make a problem.</BasicP>
+          <BasicP>There is no complicated logic to creating a problem.</BasicP>
           <BasicP>There is no problem.</BasicP>
         </ProblemSection>
         <HintButton onClick={async () => setHide(!hide)}>
@@ -40,7 +40,7 @@ const L1C4U2S6Code = ({ ex, difRes, difLoading, difSuccess }) => {
           {hide ? null : (
             <>
               <BasicP>
-                Also there is no hint. Just look at this cute{" "}
+                Also, there is no hint. Just look at this cute{" "}
                 <CodeBlock>contract_info</CodeBlock> function.
               </BasicP>
             </>

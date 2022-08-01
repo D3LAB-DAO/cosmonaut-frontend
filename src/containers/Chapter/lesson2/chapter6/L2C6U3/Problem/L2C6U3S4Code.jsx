@@ -128,5 +128,5 @@ pub fn query_allowance(deps: Deps, owner: String, spender: String) -> StdResult<
       .unwrap_or_default();
 
   // Question 1: response
-  Ok(/* Do yourself! */)
+  Ok(/* Do it yourself! */)
 }`;

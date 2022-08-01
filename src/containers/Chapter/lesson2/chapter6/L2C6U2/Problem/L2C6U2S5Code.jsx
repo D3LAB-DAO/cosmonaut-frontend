@@ -139,7 +139,7 @@ pub fn execute_burn_from(
   let owner_addr = deps.api.addr_validate(&owner)?;
 
   // Question 1: deduct allowance
-  // Do yourself!
+  // Do it yourself!
 
   // lower balance
   BALANCES.update(
@@ -152,7 +152,7 @@ pub fn execute_burn_from(
   // reduce total_supply
   TOKEN_INFO.update(deps.storage, |mut meta| -> StdResult<_> {
       // Question 2: reduce total_supply
-      meta.total_supply = /* Do yourself! */;
+      meta.total_supply = /* Do it yourself! */;
       Ok(meta)
   })?;
 

@@ -162,7 +162,7 @@ pub fn execute_send_from(
 
   // Question 3: create a send message
   let msg = Cw20ReceiveMsg {
-      // Do yourself!
+      // Do it yourself!
   }
   .into_cosmos_msg(contract)?;
 

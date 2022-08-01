@@ -159,7 +159,7 @@ pub fn unload_freight_from_nft(
 
       // Question 1: create ExecuteMsg::Mint
       msg: to_binary(
-          // Do yourself!
+          // Do it yourself!
       )?,
 
       funds: vec![],

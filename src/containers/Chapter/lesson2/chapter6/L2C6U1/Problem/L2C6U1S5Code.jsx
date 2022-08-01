@@ -147,7 +147,7 @@ pub fn execute_update_minter(
 
   // Question 1: configure minter_data
   let minter_data = MinterData {
-      // Do yourself!
+      // Do it yourself!
   };
 
   config.mint = Some(minter_data);

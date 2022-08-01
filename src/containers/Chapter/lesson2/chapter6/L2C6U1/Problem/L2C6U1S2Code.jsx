@@ -165,7 +165,7 @@ pub fn execute_send(
       &info.sender,
       |balance: Option<Uint128>| -> StdResult<_> {
           // Question 1: update balance
-          Ok(/* Do yourself! */)
+          Ok(/* Do it yourself! */)
       },
   )?;
   BALANCES.update(
@@ -173,7 +173,7 @@ pub fn execute_send(
       &rcpt_addr,
       |balance: Option<Uint128>| -> StdResult<_> {
           // Question 2: update balance
-          Ok(/* Do yourself! */)
+          Ok(/* Do it yourself! */)
       },
   )?;
 
@@ -185,7 +185,7 @@ pub fn execute_send(
       .add_message(
           // Question 3: Cw20ReceiveMsg
           Cw20ReceiveMsg {
-              // Do yourself!
+              // Do it yourself!
           }
           .into_cosmos_msg(contract)?,
       );

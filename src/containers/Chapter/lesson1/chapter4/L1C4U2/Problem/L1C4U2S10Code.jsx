@@ -48,7 +48,7 @@ const L1C4U2S10Code = ({ ex, difRes, difLoading, difSuccess }) => {
           </BasicP>
           <BasicP>
             Like Tokens, it can be obtained with <CodeBlock>keys</CodeBlock> or
-            it can be extracted from (key, value) pairs obtained with{" "}
+            extracted from (key, value) pairs obtained with{" "}
             <CodeBlock>range</CodeBlock>.
           </BasicP>
           <BasicP>

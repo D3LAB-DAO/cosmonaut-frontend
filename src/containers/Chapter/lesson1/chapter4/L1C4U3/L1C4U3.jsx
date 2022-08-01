@@ -32,8 +32,8 @@ function L1C4U3() {
             <ContentDesc>
               <Markdown code={code[0]} />
               <BasicP>
-                Get a name and symbol for the metadata and also a Minter address
-                with strong permission.
+                Gets a name, a symbol for the metadata, and a Minter address
+                with powerful permission.
               </BasicP>
               <BasicP>Details are as follows:</BasicP>
               <ListStyle>

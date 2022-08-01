@@ -8,7 +8,7 @@ fn base_execute(
     msg: ExecuteMsg<Extension>,
 ) -> Result<Response, ContractError> {
     let cw721_msg = msg.into();
-    let execute_res = /* Question 1: execute */ /* Do yourself! */;
+    let execute_res = /* Question 1: execute */ /* Do it yourself! */;
     match execute_res {
         Ok(res) => Ok(res),
         Err(err) => Err(ContractError::from(err)),
@@ -35,7 +35,7 @@ pub fn execute_decrease_health(
   let mut extension = token.extension.unwrap();
 
   // Question 1: sub (health - value)
-  // Do yourself!
+  // Do it yourself!
 
   token.extension = Extension::from(extension);
   cosmonaut_contract
@@ -62,11 +62,11 @@ pub fn execute(
         // msg to decrease health when playing games
         ExecuteMsg::DecreaseHealth { token_id, value } => {
             // Question 1: execute_decrease_health
-            ExecHandler:: /* Do yourself! */
+            ExecHandler:: /* Do it yourself! */
         }
 
         // Question 2: otherwise, base_execute
-        // Do yourself!
+        // Do it yourself!
     }
 }`,
 };

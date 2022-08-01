@@ -127,5 +127,5 @@ pub fn query_balance(deps: Deps, address: String) -> StdResult<BalanceResponse> 
         .unwrap_or_default();
 
     // Question 1: response
-    Ok(/* Do yourself! */)
+    Ok(/* Do it yourself! */)
 }`;

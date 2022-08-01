@@ -33,7 +33,7 @@ const L1C4U2S11Code = ({ ex, difRes, difLoading, difSuccess }) => {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            There is no logic complicated enough to make a problem.
+            There is no complicated logic to creating a problem.
           </BasicP>
           <BasicP>There's no problem.</BasicP>
         </ProblemSection>

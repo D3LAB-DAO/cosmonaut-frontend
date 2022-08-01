@@ -57,7 +57,7 @@ const L1C4U2S9Code = ({ ex, difRes, difLoading, difSuccess }) => {
                 </li>
                 <ListStyle>
                   <li>
-                    Insert the min, max, and order of the key list to call.
+                    Insert the keys' min, max, and order to call.
                     <CodeBlock>store</CodeBlock> will be{" "}
                     <CodeBlock>deps.storage</CodeBlock> as usual.
                   </li>
@@ -71,8 +71,8 @@ const L1C4U2S9Code = ({ ex, difRes, difLoading, difSuccess }) => {
                   </li>
                 </ListStyle>
                 <li>
-                  If a large amount of information has been replied, you have to
-                  cut off as much as <CodeBlock>limit</CodeBlock>. You can{" "}
+                  If a large amount of information has been returned, it has
+                  to be cut off as much as <CodeBlock>limit</CodeBlock>. You can{" "}
                   <CodeBlock>take</CodeBlock> what you know well.
                 </li>
               </ListStyle>

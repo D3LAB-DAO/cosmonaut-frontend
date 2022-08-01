@@ -67,7 +67,7 @@ function L1C5U2S2() {
                 </li>
               </ListStyle>
               <BasicP>
-                You can put the metadata in <CodeBlock>extension</CodeBlock>,
+                You can put the metadata in the <CodeBlock>extension</CodeBlock>,
                 put it in <CodeBlock>MintMsg</CodeBlock>, and eventually
                 generate a <CodeBlock>Mint</CodeBlock> message.
               </BasicP>

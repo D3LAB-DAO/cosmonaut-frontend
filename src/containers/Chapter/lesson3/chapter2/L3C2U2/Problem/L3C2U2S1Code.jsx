@@ -159,7 +159,7 @@ pub fn load_freight(
         extension.freight[idx].amount = extension.freight[idx].amount.checked_add(amount).unwrap();
     } else {
         // Quetions 1. push a new freight data
-        // Do yourself!
+        // Do it yourself!
     }
 
     token.extension = extension;

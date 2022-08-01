@@ -139,7 +139,7 @@ pub fn deduct_allowance(
                   Err(ContractError::Expired {})
               } else {
                   // Question 1: deduct the allowance if enough
-                  // Do yourself!
+                  // Do it yourself!
                   Ok(a)
               }
           }

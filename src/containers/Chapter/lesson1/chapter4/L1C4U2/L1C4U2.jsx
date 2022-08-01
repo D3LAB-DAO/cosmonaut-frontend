@@ -55,14 +55,14 @@ function L1C4U2() {
             <ContentDesc>
               <Markdown code={code[1]} />
               <BasicP>
-                Returns approval information for <CodeBlock>spender</CodeBlock>{" "}
-                of <CodeBlock>token_id</CodeBlock>. If{" "}
+                Returns approval information for the <CodeBlock>spender</CodeBlock>{" "}
+                of <CodeBlock>token_id</CodeBlock>. If the{" "}
                 <CodeBlock>spender</CodeBlock> is the owner, it is considered to
                 have absolute permission.
               </BasicP>
               <BasicP>
                 Returns an error if there is no corresponding information for a
-                given query. That is, if there is no approvals.s
+                given query. That is, if there are no approvals.s
               </BasicP>
               <BasicP>
                 It also expects one approval to be returned, so it returns only
@@ -241,7 +241,7 @@ function L1C4U2() {
               <Markdown code={code[9]} />
               <BasicP>
                 Returns all <CodeBlock>token_id</CodeBlock> managed by the
-                contract through pagenation.
+                contract through pagination.
               </BasicP>
             </ContentDesc>
           </div>
@@ -262,8 +262,8 @@ function L1C4U2() {
             <ContentDesc>
               <Markdown code={code[10]} />
               <BasicP>
-                It is not specified in the <CodeBlock>CW721 Spec</CodeBlock>,
-                but implemented for convenience.
+                It is not specified in the <CodeBlock>CW721 Spec</CodeBlock>
+                but is implemented for convenience.
               </BasicP>
               <BasicP>Returns the Minter address of this contract.</BasicP>
             </ContentDesc>

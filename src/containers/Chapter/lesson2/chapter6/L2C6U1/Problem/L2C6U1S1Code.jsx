@@ -161,7 +161,7 @@ pub fn execute_transfer(
         &info.sender,
         |balance: Option<Uint128>| -> StdResult<_> {
             // Question 1: update balance
-            Ok(/* Do yourself! */)
+            Ok(/* Do it yourself! */)
         },
     )?;
     BALANCES.update(
@@ -169,7 +169,7 @@ pub fn execute_transfer(
         &rcpt_addr,
         |balance: Option<Uint128>| -> StdResult<_> {
             // Question 2: update balance
-            Ok(/* Do yourself! */)
+            Ok(/* Do it yourself! */)
         },
     )?;
 

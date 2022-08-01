@@ -145,5 +145,5 @@ for _ in 0..epoch.u128() {
           .multiply_ratio(total_freight_weight, MAX_FREIGHT_WEIGHT);
 
   // Question 1. Decrease health_decrease_value if (random_number > spaceship_speed)
-  // Do yourself!
+  // Do it yourself!
 }`;

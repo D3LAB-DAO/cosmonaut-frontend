@@ -58,7 +58,7 @@ function L1C5U1() {
             <ContentDesc>
               <Markdown code={code[0]} />
               <BasicP>
-                For game, we define a health in the spaceship. It's stored in
+                For game, we define the health of a spaceship. It's stored in
                 the metadata under the name <CodeBlock>health</CodeBlock>.
               </BasicP>
               <BasicP>

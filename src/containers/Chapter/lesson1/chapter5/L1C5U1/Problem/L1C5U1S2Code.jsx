@@ -54,7 +54,7 @@ const L1C5U1S2Code = ({ ex, difRes, difLoading, difSuccess }) => {
             </li>
             <li class="list-none">
               4. Read the value corresponding to <CodeBlock>health</CodeBlock>{" "}
-              in <CodeBlock>extension</CodeBlock> of token and subtract it by{" "}
+              in the token <CodeBlock>extension</CodeBlock> and subtract it by{" "}
               <CodeBlock>value</CodeBlock>.
             </li>
             <li class="list-none">5. Save updated information.</li>

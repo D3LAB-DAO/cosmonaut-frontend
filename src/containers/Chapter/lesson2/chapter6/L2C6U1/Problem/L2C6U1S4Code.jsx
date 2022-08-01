@@ -145,7 +145,7 @@ pub fn execute_burn(
   // reduce total_supply
   TOKEN_INFO.update(deps.storage, |mut info| -> StdResult<_> {
       // Question 1: update total_supply
-      info.total_supply = /* Do yourself! */;
+      info.total_supply = /* Do it yourself! */;
       Ok(info)
   })?;
 

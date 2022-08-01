@@ -130,7 +130,7 @@ pub fn query_all_accounts(
   let start = start_after.map(|s| Bound::ExclusiveRaw(s.into()));
 
   let accounts = BALANCES
-      /* Do yourself! */ /* Question 1: keys */
+      /* Do it yourself! */ /* Question 1: keys */
       .take(limit)
       .map(|item| item.map(Into::into))
       .collect::<StdResult<_>>()?;

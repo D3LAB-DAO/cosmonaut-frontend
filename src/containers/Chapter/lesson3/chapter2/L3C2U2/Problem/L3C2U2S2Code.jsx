@@ -163,12 +163,12 @@ const code1 = `pub fn unload_freight(
   let candidate_idx = extension.freight.iter().position(|l| l.denom == denom);
   if let Some(idx) = candidate_idx {
       // Quetions 1. check zero condition
-      if /* Do yourself! */ {
+      if /* Do it yourself! */ {
           // Quetions 2. remove from freight
-          // Do yourself!
+          // Do it yourself!
       } else {
           // Quetions 3. sub amount from freight
-          // Do yourself!
+          // Do it yourself!
       }
   } else {
       return Err(ContractError::NotFound {});

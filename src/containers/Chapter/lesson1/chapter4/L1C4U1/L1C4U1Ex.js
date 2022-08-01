@@ -14,10 +14,10 @@ export const codeEx = {
       self.check_can_send(deps.as_ref(), env, info, &token)?;
 
       // Question 1: set owner
-              // Do yourself!
+              // Do it yourself!
 
               // Question 2: remove existing approvals
-              // Do yourself!
+              // Do it yourself!
 
       self.tokens.save(deps.storage, token_id, &token)?;
       Ok(token)
@@ -38,7 +38,7 @@ export const codeEx = {
 
     // Question: Cw721ReceiveMsg
     let send = Cw721ReceiveMsg {
-        // Do yourself!
+        // Do it yourself!
     };
 
     // Send message
@@ -68,9 +68,9 @@ pub fn _update_approvals(
 
     // update the approval list (remove any for the same spender before adding)
     // Question 1: validate spender_addr
-    // Do yourself!
+    // Do it yourself!
     // Question 2: iter'token.approvals' to remove spender
-    // Do yourself!
+    // Do it yourself!
 
     // only difference between approve and revoke
     if add {
@@ -85,7 +85,7 @@ pub fn _update_approvals(
         };
 
         // Question 3: add 'approval' into 'token.approvals'
-        // Do yourself!
+        // Do it yourself!
     }
 
     self.tokens.save(deps.storage, token_id, &token)?;
@@ -103,7 +103,7 @@ fn revoke(
   token_id: String,
 ) -> Result<Response<C>, ContractError> {
   // Question 1: call _update_approvals
-  // Do yourself!
+  // Do it yourself!
 
   Ok(Response::new()
       .add_attribute("action", "revoke")
@@ -130,7 +130,7 @@ fn approve_all(
   let operator_addr = deps.api.addr_validate(&operator)?;
 
   // Question 1: set the operator
-  // Do yourself!
+  // Do it yourself!
 
   Ok(Response::new()
       .add_attribute("action", "approve_all")
@@ -149,7 +149,7 @@ fn revoke_all(
   let operator_addr = deps.api.addr_validate(&operator)?;
 
   // Question 1: del the operator
-  // Do yourself!
+  // Do it yourself!
 
   Ok(Response::new()
       .add_attribute("action", "revoke_all")
@@ -172,7 +172,7 @@ pub fn mint(
   }
 
   // Question 1: create the token
-  // Do yourself!
+  // Do it yourself!
 
   self.tokens
       .update(deps.storage, &msg.token_id, |old| match old {
@@ -201,9 +201,9 @@ fn burn(
   self.check_can_send(deps.as_ref(), &env, &info, &token)?;
 
   // Question 1: remove token from self.tokens
-  // Do yourself!
+  // Do it yourself!
   // Question 2: decrement token count
-  // Do yourself!
+  // Do it yourself!
 
   Ok(Response::new()
       .add_attribute("action", "burn")

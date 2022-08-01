@@ -49,7 +49,7 @@ const L1C4U2S8Code = ({ ex, difRes, difLoading, difSuccess }) => {
           </ListStyle>
           <BasicP>
             Aren't they both familiar? <CodeBlock>OwnerOfResponse</CodeBlock>{" "}
-            appeared in OwnerOf and
+            appeared in OwnerOf, and
             <CodeBlock>NftInfoResponse</CodeBlock> appeared in NftInfo just
             above.
           </BasicP>

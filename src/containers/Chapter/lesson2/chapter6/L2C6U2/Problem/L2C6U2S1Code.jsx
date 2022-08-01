@@ -142,10 +142,10 @@ pub fn execute_increase_allowance(
             let mut val = allow.unwrap_or_default();
             if let Some(exp) = expires {
                 // Question 1: set exp
-                // Do yourself!
+                // Do it yourself!
             }
             // Question 2: update allowance
-            // Do yourself!
+            // Do it yourself!
             Ok(val)
         },
     )?;

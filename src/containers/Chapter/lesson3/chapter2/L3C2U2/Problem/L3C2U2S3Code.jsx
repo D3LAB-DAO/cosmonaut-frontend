@@ -138,7 +138,7 @@ pub fn fuel_up(
   let contract: Cw721Contract<Extension, Empty> = Cw721Contract::default();
 
   // Question 1. check whether sender is minter or not
-  if /* Do yourself! */ {
+  if /* Do it yourself! */ {
       return Err(ContractError::Unauthorized {});
   }
 

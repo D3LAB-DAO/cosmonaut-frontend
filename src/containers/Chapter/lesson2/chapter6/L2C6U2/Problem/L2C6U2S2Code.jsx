@@ -161,7 +161,7 @@ pub fn execute_decrease_allowance(
   let mut allowance = ALLOWANCES.load(deps.storage, key)?;
   
   // Question 1: allowance save or remove
-  // Do yourself!
+  // Do it yourself!
 
   let res = Response::new().add_attributes(vec![
       attr("action", "decrease_allowance"),

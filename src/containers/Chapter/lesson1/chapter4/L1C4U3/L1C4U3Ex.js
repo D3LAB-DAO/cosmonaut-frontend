@@ -10,12 +10,12 @@ export const codeEx = {
         set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
     
         // Question 1: set info
-        // Do yourself!
+        // Do it yourself!
         self.contract_info.save(deps.storage, &info)?;
         let minter = deps.api.addr_validate(&msg.minter)?;
     
         // Question 2: set minter
-        // Do yourself!
+        // Do it yourself!
     
         Ok(Response::default())
     }`,

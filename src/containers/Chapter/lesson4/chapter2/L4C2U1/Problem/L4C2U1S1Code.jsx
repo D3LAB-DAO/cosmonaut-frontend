@@ -157,7 +157,7 @@ pub fn play_game(
     )?;
 
     // Question 1. get total weight of freights
-    let total_freight_weight: u128 = /* Do yourself! */
+    let total_freight_weight: u128 = /* Do it yourself! */
 
     let mut health_decrease_value = Uint128::zero();
     let mut spaceship_speed = Uint128::zero();

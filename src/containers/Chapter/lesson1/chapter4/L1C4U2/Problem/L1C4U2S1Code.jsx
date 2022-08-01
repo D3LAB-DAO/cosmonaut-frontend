@@ -45,7 +45,7 @@ const L1C4U2S1Code = ({ ex, difRes, difLoading, difSuccess }) => {
           </BasicP>
           <BasicP>
             But you should leave only valid information among the collected
-            information, shouldn’t you? Let's use a filter.
+            information. Let's use a filter.
           </BasicP>
         </ProblemSection>
 
@@ -62,7 +62,7 @@ const L1C4U2S1Code = ({ ex, difRes, difLoading, difSuccess }) => {
                 <li>
                   The conditions are as follows: If the factor{" "}
                   <CodeBlock>include_expired</CodeBlock>
-                  is true, it should include expired information. And if it is
+                  is true, it should include expired information. Otherwise, if it is
                   false, it should not.
                 </li>
                 <li>

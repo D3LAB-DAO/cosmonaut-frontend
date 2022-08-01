@@ -44,7 +44,7 @@ const L1C4U2S2Code = ({ ex, difRes, difLoading, difSuccess }) => {
             In a typical case where the <CodeBlock>spender</CodeBlock> is not
             the owner, it will go through two filters. The first is to find the
             approval corresponding to the <CodeBlock>spender</CodeBlock> among
-            the all approvals. The second is to find the approval that has not
+            all approvals. The second is to find the approval that has not
             expired among them.
           </BasicP>
           <BasicP>Let's fill in these filters.</BasicP>
@@ -55,12 +55,12 @@ const L1C4U2S2Code = ({ ex, difRes, difLoading, difSuccess }) => {
             <>
               <ListStyle>
                 <li>
-                  Absolute permission means never-ending expiration. This can be
+                  Absolute permission means never-ending expiration. It can be
                   expressed as follows:
                   <Markdown code={code2} />
                 </li>
                 <li>
-                  The conditions for finding expiration is as follows: If the
+                  The conditions for finding expiration are as follows: If the
                   <CodeBlock>include_expired</CodeBlock> is true, it must
                   include expired approvals. And if false, it must not.
                 </li>

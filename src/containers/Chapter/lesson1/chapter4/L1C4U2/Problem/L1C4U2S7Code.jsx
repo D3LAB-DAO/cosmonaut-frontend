@@ -32,8 +32,8 @@ const L1C4U2S7Code = ({ ex, difRes, difLoading, difSuccess }) => {
         <ProblemSection>
           <Problem>Problem</Problem>
           <BasicP>
-            Returns the URI that is referencing the metadata. It's referred to
-            as <CodeBlock>token_uri</CodeBlock>. It also returns{" "}
+            Returns the URI that is referencing the metadata. It is referred to
+            as <CodeBlock>token_uri</CodeBlock>. It also returns an{" "}
             <CodeBlock>extension</CodeBlock> containing other information.
           </BasicP>
         </ProblemSection>

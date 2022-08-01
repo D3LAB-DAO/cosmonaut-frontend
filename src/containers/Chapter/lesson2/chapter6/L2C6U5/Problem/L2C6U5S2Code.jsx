@@ -57,7 +57,7 @@ const L2C6U5S2Code = ({ difRes, difLoading, difSuccess }) => {
                   variable to update
                   <CodeBlock>MARKETING_INFO</CodeBlock>.
                 </li>
-                <li>Then: Do yourself!</li>
+                <li>Then: Do it yourself!</li>
               </ListStyle>
             </>
           )}
@@ -153,7 +153,7 @@ pub fn execute_upload_logo(
   };
 
   // Question 1: update/upload logo
-  // Do yourself!
+  // Do it yourself!
 
   MARKETING_INFO.save(deps.storage, &marketing_info)?;
 

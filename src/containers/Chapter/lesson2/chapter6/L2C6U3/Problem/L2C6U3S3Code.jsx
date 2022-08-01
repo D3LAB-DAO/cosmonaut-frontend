@@ -130,7 +130,7 @@ pub struct MinterData {
 const code2 = `
 pub fn query_minter(deps: Deps) -> StdResult<Option<MinterResponse>> {
   // Question 1: get TokenInfo
-  let meta = /* Do yourself! */;
+  let meta = /* Do it yourself! */;
 
   let minter = match meta.mint {
       Some(m) => Some(MinterResponse {

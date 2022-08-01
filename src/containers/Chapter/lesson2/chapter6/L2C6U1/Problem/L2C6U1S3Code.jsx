@@ -199,7 +199,7 @@ pub fn execute_mint(
 
   // Question 1: update supply
   // Question 2: enforce cap
-  // Do yourself!
+  // Do it yourself!
   
   TOKEN_INFO.save(deps.storage, &config)?;
 

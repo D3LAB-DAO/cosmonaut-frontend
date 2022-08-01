@@ -148,7 +148,7 @@ pub fn mint_to_cw721_contract(
 
         // Question 1: create ExecuteMsg::Mint
         msg: to_binary(
-            // Do yourself!
+            // Do it yourself!
         )?,
 
         funds: vec![],

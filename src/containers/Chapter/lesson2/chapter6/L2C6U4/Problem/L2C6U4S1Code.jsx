@@ -135,8 +135,8 @@ pub fn query_all_allowances(
 
     let allowances = ALLOWANCES
         .prefix(&owner_addr)
-        .range(/* Question 1: range */ /* Do yourself! */)
-        .take(/* Question 2: take */ /* Do yourself! */)
+        .range(/* Question 1: range */ /* Do it yourself! */)
+        .take(/* Question 2: take */ /* Do it yourself! */)
         .map(|item| {
             item.map(|(addr, allow)| AllowanceInfo {
                 spender: addr.into(),

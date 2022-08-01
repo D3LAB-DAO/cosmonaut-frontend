@@ -50,7 +50,7 @@ export const L1C6Pr = () => {
                 </li>
               </ListStyle>
               <BasicP>
-                Declare extension as type of struct{" "}
+                Declare extension as the type of struct{" "}
                 <CodeBlock>Metadata</CodeBlock> below.
               </BasicP>
             </ProblemSection>
@@ -65,7 +65,7 @@ export const L1C6Pr = () => {
                 </li>
               </ListStyle>
               <BasicP>
-                Declare <CodeBlock>freights</CodeBlock> as vector of{" "}
+                Declare <CodeBlock>freights</CodeBlock> as the vector of{" "}
                 <CodeBlock>Freight</CodeBlock>.
               </BasicP>
             </ProblemSection>
@@ -85,7 +85,7 @@ export const L1C6Pr = () => {
                 </li>
               </ListStyle>
               <BasicP>
-                Declare message <CodeBlock>Mint</CodeBlock> which extends{" "}
+                Declare message <CodeBlock>Mint</CodeBlock>, which extends{" "}
                 <CodeBlock>MintMsg</CodeBlock> of cw721_base with
                 <CodeBlock>Extension</CodeBlock> type.
               </BasicP>
@@ -157,7 +157,7 @@ export const L1C6Pr = () => {
                 {hide ? null : (
                   <>
                     <BasicP>
-                      We already has method <CodeBlock>execute</CodeBlock> in{" "}
+                      We already have a method <CodeBlock>execute</CodeBlock> in{" "}
                       <CodeBlock>self</CodeBlock>.
                     </BasicP>
                   </>
@@ -180,7 +180,7 @@ export const L1C6Pr = () => {
               <BasicP>
                 Iterate <CodeBlock>freights</CodeBlock> at{" "}
                 <CodeBlock>extension</CodeBlock> and collect elements whose{" "}
-                <CodeBlock>denom</CodeBlock> is the same as argument's one.
+                <CodeBlock>denom</CodeBlock> is the same as the argument's one.
               </BasicP>
 
               <HintButton onClick={async () => setHide(!hide)}>
@@ -210,14 +210,14 @@ export const L1C6Pr = () => {
                 <CodeBlock>extension</CodeBlock> if its amount is zero.
               </BasicP>
               <BasicP>
-                Otherwise, decrease amount of <CodeBlock>freight</CodeBlock>.
+                Otherwise, decrease the amount of <CodeBlock>freight</CodeBlock>.
               </BasicP>
 
               <HintButton onClick={async () => setHide(!hide)}>
                 <Hint hide={hide} />
                 {hide ? null : (
                   <>
-                    <BasicP>Don’t forget to check overflow.</BasicP>
+                    <BasicP>Do not forget to check overflow.</BasicP>
                   </>
                 )}
               </HintButton>

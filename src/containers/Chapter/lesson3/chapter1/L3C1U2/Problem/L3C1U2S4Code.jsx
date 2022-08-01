@@ -157,7 +157,7 @@ pub fn buy_fuel_token(
 
       // Question 1: create ExecuteMsg::BurnFrom
       msg: to_binary(
-          // Do yourself
+          // Do it yourself!
       )?,
 
       funds: vec![],
@@ -168,7 +168,7 @@ pub fn buy_fuel_token(
 
       // Question 2: create ExecuteMsg::Mint in cw20-base
       msg: to_binary(&cosmonaut_cw20::msg::ExecuteMsg::Mint {
-          // Do yourself
+          // Do it yourself!
       })?,
 
       funds: vec![],

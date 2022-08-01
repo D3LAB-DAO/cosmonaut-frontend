@@ -190,7 +190,7 @@ pub fn buy_money_token(
 
         // Question 1: create ExecuteMsg::Mint in cw20-base
         msg: to_binary(
-            // Do yourself!
+            // Do it yourself!
         )?,
 
         funds: vec![],

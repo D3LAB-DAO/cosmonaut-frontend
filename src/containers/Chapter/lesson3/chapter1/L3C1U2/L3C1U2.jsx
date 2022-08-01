@@ -233,8 +233,7 @@ function L3C1U2() {
                 the spaceship with fuel. Fortunately, There is no need to use{" "}
                 <CodeBlock>iter</CodeBlock> or <CodeBlock>find</CodeBlock>{" "}
                 because the target is stored in a single address, not in the
-                freight contracts stored as vectors. It’ll be a little bit
-                simpler.
+                vectors. It’ll be a little bit simpler.
               </BasicP>
               <BasicP>
                 The message <CodeBlock>FuelUp</CodeBlock> in{" "}

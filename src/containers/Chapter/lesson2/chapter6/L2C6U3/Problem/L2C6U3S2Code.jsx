@@ -130,10 +130,10 @@ pub fn query_token_info(deps: Deps) -> StdResult<TokenInfoResponse> {
 
   // Question 1: TokenInfoResponse
   let res = TokenInfoResponse {
-      name: /* Do yourself! */,
-      symbol: /* Do yourself! */,
-      decimals: /* Do yourself! */,
-      total_supply: /* Do yourself! */,
+      name: /* Do it yourself! */,
+      symbol: /* Do it yourself! */,
+      decimals: /* Do it yourself! */,
+      total_supply: /* Do it yourself! */,
   };
   Ok(res)
 }`;

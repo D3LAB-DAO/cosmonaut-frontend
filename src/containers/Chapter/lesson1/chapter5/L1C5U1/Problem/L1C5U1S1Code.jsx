@@ -43,7 +43,7 @@ const L1C5U1S1Code = ({ ex, difRes, difLoading, difSuccess }) => {
             <>
               <ListStyle>
                 <li>
-                  It's going to be like:
+                  It is going to be like:
                   <Markdown code={code1} />
                 </li>
                 <li>

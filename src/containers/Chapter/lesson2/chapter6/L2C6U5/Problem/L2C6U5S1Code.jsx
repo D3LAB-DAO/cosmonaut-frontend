@@ -162,7 +162,7 @@ pub fn execute_update_marketing(
 
     match marketing {
         // Question 1: update marketing
-        // Do yourself!
+        // Do it yourself!
     }
 
     if marketing_info.project.is_none()

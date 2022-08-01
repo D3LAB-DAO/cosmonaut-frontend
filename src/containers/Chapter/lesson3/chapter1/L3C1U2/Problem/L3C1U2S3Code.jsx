@@ -187,7 +187,7 @@ pub fn buy_freight_token(
 
       // Question 1: create ExecuteMsg::BurnFrom
       msg: to_binary(
-          // Do yourself
+          // Do it yourself!
       )?,
 
       funds: vec![],

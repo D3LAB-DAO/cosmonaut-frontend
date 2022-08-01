@@ -175,14 +175,14 @@ pub fn load_freight_to_nft(
   let token_extension: TokenExtension = deps.as_ref().querier.query_wasm_smart(
       address.clone(),
       // Question 1. query TokenExtension
-      // Do yourself!
+      // Do it yourself!
   )?;
 
   // Question 2. get unit_weight
-  // Do yourself!
+  // Do it yourself!
 
   // Question 3. compare unit_weight and MAX_FREIGHT_WEIGHT
-  if /* Do yourself! */ {
+  if /* Do it yourself! */ {
       return Err(ContractError::FrightOverloaded {});
   }
 

@@ -163,7 +163,7 @@ pub fn execute(
 ) -> Result<Response, ContractError> {
     match msg {
         // Question 1: expand ExecuteMsg with 'SetTokenExtension'
-        // Do yourself!
+        // Do it yourself!
 
         _ => cw20_execute(deps, env, info, msg.try_into()?),
     }

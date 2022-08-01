@@ -205,7 +205,7 @@ pub fn buy_spaceship(
   let nft_info: NftInfoResponse<Metadata> = deps.querier.query_wasm_smart(
       config.spaceship_cw721_contract.as_ref(),
       // Question 1: create Cw721QueryMsg::NftInfo at spaceship_cw721_contract
-      // Do yourself!
+      // Do it yourself!
   )?;
 
   let token_balance: BalanceResponse = deps.querier.query_wasm_smart(
@@ -232,7 +232,7 @@ pub fn buy_spaceship(
   });
 
   // Question 2: create Cw721ExecuteMsg::TransferNft msg
-  let transfer_nft_msg: cosmonaut_cw721::msg::ExecuteMsg = /* Do yourself! */
+  let transfer_nft_msg: cosmonaut_cw721::msg::ExecuteMsg = /* Do it yourself! */
 
   let transfer_nft_msg_wrap = CosmosMsg::Wasm(WasmMsg::Execute {
       contract_addr: config.spaceship_cw721_contract.to_string(),
