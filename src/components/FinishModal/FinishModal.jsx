@@ -4,7 +4,6 @@ import { useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
 import { useGetLessonPic } from "../../libs/api/getLessonPic";
 import { useGetUserProgress } from "../../libs/api/getUserProgress";
-import { usePostRead } from "../../libs/api/postRead";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
 import {
   ProgressBar0,
@@ -14,7 +13,6 @@ import {
   ProgressBar4,
 } from "../Common/ProgressBar";
 import error from "../../assets/images/dummy-nft.jpg";
-import { usePostInitial } from "../../libs/api/postInitial";
 
 const Container = tw.div`fixed h-screen bottom-0 w-full z-50 flex items-center bg-gray-900 bg-opacity-80`;
 const Button = tw.button`animate-bounce block mx-auto lg:mt-8 md:mt-4 md:mb-4 text-center lg:text-lg md:text-sm border-3 transition duration-200 rounded-full py-2 px-8 bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:border-white hover:to-blue-500 hover:text-white mt-3 text-xs`;
@@ -42,8 +40,6 @@ function FinishModal() {
   const onErrorImg = e => {
     e.target.src = error;
   };
-  console.log(lessonPic);
-  console.log(userRes.chapter);
 
   return (
     <>

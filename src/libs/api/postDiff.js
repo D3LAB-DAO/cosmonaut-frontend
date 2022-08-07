@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 export const useDiffApi = isLast => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [response, setResponse] = useState({});
   const { lessonID, chID, uID } = useParams();
@@ -23,7 +22,6 @@ export const useDiffApi = isLast => {
   };
   console.log(option);
   const fetchData = async () => {
-    setIsError(false);
     setIsLoading(true);
 
     try {
@@ -40,11 +38,10 @@ export const useDiffApi = isLast => {
       setIsSuccess(true);
     } catch (error) {
       console.log(error);
-      setIsError(true);
     }
 
     setIsLoading(false);
   };
 
-  return [response, isLoading, isSuccess, isError, fetchData];
+  return [response, isLoading, isSuccess, fetchData];
 };

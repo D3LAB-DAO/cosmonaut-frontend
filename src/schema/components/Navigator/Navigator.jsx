@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import Arrowleft from "../../../assets/images/arrow-left.svg";
 import Arrowright from "../../../assets/images/arrow-right.svg";
-import { useDiffApi } from "../../../libs/api/postDiff";
 import { usePostRead } from "../../../libs/api/postRead";
 import HandleSideMenu from "./Components/HandleSideMenu";
 
@@ -14,25 +13,22 @@ function Navigator() {
   const navigate = useNavigate();
   const nextUnit = Number(uID) + 1;
   const prevUnit = Number(uID) - 1;
-  const [readRes, readFetch] = usePostRead();
-  const [difRes, difLoading, difSuccess, difError, difFetch] = useDiffApi(true);
+  const [readRes, readFetch] = usePostRead(lessonID, chID);
 
-  useEffect(() => {
-    if (lessonID === "1" && chID === "4") {
-      console.log("Use diff API");
-    } else if (lessonID === "1" && chID === "5") {
-      console.log("Use diff API");
+  const handleRight = async () => {
+    if (lessonID === "0" && chID === "4" && uID === "2") {
+      await readFetch();
+    } else if (lessonID === "1" && chID === "1") {
+      await readFetch();
+    } else if (lessonID === "1" && chID === "2") {
+      await readFetch();
+    } else if (lessonID === "1" && chID === "3") {
+      await readFetch();
     } else if (lessonID === "1" && chID === "5" && uID === "2") {
-      console.log("Use diff API");
-      difFetch();
-    } else if (lessonID === "1" && chID === "6") {
-      console.log("Use run API");
-    } else {
-      readFetch();
+      await readFetch();
     }
-  }, []);
 
-  const handleRight = () => {
+    // lesson 0
     if (lessonID === "0" && chID === "1" && uID === "2") {
       return navigate(`/lesson/0/chapter/2/unit/1`);
     } else if (lessonID === "0" && chID === "2" && uID === "1") {

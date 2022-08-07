@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Editor from "@monaco-editor/react";
 import { useFmtApi } from "../../libs/api/postFmt";
 
@@ -6,33 +6,29 @@ export default function EditorResult({
   path,
   defaultLanguage,
   defaultValue,
-  answer,
   files,
   onChange,
   onMount,
-  onFormat,
-  onBuild,
-  difSuccess,
 }) {
-  const [fmtRes, fmtLoading, fmtSuccess, fmtError, fmtFetch] = useFmtApi({
+  const [fmtRes, fmtLoading, fmtSuccess, fmtError, fmtFetch] = useFmtApi(
     files,
-  });
-
+    path
+  );
   const fmtBtn = async () => {
     await fmtFetch();
   };
+
   return (
     <>
-      {difSuccess ? (
+      {fmtSuccess ? (
         <Editor
           height="60vh"
           theme="vs-dark"
           path={path}
           onChange={onChange}
           onMount={onMount}
-          defaultValue={defaultValue}
           defaultLanguage={defaultLanguage}
-          value={answer}
+          value={fmtRes}
         />
       ) : (
         <Editor
@@ -41,11 +37,11 @@ export default function EditorResult({
           path={path}
           onChange={onChange}
           onMount={onMount}
-          defaultValue={defaultValue}
           defaultLanguage={defaultLanguage}
-          value={fmtSuccess ? fmtRes : defaultValue}
+          value={defaultValue}
         />
       )}
+
       <div class="flex justify-end px-2 mt-1">
         <button
           onClick={fmtBtn}

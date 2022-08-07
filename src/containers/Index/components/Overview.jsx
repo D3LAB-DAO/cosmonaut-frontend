@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import tw from "tailwind-styled-components";
 import AngleRight from "../../../components/Common/Icon/AngleRight";
-import ProgressBar, {
+import {
   ProgressBar0,
   ProgressBar1,
   ProgressBar2,
@@ -41,9 +41,6 @@ function Overview(progress) {
     picFetch();
     userFetch();
   }, [lessonID]);
-
-  console.log(picRes);
-  console.log(userRes.chapter);
 
   const onErrorImg = e => {
     e.target.src = error;

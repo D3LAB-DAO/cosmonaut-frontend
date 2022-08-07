@@ -28,8 +28,7 @@ const Side = tw.div`lg:w-2/5 flex w-full px-4 items-center lg:px-12`;
 const ImgBulb = tw.div`md:py-2 flex justify-center text-orange-400 py-0`;
 
 function LSDesc() {
-  const { lessonID, chID, uID, sID } = useParams();
-  console.log(lessonID, chID);
+  const { lessonID, chID, uID } = useParams();
 
   const ChDesc = () => {
     if (lessonID === "1" && chID === "1" && uID === "0") {

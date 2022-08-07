@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 export const useCodeEx = () => {
   const { lessonID, chID } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState({});
   const option = {
     method: "GET",
@@ -10,17 +11,22 @@ export const useCodeEx = () => {
   };
 
   const fetchData = async () => {
+    setIsLoading(true);
     try {
       let res = await fetch(
         `http://127.0.0.1:8080/v1/cosm/code?lesson=${lessonID}&chapter=${chID}`,
         option
       );
       const data = await res.json();
-      setResponse(data);
+      let resResult = Object.fromEntries(
+        Object.entries(data).map(([key, value]) => [key, atob(value)])
+      );
+      setResponse(resResult);
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
 
-  return [response, fetchData];
+  return [response, isLoading, fetchData];
 };

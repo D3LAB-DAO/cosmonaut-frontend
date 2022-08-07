@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useFmtApi = ({ files }) => {
+export const useFmtApi = (files, tab) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -26,9 +26,7 @@ export const useFmtApi = ({ files }) => {
       let resResult = await Object.fromEntries(
         Object.entries(data.result).map(([key, value]) => [key, atob(value)])
       );
-
-      console.log(resResult.problem);
-      let response = resResult.problem;
+      let response = resResult[tab];
       await setResponse(response);
       await setIsSuccess(true);
     } catch (error) {

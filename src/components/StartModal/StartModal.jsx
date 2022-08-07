@@ -14,34 +14,28 @@ const ChTitle = tw.h3`h-1/2 w-full px-1 xl:pt-4 md:pt-3 pt-2 xl:text-sm text-cen
 
 function StartModal() {
   const { lessonID, chID } = useParams();
+  const [build, setBuild] = useState(false);
+  const [initLoading, initRes, initFetch] = usePostInitial(
+    lessonID,
+    chID,
+    build
+  );
 
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);
 
-  const [build, setBuild] = useState(false);
-  const [initLoading, initRes, initFetch] = usePostInitial(build);
-  const [readRes, readFetch] = usePostRead();
   useEffect(() => {
     if (lessonID === "1" && chID === "6") {
       setBuild(true);
     } else if (lessonID === "2" && chID === "8") {
       setBuild(true);
+    } else {
+      setBuild(false);
     }
   }, []);
 
   const closeModal = async () => {
     await initFetch();
-
-    if (lessonID === "1" && chID === "4") {
-      console.log("Use diff API");
-    } else if (lessonID === "1" && chID === "5") {
-      console.log("Use diff API");
-    } else if (lessonID === "1" && chID === "6") {
-      console.log("Use run API");
-    } else {
-      console.log("read fetch at start modal");
-      await readFetch();
-    }
     const modal = document.querySelectorAll("#modal");
     modal[0].classList.add("hidden");
   };

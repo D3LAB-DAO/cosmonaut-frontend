@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDiffApi } from "../../../../../libs/api/postDiff";
+import { codeAns } from "./L1C4U3Ans";
 import { codeEx } from "./L1C4U3Ex";
 import L1C4U3S1Code from "./Problem/L1C4U3S1Code";
 
 export const L1C4U3Pb = () => {
-  const [openTab, setOpenTab] = useState(1);
-  const [ex, setEx] = useState(codeEx.Q1);
-
-  const [difRes, difLoading, difSuccess, difError, difFetch] = useDiffApi(true);
-  const handleAns = async () => {
-    await difFetch();
-  };
   const { lessonID, chID, uID, pID } = useParams();
+  const [openTab, setOpenTab] = useState(1);
+  const [difSuccess, setDifSuccess] = useState(false);
+  const [ex, setEx] = useState(codeEx.Q1);
+  const [ans, setAns] = useState(codeAns.Q1);
+
+  const [response, isLoading, isSuccess, diffFetch] = useDiffApi(true);
+  const handleAns = async () => {
+    setDifSuccess(true);
+    await diffFetch();
+  };
+
   const navigate = useNavigate();
   const nextCh = async () => {
     if (lessonID === "1" && chID === "4" && uID === "3" && pID === "1") {
@@ -25,17 +30,17 @@ export const L1C4U3Pb = () => {
       <div class="flex container w-full mx-auto">
         {/* Side Tabs */}
         <div class="w-14">
-          <div class="rounded-l-xl text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center  transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading">
-            <button
-              onClick={e => {
-                e.preventDefault();
-                setOpenTab(1);
-                setEx(codeEx.Q1);
-              }}
-              class="focus:text-gray-900 transform"
-            >
-              1
-            </button>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={e => {
+              e.preventDefault();
+              setOpenTab(1);
+              setEx(codeEx.Q1);
+              setAns(codeAns.Q1);
+            }}
+            class="rounded-l-xl text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+          >
+            <button class="focus:text-gray-900 transform">1</button>
           </div>
         </div>
         {/* Code Editor */}
@@ -46,12 +51,7 @@ export const L1C4U3Pb = () => {
               : "hidden"
           }
         >
-          <L1C4U3S1Code
-            difRes={difRes.Q1}
-            difLoading={difLoading}
-            difSuccess={difSuccess}
-            ex={ex}
-          />
+          <L1C4U3S1Code difSuccess={difSuccess} ex={ex} ans={ans} />
         </button>
       </div>
       {difSuccess ? (
