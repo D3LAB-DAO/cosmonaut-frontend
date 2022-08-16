@@ -18,7 +18,6 @@ export const usePostRead = (lessonID, chID) => {
       chapter: Number(chID),
     }),
   };
-  console.log(option);
 
   const fetchData = async () => {
     try {

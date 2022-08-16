@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnsTabAble } from "../../../../../../components/CodeEditor/AnsTabAble";
+import EditorAnsHeader from "../../../../../../components/CodeEditor/EditorAnsHeader";
 import EditorCode from "../../../../../../components/CodeEditor/EditorCode";
 import EditorCodeHeader from "../../../../../../components/CodeEditor/EditorCodeHeader";
 import EditorDesc from "../../../../../../components/CodeEditor/EditorDesc";
@@ -12,8 +13,8 @@ import Hint from "../../../../../../components/Contents/Hint";
 import HintButton from "../../../../../../components/Contents/HintButton";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
-import Problem from "../../../../../../components/Contents/Problem";
 import ProblemSection from "../../../../../../components/Contents/ProblemSection";
+import Question from "../../../../../../components/Contents/Question";
 
 const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
   const [hide, setHide] = useState(true);
@@ -31,7 +32,7 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
       <EditorDesc>
         {/* Problem Section */}
         <ProblemSection>
-          <Problem>Problem</Problem>
+          <Question>Question</Question>
           <BasicP>
             Let's fill in the codes that correspond to the process from three to
             five.
@@ -69,8 +70,8 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
       <EditorCode>
         <MobileEnv />
         <div class="mb-1 px-4">
-          <EditorCodeHeader>
-            {difSuccess ? (
+          {difSuccess ? (
+            <EditorAnsHeader>
               <AnsTabAble
                 disabled={tab === "answer"}
                 onClick={async e => {
@@ -78,7 +79,9 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
                   setTab("answer");
                 }}
               />
-            ) : (
+            </EditorAnsHeader>
+          ) : (
+            <EditorCodeHeader>
               <ProblemTab
                 disabled={tab === "problem"}
                 onClick={async e => {
@@ -88,8 +91,9 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
               >
                 Problem
               </ProblemTab>
-            )}
-          </EditorCodeHeader>
+            </EditorCodeHeader>
+          )}
+
           <div class="mx-auto mb-1">
             {/* Mobile Version */}
             <div class="md:hidden block w-full bg-black py-4 px-5 h-quiz">

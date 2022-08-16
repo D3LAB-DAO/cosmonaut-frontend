@@ -41,6 +41,7 @@ function Overview(progress) {
     picFetch();
     userFetch();
   }, [lessonID]);
+  console.log(userRes);
 
   const onErrorImg = e => {
     e.target.src = error;

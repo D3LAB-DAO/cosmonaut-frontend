@@ -18,6 +18,7 @@ export const L1C5U1Pb = () => {
   const handleAns = async () => {
     setDifSuccess(true);
     await diffFetch();
+    console.log("L1C5U1 diff", response);
   };
 
   const navigate = useNavigate();

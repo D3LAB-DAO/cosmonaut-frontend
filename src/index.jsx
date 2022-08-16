@@ -11,12 +11,10 @@ const queryClient = new QueryClient();
 
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <App />
-        </RecoilRoot>
-      </QueryClientProvider>
-    </React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
+    </QueryClientProvider>
   </BrowserRouter>
 );

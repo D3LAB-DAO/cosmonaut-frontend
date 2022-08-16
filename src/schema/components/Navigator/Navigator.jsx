@@ -13,7 +13,9 @@ function Navigator() {
   const navigate = useNavigate();
   const nextUnit = Number(uID) + 1;
   const prevUnit = Number(uID) - 1;
+
   const [readRes, readFetch] = usePostRead(lessonID, chID);
+  console.log("Good Read", readRes);
 
   const handleRight = async () => {
     if (lessonID === "0" && chID === "4" && uID === "2") {
@@ -26,6 +28,8 @@ function Navigator() {
       await readFetch();
     } else if (lessonID === "1" && chID === "5" && uID === "2") {
       await readFetch();
+    } else {
+      console.log("No Read");
     }
 
     // lesson 0

@@ -5,7 +5,6 @@ import { useRecoilValue } from "recoil";
 import { chapterInfos } from "../../states/Information/chapterInfoAtoms";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
 import { usePostInitial } from "../../libs/api/postInitial";
-import { usePostRead } from "../../libs/api/postRead";
 
 const Navigate = tw.div`flex flex-wrap mt-5 mx-auto justify-center gap-3 rounded-3xl`;
 const Button = tw.button`bg-white  hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none hover:z-10 focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500 xl:h-44 md:h-36 h-32 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/6 rounded-xl border-2 border-indigo-900 ease-in-out duration-300 `;
@@ -20,7 +19,6 @@ function StartModal() {
     chID,
     build
   );
-
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);
 

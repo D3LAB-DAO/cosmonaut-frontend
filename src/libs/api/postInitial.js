@@ -23,6 +23,8 @@ export const usePostInitial = (lessonID, chID, build) => {
 
     try {
       let res = await fetch(`http://127.0.0.1:8080/v1/cosm/init`, option);
+      const data = await res.json();
+      console.log(data);
       setResponse(res);
     } catch (error) {
       console.log(error);

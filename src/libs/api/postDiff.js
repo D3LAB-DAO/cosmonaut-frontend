@@ -20,7 +20,8 @@ export const useDiffApi = isLast => {
       isLast: isLast,
     }),
   };
-  console.log(option);
+  console.log(option.body);
+
   const fetchData = async () => {
     setIsLoading(true);
 
