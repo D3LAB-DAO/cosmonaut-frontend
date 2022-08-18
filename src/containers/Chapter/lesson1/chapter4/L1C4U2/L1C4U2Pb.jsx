@@ -40,138 +40,127 @@ export const L1C4U2Pb = () => {
       <div class="flex container w-full mx-auto">
         {/* Side Tabs */}
         <div class="w-14 ">
-          <div
-            style={{ cursor: "pointer" }}
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(1);
               setEx(codeEx.Q1);
               setAns(codeAns.Q1);
             }}
-            class="rounded-tl-xl text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full rounded-tl-xl text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">1</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            1
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(2);
               setEx(codeEx.Q2);
               setAns(codeAns.Q2);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">2</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            2
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(3);
               setEx(codeEx.Q3);
               setAns(codeAns.Q3);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">3</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            3
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(4);
               setEx(codeEx.Q4);
               setAns(codeAns.Q4);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">4</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            4
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(5);
               setEx(codeEx.Q5);
               setAns(codeAns.Q5);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">5</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            5
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(6);
               setEx(codeEx.Q6);
               setAns(codeAns.Q6);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">6</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            6
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(7);
               setEx(codeEx.Q7);
               setAns(codeAns.Q7);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">7</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            7
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(8);
               setEx(codeEx.Q8);
               setAns(codeAns.Q8);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">8</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            8
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(9);
               setEx(codeEx.Q9);
               setAns(codeAns.Q9);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">9</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            9
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(10);
               setEx(codeEx.Q10);
               setAns(codeAns.Q10);
             }}
-            class="text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">10</button>
-          </div>
-          <div
-            style={{ cursor: "pointer" }}
+            10
+          </button>
+          <button
             onClick={e => {
               e.preventDefault();
               setOpenTab(11);
               setEx(codeEx.Q11);
               setAns(codeAns.Q11);
             }}
-            class="rounded-bl-xl text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full rounded-bl-xl text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
-            <button class="focus:text-gray-900 transform">11</button>
-          </div>
+            11
+          </button>
         </div>
         {/* Code Editor */}
         <button

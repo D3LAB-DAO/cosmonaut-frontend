@@ -11,7 +11,7 @@ function PracticePart(props) {
           Answers."
           <br />
           <br />
-          <p class="inline-block w-fit leading-snug text-purple-500 font-extrabold lg:text-sm text-xs">
+          <p class="inline-block w-fit leading-snug text-purple-300 font-extrabold lg:text-sm text-xs">
             All questions must be solved correctly before you can move on to the
             next chapter.
           </p>

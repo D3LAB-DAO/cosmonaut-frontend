@@ -22,6 +22,9 @@ export const Loading = () => {
         </svg>
         <h2 class="text-xl place-content-center font-extrabold text-orange-400">
           Deploying...
+          <p className="text-sm text-gray-200">
+            (It could take more than a minute)
+          </p>
         </h2>
       </div>
     </>

@@ -18,6 +18,7 @@ import ResultTab from "../../../../components/CodeEditor/ResultTab";
 import { codeEx } from "./L1C6Ex";
 import EditorPr from "../../../../components/CodeEditor/EditorPr";
 import { Loading } from "../../../../components/Common/Loading";
+import ResultCom from "../../../../components/Practice/ResultCom";
 
 export const L1C6Pr = () => {
   const { lessonID, chID, uID } = useParams();
@@ -31,11 +32,8 @@ export const L1C6Pr = () => {
     setFiles({ ...files, [tab]: btoa(code) });
   }, [code]);
 
-  const [executeRes, queryRes, runLoading, runError, runFetch] =
+  const [executeRes, queryRes, runLoading, runSuccess, runError, runFetch] =
     useRunApi(files);
-  console.log(executeRes);
-  console.log(queryRes);
-  console.log(runLoading);
 
   const navigate = useNavigate();
   const nextLesson = () => {
@@ -44,29 +42,6 @@ export const L1C6Pr = () => {
     }
   };
 
-  const handleClick = () => {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    let raw = JSON.stringify({
-      lesson: Number(lessonID),
-      chapter: Number(chID),
-      files: files,
-    });
-    let requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch("http://127.0.0.1:8080/v1/cosm/build", requestOptions)
-      .then(response => {
-        console.log(response.status);
-        return response.text();
-      })
-      .then(result => console.log(result))
-      .catch(error => console.log("error", error));
-  };
   return (
     <>
       <UnitName color={"rgba(86, 84, 141, 1)"} />
@@ -267,58 +242,69 @@ export const L1C6Pr = () => {
             <PracticeCode>
               <div class="mb-1 px-4">
                 <EditorAnsHeader>
-                  <div
-                    style={{ cursor: "pointer" }}
-                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1 bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    disabled={tab === "contract.rs"}
+                  <button
+                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
                     onClick={async e => {
                       e.preventDefault();
                       setTab("contract.rs");
                     }}
                   >
-                    <button class="focus:text-gray-900 transform">
-                      contract.rs
-                    </button>
-                  </div>
-                  <div
-                    style={{ cursor: "pointer" }}
+                    contract.rs
+                  </button>
+                  <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    disabled={tab === "execute.rs"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("error.rs");
+                    }}
+                  >
+                    error.rs
+                  </button>
+                  <button
+                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
                     onClick={async e => {
                       e.preventDefault();
                       setTab("execute.rs");
                     }}
                   >
-                    <button class="focus:text-gray-900 transform">
-                      execute.rs
-                    </button>
-                  </div>
-                  <div
-                    style={{ cursor: "pointer" }}
+                    execute.rs
+                  </button>
+                  <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    disabled={tab === "msg.rs"}
+                    onClick={async e => {
+                      e.preventDefault();
+                      setTab("lib.rs");
+                    }}
+                  >
+                    lib.rs
+                  </button>
+                  <button
+                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
                     onClick={async e => {
                       e.preventDefault();
                       setTab("msg.rs");
                     }}
                   >
-                    <button class="focus:text-gray-900 transform">
-                      msg.rs
-                    </button>
-                  </div>
-                  <div
-                    style={{ cursor: "pointer" }}
+                    msg.rs
+                  </button>
+                  <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    disabled={tab === "state.rs"}
                     onClick={async e => {
+                      e.preventDefault();
+                      setTab("query.rs");
+                    }}
+                  >
+                    query.rs
+                  </button>
+                  <button
+                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1 bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
+                    onClick={e => {
                       e.preventDefault();
                       setTab("state.rs");
                     }}
                   >
-                    <button class="focus:text-gray-900 transform">
-                      state.rs
-                    </button>
-                  </div>
+                    state.rs
+                  </button>
                 </EditorAnsHeader>
 
                 <div class="mx-auto mb-1">
@@ -335,7 +321,13 @@ export const L1C6Pr = () => {
                         onMount={editor => (editorRef.current = editor)}
                         files={files}
                       />
-                      <ResultTab></ResultTab>
+                      <ResultTab>
+                        <ResultCom
+                          runSuccess={runSuccess}
+                          executeRes={executeRes}
+                          queryRes={queryRes}
+                        />
+                      </ResultTab>
                     </>
                   )}
                 </div>
@@ -344,12 +336,23 @@ export const L1C6Pr = () => {
           </div>
         </div>
 
+        {executeRes.result === "success" && queryRes.result === "success" ? (
+          <div class="flex items-center justify-center md:mt-8 mt-3 ">
+            <button
+              type="button"
+              onClick={() => {
+                nextLesson();
+              }}
+              class=" md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-green-400 to-blue-500 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-gray-50"
+            >
+              Jump to Next Lesson
+            </button>
+          </div>
+        ) : null}
         <div class="flex items-center justify-center md:mt-8 mt-3 ">
           <button
             type="button"
-            onClick={() => {
-              nextLesson();
-            }}
+            onClick={nextLesson}
             class=" md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-green-400 to-blue-500 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-gray-50"
           >
             Jump to Next Lesson
@@ -358,7 +361,7 @@ export const L1C6Pr = () => {
         <div class="flex items-center justify-center md:mt-8 mt-3 ">
           <button
             type="button"
-            onClick={handleClick}
+            onClick={runFetch}
             class="md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105  bg-blue-700 hover:bg-blue-500 hover:text-white border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-white"
           >
             Check your Answer

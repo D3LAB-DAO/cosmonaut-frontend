@@ -24,7 +24,7 @@ const ResultTab = props => {
           </span>
         </div>
         <div class="mx-auto">
-          <div class="w-full h-24 py-2 px-5 text-md bg-black">
+          <div class="w-full h-auto py-1 px-4 text-md bg-black">
             {props.children}
           </div>
         </div>

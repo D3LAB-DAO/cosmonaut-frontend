@@ -29,6 +29,7 @@ import L2C6U5 from "../../containers/Chapter/lesson2/chapter6/L2C6U5/L2C6U5";
 import L2C7U1 from "../../containers/Chapter/lesson2/chapter7/L2C7U1/L2C7U1";
 import L2C7U2 from "../../containers/Chapter/lesson2/chapter7/L2C7U2/L2C7U2";
 import { L2C8Pr } from "../../containers/Chapter/lesson2/chapter8/L2C8Pr";
+
 import L3C1U1 from "../../containers/Chapter/lesson3/chapter1/L3C1U1/L3C1U1";
 import L3C1U2 from "../../containers/Chapter/lesson3/chapter1/L3C1U2/L3C1U2";
 import L3C1U3 from "../../containers/Chapter/lesson3/chapter1/L3C1U3/L3C1U3";
