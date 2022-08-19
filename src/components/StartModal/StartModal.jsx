@@ -5,9 +5,10 @@ import { useRecoilValue } from "recoil";
 import { chapterInfos } from "../../states/Information/chapterInfoAtoms";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
 import { usePostInitial } from "../../libs/api/postInitial";
+import classNames from "classnames";
 
 const Navigate = tw.div`flex flex-wrap mt-5 mx-auto justify-center gap-3 rounded-3xl`;
-const Button = tw.button`bg-white  hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none hover:z-10 focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500 xl:h-44 md:h-36 h-32 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/6 rounded-xl border-2 border-indigo-900 ease-in-out duration-300 `;
+const Button = tw.button`bg-white  hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none hover:z-10 focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500 xl:h-44 md:h-36 h-32 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/6 rounded-xl border-2 border-indigo-900 ease-in-out duration-300`;
 const ChNumber = tw.h2`h-1/2 w-full px-1 xl:pb-4 md:pb-3 pb-3 block md:text-base xl:text-lg text-xs font-heading text-indigo-900`;
 const ChTitle = tw.h3`h-1/2 w-full px-1 xl:pt-4 md:pt-3 pt-2 xl:text-sm text-center text-xs font-mono text-indigo-900`;
 
@@ -21,11 +22,17 @@ function StartModal() {
   );
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);
+  const [key, setKey] = useState(chID);
+  console.log(key);
 
   useEffect(() => {
     if (lessonID === "1" && chID === "6") {
       setBuild(true);
     } else if (lessonID === "2" && chID === "8") {
+      setBuild(true);
+    } else if (lessonID === "3" && chID === "3") {
+      setBuild(true);
+    } else if (lessonID === "4" && chID === "3") {
       setBuild(true);
     } else {
       setBuild(false);
@@ -33,9 +40,13 @@ function StartModal() {
   }, []);
 
   const closeModal = async () => {
-    await initFetch();
-    const modal = document.querySelectorAll("#modal");
-    modal[0].classList.add("hidden");
+    if (key < chID || key === "undefined") {
+      alert("Wrong Access");
+    } else {
+      await initFetch();
+      const modal = document.querySelectorAll("#modal");
+      modal[0].classList.add("hidden");
+    }
   };
   return (
     <>
@@ -52,12 +63,22 @@ function StartModal() {
               {engInfo[lessonID]?.title}
             </h4>
             <Navigate>
-              {chInfo[lessonID]?.map((e, index) => {
+              {chInfo[lessonID].map((e, index) => {
                 return (
-                  <Button>
+                  <Button
+                    onClick={async () => {
+                      await setKey(e.id);
+                    }}
+                    disabled={chID < String(e.id)}
+                    className={classNames(
+                      "xl:h-44 md:h-36 h-32 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/6 rounded-xl border-2 border-indigo-900",
+                      chID >= String(e.id)
+                        ? "hover:z-10 hover:bg-yellow-100 bg-white ease-in-out duration-300 focus:bg-yellow-500 focus:outline-none focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500"
+                        : "hover:bg-gray-400 active:bg-gray-400 bg-gray-400"
+                    )}
+                  >
                     <div
                       id="btn"
-                      key={index}
                       class="block w-full h-full p-4 items-center divide-y-2 divide-indigo-900 justify-center"
                     >
                       <ChNumber>Chapter {e.id}</ChNumber>
@@ -67,7 +88,6 @@ function StartModal() {
                 );
               })}
             </Navigate>
-
             <button
               onClick={closeModal}
               class="animate-moveUtoD block mt-12 mb-72 mx-auto md:mb-4 text-center text-lg border-3 transition duration-200 rounded-full py-2 px-8 bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:border-white hover:to-blue-500 hover:text-white"

@@ -13,7 +13,7 @@ export const L4C2U1Pb = () => {
   const [ex, setEx] = useState(codeEx.Q1);
   const [ans, setAns] = useState(codeAns.Q1);
 
-  const [response, isLoading, isSuccess, diffFetch] = useDiffApi(false);
+  const [response, isLoading, isSuccess, diffFetch] = useDiffApi(true);
   const handleAns = async () => {
     setDifSuccess(true);
     await diffFetch();
@@ -32,7 +32,7 @@ export const L4C2U1Pb = () => {
         {/* Side Tabs */}
         <div class="w-14 ">
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(1);
               setEx(codeEx.Q1);
@@ -43,7 +43,7 @@ export const L4C2U1Pb = () => {
             1
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(2);
               setEx(codeEx.Q2);

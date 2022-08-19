@@ -31,7 +31,7 @@ export const L2C7U1Pb = () => {
         {/* Side Tabs */}
         <div class="w-14 ">
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(1);
               setEx(codeEx.Q1);

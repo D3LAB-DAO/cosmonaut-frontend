@@ -41,9 +41,8 @@ function Overview(progress) {
     picFetch();
     userFetch();
   }, [lessonID]);
-  console.log(userRes);
 
-  const onErrorImg = e => {
+  const onErrorImg = (e) => {
     e.target.src = error;
   };
 
@@ -64,16 +63,17 @@ function Overview(progress) {
             </SubTitle>
 
             {lessonID === "0" ? (
-              <ProgressBar0 progress={userRes.chapter} />
+              <ProgressBar0 progress={userRes} />
             ) : lessonID === "1" ? (
-              <ProgressBar1 progress={userRes.chapter} />
+              <ProgressBar1 progress={userRes} />
             ) : lessonID === "2" ? (
-              <ProgressBar2 progress={userRes.chapter} />
+              <ProgressBar2 progress={userRes} />
             ) : lessonID === "3" ? (
-              <ProgressBar3 progress={userRes.chapter} />
+              <ProgressBar3 progress={userRes} />
             ) : lessonID === "4" ? (
-              <ProgressBar4 progress={userRes.chapter} />
+              <ProgressBar4 progress={userRes} />
             ) : null}
+
             <Desc>
               <div class="col-span-1">
                 <img
@@ -108,7 +108,7 @@ function Overview(progress) {
               </div>
 
               <ul class="col-span-2 list-disc xl:text-base md:text-sm text-xs font-normal text-indigo-900 md:ml-3 ml-5 md:mt-0 mt-3">
-                {goal[lessonID]?.map(e => (
+                {goal[lessonID]?.map((e) => (
                   <li key={e?.id}>{e?.goal}</li>
                 ))}
               </ul>
@@ -124,7 +124,7 @@ function Overview(progress) {
                 </h4>
               </div>
               <ul class="col-span-2 list-disc xl:text-base md:text-sm text-xs font-normal text-indigo-900 md:ml-3 ml-5 md:mt-0 mt-3">
-                {result[lessonID]?.map(e => (
+                {result[lessonID]?.map((e) => (
                   <li key={e?.id}>{e?.result}</li>
                 ))}
               </ul>

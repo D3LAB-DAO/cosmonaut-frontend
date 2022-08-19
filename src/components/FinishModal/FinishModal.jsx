@@ -37,7 +37,7 @@ function FinishModal() {
     picFetch();
     userFetch();
   }, []);
-  const onErrorImg = e => {
+  const onErrorImg = (e) => {
     e.target.src = error;
   };
 
@@ -66,15 +66,15 @@ function FinishModal() {
                   </p>
 
                   {lessonID === "0" ? (
-                    <ProgressBar0 progress={userRes.chapter} />
+                    <ProgressBar0 progress={userRes} />
                   ) : lessonID === "1" ? (
-                    <ProgressBar1 progress={userRes.chapter} />
+                    <ProgressBar1 progress={userRes} />
                   ) : lessonID === "2" ? (
-                    <ProgressBar2 progress={userRes.chapter} />
+                    <ProgressBar2 progress={userRes} />
                   ) : lessonID === "3" ? (
-                    <ProgressBar3 progress={userRes.chapter} />
+                    <ProgressBar3 progress={userRes} />
                   ) : lessonID === "4" ? (
-                    <ProgressBar4 progress={userRes.chapter} />
+                    <ProgressBar4 progress={userRes} />
                   ) : null}
                   <p class="block mx-auto px-4 py-0.5 rounded-full border-2 bg-gray-50 border-gray-500 text-gray-500 font-heading text-sm">
                     Completed
