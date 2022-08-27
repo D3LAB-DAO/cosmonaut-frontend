@@ -74,7 +74,7 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
             <EditorAnsHeader>
               <AnsTabAble
                 disabled={tab === "answer"}
-                onClick={async e => {
+                onClick={async (e) => {
                   e.preventDefault();
                   setTab("answer");
                 }}
@@ -84,7 +84,7 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
             <EditorCodeHeader>
               <ProblemTab
                 disabled={tab === "problem"}
-                onClick={async e => {
+                onClick={async (e) => {
                   e.preventDefault();
                   setTab("problem");
                 }}
@@ -94,7 +94,7 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
             </EditorCodeHeader>
           )}
 
-          <div class="mx-auto mb-1">
+          <div className="mx-auto mb-1">
             {/* Mobile Version */}
             <div class="md:hidden block w-full bg-black py-4 px-5 h-quiz">
               <h2 class="text-xl font-extrabold text-blue-500">
@@ -108,8 +108,8 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
                 defaultLanguage="rust"
                 defaultValue={ans}
                 path={"answer"}
-                onChange={async e => await setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
+                onChange={async (e) => await setCode(e)}
+                onMount={(editor) => (editorRef.current = editor)}
                 files={files}
               />
             ) : (
@@ -117,8 +117,8 @@ const L1C4U1S1Code = ({ ex, ans, difSuccess }) => {
                 defaultLanguage="rust"
                 defaultValue={ex}
                 path={tab}
-                onChange={async e => await setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
+                onChange={async (e) => await setCode(e)}
+                onMount={(editor) => (editorRef.current = editor)}
                 files={files}
               />
             )}

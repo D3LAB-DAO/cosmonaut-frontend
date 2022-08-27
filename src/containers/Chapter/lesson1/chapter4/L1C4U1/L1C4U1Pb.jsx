@@ -38,18 +38,18 @@ export const L1C4U1Pb = () => {
         {/* Side Tabs */}
         <div class="w-14 ">
           <button
-            onClick={e => {
+            onClick={async (e) => {
               e.preventDefault();
               setOpenTab(1);
               setEx(codeEx.Q1);
               setAns(codeAns.Q1);
             }}
-            class="w-full rounded-tl-xl text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900  transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
+            class="w-full rounded-tl-xl text-gray-300 bg-gray-100 focus:bg-blue-500 focus:text-gray-900 transform h-12 justify-center transition ease-in-out hover:scale-105 hover:text-gray-900 flex items-center py-2 lg:text-base text-xs font-heading"
           >
             1
           </button>
           <button
-            onClick={e => {
+            onClick={async (e) => {
               e.preventDefault();
               setOpenTab(2);
               setEx(codeEx.Q2);
@@ -60,7 +60,7 @@ export const L1C4U1Pb = () => {
             2
           </button>
           <button
-            onClick={e => {
+            onClick={async (e) => {
               e.preventDefault();
               setOpenTab(3);
               setEx(codeEx.Q3);
@@ -71,7 +71,7 @@ export const L1C4U1Pb = () => {
             3
           </button>
           <button
-            onClick={e => {
+            onClick={async (e) => {
               e.preventDefault();
               setOpenTab(4);
               setEx(codeEx.Q4);
@@ -82,7 +82,7 @@ export const L1C4U1Pb = () => {
             4
           </button>
           <button
-            onClick={e => {
+            onClick={async (e) => {
               e.preventDefault();
               setOpenTab(5);
               setEx(codeEx.Q5);
@@ -93,7 +93,7 @@ export const L1C4U1Pb = () => {
             5
           </button>
           <button
-            onClick={e => {
+            onClick={async (e) => {
               e.preventDefault();
               setOpenTab(6);
               setEx(codeEx.Q6);
@@ -104,7 +104,7 @@ export const L1C4U1Pb = () => {
             6
           </button>
           <button
-            onClick={e => {
+            onClick={async (e) => {
               e.preventDefault();
               setOpenTab(7);
               setEx(codeEx.Q7);
@@ -115,7 +115,7 @@ export const L1C4U1Pb = () => {
             7
           </button>
           <button
-            onClick={e => {
+            onClick={async (e) => {
               e.preventDefault();
               setOpenTab(8);
               setEx(codeEx.Q8);
@@ -127,7 +127,7 @@ export const L1C4U1Pb = () => {
           </button>
         </div>
         {/* Code Editor */}
-        <button
+        <div
           className={
             openTab === 1
               ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
@@ -135,8 +135,9 @@ export const L1C4U1Pb = () => {
           }
         >
           <L1C4U1S1Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
+        </div>
+
+        <div
           className={
             openTab === 2
               ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
@@ -144,8 +145,8 @@ export const L1C4U1Pb = () => {
           }
         >
           <L1C4U1S2Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
+        </div>
+        <div
           className={
             openTab === 3
               ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
@@ -153,8 +154,8 @@ export const L1C4U1Pb = () => {
           }
         >
           <L1C4U1S3Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
+        </div>
+        <div
           className={
             openTab === 4
               ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
@@ -162,8 +163,8 @@ export const L1C4U1Pb = () => {
           }
         >
           <L1C4U1S4Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
+        </div>
+        <div
           className={
             openTab === 5
               ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
@@ -171,8 +172,8 @@ export const L1C4U1Pb = () => {
           }
         >
           <L1C4U1S5Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
+        </div>
+        <div
           className={
             openTab === 6
               ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
@@ -180,8 +181,8 @@ export const L1C4U1Pb = () => {
           }
         >
           <L1C4U1S6Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
+        </div>
+        <div
           className={
             openTab === 7
               ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
@@ -189,8 +190,8 @@ export const L1C4U1Pb = () => {
           }
         >
           <L1C4U1S7Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
+        </div>
+        <div
           className={
             openTab === 8
               ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
@@ -198,7 +199,7 @@ export const L1C4U1Pb = () => {
           }
         >
           <L1C4U1S8Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
+        </div>
       </div>
 
       {difSuccess ? (

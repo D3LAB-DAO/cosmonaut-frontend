@@ -31,6 +31,7 @@ export default function EditorResult({
           onMount={onMount}
           defaultLanguage={defaultLanguage}
           value={fmtRes}
+          options={{ minimap: { enabled: false } }}
         />
       ) : (
         <Editor
@@ -41,9 +42,14 @@ export default function EditorResult({
           onMount={onMount}
           defaultLanguage={defaultLanguage}
           value={defaultValue}
+          options={{
+            minimap: { enabled: false },
+            scrollbar: {
+              verticalHasArrows: true,
+            },
+          }}
         />
       )}
-
       <div class="flex justify-end px-2 mt-1">
         <button
           onClick={fmtBtn}

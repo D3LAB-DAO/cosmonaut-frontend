@@ -10,6 +10,7 @@ export default function EditorPr({
   onChange,
   onMount,
   exCode,
+  readOnly,
 }) {
   const [fmtRes, fmtLoading, fmtSuccess, fmtError, fmtFetch] = useFmtApi(
     files,
@@ -30,6 +31,7 @@ export default function EditorPr({
           onMount={onMount}
           defaultLanguage={defaultLanguage}
           value={fmtRes}
+          options={{ minimap: { enabled: false }, readOnly: readOnly }}
         />
       ) : (
         <Editor
@@ -41,6 +43,7 @@ export default function EditorPr({
           defaultLanguage={defaultLanguage}
           defaultValue={exCode}
           value={defaultValue}
+          options={{ minimap: { enabled: false }, readOnly: readOnly }}
         />
       )}
 

@@ -26,6 +26,7 @@ export const L1C6Pr = () => {
   const editorRef = useRef(null);
   const [tab, setTab] = useState("contract.rs");
   const [code, setCode] = useState();
+  const [readOnly, setReadOnly] = useState(false);
 
   const [files, setFiles] = useState({});
   useEffect(() => {
@@ -244,63 +245,70 @@ export const L1C6Pr = () => {
                 <EditorAnsHeader>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={async e => {
+                    onClick={async (e) => {
                       e.preventDefault();
                       setTab("contract.rs");
+                      setReadOnly(false);
                     }}
                   >
                     contract.rs
                   </button>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={async e => {
+                    onClick={async (e) => {
                       e.preventDefault();
                       setTab("error.rs");
+                      setReadOnly(true);
                     }}
                   >
                     error.rs
                   </button>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={async e => {
+                    onClick={async (e) => {
                       e.preventDefault();
                       setTab("execute.rs");
+                      setReadOnly(false);
                     }}
                   >
                     execute.rs
                   </button>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={async e => {
+                    onClick={async (e) => {
                       e.preventDefault();
                       setTab("lib.rs");
+                      setReadOnly(true);
                     }}
                   >
                     lib.rs
                   </button>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={async e => {
+                    onClick={async (e) => {
                       e.preventDefault();
                       setTab("msg.rs");
+                      setReadOnly(false);
                     }}
                   >
                     msg.rs
                   </button>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={async e => {
+                    onClick={async (e) => {
                       e.preventDefault();
                       setTab("query.rs");
+                      setReadOnly(true);
                     }}
                   >
                     query.rs
                   </button>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1 bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={e => {
+                    onClick={(e) => {
                       e.preventDefault();
                       setTab("state.rs");
+                      setReadOnly(false);
                     }}
                   >
                     state.rs
@@ -317,9 +325,10 @@ export const L1C6Pr = () => {
                         exCode={codeEx[tab]}
                         defaultValue={code}
                         path={tab}
-                        onChange={async e => await setCode(e)}
-                        onMount={editor => (editorRef.current = editor)}
+                        onChange={async (e) => await setCode(e)}
+                        onMount={(editor) => (editorRef.current = editor)}
                         files={files}
+                        readOnly={readOnly}
                       />
                       <ResultTab>
                         <ResultCom
