@@ -244,7 +244,27 @@ export const L1C6Pr = () => {
               <div class="mb-1 px-4">
                 <EditorAnsHeader>
                   <button
-                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
+                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1 bg-purple-500 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setTab("state.rs");
+                      setReadOnly(false);
+                    }}
+                  >
+                    state.rs
+                  </button>
+                  <button
+                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-purple-500 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      setTab("msg.rs");
+                      setReadOnly(false);
+                    }}
+                  >
+                    msg.rs
+                  </button>
+                  <button
+                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-purple-500 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
                     onClick={async (e) => {
                       e.preventDefault();
                       setTab("contract.rs");
@@ -252,6 +272,17 @@ export const L1C6Pr = () => {
                     }}
                   >
                     contract.rs
+                  </button>
+
+                  <button
+                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-purple-500 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      setTab("execute.rs");
+                      setReadOnly(false);
+                    }}
+                  >
+                    execute.rs
                   </button>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
@@ -267,16 +298,6 @@ export const L1C6Pr = () => {
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
                     onClick={async (e) => {
                       e.preventDefault();
-                      setTab("execute.rs");
-                      setReadOnly(false);
-                    }}
-                  >
-                    execute.rs
-                  </button>
-                  <button
-                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={async (e) => {
-                      e.preventDefault();
                       setTab("lib.rs");
                       setReadOnly(true);
                     }}
@@ -287,31 +308,11 @@ export const L1C6Pr = () => {
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
                     onClick={async (e) => {
                       e.preventDefault();
-                      setTab("msg.rs");
-                      setReadOnly(false);
-                    }}
-                  >
-                    msg.rs
-                  </button>
-                  <button
-                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={async (e) => {
-                      e.preventDefault();
                       setTab("query.rs");
                       setReadOnly(true);
                     }}
                   >
                     query.rs
-                  </button>
-                  <button
-                    class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1 bg-orange-400 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setTab("state.rs");
-                      setReadOnly(false);
-                    }}
-                  >
-                    state.rs
                   </button>
                 </EditorAnsHeader>
 
@@ -330,13 +331,13 @@ export const L1C6Pr = () => {
                         files={files}
                         readOnly={readOnly}
                       />
-                      <ResultTab>
+                      {/* <ResultTab>
                         <ResultCom
                           runSuccess={runSuccess}
                           executeRes={executeRes}
                           queryRes={queryRes}
                         />
-                      </ResultTab>
+                      </ResultTab> */}
                     </>
                   )}
                 </div>

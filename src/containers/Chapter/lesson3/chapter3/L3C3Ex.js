@@ -200,7 +200,8 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
         QueryMsg::Config {} => query::config(deps),
     }
 }`,
-  "error.rs": `use cosmwasm_std::StdError;
+  "error.rs": `
+  use cosmwasm_std::StdError;
   use thiserror::Error;
   
   #[derive(Error, Debug)]

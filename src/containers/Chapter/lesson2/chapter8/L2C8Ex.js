@@ -1,6 +1,6 @@
 export const codeEx = {
   "contract.rs": `
-    #[cfg(not(feature = "library"))]
+#[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
 use std::convert::TryInto;
 
@@ -110,7 +110,8 @@ pub fn query(deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
         _ => cw20_query(deps, env, msg.try_into()?),
     }
 }`,
-  "execute.rs": `use crate::contract::{TokenExtension, TOKEN_EXTENSION};
+  "execute.rs": `
+  use crate::contract::{TokenExtension, TOKEN_EXTENSION};
   use cosmwasm_std::{DepsMut, MessageInfo, Response, Uint128};
   use cw20_base::state::{MinterData, TOKEN_INFO};
   use cw20_base::ContractError;
