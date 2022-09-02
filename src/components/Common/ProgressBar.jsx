@@ -16,6 +16,7 @@ export const ProgressBar0 = (progress) => {
         setWidth(5);
     }
   }, [progress]);
+
   return (
     <>
       <Container>

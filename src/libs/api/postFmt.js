@@ -22,7 +22,7 @@ export const useFmtApi = (files, tab) => {
     try {
       let res = await fetch("http://127.0.0.1:8080/v1/rust/fmt", option);
       const data = await res.json();
-      console.log(Object.entries(data.result));
+
       let resResult = await Object.fromEntries(
         Object.entries(data.result).map(([key, value]) => [key, atob(value)])
       );
@@ -30,7 +30,6 @@ export const useFmtApi = (files, tab) => {
       await setResponse(response);
       await setIsSuccess(true);
     } catch (error) {
-      console.log(error);
       setIsError(true);
     }
 

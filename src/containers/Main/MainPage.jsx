@@ -13,7 +13,6 @@ function MainPage() {
       <Navbar />
       <Intro />
       <About />
-
       <Learn />
       <Special />
       <Made />

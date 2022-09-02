@@ -45,8 +45,6 @@ function Navigator() {
       await readFetch();
     } else if (lessonID === "4" && chID === "1") {
       await readFetch();
-    } else {
-      console.log("No Read");
     }
 
     // lesson 0

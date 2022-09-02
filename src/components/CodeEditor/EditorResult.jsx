@@ -24,7 +24,7 @@ export default function EditorResult({
     <>
       {fmtSuccess ? (
         <Editor
-          height="60vh"
+          height="80vh"
           theme="vs-dark"
           path={path}
           onChange={onChange}
@@ -35,7 +35,7 @@ export default function EditorResult({
         />
       ) : (
         <Editor
-          height="60vh"
+          height="80vh"
           theme="vs-dark"
           path={path}
           onChange={onChange}

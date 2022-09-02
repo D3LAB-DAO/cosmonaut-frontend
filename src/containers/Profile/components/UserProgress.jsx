@@ -27,11 +27,11 @@ function UserProgress() {
   const [thrPro, thrProgress] = useGetUserProgress(3);
   const [fourPro, fourProgress] = useGetUserProgress(4);
 
-  const [zero, setZero] = useState("tbu");
-  const [fir, setFir] = useState("tbu");
-  const [sec, setSec] = useState("tbu");
-  const [thr, setThr] = useState("tbu");
-  const [four, setFour] = useState("tbu");
+  const [zero, setZero] = useState("0%");
+  const [fir, setFir] = useState("0%");
+  const [sec, setSec] = useState("0%");
+  const [thr, setThr] = useState("0%");
+  const [four, setFour] = useState("0%");
 
   useEffect(() => {
     zeroFetch();
@@ -45,6 +45,59 @@ function UserProgress() {
     thrProgress();
     fourProgress();
   }, []);
+
+  useEffect(() => {
+    switch (zeroPro) {
+      case 0:
+        setZero("Completed");
+        break;
+      case -1:
+        setZero("0%");
+        break;
+      default:
+        setZero("Progress");
+    }
+    switch (firPro) {
+      case 0:
+        setFir("Completed");
+        break;
+      case -1:
+        setFir("0%");
+        break;
+      default:
+        setFir("Progress");
+    }
+    switch (secPro) {
+      case 0:
+        setSec("Completed");
+        break;
+      case -1:
+        setSec("0%");
+        break;
+      default:
+        setSec("Progress");
+    }
+    switch (thrPro) {
+      case 0:
+        setThr("Completed");
+        break;
+      case -1:
+        setThr("0%");
+        break;
+      default:
+        setThr("Progress");
+    }
+    switch (fourPro) {
+      case 0:
+        setFour("Completed");
+        break;
+      case -1:
+        setFour("0%");
+        break;
+      default:
+        setFour("Progress");
+    }
+  }, [zeroPro, firPro, secPro, thrPro, fourPro]);
 
   const onErrorImg = (e) => {
     e.target.src = error;

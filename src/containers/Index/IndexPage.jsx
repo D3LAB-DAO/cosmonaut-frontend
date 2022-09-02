@@ -9,7 +9,7 @@ import { useRecoilValue } from "recoil";
 import { indexInfo } from "../../states/Information/indexInfo";
 import { useEffect } from "react";
 
-const Container = tw.div`relative lg:pb-20 bg-cover bg-center bg-opacity-10 lg:pt-32`;
+const Container = tw.div`z-30 h-auto relative lg:pb-20 bg-cover bg-center bg-opacity-10 lg:pt-32`;
 const Curriculum = tw.div`w-full mb-14 lg:mb-0 lg:col-span-1 col-span-2 lg:order-2 order-1`;
 const Title = tw.h2`text-2xl md:text-4xl text-center lg:text-left mt-2 text-orange-400 lg:mb-8 mb-6 font-heading`;
 const LessonList = tw.div`md:space-y-5 space-y-3 md:mx-0 mx-6`;
@@ -29,12 +29,21 @@ function IndexPage() {
   return (
     <>
       <Navbar />
-      <Container
+      <div
+        class="z-30 h-auto relative lg:pb-20 bg-cover bg-center bg-opacity-10 lg:pt-32"
         style={{
           height: "1100px",
           backgroundImage: `url(${require("../../assets/images/25-spacehole-2x.jpg")})`,
         }}
       >
+        {/* <video
+          class="object-cover z-0 absolute top-0 left-1/2 w-full h-[1100px]"
+          muted
+          autoPlay
+          loop
+          src="../../assets/indexbg.mp4"
+        ></video> */}
+
         <div class="container lg:px-8 mx-auto relative mb-24">
           <div class="grid grid-cols-2 w-full mx-auto lg:gap-12 lg:-mx-4">
             <Overview />
@@ -81,7 +90,8 @@ function IndexPage() {
             </Curriculum>
           </div>
         </div>
-      </Container>
+      </div>
+
       <Footer />
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
-
 import LogoV4 from "../../assets/images/logo-v4.svg";
 import { LoginState } from "../../states/login";
 import Profile from "../Common/Profile";
@@ -31,7 +30,7 @@ function Navbar() {
   };
   loginCheck();
 
-  window.addEventListener("scroll", e => {
+  window.addEventListener("scroll", (e) => {
     if (window.scrollY > 1) {
       const navbar = document.querySelectorAll("#navbar");
       navbar[0].classList.add("opacity-0");

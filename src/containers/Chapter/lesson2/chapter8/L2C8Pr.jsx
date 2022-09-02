@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import PracticePart from "../../../../components/CodeEditor/PracticePart";
-import UnitName from "../../../../components/Common/UnitName";
 import BgV4 from "../../../../assets/images/bg-v4.svg";
 import EditorDesc from "../../../../components/CodeEditor/EditorDesc";
 import ProblemSection from "../../../../components/Contents/ProblemSection";
@@ -16,9 +15,9 @@ import { useRunApi } from "../../../../libs/api/postRun";
 import PracticeCode from "../../../../components/CodeEditor/PracticeCode";
 import { codeEx } from "./L2C8Ex";
 import EditorPr from "../../../../components/CodeEditor/EditorPr";
+import TabHeader from "../../../../components/Practice/TabHeader";
+import PracticeName from "../../../../components/Practice/PracticeName";
 import ResultTab from "../../../../components/CodeEditor/ResultTab";
-import ResultCom from "../../../../components/Practice/ResultCom";
-import EditorAnsHeader from "../../../../components/CodeEditor/EditorAnsHeader";
 
 export const L2C8Pr = () => {
   const { lessonID, chID, uID } = useParams();
@@ -45,12 +44,22 @@ export const L2C8Pr = () => {
 
   return (
     <>
-      <UnitName color={"rgba(86, 84, 141, 1)"} />
+      <PracticeName color={"rgba(86, 84, 141, 1)"} />
       <div
         style={{ backgroundImage: `url(${BgV4})` }}
         class="pt-8 pb-20 md:px-6 px-4 lg:px-10 bg-black bg-cover bg-center md:pt-8"
       >
-        <PracticePart />
+        <PracticePart lesson={lessonID} />
+        {runSuccess && (
+          <ResultTab
+            executeState={executeRes?.result}
+            queryState={queryRes?.result}
+            executeIncorrect={executeRes?.differences}
+            queryIncorrect={queryRes?.differences}
+            executeError={executeRes?.errors}
+            queryError={queryRes?.errors}
+          />
+        )}
         <div class="flex container w-full mx-auto">
           {/* Problem Part */}
           <div class="flex flex-wrap h-auto bg-indigo-900 rounded-2xl">
@@ -168,7 +177,7 @@ export const L2C8Pr = () => {
             {/* Code Editor Part */}
             <PracticeCode>
               <div className="mb-1 px-4">
-                <EditorAnsHeader>
+                <TabHeader>
                   <button
                     class="block mr-[1px] py-3 px-2 md:px-4 md:mb-0 mb-1  bg-purple-500 font-bold text-xs rounded-t-md transform transition ease-in-out focus:scale-105 focus:text-gray-900 hover:scale-110"
                     onClick={async (e) => {
@@ -219,7 +228,7 @@ export const L2C8Pr = () => {
                   >
                     msg.rs
                   </button>
-                </EditorAnsHeader>
+                </TabHeader>
 
                 <div className="mx-auto mb-1">
                   {runLoading ? (
@@ -236,13 +245,6 @@ export const L2C8Pr = () => {
                         files={files}
                         readOnly={readOnly}
                       />
-                      {/* <ResultTab>
-                        <ResultCom
-                          runSuccess={runSuccess}
-                          executeRes={executeRes}
-                          queryRes={queryRes}
-                        />
-                      </ResultTab> */}
                     </>
                   )}
                 </div>
@@ -255,32 +257,25 @@ export const L2C8Pr = () => {
           <div class="flex items-center justify-center md:mt-8 mt-3 ">
             <button
               type="button"
-              onClick={nextLesson}
-              class="md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-green-400 to-blue-500 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-gray-50"
+              onClick={() => {
+                nextLesson();
+              }}
+              class=" md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-green-400 to-blue-500 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-gray-50"
             >
               Jump to Next Lesson
             </button>
           </div>
-        ) : null}
-        <div class="flex items-center justify-center md:mt-8 mt-3 ">
-          <button
-            type="button"
-            onClick={nextLesson}
-            class=" md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-green-400 to-blue-500 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-gray-50"
-          >
-            Jump to Next Lesson
-          </button>
-        </div>
-
-        <div class="flex items-center justify-center md:mt-8 mt-3 ">
-          <button
-            type="button"
-            onClick={runFetch}
-            class="md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105  bg-blue-700 hover:bg-blue-500 hover:text-white border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-white"
-          >
-            Check your Answer
-          </button>
-        </div>
+        ) : (
+          <div class="flex items-center justify-center md:mt-8 mt-3 ">
+            <button
+              type="button"
+              onClick={runFetch}
+              class="md:w-auto rounded-full text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-purple-500 to-purple-200 hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-200 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-white"
+            >
+              Deploy the code
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
