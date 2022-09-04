@@ -132,8 +132,8 @@ function StartModal() {
     if (key === "999") {
       chState = (
         <>
-          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-purple-400 block w-full font-extrabold underline">
-            Go To Advanced
+          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-white block w-full font-extrabold underline">
+            Ready to Try Advanced?
           </h3>
         </>
       );
@@ -150,8 +150,8 @@ function StartModal() {
     if (key === "999") {
       chState = (
         <>
-          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-purple-500 block w-full font-extrabold underline">
-            Go To Advanced
+          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-white block w-full font-extrabold underline">
+            Ready to Try Advanced?
           </h3>
         </>
       );
