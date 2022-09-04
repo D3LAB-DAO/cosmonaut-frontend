@@ -25,6 +25,7 @@ function StartModal() {
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);
   const [key, setKey] = useState(chID);
+  const [adKey, setAdKey] = useState();
   const [userRes, userFetch] = useGetUserProgress(lessonID);
 
   useEffect(() => {
@@ -51,6 +52,14 @@ function StartModal() {
     await initFetch();
     const modal = document.querySelectorAll("#modal");
     modal[0].classList.add("hidden");
+
+    if (String(adKey) === "11") {
+      return navigate(`/advanced/1/index/0`);
+    } else if (String(adKey) === "22") {
+      return navigate(`/advanced/2/index/0`);
+    } else if (String(adKey) === "44") {
+      return navigate(`/advanced/3/index/0`);
+    }
 
     if (lessonID === "1" && String(key) === "1") {
       return navigate(`/lesson/1/chapter/1/unit/0`);
@@ -102,6 +111,15 @@ function StartModal() {
   };
 
   let chState;
+  // if (key === "999") {
+  //   chState = (
+  //     <>
+  //       <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-purple-500 block w-full font-extrabold underline">
+  //         Go To Advanced
+  //       </h3>
+  //     </>
+  //   );
+  // }
   if (proChapter === "0") {
     chState = (
       <>
@@ -111,21 +129,72 @@ function StartModal() {
       </>
     );
   } else if (key < proChapter) {
-    chState = (
-      <>
-        <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-orange-400 block w-full font-extrabold underline">
-          You've already done this chapter
-        </h3>
-      </>
-    );
+    if (key === "999") {
+      chState = (
+        <>
+          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-purple-400 block w-full font-extrabold underline">
+            Go To Advanced
+          </h3>
+        </>
+      );
+    } else {
+      chState = (
+        <>
+          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-orange-400 block w-full font-extrabold underline">
+            You've already done this chapter
+          </h3>
+        </>
+      );
+    }
   } else if (key > proChapter) {
-    chState = (
-      <>
-        <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-red-500 block w-full font-extrabold underline">
-          You don't have access to this chapter yet
-        </h3>
-      </>
-    );
+    if (key === "999") {
+      chState = (
+        <>
+          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-purple-500 block w-full font-extrabold underline">
+            Go To Advanced
+          </h3>
+        </>
+      );
+    } else {
+      chState = (
+        <>
+          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-red-500 block w-full font-extrabold underline">
+            You don't have access to this chapter yet
+          </h3>
+        </>
+      );
+    }
+  }
+
+  let title = "";
+  switch (lessonID) {
+    case "1":
+      title = "CW2981 Royalties";
+      break;
+    case "2":
+      title = "CW1155";
+      break;
+    case "4":
+      title = "Create Real Random Numbers";
+      break;
+    default:
+      title = "tbu";
+      break;
+  }
+
+  let advKey = "";
+  switch (lessonID) {
+    case "1":
+      advKey = "11";
+      break;
+    case "2":
+      advKey = "22";
+      break;
+    case "4":
+      advKey = "44";
+      break;
+    default:
+      break;
   }
 
   return (
@@ -148,6 +217,7 @@ function StartModal() {
                   <Button
                     onClick={() => {
                       setKey(e.id);
+                      setAdKey("");
                     }}
                     // disabled={chID < String(e.id)}
                     className={classNames(
@@ -170,6 +240,21 @@ function StartModal() {
                   </Button>
                 );
               })}
+              <Button
+                onClick={() => {
+                  setAdKey(advKey);
+                  setKey("999");
+                }}
+                className="bg-white hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none hover:z-10 focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500"
+              >
+                <div
+                  id="btn"
+                  class="block w-full h-full p-6 items-center divide-y-2 divide-indigo-900 justify-center"
+                >
+                  <ChNumber>Advanced</ChNumber>
+                  <ChTitle>{title}</ChTitle>
+                </div>
+              </Button>
             </Navigate>
             {chState}
             {proChapter >= String(key) && (

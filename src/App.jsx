@@ -10,6 +10,7 @@ import { EpiloguePage } from "./containers/Epilogue/EpiloguePage";
 import { AppendixPage } from "./containers/Appendix/AppendixPage";
 import IndexInitialPage from "./containers/Index/IndexInitialPage";
 import ProblemPage from "./containers/Problem/ProblemPage";
+import AdvancePage from "./containers/Advanced/AdvancePage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           />
           <Route path="/epilogue" element={<EpiloguePage />} />
           <Route path="/appendix/:aID" element={<AppendixPage />} />
+          <Route path="/advanced/:adID/index/:iID" element={<AdvancePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ScrollToTop>

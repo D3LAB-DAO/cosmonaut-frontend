@@ -9,7 +9,6 @@ import { useRecoilValue } from "recoil";
 import { indexInfo } from "../../states/Information/indexInfo";
 import { useEffect } from "react";
 
-const Container = tw.div`z-30 h-auto relative lg:pb-20 bg-cover bg-center bg-opacity-10 lg:pt-32`;
 const Curriculum = tw.div`w-full mb-14 lg:mb-0 lg:col-span-1 col-span-2 lg:order-2 order-1`;
 const Title = tw.h2`text-2xl md:text-4xl text-center lg:text-left mt-2 text-orange-400 lg:mb-8 mb-6 font-heading`;
 const LessonList = tw.div`md:space-y-5 space-y-3 md:mx-0 mx-6`;
@@ -67,6 +66,7 @@ function IndexPage() {
                     </LessonList>
                   );
                 })}
+
                 {!(userRes === -1) || lessonID === "0" ? (
                   <>
                     <Link to={startLesson}>
