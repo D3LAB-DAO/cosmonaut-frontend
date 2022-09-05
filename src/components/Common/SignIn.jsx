@@ -1,6 +1,6 @@
 import React from "react";
 
-function SignIn(props) {
+function SignIn() {
   return (
     <>
       <div class="items-center">

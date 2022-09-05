@@ -1,8 +1,12 @@
 import React from "react";
-import Editor from "@monaco-editor/react";
+import Editor, { loader } from "@monaco-editor/react";
 import { useFmtApi } from "../../libs/api/postFmt";
-import Start from "./Start";
-import { useState } from "react";
+
+loader.config({
+  paths: {
+    vs: "/monaco-editor/min/vs",
+  },
+});
 
 export default function EditorResult({
   path,
