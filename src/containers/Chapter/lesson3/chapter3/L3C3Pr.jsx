@@ -15,22 +15,31 @@ import { useRunApi } from "../../../../libs/api/postRun";
 import PracticeCode from "../../../../components/CodeEditor/PracticeCode";
 import { Loading } from "../../../../components/Common/Loading";
 import EditorPr from "../../../../components/CodeEditor/EditorPr";
-import { codeEx } from "./L3C3Ex";
 import ResultTab from "../../../../components/CodeEditor/ResultTab";
 import TabHeader from "../../../../components/Practice/TabHeader";
 import PracticeName from "../../../../components/Practice/PracticeName";
+import { useCodeEx } from "../../../../libs/api/getTargetCodes";
+import CodeStart from "../../../../components/CodeEditor/CodeStart";
 
 export const L3C3Pr = () => {
   const { lessonID, chID, uID } = useParams();
   const [hide, setHide] = useState(true);
   const [tab, setTab] = useState("contract.rs");
   const editorRef = useRef(null);
-  const [code, setCode] = useState();
   const [readOnly, setReadOnly] = useState(false);
-
   const [files, setFiles] = useState({});
+
+  let initCode;
+  if (sessionStorage.getItem(tab)) {
+    initCode = sessionStorage.getItem(tab);
+  } else {
+    initCode = "";
+  }
+  const [code, setCode] = useState(initCode);
+
   useEffect(() => {
     setFiles({ ...files, [tab]: btoa(code) });
+    sessionStorage.setItem(tab, code);
   }, [code]);
 
   const [executeRes, queryRes, runLoading, runSuccess, runError, runFetch] =
@@ -42,6 +51,7 @@ export const L3C3Pr = () => {
       return navigate(`/lesson/3/chapter/3/unit/2`);
     }
   };
+  const [exRes, exLoading, exFetch] = useCodeEx();
 
   return (
     <>
@@ -485,27 +495,22 @@ export const L3C3Pr = () => {
                   </button>
                 </TabHeader>
                 <div class="mx-auto mb-1">
+                  {exLoading && <CodeStart onClick={exFetch} />}
                   {runLoading ? (
                     <Loading />
                   ) : (
                     <>
                       <EditorPr
                         defaultLanguage="rust"
-                        exCode={codeEx[tab]}
-                        defaultValue={code}
+                        exCode={exRes[tab]}
                         path={tab}
-                        onChange={async (e) => await setCode(e)}
+                        onChange={async (e) => {
+                          await setCode(e);
+                        }}
                         onMount={(editor) => (editorRef.current = editor)}
                         files={files}
                         readOnly={readOnly}
                       />
-                      {/* <ResultTab>
-                        <ResultCom
-                          runSuccess={runSuccess}
-                          executeRes={executeRes}
-                          queryRes={queryRes}
-                        />
-                      </ResultTab> */}
                     </>
                   )}
                 </div>
@@ -520,6 +525,7 @@ export const L3C3Pr = () => {
               type="button"
               onClick={() => {
                 nextLesson();
+                sessionStorage.clear();
               }}
               class=" md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-green-400 to-blue-500 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-gray-50"
             >
@@ -531,6 +537,7 @@ export const L3C3Pr = () => {
             <button
               type="button"
               onClick={runFetch}
+              disabled={runLoading}
               class="md:w-auto rounded-full text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-purple-500 to-purple-200 hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-200 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-white"
             >
               Deploy the code

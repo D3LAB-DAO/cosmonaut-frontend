@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 export const useCodeEx = () => {
   const { lessonID, chID } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [response, setResponse] = useState({});
   const option = {
     method: "GET",

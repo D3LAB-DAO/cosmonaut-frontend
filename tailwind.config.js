@@ -1,3 +1,5 @@
+const { keyframes } = require("styled-components");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -193,14 +195,14 @@ module.exports = {
         "100%": { opacity: "1", transform: "translateY(0)" },
       },
       moveUtoD: {
-        "0%": { transform: "translateY(-15px)" },
-        "50%": { transform: "translateY(15px)" },
-        "100%": { transform: "translateY(-15px)" },
+        "0%": { transform: "translateY(-10px)" },
+        "50%": { transform: "translateY(10px)" },
+        "100%": { transform: "translateY(-10px)" },
       },
       moveDtoU: {
-        "0%": { transform: "translateY(15px)" },
-        "50%": { transform: "translateY(-15px)" },
-        "100%": { transform: "translateY(15px)" },
+        "0%": { transform: "translateY(10px)" },
+        "50%": { transform: "translateY(-10px)" },
+        "100%": { transform: "translateY(10px)" },
       },
       goUpFirst: {
         "0%": {
@@ -234,20 +236,29 @@ module.exports = {
           transform: "translateY(-30px)",
         },
       },
+      spin: {
+        "0%": {
+          transform: "rotate(0deg)",
+        },
+        "100%": {
+          transform: "rotate(360deg)",
+        },
+      },
     },
     animation: {
+      spin: "spin 2s linear infinite",
       fadeInLtoR: "fadeInLtoR 1.1s ease-out",
       fadeInRtoL: "fadeInRtoL 1.1s ease-out",
       fadeInDtoU: "fadeInDtoU 1.5s ease-out",
       fadeInUtoD: "fadeInUtoD 1.1s ease-out",
-      moveUtoD: "moveUtoD 2.5s infinite",
-      moveDtoU: "moveDtoU 2.5s infinite",
+      moveUtoD: "moveUtoD 2.1s infinite",
+      moveDtoU: "moveDtoU 2.1s infinite",
       goUpFirst: "goUpFirst 1.3s linear forwards",
       goUpSecond: "goUpSecond 1.1s linear forwards",
       goUpThird: "goUpThird 1.1s linear forwards",
       goUpFourth: "goUpFourth 1.1s linear forwards",
     },
-    backgroundColor: theme => ({
+    backgroundColor: (theme) => ({
       ...theme("colors"),
       body: "#303030",
     }),
@@ -268,7 +279,7 @@ module.exports = {
       contain: "contain",
       80: "80%, 80%",
     },
-    borderColor: theme => ({
+    borderColor: (theme) => ({
       ...theme("colors"),
       DEFAULT: "#F1F5F9",
     }),
@@ -358,7 +369,7 @@ module.exports = {
       extrabold: "800",
       black: "900",
     },
-    height: theme => ({
+    height: (theme) => ({
       auto: "auto",
       ...theme("spacing"),
       full: "100%",
@@ -493,16 +504,16 @@ module.exports = {
       11: "11",
       12: "12",
     },
-    padding: theme => theme("spacing"),
-    placeholderColor: theme => theme("colors"),
+    padding: (theme) => theme("spacing"),
+    placeholderColor: (theme) => theme("colors"),
     stroke: {
       current: "currentColor",
     },
-    textColor: theme => ({
+    textColor: (theme) => ({
       ...theme("colors"),
       body: "#FAF8F0",
     }),
-    width: theme => ({
+    width: (theme) => ({
       auto: "auto",
       ...theme("spacing"),
       "1/2": "50%",

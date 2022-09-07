@@ -12,7 +12,6 @@ const Logo = tw.a`text-lg font-bold ease-in-out duration-300 transform hover:sca
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
-  console.log(isLoggedIn);
 
   const loginCheck = async () => {
     try {

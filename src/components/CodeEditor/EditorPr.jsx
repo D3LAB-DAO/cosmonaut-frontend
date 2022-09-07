@@ -5,7 +5,6 @@ import { useFmtApi } from "../../libs/api/postFmt";
 export default function EditorPr({
   path,
   defaultLanguage,
-  defaultValue,
   files,
   onChange,
   onMount,
@@ -18,6 +17,17 @@ export default function EditorPr({
   );
   const fmtBtn = async () => {
     await fmtFetch();
+  };
+  const userCode = () => {
+    if (
+      !sessionStorage[path] ||
+      sessionStorage[path] === "undefined" ||
+      sessionStorage[path] === ""
+    ) {
+      return exCode;
+    } else {
+      return sessionStorage[path];
+    }
   };
 
   return (
@@ -41,8 +51,7 @@ export default function EditorPr({
           onChange={onChange}
           onMount={onMount}
           defaultLanguage={defaultLanguage}
-          defaultValue={exCode}
-          value={defaultValue}
+          value={userCode()}
           options={{ minimap: { enabled: false }, readOnly: readOnly }}
         />
       )}
