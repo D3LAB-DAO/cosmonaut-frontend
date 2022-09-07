@@ -18,6 +18,7 @@ function App() {
       <ScrollToTop>
         <Routes>
           <Route path="/" element={<MainPage />} />
+
           <Route path="/profile" element={<Profile />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/index" element={<IndexInitialPage />} />

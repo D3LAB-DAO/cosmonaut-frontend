@@ -8,6 +8,7 @@ import Icon3 from "../../assets/images/icon3.svg";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import { indexInfo } from "../../states/Information/indexInfo";
+import Video from "../../assets/indexbg.mp4";
 
 const Container = tw.div`relative lg:pb-20 bg-cover bg-center bg-opacity-10 lg:pt-32`;
 const Background = tw.div`bg-indigo-900 justify-center rounded-2xl border-indigo-900 border-4 flex h-index px-12 items-center bg-center bg-no-repeat`;
@@ -23,12 +24,12 @@ function IndexInitialPage() {
   return (
     <>
       <Navbar />
-      <Container
-        style={{
-          height: "1100px",
-          backgroundImage: `url(${require("../../assets/images/25-spacehole-2x.jpg")})`,
-        }}
-      >
+      <Container>
+        <div className="z-[-1] h-auto absolute top-[2.2rem] w-full">
+          <video className="w-full" autoPlay muted loop playsInline>
+            <source src={Video} type="video/mp4" />
+          </video>
+        </div>
         <div class="container lg:px-8 mx-auto relative mb-24">
           <div class="grid grid-cols-2 w-full mx-auto lg:gap-12 lg:-mx-4">
             <div class="animate-fadeInLtoR lg:border-b-0 lg:border-t-0 bg-green-500 rounded-3xl mx-6 lg:mx-0 md:px-2 px-1 md:py-2 py-1">
@@ -77,7 +78,7 @@ function IndexInitialPage() {
               <div class="max-w-lg px-4 mx-auto">
                 <Title>Curriculum</Title>
                 <LessonList>
-                  {engInfo?.map(e => {
+                  {engInfo?.map((e) => {
                     const lessonUrl = `/lesson/${e?.id}`;
                     return (
                       <Link key={e?.id} to={lessonUrl}>
