@@ -9,9 +9,12 @@ loader.config({
 });
 
 export default function EditorResult({
+  read,
   path,
+  index,
+  difSuccess,
   defaultLanguage,
-  defaultValue,
+  exCode,
   files,
   onChange,
   onMount,
@@ -22,6 +25,19 @@ export default function EditorResult({
   );
   const fmtBtn = async () => {
     await fmtFetch();
+  };
+
+  const userCode = () => {
+    if (
+      !sessionStorage[index] ||
+      sessionStorage[index] === "undefined" ||
+      sessionStorage[index] === "" ||
+      difSuccess
+    ) {
+      return exCode;
+    } else {
+      return sessionStorage[index];
+    }
   };
 
   return (
@@ -35,7 +51,7 @@ export default function EditorResult({
           onMount={onMount}
           defaultLanguage={defaultLanguage}
           value={fmtRes}
-          options={{ minimap: { enabled: false } }}
+          options={{ minimap: { enabled: false }, readOnly: read }}
         />
       ) : (
         <Editor
@@ -45,13 +61,10 @@ export default function EditorResult({
           onChange={onChange}
           onMount={onMount}
           defaultLanguage={defaultLanguage}
-          value={defaultValue}
-          options={{
-            minimap: { enabled: false },
-            scrollbar: {
-              verticalHasArrows: true,
-            },
-          }}
+          value={userCode()}
+          // saveViewState={false}
+          // keepCurrentModel={false}
+          options={{ minimap: { enabled: false }, readOnly: read }}
         />
       )}
       <div class="flex justify-end px-2 mt-1">

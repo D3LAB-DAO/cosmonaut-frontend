@@ -13,19 +13,27 @@ import Hint from "../../../../../../components/Contents/Hint";
 import HintButton from "../../../../../../components/Contents/HintButton";
 import ListStyle from "../../../../../../components/Contents/ListStyle";
 import Markdown from "../../../../../../components/Contents/Markdown";
-import Problem from "../../../../../../components/Contents/Problem";
 import ProblemSection from "../../../../../../components/Contents/ProblemSection";
 import Question from "../../../../../../components/Contents/Question";
 
-const L1C4U1S3Code = ({ ex, ans, difSuccess }) => {
+const L1C4U1S3Code = ({ read, ex, ans, difSuccess }) => {
   const [hide, setHide] = useState(true);
   const [tab, setTab] = useState("problem");
   const editorRef = useRef(null);
-
-  const [code, setCode] = useState("");
   const [files, setFiles] = useState({});
+
+  let index = "L1C4U1S3";
+  let initCode;
+  if (sessionStorage.getItem(index)) {
+    initCode = sessionStorage.getItem(index);
+  } else {
+    initCode = "";
+  }
+  const [code, setCode] = useState(initCode);
+
   useEffect(() => {
     setFiles({ ...files, [tab]: btoa(code) });
+    sessionStorage.setItem(index, code);
   }, [code]);
 
   return (
@@ -118,7 +126,7 @@ const L1C4U1S3Code = ({ ex, ans, difSuccess }) => {
             <EditorAnsHeader>
               <AnsTabAble
                 disabled={tab === "answer"}
-                onClick={async e => {
+                onClick={async (e) => {
                   e.preventDefault();
                   setTab("answer");
                 }}
@@ -128,7 +136,7 @@ const L1C4U1S3Code = ({ ex, ans, difSuccess }) => {
             <EditorCodeHeader>
               <ProblemTab
                 disabled={tab === "problem"}
-                onClick={async e => {
+                onClick={async (e) => {
                   e.preventDefault();
                   setTab("problem");
                 }}
@@ -146,27 +154,18 @@ const L1C4U1S3Code = ({ ex, ans, difSuccess }) => {
             </div>
 
             {/* Editor */}
-            {difSuccess ? (
-              <EditorResult
-                defaultLanguage="rust"
-                defaultValue={ans}
-                path={"answer"}
-                onChange={async e => await setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                files={files}
-                difSuccess={difSuccess}
-              />
-            ) : (
-              <EditorResult
-                defaultLanguage="rust"
-                defaultValue={ex}
-                path={tab}
-                onChange={async e => await setCode(e)}
-                onMount={editor => (editorRef.current = editor)}
-                files={files}
-                difSuccess={difSuccess}
-              />
-            )}
+            {/* Editor */}
+            <EditorResult
+              read={read}
+              defaultLanguage="rust"
+              difSuccess={difSuccess}
+              exCode={difSuccess ? ans : ex}
+              path={difSuccess ? "answer" : tab}
+              index={index}
+              onChange={async (e) => await setCode(e)}
+              onMount={(editor) => (editorRef.current = editor)}
+              files={files}
+            />
           </div>
         </div>
       </EditorCode>

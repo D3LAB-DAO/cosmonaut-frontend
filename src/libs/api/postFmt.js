@@ -30,6 +30,7 @@ export const useFmtApi = (files, tab) => {
       await setResponse(response);
       await setIsSuccess(true);
     } catch (error) {
+      alert(error);
       setIsError(true);
     }
 

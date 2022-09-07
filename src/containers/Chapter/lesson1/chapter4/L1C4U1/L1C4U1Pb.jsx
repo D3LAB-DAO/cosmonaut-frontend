@@ -18,10 +18,12 @@ export const L1C4U1Pb = () => {
   const [difSuccess, setDifSuccess] = useState(false);
   const [ex, setEx] = useState(codeEx.Q1);
   const [ans, setAns] = useState(codeAns.Q1);
+  const [readOnly, setReadOnly] = useState(false);
 
   const [response, isLoading, isSuccess, diffFetch] = useDiffApi(false);
   const handleAns = async () => {
     setDifSuccess(true);
+    setReadOnly(true);
     await diffFetch();
   };
 
@@ -31,6 +33,92 @@ export const L1C4U1Pb = () => {
       return navigate(`/lesson/1/chapter/4/unit/2`);
     }
   };
+
+  let codeDiff;
+  switch (openTab) {
+    case 1:
+      codeDiff = (
+        <L1C4U1S1Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 2:
+      codeDiff = (
+        <L1C4U1S2Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 3:
+      codeDiff = (
+        <L1C4U1S3Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 4:
+      codeDiff = (
+        <L1C4U1S4Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 5:
+      codeDiff = (
+        <L1C4U1S5Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 6:
+      codeDiff = (
+        <L1C4U1S6Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 7:
+      codeDiff = (
+        <L1C4U1S7Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 8:
+      codeDiff = (
+        <L1C4U1S8Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    default:
+      break;
+  }
 
   return (
     <>
@@ -126,79 +214,10 @@ export const L1C4U1Pb = () => {
             8
           </button>
         </div>
-        {/* Code Editor */}
-        <div
-          className={
-            openTab === 1
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U1S1Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </div>
 
-        <div
-          className={
-            openTab === 2
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U1S2Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </div>
-        <div
-          className={
-            openTab === 3
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U1S3Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </div>
-        <div
-          className={
-            openTab === 4
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U1S4Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </div>
-        <div
-          className={
-            openTab === 5
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U1S5Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </div>
-        <div
-          className={
-            openTab === 6
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U1S6Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </div>
-        <div
-          className={
-            openTab === 7
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U1S7Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </div>
-        <div
-          className={
-            openTab === 8
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U1S8Code difSuccess={difSuccess} ex={ex} ans={ans} />
+        {/* Code Editor */}
+        <div className="flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full">
+          {codeDiff}
         </div>
       </div>
 

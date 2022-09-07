@@ -210,14 +210,14 @@ export const codeAns = {
 
     let token_extension: TokenExtension = deps.as_ref().querier.query_wasm_smart(
         address.clone(),
-        // Question 1. query TokenExtension
+        // Answer 1. query TokenExtension
         &cosmonaut_cw20::msg::QueryMsg::TokenExtension {},
     )?;
 
-    // Question 2. get unit_weight
+    // Answer 2. get unit_weight
     let unit_weight = token_extension.unit_weight;
 
-    // Question 3. compare unit_weight and MAX_FREIGHT_WEIGHT
+    // Answer 3. compare unit_weight and MAX_FREIGHT_WEIGHT
     if amount * unit_weight > Uint128::new(MAX_FREIGHT_WEIGHT) {
         return Err(ContractError::FrightOverloaded {});
     }

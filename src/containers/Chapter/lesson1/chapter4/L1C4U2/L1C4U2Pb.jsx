@@ -21,10 +21,12 @@ export const L1C4U2Pb = () => {
   const [difSuccess, setDifSuccess] = useState(false);
   const [ex, setEx] = useState(codeEx.Q1);
   const [ans, setAns] = useState(codeAns.Q1);
+  const [readOnly, setReadOnly] = useState(false);
 
   const [response, isLoading, isSuccess, diffFetch] = useDiffApi(false);
   const handleAns = async () => {
     setDifSuccess(true);
+    setReadOnly(true);
     await diffFetch();
   };
 
@@ -35,13 +37,129 @@ export const L1C4U2Pb = () => {
     }
   };
 
+  let codeDiff;
+  switch (openTab) {
+    case 1:
+      codeDiff = (
+        <L1C4U2S1Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 2:
+      codeDiff = (
+        <L1C4U2S2Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 3:
+      codeDiff = (
+        <L1C4U2S3Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 4:
+      codeDiff = (
+        <L1C4U2S4Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 5:
+      codeDiff = (
+        <L1C4U2S5Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 6:
+      codeDiff = (
+        <L1C4U2S6Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 7:
+      codeDiff = (
+        <L1C4U2S7Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 8:
+      codeDiff = (
+        <L1C4U2S8Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 9:
+      codeDiff = (
+        <L1C4U2S9Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 10:
+      codeDiff = (
+        <L1C4U2S10Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 11:
+      codeDiff = (
+        <L1C4U2S11Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    default:
+      break;
+  }
+
   return (
     <>
       <div class="flex container w-full mx-auto">
         {/* Side Tabs */}
-        <div class="w-14 ">
+        <div class="w-14">
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(1);
               setEx(codeEx.Q1);
@@ -52,7 +170,7 @@ export const L1C4U2Pb = () => {
             1
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(2);
               setEx(codeEx.Q2);
@@ -63,7 +181,7 @@ export const L1C4U2Pb = () => {
             2
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(3);
               setEx(codeEx.Q3);
@@ -74,7 +192,7 @@ export const L1C4U2Pb = () => {
             3
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(4);
               setEx(codeEx.Q4);
@@ -85,7 +203,7 @@ export const L1C4U2Pb = () => {
             4
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(5);
               setEx(codeEx.Q5);
@@ -96,7 +214,7 @@ export const L1C4U2Pb = () => {
             5
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(6);
               setEx(codeEx.Q6);
@@ -107,7 +225,7 @@ export const L1C4U2Pb = () => {
             6
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(7);
               setEx(codeEx.Q7);
@@ -118,7 +236,7 @@ export const L1C4U2Pb = () => {
             7
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(8);
               setEx(codeEx.Q8);
@@ -129,7 +247,7 @@ export const L1C4U2Pb = () => {
             8
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(9);
               setEx(codeEx.Q9);
@@ -140,7 +258,7 @@ export const L1C4U2Pb = () => {
             9
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(10);
               setEx(codeEx.Q10);
@@ -151,7 +269,7 @@ export const L1C4U2Pb = () => {
             10
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(11);
               setEx(codeEx.Q11);
@@ -162,106 +280,11 @@ export const L1C4U2Pb = () => {
             11
           </button>
         </div>
+
         {/* Code Editor */}
-        <button
-          className={
-            openTab === 1
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S1Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 2
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S2Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 3
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S3Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 4
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S4Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 5
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S5Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 6
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S6Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 7
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S7Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 8
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S8Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 9
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S9Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 10
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S10Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 11
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L1C4U2S11Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
+        <div className="flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full">
+          {codeDiff}
+        </div>
       </div>
       {difSuccess ? (
         <div class="flex items-center justify-center md:mt-8 mt-3 ">

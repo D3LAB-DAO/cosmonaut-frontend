@@ -14,10 +14,12 @@ export const L2C6U3Pb = () => {
   const [difSuccess, setDifSuccess] = useState(false);
   const [ex, setEx] = useState(codeEx.Q1);
   const [ans, setAns] = useState(codeAns.Q1);
+  const [readOnly, setReadOnly] = useState(false);
 
   const [response, isLoading, isSuccess, diffFetch] = useDiffApi(false);
   const handleAns = async () => {
     setDifSuccess(true);
+    setReadOnly(true);
     await diffFetch();
   };
 
@@ -28,13 +30,59 @@ export const L2C6U3Pb = () => {
     }
   };
 
+  let codeDiff;
+  switch (openTab) {
+    case 1:
+      codeDiff = (
+        <L2C6U3S1Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 2:
+      codeDiff = (
+        <L2C6U3S2Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 3:
+      codeDiff = (
+        <L2C6U3S3Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 4:
+      codeDiff = (
+        <L2C6U3S4Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    default:
+      break;
+  }
+
   return (
     <>
       <div class="flex container w-full mx-auto">
         {/* Side Tabs */}
         <div class="w-14 ">
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(1);
               setEx(codeEx.Q1);
@@ -45,7 +93,7 @@ export const L2C6U3Pb = () => {
             1
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(2);
               setEx(codeEx.Q2);
@@ -56,7 +104,7 @@ export const L2C6U3Pb = () => {
             2
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(3);
               setEx(codeEx.Q3);
@@ -67,7 +115,7 @@ export const L2C6U3Pb = () => {
             3
           </button>
           <button
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               setOpenTab(4);
               setEx(codeEx.Q4);
@@ -79,42 +127,9 @@ export const L2C6U3Pb = () => {
           </button>
         </div>
         {/* Code Editor */}
-        <button
-          className={
-            openTab === 1
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L2C6U3S1Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 2
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L2C6U3S2Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 3
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L2C6U3S3Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 4
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L2C6U3S4Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
+        <div className="flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full">
+          {codeDiff}
+        </div>
       </div>
       {difSuccess ? (
         <div class="flex items-center justify-center md:mt-8 mt-3 ">

@@ -32,7 +32,6 @@ export const ProgressBar0 = (progress) => {
           <span class="flex justify-start md:text-sm text-xs font-mono text-gray-700">
             <img class="w-4 h-4" src={flask} alt="flask" />
           </span>
-          <span class="md:text-sm text-xs font-medium text-gray-700">50%</span>
           <span class="flex md:text-sm text-xs justify-end font-mono text-gray-700">
             <img class="w-4 h-4" src={check} alt="check" />
           </span>

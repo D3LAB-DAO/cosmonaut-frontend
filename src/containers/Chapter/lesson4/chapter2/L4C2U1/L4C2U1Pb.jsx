@@ -12,10 +12,12 @@ export const L4C2U1Pb = () => {
   const [difSuccess, setDifSuccess] = useState(false);
   const [ex, setEx] = useState(codeEx.Q1);
   const [ans, setAns] = useState(codeAns.Q1);
+  const [readOnly, setReadOnly] = useState(false);
 
   const [response, isLoading, isSuccess, diffFetch] = useDiffApi(true);
   const handleAns = async () => {
     setDifSuccess(true);
+    setReadOnly(true);
     await diffFetch();
   };
 
@@ -25,6 +27,32 @@ export const L4C2U1Pb = () => {
       return navigate(`/lesson/4/chapter/3/unit/1`);
     }
   };
+
+  let codeDiff;
+  switch (openTab) {
+    case 1:
+      codeDiff = (
+        <L4C2U1S1Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    case 2:
+      codeDiff = (
+        <L4C2U1S2Code
+          read={readOnly}
+          difSuccess={difSuccess}
+          ex={ex}
+          ans={ans}
+        />
+      );
+      break;
+    default:
+      break;
+  }
 
   return (
     <>
@@ -55,24 +83,9 @@ export const L4C2U1Pb = () => {
           </button>
         </div>
         {/* Code Editor */}
-        <button
-          className={
-            openTab === 1
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L4C2U1S1Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
-        <button
-          className={
-            openTab === 2
-              ? "flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full"
-              : "hidden"
-          }
-        >
-          <L4C2U1S2Code difSuccess={difSuccess} ex={ex} ans={ans} />
-        </button>
+        <div className="flex flex-wrap bg-indigo-900 rounded-r-2xl rounded-bl-2xl w-full">
+          {codeDiff}
+        </div>
       </div>
       {difSuccess ? (
         <div class="flex items-center justify-center md:mt-8 mt-3 ">

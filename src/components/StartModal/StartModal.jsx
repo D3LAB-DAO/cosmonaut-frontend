@@ -111,15 +111,6 @@ function StartModal() {
   };
 
   let chState;
-  // if (key === "999") {
-  //   chState = (
-  //     <>
-  //       <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-purple-500 block w-full font-extrabold underline">
-  //         Go To Advanced
-  //       </h3>
-  //     </>
-  //   );
-  // }
   if (proChapter === "0") {
     chState = (
       <>
