@@ -40,6 +40,10 @@ export default function EditorResult({
     }
   };
 
+  function handleEditorWillMount(monaco) {
+    monaco.editor.getModels().forEach((model) => model.dispose());
+  }
+
   return (
     <>
       {fmtSuccess ? (
@@ -51,6 +55,7 @@ export default function EditorResult({
           onMount={onMount}
           defaultLanguage={defaultLanguage}
           value={fmtRes}
+          beforeMount={handleEditorWillMount}
           options={{ minimap: { enabled: false }, readOnly: read }}
         />
       ) : (
@@ -62,8 +67,7 @@ export default function EditorResult({
           onMount={onMount}
           defaultLanguage={defaultLanguage}
           value={userCode()}
-          // saveViewState={false}
-          // keepCurrentModel={false}
+          beforeMount={handleEditorWillMount}
           options={{ minimap: { enabled: false }, readOnly: read }}
         />
       )}

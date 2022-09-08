@@ -42,7 +42,6 @@ export const L1C4U3Pb = () => {
     default:
       break;
   }
-  console.log(ex);
 
   return (
     <>

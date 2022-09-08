@@ -3,7 +3,7 @@ import React from "react";
 function BasicP(props) {
   return (
     <>
-      <p class="font-normal text-lg mb-3">{props.children}</p>
+      <div class="font-normal text-lg mb-3">{props.children}</div>
     </>
   );
 }

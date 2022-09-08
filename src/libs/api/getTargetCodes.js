@@ -22,9 +22,7 @@ export const useCodeEx = () => {
         Object.entries(data).map(([key, value]) => [key, atob(value)])
       );
       setResponse(resResult);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
     setIsLoading(false);
   };
 

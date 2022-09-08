@@ -188,7 +188,10 @@ function Navigator() {
   });
 
   return (
-    <Container id="navigator">
+    <div
+      className="fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50"
+      id="navigator"
+    >
       <div class="container flex mx-auto lg:pb-4 lg:pt-3 py-2 items-center">
         <div class="lg:w-1/2 w-2/3 items-center md:px-2 px-4 mb-0">
           <div class="w-full flex flex-wrap items-center">
@@ -216,7 +219,7 @@ function Navigator() {
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
 

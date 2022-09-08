@@ -24,9 +24,7 @@ export const usePostRead = (lessonID, chID) => {
       let res = await fetch(`http://127.0.0.1:8080/v1/cosm/read`, option);
       const data = await res.json();
       setResponse(data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return [response, fetchData];
