@@ -2,20 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import Account3 from "../../assets/images/signed-in-account3.svg";
-import { useLogOut } from "../../libs/api/logout";
+import { useIsLogout } from "../../libs/api/useIsLogout";
+
 import { LoginState } from "../../states/login";
-import SignIn from "./SignIn";
 import Version from "./Version";
 
 const Profile = () => {
-  const [logout, fetchData] = useLogOut();
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
 
+  const logoutFetch = useIsLogout();
   const handleLogOut = (e) => {
     e.preventDefault();
     setIsLoggedIn(false);
-    fetchData();
+    logoutFetch();
   };
+
   return (
     <>
       {/* Small Version */}

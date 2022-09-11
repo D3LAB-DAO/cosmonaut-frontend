@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import NotFound from "./error/NotFound";
 import IndexPage from "./containers/Index/IndexPage";
 import MainPage from "./containers/Main/MainPage";
@@ -11,29 +11,64 @@ import { AppendixPage } from "./containers/Appendix/AppendixPage";
 import IndexInitialPage from "./containers/Index/IndexInitialPage";
 import ProblemPage from "./containers/Problem/ProblemPage";
 import AdvancePage from "./containers/Advanced/AdvancePage";
+import { useRecoilState } from "recoil";
+import { LoginState } from "./states/login";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
   return (
     <>
       <ScrollToTop>
         <Routes>
           <Route path="/" element={<MainPage />} />
-
-          <Route path="/profile" element={<Profile />} />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/index" element={<IndexInitialPage />} />
-          <Route path="/lesson/:lessonID" element={<IndexPage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/index"
+            element={
+              isLoggedIn ? (
+                <IndexInitialPage />
+              ) : (
+                <Navigate to="/signUp" replace />
+              )
+            }
+          />
+          <Route
+            path="/lesson/:lessonID"
+            element={
+              isLoggedIn ? <IndexPage /> : <Navigate to="/signUp" replace />
+            }
+          />
           <Route
             path="/lesson/:lessonID/chapter/:chID/unit/:uID"
-            element={<UnitPage />}
+            element={
+              isLoggedIn ? <UnitPage /> : <Navigate to="/signUp" replace />
+            }
           />
           <Route
             path="/lesson/:lessonID/chapter/:chID/unit/:uID/pb/:pID"
-            element={<ProblemPage />}
+            element={
+              isLoggedIn ? <ProblemPage /> : <Navigate to="/signUp" replace />
+            }
           />
-          <Route path="/epilogue" element={<EpiloguePage />} />
-          <Route path="/appendix/:aID" element={<AppendixPage />} />
-          <Route path="/advanced/:adID/index/:iID" element={<AdvancePage />} />
+          <Route
+            path="/epilogue"
+            element={
+              isLoggedIn ? <EpiloguePage /> : <Navigate to="/signUp" replace />
+            }
+          />
+          <Route
+            path="/appendix/:aID"
+            element={
+              isLoggedIn ? <AppendixPage /> : <Navigate to="/signUp" replace />
+            }
+          />
+          <Route
+            path="/advanced/:adID/index/:iID"
+            element={
+              isLoggedIn ? <AdvancePage /> : <Navigate to="/signUp" replace />
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ScrollToTop>
