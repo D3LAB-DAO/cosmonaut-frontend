@@ -1,16 +1,16 @@
 import React from "react";
+import clsx from "clsx";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import tw from "tailwind-styled-components";
 import Arrowleft from "../../../assets/images/arrow-left.svg";
 import Arrowright from "../../../assets/images/arrow-right.svg";
 import { usePostRead } from "../../../libs/api/postRead";
 import HandleSideMenu from "./Components/HandleSideMenu";
 
-const Container = tw.div`z-auto fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50`;
-
 function Navigator() {
   const { lessonID, chID, uID } = useParams();
   const navigate = useNavigate();
+  const [scroll, setScroll] = useState(false);
   const nextUnit = Number(uID) + 1;
   const prevUnit = Number(uID) - 1;
 
@@ -177,19 +177,18 @@ function Navigator() {
 
   window.addEventListener("scroll", (e) => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      const navigator = document.querySelectorAll("#navigator");
-      navigator[0].classList?.add("opacity-100");
-      navigator[0].classList?.remove("opacity-0");
+      setScroll(true);
     } else {
-      const navigator = document.querySelectorAll("#navigator");
-      navigator[0].classList?.add("opacity-0");
-      navigator[0].classList?.remove("opacity-100");
+      setScroll(false);
     }
   });
 
   return (
     <div
-      className="fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50"
+      className={clsx(
+        "fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-auto border-3 border-indigo-900 bg-gray-50",
+        { "opacity-0": scroll === false }
+      )}
       id="navigator"
     >
       <div class="container flex mx-auto lg:pb-4 lg:pt-3 py-2 items-center">

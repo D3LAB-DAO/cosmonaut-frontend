@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import clsx from "clsx";
 import { useNavigate, useParams } from "react-router-dom";
-import tw from "tailwind-styled-components";
 import Arrowleft from "../../../assets/images/arrow-left.svg";
 import Arrowright from "../../../assets/images/arrow-right.svg";
 import HandleSideMenu from "../../../schema/components/Navigator/Components/HandleSideMenu";
 
 const AdvNavigator = () => {
   const { adID, iID } = useParams();
+  const [scroll, setScroll] = useState(false);
   const nextIndex = Number(iID) + 1;
   const prevIndex = Number(iID) - 1;
   const navigate = useNavigate();
-
-  const Container = tw.div`z-auto fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50`;
 
   const handleRight = () => {
     switch (adID) {
@@ -81,13 +80,9 @@ const AdvNavigator = () => {
   };
   window.addEventListener("scroll", (e) => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      const navigator = document.querySelectorAll("#navigator");
-      navigator[0].classList?.add("opacity-100");
-      navigator[0].classList?.remove("opacity-0");
+      setScroll(true);
     } else {
-      const navigator = document.querySelectorAll("#navigator");
-      navigator[0].classList?.add("opacity-0");
-      navigator[0].classList?.remove("opacity-100");
+      setScroll(false);
     }
   });
   let title = "";
@@ -106,7 +101,13 @@ const AdvNavigator = () => {
       break;
   }
   return (
-    <Container id="navigator">
+    <div
+      className={clsx(
+        "fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-auto border-3 border-indigo-900 bg-gray-50",
+        { "opacity-0": scroll === false }
+      )}
+      id="navigator"
+    >
       <div class="container flex mx-auto lg:pb-4 lg:pt-3 py-2 items-center">
         <div class="lg:w-1/2 w-2/3 items-center md:px-2 px-4 mb-0">
           <div class="w-full flex flex-wrap items-center">
@@ -134,7 +135,7 @@ const AdvNavigator = () => {
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 

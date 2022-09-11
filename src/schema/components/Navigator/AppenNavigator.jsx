@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import clsx from "clsx";
 import { useNavigate, useParams } from "react-router-dom";
-import tw from "tailwind-styled-components";
 import Arrowleft from "../../../assets/images/arrow-left.svg";
 import Arrowright from "../../../assets/images/arrow-right.svg";
 import HandleSideMenu from "./Components/HandleSideMenu";
 
-const Container = tw.div`z-auto fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-50 border-3 border-indigo-900 bg-gray-50`;
-
 function AppenNavigator() {
   const { aID } = useParams();
   const navigate = useNavigate();
+  const [scroll, setScroll] = useState(false);
   const nextAppen = Number(aID) + 1;
   const prevAppen = Number(aID) - 1;
 
   const handleRight = () => {
-    console.log("handle Right");
     if (aID === "4") {
       return navigate(`/`);
     } else {
@@ -23,7 +21,6 @@ function AppenNavigator() {
   };
 
   const handleLeft = () => {
-    console.log("handle Left");
     if (aID === "0") {
       return navigate(`/appendix/0`);
     } else {
@@ -31,21 +28,22 @@ function AppenNavigator() {
     }
   };
 
-  window.addEventListener("scroll", e => {
+  window.addEventListener("scroll", (e) => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      console.log("bottom");
-      const navigator = document.querySelectorAll("#navigator");
-      navigator[0].classList.add("opacity-100");
-      navigator[0].classList.remove("opacity-0");
+      setScroll(true);
     } else {
-      const navigator = document.querySelectorAll("#navigator");
-      navigator[0].classList.add("opacity-0");
-      navigator[0].classList.remove("opacity-100");
+      setScroll(false);
     }
   });
 
   return (
-    <Container id="navigator">
+    <div
+      className={clsx(
+        "fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-auto border-3 border-indigo-900 bg-gray-50",
+        { "opacity-0": scroll === false }
+      )}
+      id="navigator"
+    >
       <div class="container flex mx-auto lg:pb-4 lg:pt-3 py-2 items-center">
         <div class="lg:w-1/2 w-2/3 items-center md:px-2 px-4 mb-0">
           <div class="w-full flex flex-wrap items-center">
@@ -73,7 +71,7 @@ function AppenNavigator() {
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
 

@@ -29,8 +29,8 @@ export const L1C6Pr = () => {
   const [files, setFiles] = useState({});
 
   let initCode;
-  if (sessionStorage.getItem(tab)) {
-    initCode = sessionStorage.getItem(tab);
+  if (sessionStorage.getItem(tab + `${lessonID}`)) {
+    initCode = sessionStorage.getItem(tab + `${lessonID}`);
   } else {
     initCode = "";
   }
@@ -38,7 +38,7 @@ export const L1C6Pr = () => {
 
   useEffect(() => {
     setFiles({ ...files, [tab]: btoa(code) });
-    sessionStorage.setItem(tab, code);
+    sessionStorage.setItem(tab + `${lessonID}`, code);
   }, [code]);
 
   const [executeRes, queryRes, runLoading, runSuccess, runError, runFetch] =
@@ -344,7 +344,7 @@ export const L1C6Pr = () => {
                       <EditorPr
                         defaultLanguage="rust"
                         exCode={exRes[tab]}
-                        path={tab}
+                        path={tab + `${lessonID}`}
                         onChange={async (e) => {
                           await setCode(e);
                         }}
@@ -366,7 +366,6 @@ export const L1C6Pr = () => {
               type="button"
               onClick={() => {
                 nextLesson();
-                sessionStorage.clear();
               }}
               class=" md:w-auto rounded-full mx-auto text-center md:shadow-md shadow-sm transform transition md:mx-0 md:px-10 ease-in-out hover:scale-105 bg-gradient-to-r from-green-400 to-blue-500 border-3 border-indigo-900 md:py-3 py-2 px-12  font-heading text-lg text-gray-50"
             >
