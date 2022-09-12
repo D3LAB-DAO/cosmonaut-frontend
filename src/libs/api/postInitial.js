@@ -18,16 +18,15 @@ export const usePostInitial = (lessonID, chID, build) => {
   };
 
   const fetchData = async () => {
-    setIsLoading(true);
-
     try {
+      setIsLoading(true);
       let res = await fetch(`http://127.0.0.1:8080/v1/cosm/init`, option);
-      const data = await res.json();
-
       setResponse(res);
-    } catch (error) {}
-
-    setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return [isLoading, response, fetchData];

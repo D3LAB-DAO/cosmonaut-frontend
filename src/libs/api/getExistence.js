@@ -1,26 +1,29 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-export const useGetUserProgress = (lessonID) => {
+export const useGetExistence = () => {
+  const { lessonID, chID } = useParams();
   const [response, setResponse] = useState({});
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const option = {
     method: "GET",
     credentials: "include",
   };
 
   const fetchData = async () => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       let res = await fetch(
-        `http://127.0.0.1:8080/v1/cosm/progress?lesson=${lessonID}`,
+        `http://127.0.0.1:8080/v1/cosm/existence?lesson=${lessonID}&chapter=${chID}`,
         option
       );
       const data = await res.json();
-      setResponse(data.chapter);
+
+      setResponse(data);
     } catch (error) {
-      return null;
+      console.log(error);
     }
-    setLoading(false);
+    setIsLoading(false);
   };
   return [isLoading, response, fetchData];
 };

@@ -18,7 +18,7 @@ const NoneBtn = tw.div`pointer-events-none flex flex-wrap mt-10 lg:justify-end j
 
 function IndexPage() {
   const { lessonID } = useParams();
-  const [userRes, userFetch] = useGetUserProgress(lessonID);
+  const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
   const startLesson = `/lesson/${lessonID}/chapter/1/unit/0`;
   const engInfo = useRecoilValue(indexInfo);
 

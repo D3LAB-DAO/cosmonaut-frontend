@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -7,7 +7,7 @@ import LogoV4 from "../../assets/images/logo-v4.svg";
 import { LoginState } from "../../states/login";
 import Profile from "../Common/Profile";
 import SignIn from "../Common/SignIn";
-import useIsLogin from "../../libs/api/useIsLogin";
+import { useIsLogin } from "../../libs/api/useIsLogin";
 
 const Container = tw.div`fixed top-0 w-full z-50`;
 const Logo = tw.a`text-lg font-bold ease-in-out duration-300 transform hover:scale-110`;
@@ -16,7 +16,10 @@ function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
   const [scroll, setScroll] = useState(true);
 
-  useIsLogin();
+  const [checkFetch] = useIsLogin();
+  useEffect(() => {
+    checkFetch();
+  }, []);
 
   window.addEventListener("scroll", (e) => {
     if (window.scrollY > 1) {

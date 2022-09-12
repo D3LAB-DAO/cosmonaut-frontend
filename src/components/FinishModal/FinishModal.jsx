@@ -31,11 +31,11 @@ function FinishModal() {
   };
 
   const [lessonPic, picFetch] = useGetLessonPic(lessonID);
-  const [userRes, userFetch] = useGetUserProgress(lessonID);
+  const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
 
   useEffect(() => {
-    picFetch();
     userFetch();
+    !(userRes === -1) && picFetch();
   }, []);
   const onErrorImg = (e) => {
     e.target.src = error;

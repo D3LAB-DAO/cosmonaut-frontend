@@ -21,11 +21,11 @@ function UserProgress() {
   const [thrRes, thrFetch] = useGetLessonPic(3);
   const [fourRes, fourFetch] = useGetLessonPic(4);
 
-  const [zeroPro, zeroProgress] = useGetUserProgress(0);
-  const [firPro, firProgress] = useGetUserProgress(1);
-  const [secPro, secProgress] = useGetUserProgress(2);
-  const [thrPro, thrProgress] = useGetUserProgress(3);
-  const [fourPro, fourProgress] = useGetUserProgress(4);
+  const [zeroLoading, zeroPro, zeroProgress] = useGetUserProgress(0);
+  const [firLoading, firPro, firProgress] = useGetUserProgress(1);
+  const [secLoading, secPro, secProgress] = useGetUserProgress(2);
+  const [thrLoading, thrPro, thrProgress] = useGetUserProgress(3);
+  const [fourLoading, fourPro, fourProgress] = useGetUserProgress(4);
 
   const [zero, setZero] = useState("0%");
   const [fir, setFir] = useState("0%");
@@ -34,16 +34,16 @@ function UserProgress() {
   const [four, setFour] = useState("0%");
 
   useEffect(() => {
-    zeroFetch();
-    firFetch();
-    secFetch();
-    thrFetch();
-    fourFetch();
     zeroProgress();
+    !(zeroPro === -1) && zeroFetch();
     firProgress();
+    !(firPro === -1) && firFetch();
     secProgress();
+    !(secPro === -1) && secFetch();
     thrProgress();
+    !(thrPro === -1) && thrFetch();
     fourProgress();
+    !(thrPro === -1) && fourFetch();
   }, []);
 
   useEffect(() => {

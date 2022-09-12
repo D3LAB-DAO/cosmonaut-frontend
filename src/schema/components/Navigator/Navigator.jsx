@@ -6,6 +6,8 @@ import Arrowleft from "../../../assets/images/arrow-left.svg";
 import Arrowright from "../../../assets/images/arrow-right.svg";
 import { usePostRead } from "../../../libs/api/postRead";
 import HandleSideMenu from "./Components/HandleSideMenu";
+import { handleModalAtom } from "../../../states/handleModal";
+import { useRecoilState } from "recoil";
 
 function Navigator() {
   const { lessonID, chID, uID } = useParams();
@@ -13,29 +15,30 @@ function Navigator() {
   const [scroll, setScroll] = useState(false);
   const nextUnit = Number(uID) + 1;
   const prevUnit = Number(uID) - 1;
-
+  const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
   const [readRes, readFetch] = usePostRead(lessonID, chID);
 
   const handleRight = async () => {
+    setHandleModal(true);
     if (lessonID === "0" && chID === "4" && uID === "2") {
       await readFetch();
-    } else if (lessonID === "1" && chID === "1") {
+    } else if (lessonID === "1" && chID === "1" && uID === "3") {
       await readFetch();
-    } else if (lessonID === "1" && chID === "2") {
+    } else if (lessonID === "1" && chID === "2" && uID === "1") {
       await readFetch();
-    } else if (lessonID === "1" && chID === "3") {
+    } else if (lessonID === "1" && chID === "3" && uID === "1") {
       await readFetch();
     } else if (lessonID === "1" && chID === "5" && uID === "2") {
       await readFetch();
-    } else if (lessonID === "2" && chID === "1") {
+    } else if (lessonID === "2" && chID === "1" && uID === "3") {
       await readFetch();
-    } else if (lessonID === "2" && chID === "2") {
+    } else if (lessonID === "2" && chID === "2" && uID === "1") {
       await readFetch();
-    } else if (lessonID === "2" && chID === "3") {
+    } else if (lessonID === "2" && chID === "3" && uID === "2") {
       await readFetch();
-    } else if (lessonID === "2" && chID === "4") {
+    } else if (lessonID === "2" && chID === "4" && uID === "1") {
       await readFetch();
-    } else if (lessonID === "2" && chID === "5") {
+    } else if (lessonID === "2" && chID === "5" && uID === "2") {
       await readFetch();
     } else if (lessonID === "3" && chID === "1" && uID === "1") {
       await readFetch();
@@ -43,7 +46,7 @@ function Navigator() {
       await readFetch();
     } else if (lessonID === "3" && chID === "2" && uID === "1") {
       await readFetch();
-    } else if (lessonID === "4" && chID === "1") {
+    } else if (lessonID === "4" && chID === "1" && uID === "2") {
       await readFetch();
     }
 
@@ -176,7 +179,12 @@ function Navigator() {
   };
 
   window.addEventListener("scroll", (e) => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    if (window.scrollY === 0) {
+      setScroll(true);
+    } else if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight
+    ) {
       setScroll(true);
     } else {
       setScroll(false);
@@ -186,7 +194,7 @@ function Navigator() {
   return (
     <div
       className={clsx(
-        "fixed transition ease-out duration-100 hover:opacity-100 focus:opacity-100 bottom-0 w-full z-auto border-3 border-indigo-900 bg-gray-50",
+        "fixed bottom-0 transition ease-out duration-100 hover:opacity-100 focus:opacity-100 w-full z-auto border-3 border-indigo-900 bg-gray-50",
         { "opacity-0": scroll === false }
       )}
       id="navigator"

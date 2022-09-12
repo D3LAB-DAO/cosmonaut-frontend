@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { chapterInfos } from "../../states/Information/chapterInfoAtoms";
 import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
 import { usePostInitial } from "../../libs/api/postInitial";
 import classNames from "classnames";
 import { useGetUserProgress } from "../../libs/api/getUserProgress";
+import { useGetExistence } from "../../libs/api/getExistence";
+import { handleModalAtom } from "../../states/handleModal";
 
 const Navigate = tw.div`flex flex-wrap mt-5 mx-auto justify-center gap-3 rounded-3xl`;
 const Button = tw.button`bg-white h-40 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/8 rounded-xl border-2 border-indigo-900 ease-in-out duration-300`;
@@ -17,16 +19,20 @@ function StartModal() {
   const { lessonID, chID } = useParams();
   const navigate = useNavigate();
   const [build, setBuild] = useState(false);
+  const [key, setKey] = useState(chID);
   const [initLoading, initRes, initFetch] = usePostInitial(
     lessonID,
-    chID,
+    chID || key,
     build
   );
+
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);
-  const [key, setKey] = useState(chID);
+
   const [adKey, setAdKey] = useState();
-  const [userRes, userFetch] = useGetUserProgress(lessonID);
+  const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
+  const [exLoading, exRes, exFetch] = useGetExistence();
+  const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
 
   useEffect(() => {
     userFetch();
@@ -49,7 +55,16 @@ function StartModal() {
   }, []);
 
   const closeModal = async () => {
-    await initFetch();
+    await exFetch();
+    if (!exRes.status) {
+      await initFetch();
+    }
+    if (!(chID === String(key))) {
+      setHandleModal(false);
+    } else if (chID === String(key)) {
+      setHandleModal(true);
+    }
+
     const modal = document.querySelectorAll("#modal");
     modal[0].classList.add("hidden");
 

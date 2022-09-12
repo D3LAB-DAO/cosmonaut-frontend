@@ -12,7 +12,9 @@ export const useIsLogout = () => {
     try {
       let res = await fetch("http://127.0.0.1:8080/auth/logout", option);
       setIsLoggedIn(false);
-    } catch (error) {}
+    } catch (error) {
+      return null;
+    }
   };
 
   return fetchData;

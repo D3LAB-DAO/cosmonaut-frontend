@@ -1,18 +1,22 @@
 import { useRecoilState } from "recoil";
 import { LoginState } from "../../states/login";
 
-const useIsLogin = async () => {
+export const useIsLogin = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
-  try {
-    const opt = {
-      method: "GET",
-      credentials: "include",
-    };
-    let res = await fetch("http://127.0.0.1:8080/auth/check", opt);
-    const data = await res.json();
-    const onLogin = data.isLogin;
-    setIsLoggedIn(onLogin);
-  } catch (error) {}
-};
+  const opt = {
+    method: "GET",
+    credentials: "include",
+  };
 
-export default useIsLogin;
+  const fetchData = async () => {
+    try {
+      let res = await fetch("http://127.0.0.1:8080/auth/check", opt);
+      const data = await res.json();
+      const onLogin = data.isLogin;
+      setIsLoggedIn(onLogin);
+    } catch (error) {
+      return null;
+    }
+  };
+  return [fetchData];
+};
