@@ -18,7 +18,7 @@ export const useGetUserProgress = (lessonID) => {
       const data = await res.json();
       setResponse(data.chapter);
     } catch (error) {
-      return null;
+      console.log(error);
     }
     setLoading(false);
   };

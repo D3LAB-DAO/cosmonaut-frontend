@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useGetUserProgress } from "../../../../../libs/api/getUserProgress";
 import { useDiffApi } from "../../../../../libs/api/postDiff";
 import { codeAns } from "./L2C6U5Ans";
 import { codeEx } from "./L2C6U5Ex";
@@ -13,12 +14,19 @@ export const L2C6U5Pb = () => {
   const [ex, setEx] = useState(codeEx.Q1);
   const [ans, setAns] = useState(codeAns.Q1);
   const [readOnly, setReadOnly] = useState(false);
+  const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
+
+  useEffect(() => {
+    userFetch();
+  }, []);
 
   const [response, isLoading, isSuccess, diffFetch] = useDiffApi(true);
   const handleAns = async () => {
     setDifSuccess(true);
     setReadOnly(true);
-    await diffFetch();
+    if (chID >= String(userRes) && !(userRes === 0)) {
+      await diffFetch();
+    }
   };
 
   const navigate = useNavigate();

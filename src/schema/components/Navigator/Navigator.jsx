@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,46 +8,55 @@ import { usePostRead } from "../../../libs/api/postRead";
 import HandleSideMenu from "./Components/HandleSideMenu";
 import { handleModalAtom } from "../../../states/handleModal";
 import { useRecoilState } from "recoil";
+import { useGetUserProgress } from "../../../libs/api/getUserProgress";
 
 function Navigator() {
   const { lessonID, chID, uID } = useParams();
   const navigate = useNavigate();
-  const [scroll, setScroll] = useState(false);
+  const [scroll, setScroll] = useState(true);
   const nextUnit = Number(uID) + 1;
   const prevUnit = Number(uID) - 1;
   const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
+  const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
   const [readRes, readFetch] = usePostRead(lessonID, chID);
+
+  useEffect(() => {
+    userFetch();
+  }, []);
 
   const handleRight = async () => {
     setHandleModal(true);
-    if (lessonID === "0" && chID === "4" && uID === "2") {
-      await readFetch();
-    } else if (lessonID === "1" && chID === "1" && uID === "3") {
-      await readFetch();
-    } else if (lessonID === "1" && chID === "2" && uID === "1") {
-      await readFetch();
-    } else if (lessonID === "1" && chID === "3" && uID === "1") {
-      await readFetch();
-    } else if (lessonID === "1" && chID === "5" && uID === "2") {
-      await readFetch();
-    } else if (lessonID === "2" && chID === "1" && uID === "3") {
-      await readFetch();
-    } else if (lessonID === "2" && chID === "2" && uID === "1") {
-      await readFetch();
-    } else if (lessonID === "2" && chID === "3" && uID === "2") {
-      await readFetch();
-    } else if (lessonID === "2" && chID === "4" && uID === "1") {
-      await readFetch();
-    } else if (lessonID === "2" && chID === "5" && uID === "2") {
-      await readFetch();
-    } else if (lessonID === "3" && chID === "1" && uID === "1") {
-      await readFetch();
-    } else if (lessonID === "3" && chID === "1" && uID === "3") {
-      await readFetch();
-    } else if (lessonID === "3" && chID === "2" && uID === "1") {
-      await readFetch();
-    } else if (lessonID === "4" && chID === "1" && uID === "2") {
-      await readFetch();
+
+    if (chID >= String(userRes) && !(userRes === 0)) {
+      if (lessonID === "0" && chID === "4" && uID === "2") {
+        await readFetch();
+      } else if (lessonID === "1" && chID === "1" && uID === "3") {
+        await readFetch();
+      } else if (lessonID === "1" && chID === "2" && uID === "1") {
+        await readFetch();
+      } else if (lessonID === "1" && chID === "3" && uID === "1") {
+        await readFetch();
+      } else if (lessonID === "1" && chID === "5" && uID === "2") {
+        await readFetch();
+      } else if (lessonID === "2" && chID === "1" && uID === "3") {
+        await readFetch();
+      } else if (lessonID === "2" && chID === "2" && uID === "1") {
+        await readFetch();
+      } else if (lessonID === "2" && chID === "3" && uID === "2") {
+        await readFetch();
+      } else if (lessonID === "2" && chID === "4" && uID === "1") {
+        await readFetch();
+      } else if (lessonID === "2" && chID === "5" && uID === "2") {
+        await readFetch();
+      } else if (lessonID === "3" && chID === "1" && uID === "1") {
+        await readFetch();
+      } else if (lessonID === "3" && chID === "1" && uID === "3") {
+        await readFetch();
+      } else if (lessonID === "3" && chID === "2" && uID === "1") {
+        await readFetch();
+      } else if (lessonID === "4" && chID === "1" && uID === "2") {
+        await readFetch();
+      }
     }
 
     // lesson 0

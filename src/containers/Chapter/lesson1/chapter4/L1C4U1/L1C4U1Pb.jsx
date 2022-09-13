@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { codeEx } from "./L1C4U1Ex";
 import L1C4U1S1Code from "./Problem/L1C4U1S1Code";
@@ -11,6 +11,7 @@ import L1C4U1S7Code from "./Problem/L1C4U1S7Code";
 import L1C4U1S8Code from "./Problem/L1C4U1S8Code";
 import { codeAns } from "./L1C4U1Ans";
 import { useDiffApi } from "../../../../../libs/api/postDiff";
+import { useGetUserProgress } from "../../../../../libs/api/getUserProgress";
 
 export const L1C4U1Pb = () => {
   const { lessonID, chID, uID, pID } = useParams();
@@ -19,12 +20,19 @@ export const L1C4U1Pb = () => {
   const [ex, setEx] = useState(codeEx.Q1);
   const [ans, setAns] = useState(codeAns.Q1);
   const [readOnly, setReadOnly] = useState(false);
+  const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
+
+  useEffect(() => {
+    userFetch();
+  }, []);
 
   const [response, isLoading, isSuccess, diffFetch] = useDiffApi(false);
   const handleAns = async () => {
     setDifSuccess(true);
     setReadOnly(true);
-    await diffFetch();
+    if (chID >= String(userRes) && !(userRes === 0)) {
+      await diffFetch();
+    }
   };
 
   const navigate = useNavigate();

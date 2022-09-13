@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
-export const useGetExistence = () => {
-  const { lessonID, chID } = useParams();
+export const useGetExistence = (lessonID, chID) => {
   const [response, setResponse] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const option = {
     method: "GET",
     credentials: "include",
@@ -18,7 +16,6 @@ export const useGetExistence = () => {
         option
       );
       const data = await res.json();
-
       setResponse(data);
     } catch (error) {
       console.log(error);

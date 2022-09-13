@@ -7,7 +7,6 @@ import { lessonEngInfo } from "../../states/Information/lessonInfoAtoms";
 import { usePostInitial } from "../../libs/api/postInitial";
 import classNames from "classnames";
 import { useGetUserProgress } from "../../libs/api/getUserProgress";
-import { useGetExistence } from "../../libs/api/getExistence";
 import { handleModalAtom } from "../../states/handleModal";
 
 const Navigate = tw.div`flex flex-wrap mt-5 mx-auto justify-center gap-3 rounded-3xl`;
@@ -22,16 +21,13 @@ function StartModal() {
   const [key, setKey] = useState(chID);
   const [initLoading, initRes, initFetch] = usePostInitial(
     lessonID,
-    chID || key,
+    String(key),
     build
   );
-
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);
-
   const [adKey, setAdKey] = useState();
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
-  const [exLoading, exRes, exFetch] = useGetExistence();
   const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
 
   useEffect(() => {
@@ -55,10 +51,10 @@ function StartModal() {
   }, []);
 
   const closeModal = async () => {
-    await exFetch();
-    if (!exRes.status) {
+    if (chID >= String(userRes) && !(userRes === 0)) {
       await initFetch();
     }
+
     if (!(chID === String(key))) {
       setHandleModal(false);
     } else if (chID === String(key)) {

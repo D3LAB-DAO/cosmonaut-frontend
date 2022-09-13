@@ -15,7 +15,7 @@ export const useIsLogin = () => {
       const onLogin = data.isLogin;
       setIsLoggedIn(onLogin);
     } catch (error) {
-      return null;
+      console.log(error);
     }
   };
   return [fetchData];

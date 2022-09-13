@@ -9,7 +9,7 @@ import { RecoilRoot } from "recoil";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
 
-console.log = () => {};
+// console.log = () => {};
 
 root.render(
   <BrowserRouter>

@@ -25,7 +25,7 @@ export const usePostRead = (lessonID, chID) => {
       const data = await res.json();
       setResponse(data);
     } catch (error) {
-      return null;
+      console.log(error);
     }
   };
 

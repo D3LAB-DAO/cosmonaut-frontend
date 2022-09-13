@@ -16,6 +16,7 @@ import { LoginState } from "./states/login";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
+
   return (
     <>
       <ScrollToTop>

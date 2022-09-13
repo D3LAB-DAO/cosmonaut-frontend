@@ -18,7 +18,7 @@ export const useGetLessonPic = (lessonID) => {
       let imgObjectURL = URL.createObjectURL(data);
       setResponse(imgObjectURL);
     } catch (error) {
-      return null;
+      console.log(error);
     }
   };
   return [response, fetchData];
