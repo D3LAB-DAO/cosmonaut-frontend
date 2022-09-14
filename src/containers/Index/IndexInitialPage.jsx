@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import tw from "tailwind-styled-components";
 import Icon1 from "../../assets/images/icon1.svg";
 import Icon2 from "../../assets/images/icon2.svg";
@@ -9,6 +9,8 @@ import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import { indexInfo } from "../../states/Information/indexInfo";
 import Video from "../../assets/indexbg.mp4";
+import { useGetUserProgress } from "../../libs/api/getUserProgress";
+import { progressState } from "../../states/progressState";
 
 const Container = tw.div`relative lg:pb-20 bg-cover bg-center bg-opacity-10 lg:pt-32`;
 const Background = tw.div`bg-indigo-900 justify-center rounded-2xl border-indigo-900 border-4 flex h-index px-12 items-center bg-center bg-no-repeat`;
@@ -21,6 +23,32 @@ function IndexInitialPage() {
   const { lessonID } = useParams();
   const startLesson = `/${lessonID}/chapter/1/unit/0`;
   const engInfo = useRecoilValue(indexInfo);
+  const [zeroLoading, zeroPro, zeroProgress] = useGetUserProgress(0);
+  const [firLoading, firPro, firProgress] = useGetUserProgress(1);
+  const [secLoading, secPro, secProgress] = useGetUserProgress(2);
+  const [thrLoading, thrPro, thrProgress] = useGetUserProgress(3);
+  const [fourLoading, fourPro, fourProgress] = useGetUserProgress(4);
+  const [progress, setProgress] = useRecoilState(progressState);
+
+  useEffect(() => {
+    zeroProgress();
+    firProgress();
+    secProgress();
+    thrProgress();
+    fourProgress();
+  }, []);
+
+  useEffect(() => {
+    setProgress({
+      0: String(zeroPro),
+      1: String(firPro),
+      2: String(secPro),
+      3: String(thrPro),
+      4: String(fourPro),
+    });
+  }, [zeroPro, firPro, secPro, thrPro, fourPro]);
+  console.log(progress);
+
   return (
     <>
       <Navbar />

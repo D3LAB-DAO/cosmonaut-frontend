@@ -9,7 +9,6 @@ import Navbar from "../../components/Navbar/Navbar";
 import { chapterInfos } from "../../states/Information/chapterInfoAtoms";
 import { unitInfos } from "../../states/Information/unitInfoAtoms";
 import LsDesc from "./LSDesc";
-import StartModal from "../../components/StartModal/StartModal";
 import L1C4PlusDesc from "../../containers/Chapter/lesson1/chapter4/L1C4PlusDesc";
 import Navigator from "../components/Navigator/Navigator";
 import BgV4 from "../../assets/images/bg-v4.svg";
@@ -25,7 +24,6 @@ function LsDescSchema() {
   return (
     <>
       <Navbar />
-      <StartModal />
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
         <BackToOverview />
         <ChapterTitle chInfo={chInfo[lessonID]} unitInfo={unitData[chID - 1]} />

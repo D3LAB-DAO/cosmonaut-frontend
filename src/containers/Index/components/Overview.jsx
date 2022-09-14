@@ -10,7 +10,7 @@ import {
 } from "../../../components/Common/ProgressBar";
 import Goal from "../../../assets/images/goal.svg";
 import Result from "../../../assets/images/result.svg";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {
   lessonGoal,
   lessonResult,
@@ -20,6 +20,7 @@ import { useGetLessonPic } from "../../../libs/api/getLessonPic";
 import { useGetUserProgress } from "../../../libs/api/getUserProgress";
 import { indexInfo } from "../../../states/Information/indexInfo";
 import error from "../../../assets/images/dummy-nft.jpg";
+import { progressState } from "../../../states/progressState";
 
 const Container = tw.div`w-full lg:col-span-1 col-span-2 lg:mx-0 mx-auto lg:order-1 order-2`;
 const Title = tw.h1`text-xs md:text-lg font-semibold text-center text-yellow-500 mb-1`;
@@ -36,11 +37,20 @@ function Overview() {
 
   const [picRes, picFetch] = useGetLessonPic(lessonID);
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
+<<<<<<< HEAD
+  const [progress, setProgress] = useRecoilState(progressState);
+
+  useEffect(() => {
+    userFetch();
+    if (!(progress[lessonID] === "-1") && !(progress[0] === "1")) picFetch();
+  }, [lessonID]);
+=======
 
   useEffect(() => {
     userFetch();
     !(userRes === -1) && picFetch();
   }, [lessonID, userRes]);
+>>>>>>> f4cd539acdbff0a07eba481feb5067e35633812d
 
   const onErrorImg = (e) => {
     e.target.src = error;
