@@ -47,7 +47,6 @@ function IndexInitialPage() {
       4: String(fourPro),
     });
   }, [zeroPro, firPro, secPro, thrPro, fourPro]);
-  console.log(progress);
 
   return (
     <>

@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 export const useGetUserProgress = (lessonID) => {
-<<<<<<< HEAD
   const [response, setResponse] = useState("");
-=======
-  const [response, setResponse] = useState({});
->>>>>>> f4cd539acdbff0a07eba481feb5067e35633812d
   const [isLoading, setLoading] = useState(true);
   const option = {
     method: "GET",

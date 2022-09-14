@@ -37,20 +37,12 @@ function Overview() {
 
   const [picRes, picFetch] = useGetLessonPic(lessonID);
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
-<<<<<<< HEAD
   const [progress, setProgress] = useRecoilState(progressState);
 
   useEffect(() => {
     userFetch();
     if (!(progress[lessonID] === "-1") && !(progress[0] === "1")) picFetch();
   }, [lessonID]);
-=======
-
-  useEffect(() => {
-    userFetch();
-    !(userRes === -1) && picFetch();
-  }, [lessonID, userRes]);
->>>>>>> f4cd539acdbff0a07eba481feb5067e35633812d
 
   const onErrorImg = (e) => {
     e.target.src = error;
@@ -89,7 +81,7 @@ function Overview() {
                 <img
                   class="block h-40 object-cover rounded-md"
                   alt="cosmonaut-nft"
-                  src={picRes}
+                  src={progress[lessonID] === "-1" ? error : picRes}
                   onError={onErrorImg}
                 />
               </div>

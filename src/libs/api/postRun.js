@@ -31,17 +31,21 @@ export const useRunApi = (files) => {
       let data = await res.json();
 
       if (res.status === 200) {
-        setIsLoading(false);
         setIsSuccess(true);
       } else if (res.status === 400) {
-        setIsLoading(false);
         alert("Try Again!");
+      } else if (res.status === 500) {
+        alert("status === 500");
+        setIsError(true);
+        setExecuteRes([data.message]);
       }
+
       setExecuteRes(data.result[0]);
       setQueryRes(data.result[1]);
     } catch (error) {
-      alert(error);
       setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 

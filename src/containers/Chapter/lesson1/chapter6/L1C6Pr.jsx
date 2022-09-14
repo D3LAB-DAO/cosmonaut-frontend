@@ -60,6 +60,9 @@ export const L1C6Pr = () => {
         class="pt-8 pb-20 md:px-6 px-4 lg:px-10 bg-black bg-cover bg-center md:pt-8"
       >
         <PracticePart lesson={lessonID} />
+        {runError && !runSuccess ? (
+          <ResultTab executeState={"error"} executeError={executeRes} />
+        ) : null}
         {runSuccess && (
           <ResultTab
             executeState={executeRes?.result}
@@ -359,7 +362,6 @@ export const L1C6Pr = () => {
             </PracticeCode>
           </div>
         </div>
-
         {executeRes.result === "success" && queryRes.result === "success" ? (
           <div class="flex items-center justify-center md:mt-8 mt-3 ">
             <button

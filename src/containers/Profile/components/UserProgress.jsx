@@ -39,15 +39,11 @@ function UserProgress() {
 
   useEffect(() => {
     zeroProgress();
-    !(zeroPro === -1) && zeroFetch();
     firProgress();
-    !(firPro === -1) && firFetch();
     secProgress();
-    !(secPro === -1) && secFetch();
     thrProgress();
-    !(thrPro === -1) && thrFetch();
     fourProgress();
-<<<<<<< HEAD
+
     if (
       !(progress[0] === "-1") &&
       !(progress[0] === "1") &&
@@ -58,9 +54,6 @@ function UserProgress() {
     if (!(progress[2] === "-1") && !(progress[2] === "")) secFetch();
     if (!(progress[3] === "-1") && !(progress[3] === "")) thrFetch();
     if (!(progress[4] === "-1") && !(progress[4] === "")) fourFetch();
-=======
-    !(thrPro === -1) && fourFetch();
->>>>>>> f4cd539acdbff0a07eba481feb5067e35633812d
   }, []);
 
   useEffect(() => {

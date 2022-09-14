@@ -8,10 +8,7 @@ import { usePostInitial } from "../../libs/api/postInitial";
 import classNames from "classnames";
 import { useGetUserProgress } from "../../libs/api/getUserProgress";
 import { handleModalAtom } from "../../states/handleModal";
-<<<<<<< HEAD
 import { progressState } from "../../states/progressState";
-=======
->>>>>>> f4cd539acdbff0a07eba481feb5067e35633812d
 
 const Navigate = tw.div`flex flex-wrap mt-5 mx-auto justify-center gap-3 rounded-3xl`;
 const Button = tw.button`bg-white h-40 flex items-center justify-center w-2/5 md:w-1/5 xl:w-1/8 rounded-xl border-2 border-indigo-900 ease-in-out duration-300`;
@@ -22,11 +19,8 @@ function StartModal() {
   const { lessonID, chID } = useParams();
   const navigate = useNavigate();
   const [build, setBuild] = useState(false);
-<<<<<<< HEAD
   const [key, setKey] = useState(String(chID));
-=======
-  const [key, setKey] = useState(chID);
->>>>>>> f4cd539acdbff0a07eba481feb5067e35633812d
+
   const [initLoading, initRes, initFetch] = usePostInitial(
     lessonID,
     String(key),
@@ -37,7 +31,6 @@ function StartModal() {
   const [adKey, setAdKey] = useState();
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
   const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
-<<<<<<< HEAD
 
   const [zeroLoading, zeroPro, zeroProgress] = useGetUserProgress(0);
   const [firLoading, firPro, firProgress] = useGetUserProgress(1);
@@ -45,8 +38,6 @@ function StartModal() {
   const [thrLoading, thrPro, thrProgress] = useGetUserProgress(3);
   const [fourLoading, fourPro, fourProgress] = useGetUserProgress(4);
   const [progress, setProgress] = useRecoilState(progressState);
-=======
->>>>>>> f4cd539acdbff0a07eba481feb5067e35633812d
 
   useEffect(() => {
     zeroProgress();
@@ -83,21 +74,11 @@ function StartModal() {
   }, []);
 
   const closeModal = async () => {
-<<<<<<< HEAD
     if (String(key) === proChapter) initFetch();
 
     if (!(String(chID) === String(key))) {
       setHandleModal(false);
     } else if (String(chID) === String(key)) {
-=======
-    if (chID >= String(userRes) && !(userRes === 0)) {
-      await initFetch();
-    }
-
-    if (!(chID === String(key))) {
-      setHandleModal(false);
-    } else if (chID === String(key)) {
->>>>>>> f4cd539acdbff0a07eba481feb5067e35633812d
       setHandleModal(true);
     }
 
@@ -206,24 +187,6 @@ function StartModal() {
         </>
       );
     }
-  } else if (String(key) === proChapter) {
-    if (String(key) === "999") {
-      chState = (
-        <>
-          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-white block w-full font-extrabold underline">
-            Ready to Try Advanced?
-          </h3>
-        </>
-      );
-    } else {
-      chState = (
-        <>
-          <h3 class="text-center mb-2 md:text-lg mt-8 text-xs mx-auto text-white block w-full font-extrabold underline">
-            Let's go this chapter!
-          </h3>
-        </>
-      );
-    }
   }
 
   let title = "";
@@ -322,7 +285,7 @@ function StartModal() {
                 onClick={closeModal}
                 class="animate-moveUtoD block mt-6 mb-72 mx-auto md:mb-4 text-center text-lg border-3  transition duration-200 rounded-full py-2 px-8 bg-gradient-to-r to-orange-400 from-yellow-500 font-heading text-indigo-900 hover:from-green-500 border-indigo-900 hover:border-white hover:to-blue-500 hover:text-white"
               >
-                Get Started
+                Start Chapter
               </button>
             ) : null}
           </div>
