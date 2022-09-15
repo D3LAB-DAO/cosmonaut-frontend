@@ -28,13 +28,8 @@ export const L3C3Pr = () => {
   const editorRef = useRef(null);
   const [readOnly, setReadOnly] = useState(false);
 
-  let initCode;
-  if (sessionStorage.getItem(tab + `${lessonID}`)) {
-    initCode = sessionStorage.getItem(tab + `${lessonID}`);
-  } else {
-    initCode = "";
-  }
-  const [code, setCode] = useState(initCode);
+  const [exRes, exLoading, exFetch] = useCodeEx();
+  const [code, setCode] = useState(exRes[tab]);
 
   let initFile;
   useEffect(() => {
@@ -59,7 +54,6 @@ export const L3C3Pr = () => {
       return navigate(`/lesson/3/chapter/3/unit/2`);
     }
   };
-  const [exRes, exLoading, exFetch] = useCodeEx();
 
   return (
     <>

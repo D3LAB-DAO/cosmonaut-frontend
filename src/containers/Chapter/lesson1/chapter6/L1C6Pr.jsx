@@ -27,13 +27,8 @@ export const L1C6Pr = () => {
   const [tab, setTab] = useState("state.rs");
   const [readOnly, setReadOnly] = useState(false);
 
-  let initCode;
-  if (sessionStorage.getItem(tab + `${lessonID}`)) {
-    initCode = sessionStorage.getItem(tab + `${lessonID}`);
-  } else {
-    initCode = "";
-  }
-  const [code, setCode] = useState(initCode);
+  const [exRes, exLoading, exFetch] = useCodeEx();
+  const [code, setCode] = useState(exRes[tab]);
 
   let initFile;
   useEffect(() => {
@@ -58,7 +53,6 @@ export const L1C6Pr = () => {
       return navigate(`/lesson/1/chapter/6/unit/2`);
     }
   };
-  const [exRes, exLoading, exFetch] = useCodeEx();
 
   return (
     <>

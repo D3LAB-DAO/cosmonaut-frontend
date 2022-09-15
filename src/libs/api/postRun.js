@@ -35,7 +35,6 @@ export const useRunApi = (files) => {
       } else if (res.status === 400) {
         alert("Try Again!");
       } else if (res.status === 500) {
-        alert("status === 500");
         setIsError(true);
         setExecuteRes([data.message]);
       }
