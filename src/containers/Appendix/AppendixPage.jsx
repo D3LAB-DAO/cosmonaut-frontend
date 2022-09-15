@@ -1,14 +1,10 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import BgV4 from "../../assets/images/bg-v4.svg";
-
 import AboutCode from "../../components/Contents/AboutCode";
-
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
-
-import BackToOverview from "../../schema/components/BackToOverview";
 import AppenNavigator from "../../schema/components/Navigator/AppenNavigator";
 import AppenDesc from "./components/AppenDesc";
 import AppenU1 from "./components/AppenU1";
@@ -47,12 +43,34 @@ export const AppendixPage = () => {
     "2. Keplr",
     "2. Keplr",
   ];
+  const navigate = useNavigate();
 
   return (
     <>
       <Navbar />
       <Background style={{ backgroundImage: `url(${BgV4})` }}>
-        <BackToOverview />
+        <button
+          className="inline-flex mb-2 text-yellow-500 transition ease-in-out duration-300 translate transform hover:-translate-x-2 hover:scale-105"
+          onClick={() => navigate(`/lesson/1`)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="md:h-6 md:w-6 h-4 w-4 mr-1 mt-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="3"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            ></path>
+          </svg>
+          <span className="md:text-lg text-sm font-extrabold mt-1">
+            Back to Overview
+          </span>
+        </button>
         <ChapterTitle>
           <div class="flex flex-wrap items-baseline md:mx-0 mx-4 lg:mb-16 mb-8">
             <h2 class="text-2xl md:text-left text-center md:text-3xl mr-6 font-heading">

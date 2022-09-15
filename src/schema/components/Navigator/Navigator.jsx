@@ -16,8 +16,11 @@ function Navigator() {
   const [scroll, setScroll] = useState(true);
   const nextUnit = Number(uID) + 1;
   const prevUnit = Number(uID) - 1;
+  // eslint-disable-next-line no-unused-vars
   const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
+  // eslint-disable-next-line no-unused-vars
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
+  // eslint-disable-next-line no-unused-vars
   const [readRes, readFetch] = usePostRead(lessonID, chID);
 
   useEffect(() => {

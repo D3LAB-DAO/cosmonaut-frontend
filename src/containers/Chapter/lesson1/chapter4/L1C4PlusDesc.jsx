@@ -4,7 +4,6 @@ import ChTitle from "../../../../components/Contents/ChTitle";
 import CodeBlock from "../../../../components/Contents/CodeBlock";
 
 function L1C4PlusDesc() {
-  const executeMsg = "ExecuteMsg::Mint{(token_id, owner, token_uri)}";
   return (
     <div class="container flex flex-wrap justify-between mx-auto md:px-32 px-8 mb-12">
       <ChTitle>Implementations</ChTitle>

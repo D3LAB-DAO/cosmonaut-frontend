@@ -23,6 +23,7 @@ function FinishModal() {
   const lessonInfos = useRecoilValue(lessonEngInfo);
   const navigate = useNavigate();
   const nextL = Number(lessonID) + 1;
+  // eslint-disable-next-line no-unused-vars
   const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
 
   const nextLesson = () => {
@@ -34,6 +35,7 @@ function FinishModal() {
   };
 
   const [lessonPic, picFetch] = useGetLessonPic(lessonID);
+  // eslint-disable-next-line no-unused-vars
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
 
   useEffect(() => {

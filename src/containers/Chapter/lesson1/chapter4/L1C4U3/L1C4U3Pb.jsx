@@ -13,12 +13,14 @@ export const L1C4U3Pb = () => {
   const [ex, setEx] = useState(codeEx.Q1);
   const [ans, setAns] = useState(codeAns.Q1);
   const [readOnly, setReadOnly] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
 
   useEffect(() => {
     userFetch();
   }, []);
 
+  // eslint-disable-next-line no-unused-vars
   const [response, isLoading, isSuccess, diffFetch] = useDiffApi(true);
   const handleAns = async () => {
     setDifSuccess(true);

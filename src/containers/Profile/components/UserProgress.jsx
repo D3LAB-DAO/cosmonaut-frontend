@@ -23,10 +23,15 @@ function UserProgress() {
   const [thrRes, thrFetch] = useGetLessonPic(3);
   const [fourRes, fourFetch] = useGetLessonPic(4);
 
+  // eslint-disable-next-line no-unused-vars
   const [zeroLoading, zeroPro, zeroProgress] = useGetUserProgress(0);
+  // eslint-disable-next-line no-unused-vars
   const [firLoading, firPro, firProgress] = useGetUserProgress(1);
+  // eslint-disable-next-line no-unused-vars
   const [secLoading, secPro, secProgress] = useGetUserProgress(2);
+  // eslint-disable-next-line no-unused-vars
   const [thrLoading, thrPro, thrProgress] = useGetUserProgress(3);
+  // eslint-disable-next-line no-unused-vars
   const [fourLoading, fourPro, fourProgress] = useGetUserProgress(4);
 
   const [zero, setZero] = useState("0%");

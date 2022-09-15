@@ -37,7 +37,15 @@ export const indexInfo = atom({
       num: "Lesson 4",
       title: "Evade Asteroids",
       desc: "Now ESFERA is entering the asteroid belt. Please be prepared for a sudden collision.",
-      subDesc: "We are going to make a simple spaceship game that stochastically avoids asteroids.",
+      subDesc:
+        "We are going to make a simple spaceship game that stochastically avoids asteroids.",
+    },
+    {
+      id: 5,
+      num: "Appendix",
+      title: "Read Appendix",
+      desc: "Appendix",
+      subDesc: "Appendix",
     },
   ],
 });

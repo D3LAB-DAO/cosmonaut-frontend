@@ -23,11 +23,17 @@ function IndexInitialPage() {
   const { lessonID } = useParams();
   const startLesson = `/${lessonID}/chapter/1/unit/0`;
   const engInfo = useRecoilValue(indexInfo);
+  // eslint-disable-next-line no-unused-vars
   const [zeroLoading, zeroPro, zeroProgress] = useGetUserProgress(0);
+  // eslint-disable-next-line no-unused-vars
   const [firLoading, firPro, firProgress] = useGetUserProgress(1);
+  // eslint-disable-next-line no-unused-vars
   const [secLoading, secPro, secProgress] = useGetUserProgress(2);
+  // eslint-disable-next-line no-unused-vars
   const [thrLoading, thrPro, thrProgress] = useGetUserProgress(3);
+  // eslint-disable-next-line no-unused-vars
   const [fourLoading, fourPro, fourProgress] = useGetUserProgress(4);
+  // eslint-disable-next-line no-unused-vars
   const [progress, setProgress] = useRecoilState(progressState);
 
   useEffect(() => {

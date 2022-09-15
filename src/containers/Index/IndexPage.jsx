@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import tw from "tailwind-styled-components";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -19,9 +20,11 @@ const NoneBtn = tw.div`pointer-events-none flex flex-wrap mt-10 lg:justify-end j
 
 function IndexPage() {
   const { lessonID } = useParams();
+  // eslint-disable-next-line no-unused-vars
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
   const startLesson = `/lesson/${lessonID}/chapter/1/unit/0`;
   const engInfo = useRecoilValue(indexInfo);
+  // eslint-disable-next-line no-unused-vars
   const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
 
   useEffect(() => {
@@ -46,11 +49,21 @@ function IndexPage() {
               <div class="max-w-lg px-4 mx-auto">
                 <Title>Curriculum</Title>
                 {engInfo?.map((e) => {
-                  const lessonUrl = `/lesson/${e?.id}`;
+                  let lessonUrl;
+                  if (e?.id === 5) {
+                    lessonUrl = `/appendix/1`;
+                  } else {
+                    lessonUrl = `/lesson/${e?.id}`;
+                  }
                   return (
                     <LessonList>
                       <Link key={e?.id} to={lessonUrl}>
-                        <button class="animate-fadeInRtoL mb-5 flex w-full md:px-6 px-3 md:py-3 py-1 bg-white md:shadow shadow-sm border-2 border-indigo-900 items-center justify-between ease-in-out duration-300 transform hover:scale-105 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none focus:ring focus:ring-green-500 active:bg-yellow-500 rounded-md">
+                        <button
+                          className={clsx(
+                            "animate-fadeInRtoL mb-5 flex w-full md:px-6 px-3 md:py-3 py-1 bg-white md:shadow shadow-sm border-2 border-indigo-900 items-center justify-between ease-in-out duration-300 transform hover:scale-105 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none focus:ring focus:ring-green-500 active:bg-yellow-500 rounded-md",
+                            { "bg-yellow-100": e?.id === 5 }
+                          )}
+                        >
                           <span class="md:text-lg text-sm font-heading text-indigo-900">
                             {e?.num}.
                           </span>
@@ -63,7 +76,7 @@ function IndexPage() {
                   );
                 })}
 
-                {!(userRes === -1) || lessonID === "0" ? (
+                {!(userRes === -1) || lessonID === "0" || lessonID === "5" ? (
                   <>
                     <Link to={startLesson}>
                       <ButtonWrap>

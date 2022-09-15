@@ -8,6 +8,7 @@ import { LoginState } from "../../states/login";
 import Version from "./Version";
 
 const Profile = () => {
+  // eslint-disable-next-line no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
 
   const logoutFetch = useIsLogout();

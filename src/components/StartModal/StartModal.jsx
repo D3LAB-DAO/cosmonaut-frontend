@@ -21,6 +21,7 @@ function StartModal() {
   const [build, setBuild] = useState(false);
   const [key, setKey] = useState(String(chID));
 
+  // eslint-disable-next-line no-unused-vars
   const [initLoading, initRes, initFetch] = usePostInitial(
     lessonID,
     String(key),
@@ -29,13 +30,18 @@ function StartModal() {
   const engInfo = useRecoilValue(lessonEngInfo);
   const chInfo = useRecoilValue(chapterInfos);
   const [adKey, setAdKey] = useState();
-  const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
+  // eslint-disable-next-line no-unused-vars
   const [handleModal, setHandleModal] = useRecoilState(handleModalAtom);
 
+  // eslint-disable-next-line no-unused-vars
   const [zeroLoading, zeroPro, zeroProgress] = useGetUserProgress(0);
+  // eslint-disable-next-line no-unused-vars
   const [firLoading, firPro, firProgress] = useGetUserProgress(1);
+  // eslint-disable-next-line no-unused-vars
   const [secLoading, secPro, secProgress] = useGetUserProgress(2);
+  // eslint-disable-next-line no-unused-vars
   const [thrLoading, thrPro, thrProgress] = useGetUserProgress(3);
+  // eslint-disable-next-line no-unused-vars
   const [fourLoading, fourPro, fourProgress] = useGetUserProgress(4);
   const [progress, setProgress] = useRecoilState(progressState);
 
@@ -242,7 +248,6 @@ function StartModal() {
                       setKey(e.id);
                       setAdKey("");
                     }}
-                    // disabled={chID < String(e.id)}
                     className={classNames(
                       proChapter > String(e.id) || proChapter === "0"
                         ? "bg-green-400 hover:bg-yellow-100 focus:bg-yellow-500 focus:outline-none hover:z-10 focus:z-10 focus:ring-4 focus:ring-inset focus:ring-orange-400 active:bg-yellow-500"

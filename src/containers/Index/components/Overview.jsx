@@ -36,7 +36,9 @@ function Overview() {
   const result = useRecoilValue(lessonResult);
 
   const [picRes, picFetch] = useGetLessonPic(lessonID);
+  // eslint-disable-next-line no-unused-vars
   const [userLoading, userRes, userFetch] = useGetUserProgress(lessonID);
+  // eslint-disable-next-line no-unused-vars
   const [progress, setProgress] = useRecoilState(progressState);
 
   useEffect(() => {

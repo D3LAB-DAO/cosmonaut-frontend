@@ -19,6 +19,7 @@ export default function EditorResult({
   onChange,
   onMount,
 }) {
+  // eslint-disable-next-line no-unused-vars
   const [fmtRes, fmtLoading, fmtSuccess, fmtError, fmtFetch] = useFmtApi(
     files,
     path

@@ -14,11 +14,8 @@ import AdvancePage from "./containers/Advanced/AdvancePage";
 import { useRecoilState } from "recoil";
 import { LoginState } from "./states/login";
 
-// const Console = (prop) => (
-//   console[Object.keys(prop)[0]](...Object.values(prop)), null // ➜ React components must return something
-// );
-
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
 
   return (
