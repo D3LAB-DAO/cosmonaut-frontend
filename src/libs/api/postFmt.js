@@ -26,8 +26,8 @@ export const useFmtApi = (files, tab) => {
       let resResult = await Object.fromEntries(
         Object.entries(data.result).map(([key, value]) => [key, atob(value)])
       );
-      let response = resResult[tab];
-      await setResponse(response);
+
+      await setResponse(resResult);
       await setIsSuccess(true);
     } catch (error) {
       alert(error);

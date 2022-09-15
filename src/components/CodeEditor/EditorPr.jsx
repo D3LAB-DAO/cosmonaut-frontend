@@ -21,9 +21,15 @@ export default function EditorPr({
     files,
     path
   );
+
+  let tab = path.slice(0, -1);
   const fmtBtn = async () => {
     await fmtFetch();
+    if (fmtSuccess) {
+      sessionStorage.setItem(path, fmtRes[tab]);
+    }
   };
+
   const userCode = () => {
     if (
       !sessionStorage[path] ||
@@ -38,29 +44,16 @@ export default function EditorPr({
 
   return (
     <>
-      {fmtSuccess ? (
-        <Editor
-          height="80vh"
-          theme="vs-dark"
-          path={path}
-          onChange={onChange}
-          onMount={onMount}
-          defaultLanguage={defaultLanguage}
-          value={fmtRes}
-          options={{ minimap: { enabled: false }, readOnly: readOnly }}
-        />
-      ) : (
-        <Editor
-          height="80vh"
-          theme="vs-dark"
-          path={path}
-          onChange={onChange}
-          onMount={onMount}
-          defaultLanguage={defaultLanguage}
-          value={userCode()}
-          options={{ minimap: { enabled: false }, readOnly: readOnly }}
-        />
-      )}
+      <Editor
+        height="80vh"
+        theme="vs-dark"
+        path={path}
+        onChange={onChange}
+        onMount={onMount}
+        defaultLanguage={defaultLanguage}
+        value={userCode()}
+        options={{ minimap: { enabled: false }, readOnly: readOnly }}
+      />
 
       <div class="flex justify-end px-2 mt-1">
         <button

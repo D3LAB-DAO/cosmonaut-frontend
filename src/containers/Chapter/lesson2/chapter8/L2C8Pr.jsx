@@ -26,7 +26,6 @@ export const L2C8Pr = () => {
   const editorRef = useRef(null);
   const [tab, setTab] = useState("contract.rs");
   const [readOnly, setReadOnly] = useState(false);
-  const [files, setFiles] = useState({});
 
   let initCode;
   if (sessionStorage.getItem(tab + `${lessonID}`)) {
@@ -35,6 +34,15 @@ export const L2C8Pr = () => {
     initCode = "";
   }
   const [code, setCode] = useState(initCode);
+
+  let initFile;
+  useEffect(() => {
+    setFiles({
+      ...files,
+      [tab]: btoa(exRes[tab]),
+    });
+  }, [exRes]);
+  const [files, setFiles] = useState(initFile);
 
   useEffect(() => {
     setFiles({ ...files, [tab]: btoa(code) });
@@ -60,6 +68,9 @@ export const L2C8Pr = () => {
         class="pt-8 pb-20 md:px-6 px-4 lg:px-10 bg-black bg-cover bg-center md:pt-8"
       >
         <PracticePart lesson={lessonID} />
+        {runError && !runSuccess ? (
+          <ResultTab executeState={"error"} executeError={executeRes} />
+        ) : null}
         {runSuccess && (
           <ResultTab
             executeState={executeRes?.result}

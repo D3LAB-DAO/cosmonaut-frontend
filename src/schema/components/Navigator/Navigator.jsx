@@ -48,11 +48,7 @@ function Navigator() {
         await readFetch();
       } else if (lessonID === "2" && chID === "5" && uID === "2") {
         await readFetch();
-      } else if (lessonID === "3" && chID === "1" && uID === "1") {
-        await readFetch();
       } else if (lessonID === "3" && chID === "1" && uID === "3") {
-        await readFetch();
-      } else if (lessonID === "3" && chID === "2" && uID === "1") {
         await readFetch();
       } else if (lessonID === "4" && chID === "1" && uID === "2") {
         await readFetch();

@@ -125,19 +125,19 @@ function StartModal() {
       return navigate(`/lesson/2/chapter/8/unit/1`);
     }
 
-    if (lessonID === "3" && proChapter === "1") {
+    if (lessonID === "3" && String(key) === "1") {
       return navigate(`/lesson/3/chapter/1/unit/0`);
-    } else if (lessonID === "3" && proChapter === "2") {
+    } else if (lessonID === "3" && String(key) === "2") {
       return navigate(`/lesson/3/chapter/2/unit/1`);
-    } else if (lessonID === "3" && proChapter === "3") {
+    } else if (lessonID === "3" && String(key) === "3") {
       return navigate(`/lesson/3/chapter/3/unit/1`);
     }
 
-    if (lessonID === "4" && proChapter === "1") {
+    if (lessonID === "4" && String(key) === "1") {
       return navigate(`/lesson/4/chapter/1/unit/0`);
-    } else if (lessonID === "4" && proChapter === "2") {
+    } else if (lessonID === "4" && String(key) === "2") {
       return navigate(`/lesson/4/chapter/2/unit/1`);
-    } else if (lessonID === "4" && proChapter === "3") {
+    } else if (lessonID === "4" && String(key) === "3") {
       return navigate(`/lesson/4/chapter/3/unit/1`);
     }
   };

@@ -26,7 +26,6 @@ export const L1C6Pr = () => {
   const editorRef = useRef(null);
   const [tab, setTab] = useState("state.rs");
   const [readOnly, setReadOnly] = useState(false);
-  const [files, setFiles] = useState({});
 
   let initCode;
   if (sessionStorage.getItem(tab + `${lessonID}`)) {
@@ -35,6 +34,15 @@ export const L1C6Pr = () => {
     initCode = "";
   }
   const [code, setCode] = useState(initCode);
+
+  let initFile;
+  useEffect(() => {
+    setFiles({
+      ...files,
+      [tab]: btoa(exRes[tab]),
+    });
+  }, [exRes]);
+  const [files, setFiles] = useState(initFile);
 
   useEffect(() => {
     setFiles({ ...files, [tab]: btoa(code) });

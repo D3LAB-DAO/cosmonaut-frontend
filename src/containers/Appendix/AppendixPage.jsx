@@ -48,8 +48,6 @@ export const AppendixPage = () => {
     "2. Keplr",
   ];
 
-  console.log(Header);
-
   return (
     <>
       <Navbar />

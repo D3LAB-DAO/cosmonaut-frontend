@@ -25,6 +25,9 @@ export default function EditorResult({
   );
   const fmtBtn = async () => {
     await fmtFetch();
+    if (fmtSuccess) {
+      sessionStorage.setItem(index, fmtRes[index]);
+    }
   };
 
   const userCode = () => {
@@ -46,31 +49,17 @@ export default function EditorResult({
 
   return (
     <>
-      {fmtSuccess ? (
-        <Editor
-          height="80vh"
-          theme="vs-dark"
-          path={path}
-          onChange={onChange}
-          onMount={onMount}
-          defaultLanguage={defaultLanguage}
-          value={fmtRes}
-          beforeMount={handleEditorWillMount}
-          options={{ minimap: { enabled: false }, readOnly: read }}
-        />
-      ) : (
-        <Editor
-          height="80vh"
-          theme="vs-dark"
-          path={path}
-          onChange={onChange}
-          onMount={onMount}
-          defaultLanguage={defaultLanguage}
-          value={userCode()}
-          beforeMount={handleEditorWillMount}
-          options={{ minimap: { enabled: false }, readOnly: read }}
-        />
-      )}
+      <Editor
+        height="80vh"
+        theme="vs-dark"
+        path={path}
+        onChange={onChange}
+        onMount={onMount}
+        defaultLanguage={defaultLanguage}
+        value={userCode()}
+        beforeMount={handleEditorWillMount}
+        options={{ minimap: { enabled: false }, readOnly: read }}
+      />
       <div class="flex justify-end px-2 mt-1">
         <button
           onClick={fmtBtn}
