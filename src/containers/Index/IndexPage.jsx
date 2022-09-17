@@ -30,6 +30,7 @@ function IndexPage() {
   useEffect(() => {
     userFetch();
     setHandleModal(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessonID]);
 
   return (

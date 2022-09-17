@@ -28,6 +28,7 @@ export const L1C4U2Pb = () => {
 
   useEffect(() => {
     userFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // eslint-disable-next-line no-unused-vars

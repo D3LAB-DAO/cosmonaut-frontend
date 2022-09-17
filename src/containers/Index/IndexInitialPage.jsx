@@ -42,6 +42,7 @@ function IndexInitialPage() {
     secProgress();
     thrProgress();
     fourProgress();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -52,7 +53,7 @@ function IndexInitialPage() {
       3: String(thrPro),
       4: String(fourPro),
     });
-  }, [zeroPro, firPro, secPro, thrPro, fourPro]);
+  }, [zeroPro, firPro, secPro, thrPro, fourPro, setProgress]);
 
   return (
     <>

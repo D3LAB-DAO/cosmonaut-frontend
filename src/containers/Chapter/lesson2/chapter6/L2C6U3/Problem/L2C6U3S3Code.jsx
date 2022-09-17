@@ -34,7 +34,7 @@ const L2C6U3S3Code = ({ read, ex, ans, difSuccess }) => {
   useEffect(() => {
     setFiles({ ...files, [tab]: btoa(code) });
     sessionStorage.setItem(index, code);
-  }, [code]);
+  }, [code, files, tab, index]);
 
   return (
     <>

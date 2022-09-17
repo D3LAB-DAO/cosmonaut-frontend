@@ -51,6 +51,7 @@ function StartModal() {
     secProgress();
     thrProgress();
     fourProgress();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -61,7 +62,7 @@ function StartModal() {
       3: String(thrPro),
       4: String(fourPro),
     });
-  }, [zeroPro, firPro, secPro, thrPro, fourPro]);
+  }, [zeroPro, firPro, secPro, thrPro, fourPro, setProgress]);
 
   let proChapter = String(progress[lessonID]);
 
@@ -77,6 +78,7 @@ function StartModal() {
     } else {
       setBuild(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const closeModal = async () => {

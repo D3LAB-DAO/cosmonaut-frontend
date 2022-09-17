@@ -25,6 +25,7 @@ function Navigator() {
 
   useEffect(() => {
     userFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleRight = async () => {

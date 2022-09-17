@@ -15,17 +15,18 @@ const Logo = tw.a`text-lg font-bold ease-in-out duration-300 transform hover:sca
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
   const [scroll, setScroll] = useState(true);
-  const [isLogin, checkFetch] = useIsLogin();
+  const [isLogin, userName, checkFetch] = useIsLogin();
 
   useEffect(() => {
     checkFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (isLogin) {
       setIsLoggedIn(isLogin);
     }
-  }, [isLogin]);
+  }, [isLogin, setIsLoggedIn]);
 
   window.addEventListener("scroll", (e) => {
     if (window.scrollY > 1) {
@@ -49,7 +50,7 @@ function Navbar() {
         </Logo>
 
         {isLoggedIn ? (
-          <Profile />
+          <Profile name={userName} />
         ) : (
           <div class="flex items-center">
             <Link to="/signUp">

@@ -59,6 +59,7 @@ function UserProgress() {
     if (!(progress[2] === "-1") && !(progress[2] === "")) secFetch();
     if (!(progress[3] === "-1") && !(progress[3] === "")) thrFetch();
     if (!(progress[4] === "-1") && !(progress[4] === "")) fourFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -69,7 +70,7 @@ function UserProgress() {
       3: String(thrPro),
       4: String(fourPro),
     });
-  }, [zeroPro, firPro, secPro, thrPro, fourPro]);
+  }, [zeroPro, firPro, secPro, thrPro, fourPro, setProgress]);
 
   useEffect(() => {
     switch (zeroPro) {

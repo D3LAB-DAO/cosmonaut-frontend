@@ -7,11 +7,11 @@ import { useIsLogout } from "../../libs/api/useIsLogout";
 import { LoginState } from "../../states/login";
 import Version from "./Version";
 
-const Profile = () => {
+const Profile = ({ name }) => {
   // eslint-disable-next-line no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
-
   const logoutFetch = useIsLogout();
+
   const handleLogOut = (e) => {
     e.preventDefault();
     setIsLoggedIn(false);
@@ -73,13 +73,6 @@ const Profile = () => {
       </div>
 
       {/* Big Version */}
-      {/* {logout ? (
-        <div class="flex items-center">
-          <Link to="/signUp">
-            <SignIn />
-          </Link>
-        </div>
-      ) : ( */}
       <div class="hidden xl:flex items-center">
         <Version />
         <div class="relative inline-block text-left">
@@ -96,7 +89,7 @@ const Profile = () => {
                 src={Account3}
                 alt=""
               />
-              <span class="text-sm font-semibold ml-2 mr-4">@d3lab</span>
+              <span class="text-sm font-semibold ml-2 mr-4">{name}</span>
               <span class="sr-only">Open options</span>
             </button>
           </div>

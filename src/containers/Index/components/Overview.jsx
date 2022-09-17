@@ -44,6 +44,7 @@ function Overview() {
   useEffect(() => {
     userFetch();
     if (!(progress[lessonID] === "-1") && !(progress[0] === "1")) picFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessonID]);
 
   const onErrorImg = (e) => {

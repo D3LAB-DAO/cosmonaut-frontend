@@ -27,9 +27,15 @@ export const L4C3Pr = () => {
   const [tab, setTab] = useState("execute.rs");
   const editorRef = useRef(null);
   const [readOnly, setReadOnly] = useState(false);
-
   const [exRes, exLoading, exFetch] = useCodeEx();
-  const [code, setCode] = useState(exRes[tab]);
+
+  let initCode;
+  if (sessionStorage.getItem(tab + `${lessonID}`)) {
+    initCode = sessionStorage.getItem(tab + `${lessonID}`);
+  } else {
+    initCode = exRes[tab];
+  }
+  const [code, setCode] = useState(initCode);
 
   let initFile;
   useEffect(() => {
@@ -37,12 +43,14 @@ export const L4C3Pr = () => {
       ...files,
       [tab]: btoa(exRes[tab]),
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exRes]);
   const [files, setFiles] = useState(initFile);
 
   useEffect(() => {
     setFiles({ ...files, [tab]: btoa(code) });
     sessionStorage.setItem(tab + `${lessonID}`, code);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code]);
 
   const [executeRes, queryRes, runLoading, runSuccess, runError, runFetch] =

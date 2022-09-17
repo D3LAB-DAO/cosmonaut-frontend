@@ -41,6 +41,7 @@ function FinishModal() {
   useEffect(() => {
     userFetch();
     !(userRes === -1) && picFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onErrorImg = (e) => {
