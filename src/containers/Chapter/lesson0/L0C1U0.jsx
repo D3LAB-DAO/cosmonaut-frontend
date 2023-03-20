@@ -13,7 +13,7 @@ function L0C1U0() {
       <BasicP>
         While Web Assembly allows programs written in several existing and new
         languages, <CodeBlock>Cosmwasm</CodeBlock> smart contract is
-        almost written in <CodeBlock>Rust</CodeBlock> to enhance security.
+        almost always written in <CodeBlock>Rust</CodeBlock> to enhance security.
         Thanks to an intelligent and industrious compiler,
         <CodeBlock>Rust</CodeBlock> can prevent explicit and implicit issues both at
         a compile time.
