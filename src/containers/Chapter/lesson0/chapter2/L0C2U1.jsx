@@ -13,6 +13,10 @@ $ cd wasmd
 $ git checkout v0.23.0
 $ make install
 
+$ NOTE) wasmd is not fully supported for M1 macs, but you can install wasmd with v0.27.0 version
+$ git checkout v0.27.0
+$ make install
+
 # verify the installation
 $ wasmd version
 \`\`\``;

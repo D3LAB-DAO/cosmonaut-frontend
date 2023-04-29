@@ -18,6 +18,7 @@ $ cd contracts/nameservice
 \`\`\`bash
 # compile the wasm contract with stable toolchain
 $ rustup default stable
+$ rustup target add wasm32-unknown-unknown
 $ cargo wasm
 \`\`\``;
 
